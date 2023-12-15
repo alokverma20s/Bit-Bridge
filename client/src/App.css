@@ -1,0 +1,243 @@
+body{
+  color: white;
+  font-family: sans-serif;
+  font-size: 14px;
+  background-color: black;
+  background-image: url("./assets/home-bg.webp");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.home-container-1{
+  min-height: 100vh;
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  margin: 0% auto;
+}
+
+.home-container-2{
+  margin-left: 164px;
+  float: right;
+  max-width: 1100px;
+  width: calc(100% - 164px);
+  border: 1px solid #555c64;
+  padding: 24px;
+  box-sizing: border-box;
+  
+}
+
+.main-bar{
+  width: calc( 100% );
+  margin: 40px 0px;
+  padding: 0;
+}
+
+.main-bar-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-bar-header h1{
+  font-weight: 400;
+}
+
+.grad-btn{
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+  background-color: black;
+  /* background-image: linear-gradient(to right, rgb(163, 11, 252), rgb(4, 4, 121)); */
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 400;
+  font-size: 13px;
+  padding: 5px 10px ;
+}
+
+.grad-btn:hover{
+  /* transform: scale(1.01); */
+  background-image: linear-gradient(to right, rgb(121, 6, 188), rgb(6, 6, 123));
+}
+
+.inner-grad-btn{
+  /* background-image: linear-gradient(to right, rgb(103, 4, 160), rgb(3, 3, 80)); */
+  background-image: linear-gradient(to right, rgb(102, 1, 102) , rgb(17, 17, 99));
+  /* background-color: black; */
+  color: white;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 5px;
+  border: 1px solid black;
+}
+.inner-grad-btn:hover{
+  background-image: linear-gradient(to top, black , black, black);
+  border-color: white;
+}
+
+.all-tags {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 20px;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+    background-color: hsl(227, 10%, 27%);
+    
+    /* border: solid 2px rgb(255, 255, 255, 0.5); */
+
+}
+
+.all-links{
+    color: lightskyblue;
+    text-decoration: none;
+}
+
+#avatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: solid black 1px;
+}
+
+
+/*CSS for hamburger starts here*/
+.toggle-container{
+  position: fixed;
+}
+
+@media screen and (max-width: 720px) {
+  .left-sidebar{
+    position: absolute;
+    transform: translateX(-200px);
+    background-color: black;
+    border-right: 1px solid rgb(255, 255, 255, 0.5);
+  }
+
+  .home-container-2{
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .left-sidebar .left-links{
+    display: block;
+  }
+  .navbar .nav-btn{
+    display: none;
+  }
+  #toggle-checkbox{
+    position: absolute;
+    display: none;
+    visibility: hidden;
+  }
+
+  .toggle-container{
+    z-index: 6;
+    
+  }
+  
+  .toggle{
+    z-index: 7;
+    position: fixed;
+    left:15px;
+    top:15px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    /* box-shadow: 0px 0px 5px rgb(255, 255, 255, 0.9); */
+    border: solid white 1px;
+  }
+  
+  .toggle .common-line{
+    height: 2px;
+    width: 20px;
+    border-radius: 50px;
+    transition: 0.3s ease;
+    background-color: white;
+  }
+  
+  #toggle-checkbox:checked ~ .left-sidebar{
+    transform: translateX(164px);
+  }
+  
+  #toggle-checkbox:checked ~ .toggle .middle-line{
+    background-color: red;
+    visibility: hidden;
+  }
+  #toggle-checkbox:checked ~ .toggle .top-line{
+    transform: translateX(3px) rotate(45deg); 
+    transform-origin: 0%;
+    background-color: red;
+    width: 22px;
+  }
+  #toggle-checkbox:checked ~ .toggle .bottom-line{
+    transform: translateX(3px) rotate(-45deg);
+    transform-origin: 0%;
+    background-color: red;
+    width: 22px;
+  }
+
+  /*hamburger css ends here */
+
+}
+
+
+
+
+
+@media screen and (max-width: 400px){
+  body{
+    font-size: 10px;
+  }
+  .toggle{
+    height: 22px;
+    width: 22px;
+    border: none;
+  }
+  .toggle .common-line{
+    height: 1.5px;
+  }
+  #toggle-checkbox:checked ~ .toggle .top-line{
+    transform: translateX(3px) rotate(45deg); 
+    transform-origin: 0%;
+    background-color: red;
+    width: 17px;
+  }
+  #toggle-checkbox:checked ~ .toggle .bottom-line{
+    transform: translateX(3px) rotate(-45deg);
+    transform-origin: 0%;
+    background-color: red;
+    width: 17px;
+  }
+  
+  #avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+
+  }
+}

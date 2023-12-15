@@ -1,0 +1,117 @@
+.quiz-main-container{
+    margin: 75px;
+
+}
+
+.quiz-name-container{
+    display: flex;
+    border: solid 1px rgb(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    align-items: center;
+}
+
+.quiz-name{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 15px;
+    padding-right: 50px;
+}
+
+.quiz-name a{
+    text-decoration: none;
+    color: white;
+}
+
+.quiz-name-container button{
+    padding: 5px;
+}
+
+.quiz-question{
+    border: 1px solid rgb(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin: 5px 0px;
+    padding: 5px 25px;
+}
+
+.quiz-submit-btn{
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.quiz-submit-btn:hover{
+    
+    color: white;
+    background-color: purple;
+}
+
+.main-bar-header .add-btn{
+    margin: 10px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #3a3add, rgb(185, 24, 185));
+    color: white;
+    border: none;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 10px;
+}
+
+.main-bar-header .add-btn:hover{
+    background: linear-gradient(to right, rgb(17, 17, 195), purple);
+}
+
+input{
+    border: 1px solid rgb(255, 255, 255, 0.3);
+    border-radius: 2px;
+    font-size: 13px;
+    padding: 5px;
+    }
+textarea{
+    color: white;
+    background-color: rgb(57 50 57 / 76%);;
+}
+.add-quiz-question{
+    border: 1px solid rgb(255, 255, 255, 0.9);
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding: 10px;
+}
+
+.add-quiz-ans{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.add-quiz-ans label{
+     margin-right: 20px;
+}
+
+.show-answer:hover{
+    cursor: pointer;
+}
+
+.result-btn-container{
+    display: flex;
+}
+
+.delete-quiz{
+    margin-left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .quiz-main-container{
+        margin: 20px;
+        margin-top: 60px;
+    }
+}

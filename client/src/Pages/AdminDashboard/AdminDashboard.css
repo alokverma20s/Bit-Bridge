@@ -1,0 +1,41 @@
+.instructor-request-container{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    gap: 10px;
+}
+
+.instructor-card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* background-color: rgba(128, 0, 128, 0.329); */
+    /* min-width: 150px; */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.card-header{
+    background-color: purple;
+    padding: 2px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-width: 180px;
+
+}
+
+.card-body{
+    padding: 5px 15px;
+    background-color: rgba(128, 0, 128, 0.329);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-bottom: 25px;
+}
+
+.req-btn{
+    margin-left: 25px;
+}

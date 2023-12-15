@@ -1,0 +1,112 @@
+.auth-section{
+    /*  */
+    
+    /* background-color: #10152a; */
+    min-height: 100vh;
+    margin: 0% auto;
+    /* background-color: #14121A; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    background-image: url("../../assets/home-bg.webp");
+    background-position: center;
+    background-size: cover;
+}
+
+.auth-container-1{
+    padding: 20px;
+    margin-right: 30px;
+}
+#name{
+    background-color: white;
+    color: black;
+}
+.login-logo{
+    height: 75px;
+    border-radius: 50%;
+    padding: 20px 30px;
+}
+
+.auth-container-2{
+    
+    min-width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.auth-container-2 form{
+    width: 100%;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 0px 25px #99edc3;
+
+}
+
+
+
+.auth-container-2 form label input{
+    padding: 10px;
+    width: calc( 100% - 21px );
+    border: solid 1px #0000003e;
+    font-size: 13px;
+}
+
+/* .auth-container-2 form label input[type=email]{
+    background-color: rgb(57 50 57 / 76%);
+} */
+
+
+.auth-container-2 form label h4{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.auth-btn{
+    margin-top: 10px;
+    padding:10px 5px;
+    background-color: black;
+    /* border: solid 1px #009dff; */
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.auth-btn:hover{
+    background-color: #018ce3;
+}
+
+.handle-switch-btn{
+    background-color: transparent;
+    color: #009dff;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#instructor-checkbox{
+    width: min-content;
+}
+
+#designation{
+    padding: 8px;
+    margin: 20px;
+    margin-left: 0px;
+    border-radius: 3px;
+}
+
+@media screen and (max-width:730px) {
+    .auth-container-1{
+        display: none;
+    }
+}

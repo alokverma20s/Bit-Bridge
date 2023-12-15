@@ -1,0 +1,103 @@
+.section-container{
+    margin-left: 164px;
+    width: 100%;
+    padding-left: 40px;
+    border-left: solid 1px rgb(255, 255, 255, 0.5);
+}
+
+.user-details-container{
+    margin-top:100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
+
+.user-details{
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.user-name{
+    padding-left: 20px;
+}
+.user-name p{
+    color: rgb(255, 255, 255, 0.5);
+}
+
+.edit-profile-btn{
+    padding: 7px 8px;
+    color: white;
+    border-width: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.edit-profile-btn:hover{
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+.edit-profile-title{
+    padding: 20px;
+    border-bottom: solid 1px #dbd9d9;
+}
+
+.edit-profile-title-2{
+    color: grey;
+}
+
+.edit-profile-form{
+    padding: 20px;
+    border: solid 1px #dbd9d9;
+}
+
+.edit-profile-form label h3{
+    margin: 0%;
+    padding: 3px 0px;
+}
+
+.edit-profile-form label p{
+    margin: 0%;
+    padding: 3px 0px;
+}
+
+.edit-profile-form label input, .edit-profile-form textarea{
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: white;
+    background-color: #393239;
+    border: solid 1px rgb(255, 255, 255, 0.3);
+    width: 50%;
+}
+
+.user-submit-btn{
+    padding: 10px 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.user-cancel-btn{
+    padding: 7px 8px;
+    color: white;
+    border-width: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+
+@media screen and (max-width: 720px) {
+    .section-container{
+        margin-left: 0px;
+    }
+}

@@ -1,0 +1,120 @@
+#quizType{
+    margin-left: 250px;
+}
+
+#Assessment{
+    margin-left: 50px;
+}
+
+#Practice{
+    margin-left: 100px;
+}
+
+#quiz-type-box{ 
+    font-family: 'Libre Baskerville';
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+#quiz-name-heading{
+    font-family: 'sans-serif';
+    font-size: 15px;
+}
+
+#ques-desc{
+    font-family: "sans-serif";
+    font-size: 15px;
+}
+
+.add-quiz-question{
+    box-shadow: 0 0px 25px #99edc3;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 30px;
+}
+
+#add-quiz-header{
+    display: flex;
+    justify-content: center;
+    font-family: 'Libre Baskerville', serif;
+    padding-top: 20px;
+}
+
+#option-heading{
+    font-size: 15px;
+    font-family: 'sans-serif';
+    margin-top: 40px;
+}
+
+#ans-desc{
+    font-size: 15px;
+    font-family: 'sans-serif';
+    margin-top: 40px;
+}
+
+#option{
+    width: 225px;
+    font-size: 20px;
+}
+
+#add-option-btn{
+    height: 40px;
+    margin-left: 15px;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: bold;
+}
+
+#add-question-btn{
+    height: 40px;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: bold;
+}
+
+#submit-btn{
+    width: 100px;
+    height: 40px;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#questionName{
+    height: 120px;
+    font-size: 20px;
+}
+
+#option{
+    height: 30px;
+}
+
+#answerDescription{
+    height: 120px;
+    width: 100%;
+    font-size: 20px;
+}
+
+#quizName{
+    height: 20px;
+    width: 200px;
+    font-size: 20px;
+}
+
+.main-bar-page{
+    padding: 40px;
+}
+
+#correct-option-label{
+    display: none;
+}
+
+#ques-num{
+    font-size: 17px;
+    font-family: 'Helvetica';
+    font-weight: bold;
+}
+
+#correct-option-div{
+    display: none;
+}

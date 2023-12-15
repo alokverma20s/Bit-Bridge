@@ -1,0 +1,162 @@
+.main-nav{
+    min-height: 50px;
+    width: 100%;
+    margin: 0% auto;
+    border-top: solid 2px rgb(57, 4, 113);
+    border-bottom: solid 2px rgb(57, 4, 113);
+    box-shadow: 0px 1px 5px #00000033;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+  }
+  
+  .navbar{
+    height: 100%;
+    min-width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar div{
+    height: 100%;
+    min-width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  #bit-bridge-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 50%;;
+  }
+  
+  .nav-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 35px;
+    padding-right: 10px;
+  }
+  
+  .nav-item{
+    margin: 0px 3px;
+    font-size: small;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+  }
+  
+  .nav-btn{
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+  
+  .nav-item:hover{
+    background-color: rgb(200, 200, 200);
+    color: black;
+  }
+  
+  .navbar div form{
+    max-width: min-content;
+    flex-grow: 1;
+    padding: 0px 12px;
+    position: relative;
+    margin-right: 20px;
+  }
+  
+  .navbar div form input{
+    min-width: 100%;
+    margin:0;
+    padding: 8px 10px 8px 50px;
+    font-size: 13px;
+    border: solid 1px #00000033;
+    border-radius: 3px;
+    color:white;
+  }
+  input[type=text]{
+    background-color: rgb(57 50 57 / 76%);
+    color: white;
+  }
+  
+  .navbar form .search-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left:25px;
+    top:9.5px;
+  }
+  
+  .nav-links{
+    padding: 7px 13px;
+    margin-left: 10px;
+    border: solid 1px white;
+    background-color: black;
+    border-radius: 3px;
+    cursor: pointer;
+    
+  }
+  
+  .nav-links:hover{
+    background-color: #d3e4eb;
+    color: black;
+  }
+
+  @media screen and (max-width: 720px){
+    .navbar{
+      margin-left: 50px;
+    }
+    .nav-logo{
+      padding-left: 0px;
+    }
+    #bit-bridge-logo{
+      margin-left: 0px;
+    }
+  }
+
+  @media screen and (max-width: 400px){
+    .main-nav{
+      height: 40px;
+    }
+    .navbar{
+      margin-left: 50px;
+    }
+    .nav-logo{
+      height:35px;
+      padding-left: 0px;
+    }
+    #bit-bridge-logo{
+      height: 40px;
+      margin-left: 0px;
+    }
+    .navbar input{
+      min-width: 40px;
+      width: 30%;
+      height: 10px;
+      font-size: 8px;
+    }
+    .nav-links{
+      font-size: 10px;
+      padding: 5px;
+    }
+    .main-nav{
+      justify-content: flex-start;
+    }
+  }
+
+
