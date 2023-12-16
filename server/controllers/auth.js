@@ -102,7 +102,7 @@ export const signup = async (req, res)=>{
 		role === "instructor" ? (approved = false) : (approved = true);
         console.log(approved);
         const hashedPassword = await bcrypt.hash(password, 12);
-        const newUser = await users.create({name, email, password: hashedPassword, approved: approved, role});
+        const newUser = await users.create({name, email, password: hashedPassword, approved: approved, role:'student'});
         const token = jwt.sign({email: newUser.email, id: newUser._id, role: newUser.role}, process.env.JWT_SECRET ,{expiresIn: '24h'});
         newUser.token = token
         newUser.password = undefined;
