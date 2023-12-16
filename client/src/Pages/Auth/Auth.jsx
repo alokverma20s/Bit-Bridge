@@ -22,7 +22,7 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [instructor, setInstructor] = useState(false);
   const [designation, setDesignation] = useState("");
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState("");
   const [otp, setOtp] = useState("");
   const [verify, setVerify] = useState(false);
 
@@ -53,17 +53,18 @@ const Auth = () => {
     // console.log(pass);
     if (isSignup && verify) {
 
-      console.log(role);
-
       if (otp === "") {
         toast.error("Please enter valid OTP");
       } else if (instructor) {
-        name = (designation + " " + name);
         setRole("instructor");
+        console.log(role);
+        name = (designation + " " + name);
         dispatch(signUp({ name, email, password, role, otp , confirmPassword}, navigate));
       }
-      else
+      else{
+        setRole("student");
         dispatch(signUp({ name, email, password, role, otp, confirmPassword }, navigate));
+      }  
     }
     else if (!isSignup) {
       try {
@@ -157,8 +158,11 @@ const Auth = () => {
               {
                 isSignup &&
                 <label>
-                  <p><input id='instructor-checkbox' type='checkbox' onClick={() => {
-                    setInstructor(!instructor);
+                  <p><input id='instructor-checkbox' type='checkbox' onChange={() => {
+                    if(document.getElementById("instructor-checkbox").checked)
+                      setInstructor(true);
+                    else
+                      setInstructor(false);
                   }} />I am an instructor.</p>
                 </label>
               }
