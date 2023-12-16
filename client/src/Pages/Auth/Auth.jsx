@@ -56,13 +56,10 @@ const Auth = () => {
       if (otp === "") {
         toast.error("Please enter valid OTP");
       } else if (instructor) {
-        setRole("instructor");
-        console.log(role);
         name = (designation + " " + name);
         dispatch(signUp({ name, email, password, role, otp , confirmPassword}, navigate));
       }
       else{
-        setRole("student");
         dispatch(signUp({ name, email, password, role, otp, confirmPassword }, navigate));
       }  
     }
@@ -159,10 +156,15 @@ const Auth = () => {
                 isSignup &&
                 <label>
                   <p><input id='instructor-checkbox' type='checkbox' onChange={() => {
-                    if(document.getElementById("instructor-checkbox").checked)
+                    if(document.getElementById("instructor-checkbox").checked){
                       setInstructor(true);
-                    else
+                      setRole("instructor");
+                    }
+                    else{
                       setInstructor(false);
+                      setRole("student");
+                    }
+                      
                   }} />I am an instructor.</p>
                 </label>
               }
