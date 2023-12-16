@@ -16,14 +16,14 @@ const Auth = () => {
   const urlEmail = `${backend_URL}/user/sendotp`
 
   const [isSignup, setIsSignup] = useState(false);
-  const [name, setName] = useState("");
+  let [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [instructor, setInstructor] = useState(false);
   const [designation, setDesignation] = useState("");
   const [role, setRole] = useState("student");
-  const [otp, setOtp] = useState("123456");
+  const [otp, setOtp] = useState("");
   const [verify, setVerify] = useState(false);
 
 
@@ -53,10 +53,12 @@ const Auth = () => {
     // console.log(pass);
     if (isSignup && verify) {
 
+      console.log(role);
+
       if (otp === "") {
         toast.error("Please enter valid OTP");
       } else if (instructor) {
-        name = designation + " " + name;
+        name = (designation + " " + name);
         setRole("instructor");
         dispatch(signUp({ name, email, password, role, otp , confirmPassword}, navigate));
       }
@@ -174,15 +176,15 @@ const Auth = () => {
             <div>
               <label htmlFor="otp">
                 <h4>OTP</h4>
-                <input type="otp" name='otp' id='otp' placeholder='Check your email for OTP' onChange={(e) => { setOtp(e.target.value) }} />
+                {/* <input type="otp" name='otp' id='otp' placeholder='Check your email for OTP' onChange={(e) => { setOtp(e.target.value) }} /> */}
               </label>
-              {/* <OtpInput
+              <OtpInput
                 value={otp}
                 onChange={setOtp}
                 numInputs={6}
-                renderSeparator={<span>-</span>}
-                renderInput={(props) => <input {...props} />  }
-              /> */}
+                // renderSeparator={<span>-</span>}
+                renderInput={(props) => <input {...props} className='otpInput' />  }
+              />
               <button type='submit' className='auth-btn border-gradient border-gradient-purple grad-btn'>Sign Up</button>
             </div>
 

@@ -96,10 +96,11 @@ export const signup = async (req, res)=>{
 				message: "The OTP is not valid",
 			});
 		}
+        console.log(role);
 
         let approved = "";
-		role === "Instructor" ? (approved = false) : (approved = true);
-        
+		role === "instructor" ? (approved = false) : (approved = true);
+        console.log(approved);
         const hashedPassword = await bcrypt.hash(password, 12);
         const newUser = await users.create({name, email, password: hashedPassword, approved: approved, role});
         const token = jwt.sign({email: newUser.email, id: newUser._id, role: newUser.role}, process.env.JWT_SECRET ,{expiresIn: '24h'});
