@@ -39,7 +39,7 @@ export const auth = async (req, res, next) =>{
 // isStudent
 export const isStudent = async (req, res, next) =>{
     try {
-        if(req.user.accountType !== "Student"){
+        if(req.user.role !== "student"){
             return req.staus(401).json({
                 success: false,
                 message: "This is the protected routes for the Students only."
@@ -57,7 +57,7 @@ export const isStudent = async (req, res, next) =>{
 // isInstructor
 export const isInstructor = async (req, res, next) =>{
     try {
-        if(req.user.accountType !== "Instructor"){
+        if(req.user.role !== "instructor"){
             return req.staus(401).json({
                 success: false,
                 message: "This is the protected routes for the Instructor only."
@@ -74,9 +74,9 @@ export const isInstructor = async (req, res, next) =>{
 
 // isAdmin
 export const isAdmin = async (req, res, next) =>{
+    console.log("Printing AccountType: " , req.user);
     try {
-        // console.log("Printing AccountType: " , req.user.accountType);
-        if(req.user.accountType !== "Admin"){
+        if(req.user.role !== "admin"){
             return req.staus(401).json({
                 success: false,
                 message: "This is the protected routes for the Admin only."
