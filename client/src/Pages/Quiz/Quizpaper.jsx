@@ -47,7 +47,7 @@ const Quizpaper = ({quizArray, quiz, index}) => {
                 <p>Created by {quiz?.authorName?.name}</p>
             </div> 
         </div> 
-            <button className='inner-grad-btn' onClick={redirect}>Take Quiz</button> 
+            <button className='inner-grad-btn' onClick={redirect}><pre>Take Quiz</pre></button> 
         {
             
             (User?.result?.role==="instructor" || User?.result?.role==="admin")&&
