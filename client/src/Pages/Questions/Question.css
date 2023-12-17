@@ -133,18 +133,9 @@
 
 .post-ans-container form .post-ans-btn{
     margin: 20px 0px;
-    font-size: 13px;
-    padding: 10px 10px;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px 17px;
     cursor: pointer;
-    transition: 0.5s;
-}
-
-.post-ans-container form .post-ans-btn:hover{
-    background-color: rgba(255, 255, 255, 0.2);
-
 }
 
 .display-ans{

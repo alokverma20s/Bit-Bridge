@@ -25,9 +25,7 @@
     color: white;
 }
 
-.quiz-name-container button{
-    padding: 5px;
-}
+
 
 .quiz-question{
     border: 1px solid rgb(255, 255, 255, 0.5);
@@ -41,30 +39,32 @@
     background-color: white;
     color: black;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 30px;
     padding: 5px 10px;
 }
 
 .quiz-submit-btn:hover{
-    
+    transition: 0.2s;
     color: white;
-    background-color: purple;
+    background-color: black;
 }
 
 .main-bar-header .add-btn{
     margin: 10px;
+    font-size: 12px;
     padding: 10px 15px;
-    border-radius: 4px;
-    background: linear-gradient(to right, #3a3add, rgb(185, 24, 185));
+    background-color: black;
     color: white;
-    border: none;
+    border: solid 1px white;
+    border-radius: 30px;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 10px;
 }
 
 .main-bar-header .add-btn:hover{
-    background: linear-gradient(to right, rgb(17, 17, 195), purple);
+    /* background: linear-gradient(to right, rgb(17, 17, 195), purple); */
+    background-color: rgb(200, 200, 200);
+    color: black;
 }
 
 input{
@@ -107,7 +107,9 @@ textarea{
     cursor: pointer;
 }
 
-
+.quiz-start-container{
+    margin:100px;
+}
 
 @media screen and (max-width: 600px) {
     .quiz-main-container{

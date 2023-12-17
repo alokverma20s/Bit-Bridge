@@ -154,7 +154,7 @@ const AskQuestion = () => {
                             </select>
                         </label>
                         <br />
-                        <input type="submit" value='Review your question' className='review-btn border-gradient border-gradient-purple grad-btn' />
+                        <input type="submit" value='Review your question' className='review-btn inner-grad-btn' />
                     </div>
                 </form>
             </div>

@@ -1,16 +1,20 @@
 
 .main-bar-header .ask-btn{
     padding: 10px 15px;
-    border-radius: 4px;
-    background: linear-gradient(to right, #3a3add, rgb(185, 24, 185));
+    border-radius: 30px;
+    /* background: linear-gradient(to right, #3a3add, rgb(185, 24, 185)); */
+    background-color: black;
     color: white;
-    border: none;
+    border: 1px solid white;
+    font-weight: 600;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .main-bar-header .ask-btn:hover{
-    background: linear-gradient(to right, rgb(17, 17, 195), purple);
+    /* background: linear-gradient(to right, rgb(17, 17, 195), purple); */
+    background-color: rgb(200, 200, 200);
+    color: black;
 }
 
 .display-question-container{

@@ -51,7 +51,9 @@ const QuizQuestions = () => {
 
       function handleSubmit(e){
         setsubmited(true);
-        console.log(submited);
+        
+        flag=true;
+        console.log(flag);
         
         toast.success("Quiz has been submitted");
         dispatch(submitQuiz({ansArray, userid, quizid}, navigate('/Quiz')));
@@ -69,7 +71,7 @@ const QuizQuestions = () => {
       
 
   return (
-    <divc className="quiz-start-container">
+    <div className="quiz-start-container">
         {
         flag && 
         <div className='main-bar'>
@@ -77,7 +79,7 @@ const QuizQuestions = () => {
                 <h1>{currentquiz?.quizName}</h1>
                 <h2>{currentquiz?.type} Quiz</h2>
             </div>
-            {/* <p>Once the quiz is started you cannot change tabs or click anywhere outside the window. In case you do so the quiz will be automatically submitted.</p> */}
+            <p><b>Warning:</b> Once the quiz is started you cannot change tabs or click anywhere outside the window. In case you do so the quiz will be automatically submitted.</p>
             <form action="">
               <label htmlFor="">
                 <p>Name: </p>
@@ -101,9 +103,9 @@ const QuizQuestions = () => {
             window.onblur = async function (ev) {
               if(!flag){
                 console.log("lost focus");
-                // handleSubmit(ev);
+                handleSubmit(ev);
                 // console.log(flag);
-                // toast.success("Your quiz has been auto submitted");
+                alert("Quiz auto submitted");
                 // navigate('/Quiz');
               }
             }
@@ -149,7 +151,7 @@ const QuizQuestions = () => {
         </div>
         } 
         
-      </divc>
+      </div>
 
   )
 }
