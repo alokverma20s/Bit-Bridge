@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { backend_URL } from '../../api/url';
+import Loader from '../../components/Loader/Loader';
 
 const QuizResult = () => {
     const location = useLocation();
@@ -61,31 +62,34 @@ const QuizResult = () => {
 
                     </div>
                 }
-                <div className="quizes-container">
-                    {
-                        quizes?.length === 0 ? "Your have not Created any quiz.":
-                        quizes?.map((quiz, index) => (
-                            <div className='quiz-name-container'>
-                                <div className='quiz-name'>
-                                    <div>
-                                        <p>{quiz?.quizName}</p>
-                                        <p>Average marks: {trueRound(quiz.average, 2)}</p>
+                {
+                    loading?<div className='loader-position'><Loader/></div>:
+                    <div className="quizes-container">
+                        {
+                            quizes?.length === 0 ? "Your have not Created any quiz.":
+                            quizes?.map((quiz, index) => (
+                                <div className='quiz-name-container'>
+                                    <div className='quiz-name'>
+                                        <div>
+                                            <p>{quiz?.quizName}</p>
+                                            <p>Average marks: {trueRound(quiz.average, 2)}</p>
+                                        </div>
+                                        <div>
+                                            <p>{quiz.type} Quiz </p>
+                                            
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p>{quiz.type} Quiz </p>
-                                        
-                                    </div>
+                                    <button className='inner-grad-btn' onClick={()=>{
+                                        navigate(`/QuizResult/${User?.result?._id}/${quiz._id}`);
+                                    }}>View All participants</button>
+
                                 </div>
-                                <button className='inner-grad-btn' onClick={()=>{
-                                    navigate(`/QuizResult/${User?.result?._id}/${quiz._id}`);
-                                }}>View All participants</button>
+                            ))
 
-                            </div>
-                        ))
+                        }
 
-                    }
-
-                </div>
+                    </div>
+                }
             </div>
         </div>
 

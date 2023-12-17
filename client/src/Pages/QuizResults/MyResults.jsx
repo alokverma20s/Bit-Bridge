@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { backend_URL } from '../../api/url.js';
-
+import Loader from '../../components/Loader/Loader.jsx';
 
 
 
@@ -44,10 +44,12 @@ const MyResults = () => {
                         <h2>{User?.result.name}</h2>
                     </div>
                 </div>
-
+                {
+                    loading?<div className='loader-position'><Loader/></div>:
+                
                 <div className="quizes-container">
                     {
-                        quizes?.length === 0 ? "Your have not take any quiz.":
+                        quizes?.length === 0 ? "Your have not taken any quiz.":
                         quizes?.map((quiz, index) => (
                             <div className='quiz-name-container'>
                                 <div className='quiz-name'>
@@ -72,6 +74,7 @@ const MyResults = () => {
                     }
 
                 </div>
+                }
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import Quizpaper from './Quizpaper'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Loader from '../../components/Loader/Loader'
 
 const Quiz = () => {
   const User = useSelector((state) =>( state.currentUserReducer))
@@ -16,6 +17,9 @@ const Quiz = () => {
     <div className='home-container-1'>
         <LeftSidebar></LeftSidebar>
         <div className='home-container-2'>
+          {
+            !quizes?<div className='loader-position'><Loader/></div>:
+          
             <div className="main-bar">
                 <div className="main-bar-header">
                     <h1>Quiz</h1>
@@ -42,6 +46,7 @@ const Quiz = () => {
                   
                 </div>
             </div>
+          }
         </div>
     </div>
   )

@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createQuiz } from "../../actions/quiz";
-import "./AddQuiz.css";
+// import "./AddQuiz.css";
+import './Quiz.css'
 import toast from 'react-hot-toast'
 const answers = [];
 
@@ -74,10 +75,10 @@ const AddQuiz = () => {
         createQuiz({ quizName, quizAuthor, quizType, currentquiz }),
         navigate("/Quiz")
       );
-    } else if(currentquiz.length === 0){
+    } else if (currentquiz.length === 0) {
       toast.error("Please add at least one question.")
     }
-     else {
+    else {
       toast.error("Answer all the questions");
     }
   }
@@ -91,7 +92,7 @@ const AddQuiz = () => {
       <LeftSidebar></LeftSidebar>
       <div className="home-container-2">
         <div className="main-bar">
-          <div id="add-quiz-header">
+          <div className="main-bar-header">
             <h1>Create your own quiz</h1>
           </div>
           <div className="create-quiz-container">
@@ -177,7 +178,7 @@ const AddQuiz = () => {
                     placeholder="Enter options one by one"
                   />{" "}
                   <input
-                    className="inner-grad-btn"
+                    className="inner-grad-btn add-quiz-btn"
                     id="add-option-btn"
                     type="button"
                     value="Add option"
@@ -185,7 +186,7 @@ const AddQuiz = () => {
                   />
                 </label>
                 <div className="add-quiz-ans">
-                <label id="correct-option-label">
+                  <label id="correct-option-label">
                     <p>Correct option</p>{" "}
                     <input
                       type="text"
@@ -209,7 +210,7 @@ const AddQuiz = () => {
                 <p>
                   <input
                     type="button"
-                    className="inner-grad-btn"
+                    className="inner-grad-btn add-quiz-btn"
                     id="add-question-btn"
                     value="Add Question"
                     onClick={addQuestion}
@@ -217,7 +218,7 @@ const AddQuiz = () => {
                 </p>
               </div>
 
-              <button type="submit" className="grad-btn" id="submit-btn">
+              <button type="submit" className="inner-grad-btn add-quiz-btn" style={{fontSize:"14px"}} id="submit-btn">
                 Submit
               </button>
             </form>

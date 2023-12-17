@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import moment from 'moment';
+import Loader from '../../components/Loader/Loader';
 
 const InstructorRequests = () => {
     const [loading, setLoading] = useState(true);
@@ -38,25 +39,31 @@ const InstructorRequests = () => {
     }
     
   return (
-    <div className='instructor-request-container'>
-        {
-            users?.map((user, index)=>(
-                <div className="instructor-card">
-                    <div className="card-header">
-                        <h4>{user?.name}</h4>
-                    </div>
-                    <div className="card-body">
-                        <p>{user?.email}</p>
-                        <p>Requested {moment(user?.joinedOn).fromNow()}</p>
-                        <div className='req-btn-container'>
-                            <button className='req-btn' onClick={()=>handleConfirm(user._id, index)}>Confirm</button>
-                            <button className='req-btn' onClick={()=>handleReject(user._id, index)}>Reject</button>
+    <>
+    {
+        loading?<div className='loader-position'><Loader/></div>:
+        <div className='instructor-request-container'>
+            {
+                users?.length===0?<p>No pending requests</p>:
+                users?.map((user, index)=>(
+                    <div className="instructor-card">
+                        <div className="card-header">
+                            <h4>{user?.name}</h4>
+                        </div>
+                        <div className="card-body">
+                            <p>{user?.email}</p>
+                            <p>Requested {moment(user?.joinedOn).fromNow()}</p>
+                            <div className='req-btn-container'>
+                                <button className='req-btn' onClick={()=>handleConfirm(user._id, index)}>Confirm</button>
+                                <button className='req-btn' onClick={()=>handleReject(user._id, index)}>Reject</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))
-        }
-    </div>
+                ))
+            }
+        </div>
+    }
+    </>
   )
 }
 
