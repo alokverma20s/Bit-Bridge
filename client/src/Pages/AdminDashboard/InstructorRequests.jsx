@@ -4,6 +4,7 @@ import { backend_URL } from '../../api/url';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import moment from 'moment';
 
 const InstructorRequests = () => {
     const [loading, setLoading] = useState(true);
@@ -46,9 +47,10 @@ const InstructorRequests = () => {
                     </div>
                     <div className="card-body">
                         <p>{user?.email}</p>
-                        <div>
-                            <button className='inner-grad-btn req-btn' onClick={()=>handleConfirm(user._id, index)}>Confirm</button>
-                            <button className='inner-grad-btn req-btn' onClick={()=>handleReject(user._id, index)}>Reject</button>
+                        <p>Requested {moment(user?.joinedOn).fromNow()}</p>
+                        <div className='req-btn-container'>
+                            <button className='req-btn' onClick={()=>handleConfirm(user._id, index)}>Confirm</button>
+                            <button className='req-btn' onClick={()=>handleReject(user._id, index)}>Reject</button>
                         </div>
                     </div>
                 </div>

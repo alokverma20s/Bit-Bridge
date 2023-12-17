@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux'
 import './HomeMainbar.css';
 import QuestionList from './QuestionList';
 import toast from 'react-hot-toast';
+import Loader from '../Loader/Loader';
 
 const HomeMainbar = () => {
 
@@ -33,10 +34,11 @@ const HomeMainbar = () => {
         </div>
         <div>
             {
-                questionList.data===null?
-                <h1>Loading...</h1>:
+                questionList.data === null?
+                <div className='loader-position'><Loader/></div>
+                :
                 <div>
-                    <p>{questionList.data.length} questions </p>
+                    <p>{questionList?.data?.length} questions </p>
                     <QuestionList questionList={questionList.data}></QuestionList>
                 </div>
             }

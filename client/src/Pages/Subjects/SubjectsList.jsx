@@ -3,6 +3,7 @@ import './Subject.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { backend_URL } from '../../api/url';
+import Loader from '../../components/Loader/Loader';
 
 const SubjectsList = () => {
   const [subjects, setSubjects] = useState(null);
@@ -33,13 +34,13 @@ const SubjectsList = () => {
   return (
     <div>
       {
-        loading ? "Loading..." :
+        loading ?<div className='loader-position'><Loader/></div>:
           <div className="main-bar">
             <div className="main-bar-header">
               <h1>Subjects</h1>
             </div>
             <div className="subjects-list-container">
-              {loading && <p>Loading...</p>}
+              {loading && <div className='loader-position'><Loader/></div>}
               {subjects && subjects.map((subject) => (
                 <Link key={subject._id} to={`/Subjects/${subject._id}`} className='subject-link'>
                   <div className='subject'>

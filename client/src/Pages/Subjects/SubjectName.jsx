@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './Subject.css';
 import { backend_URL } from '../../api/url';
+import Loader from '../../components/Loader/Loader';
 
 const SubjectName = () => {
 
@@ -41,7 +42,7 @@ const SubjectName = () => {
                     <div>
                         {
                             loading||subjectQuestions?.question === null ?
-                                <h1>Loading...</h1> :
+                            <div className='loader-position'><Loader/></div> :
                                 <div>
                                     <p>{subjectQuestions?.question.length} questions </p>
                                     <QuestionList questionList={subjectQuestions?.question}></QuestionList>

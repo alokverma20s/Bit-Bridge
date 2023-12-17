@@ -7,6 +7,7 @@ import { backend_URL } from '../../api/url'
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Loader from '../../components/Loader/Loader';
 
 const TagsList = () => {
 
@@ -40,7 +41,7 @@ const TagsList = () => {
             <div>
                 {
                     questionList === null ?
-                        <h1>Loading...</h1> :
+                    <div className='loader-position'><Loader/></div> :
                         <div>
                             <p>{questionList?.length} questions </p>
                             <QuestionList questionList={questionList}></QuestionList>

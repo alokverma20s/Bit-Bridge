@@ -20,7 +20,7 @@
 }
 
 .card-header{
-    background-color: purple;
+    background-color: #17191a;
     padding: 2px 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -30,12 +30,27 @@
 
 .card-body{
     padding: 5px 15px;
-    background-color: rgba(128, 0, 128, 0.329);
+    background-color: #23262852; 
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding-bottom: 25px;
 }
 
+.req-btn-container{
+    display: flex;
+    justify-content: space-around;
+}
+
 .req-btn{
-    margin-left: 25px;
+    /* margin-left: 10px; */
+    background-color: black;
+    border-radius: 30px;
+    color: white;
+    border: solid 1px white;
+    padding: 5px 10px;
+}
+
+.req-btn:hover{
+    background-color: rgb(200, 200, 200);
+    color: black;
 }

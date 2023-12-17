@@ -12,6 +12,7 @@ import DisplayAns from './DisplayAnswer'
 import { postAnswer, deleteQuestion, voteQuestion } from "../../actions/question.js";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa6";
+import Loader from '../../components/Loader/Loader.jsx'
 
 const QuestionDetails = () => {
 
@@ -55,7 +56,7 @@ const QuestionDetails = () => {
         <div className='question-details-page'>
             {
                 questionList.data === null ?
-                    <h1>Loading...</h1> :
+                <div className='loader-position'><Loader/></div>:
                     <>
                         {
 

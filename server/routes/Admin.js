@@ -6,8 +6,8 @@ import {auth, isAdmin} from "../middlewares/auth.js"
 
 const router = express.Router();
 
-router.get('/getPendingInstructor', auth, isAdmin,  getPendingInstructor);
-router.post('/acceptInstrut', auth, isAdmin , acceptInstrut);
-router.post('/rejectInstrut', auth, isAdmin, rejectInstrut);
+router.get('/getPendingInstructor', getPendingInstructor);
+router.post('/acceptInstrut', acceptInstrut);
+router.post('/rejectInstrut', rejectInstrut);
 
 export default router;

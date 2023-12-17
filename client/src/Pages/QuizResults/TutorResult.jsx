@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { backend_URL } from '../../api/url';
+import Loader from '../../components/Loader/Loader';
 
 const TutorResult = () => {
 
@@ -40,7 +41,7 @@ const TutorResult = () => {
 
 
         <div className="">
-            {loading ? "Loading....":
+            {loading ? <div className='loader-position'><Loader/></div>:
                 <div className='home-container-1'>
                 <LeftSidebar></LeftSidebar>
                 <div className='home-container-2'>
