@@ -91,20 +91,20 @@ const QuestionDetails = () => {
                                                     </div>
                                                     <div>
                                                         <p>asked on {moment(question.askedOn).fromNow()}</p>
-                                                        <Link to={`/Users/${question.userId._id}`} className='user-link'>
+                                                        <Link to={`/Users/${question.userId?._id}`} className='user-link'>
                                                             {
-                                                                question.userId.role === "student" &&
-                                                                <Avatar backgroundColor="white" px="2px" py="2px">{question.userId.name.charAt(0).toUpperCase()}</Avatar>
+                                                                question.userId?.role === "student" &&
+                                                                <Avatar backgroundColor="white" px="2px" py="2px">{question.userId?.name.charAt(0).toUpperCase()}</Avatar>
                                                             }{
-                                                                question.userId.role === "admin" &&
+                                                                question.userId?.role === "admin" &&
                                                                 <Avatar backgroundColor="purple" px="2px" py="2px"><FaUserTie /></Avatar>
                                                             }{
-                                                                question.userId.role === "instructor" &&
+                                                                question.userId?.role === "instructor" &&
                                                                 <Avatar backgroundColor="green" px="2px" py="2px"><FaChalkboardTeacher /></Avatar>
                                                             }
                                                             
                                                             <div>
-                                                                {question.userId.name}
+                                                                {question.userId?.name}
                                                             </div>
                                                         </Link>
                                                     </div>
