@@ -40,7 +40,7 @@ const TagsList = () => {
             <br />
             <div>
                 {
-                    questionList === null ?
+                    loading||questionList === null ?
                     <div className='loader-position'><Loader/></div> :
                         <div>
                             <p>{questionList?.length} questions </p>

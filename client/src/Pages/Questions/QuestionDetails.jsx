@@ -22,7 +22,7 @@ const QuestionDetails = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
-    const url = "https://bitbrige.netlify.app" + location.pathname;
+    const url = "https://bitbridge.netlify.app" + location.pathname;
     const [Answer, setAnswer] = useState("");
     const User = useSelector((state) => (state.currentUserReducer));
     const handlePostAns = (e, answerLength) => {
