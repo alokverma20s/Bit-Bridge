@@ -6,7 +6,6 @@ import QuizAnswer from "../models/quizAnswer.js"
 
 export const createQuiz = async (req, res) => {
     try {
-        console.log(req.body);
         const { quizName, quizAuthor, quizType, currentquiz } = req.body;
 
         const quizCreated = await Quiz.create({ quizName: quizName, authorName: quizAuthor, type: quizType });
@@ -103,7 +102,10 @@ export const getQuiz = async (req, res) => {
         })
     } catch (error) {
         console.log(error);
-        res.status(409).json("Unable to fetch quiz");
+        res.status(500).json({
+            success: false,
+            message:"Unable to fetch quiz"
+        });
     }
 }
 
@@ -132,7 +134,6 @@ export const addQuestion = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Question Added Successfully."
-
         })
 
     } catch (error) {
@@ -199,8 +200,11 @@ async function deleteQuestionWhileDeletingQuiz(quesId) {
         return message;
 
     } catch (error) {
-        message = "Something went wrong.";
-        return message;
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong."
+            
+        })
     }
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 let filteredQuestionArray = []
 
 const Searchbar = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   function handleSearch(e) {

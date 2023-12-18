@@ -24,13 +24,16 @@ export const getMyResult = async (req, res)=>{
             data: result
         })
     } catch (error) {
-        
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong while get Result..."
+        })
     }
 }
 
 export const QuizResult = async (req, res)=>{
     try {
-        const {quizid, userid} = req.params;
+        const {quizid, userid} = req.body;
         const user = await User.findById(userid);
         if(user.role !== "admin" && user.role !== "instructor"){
             return res.status(403).json({
@@ -47,6 +50,7 @@ export const QuizResult = async (req, res)=>{
             }
         })
         return res.status(200).json({
+            success: true,
             quiz,
             message: "fetched successfully"
         })
@@ -73,5 +77,9 @@ export const Quizzes = async (req, res)=>{
         })
     } catch (error) {
         console.log(error);
+        res.status(500).json({
+            success: false,
+            message: "Something went wrong while, fetching result."
+        })
     }
 }

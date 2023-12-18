@@ -1,36 +1,24 @@
 import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { backend_URL } from '../../api/url';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/Loader/Loader';
+import { fetchQuizResults } from '../../services/operations/resultAPI';
 
 const TutorResult = () => {
 
-    const location = useLocation();
+    const dispatch = useDispatch();
     const {userid, quizid} = useParams();
 
     const User = useSelector((state) => (state.currentUserReducer))
-    const urlMyResultsUserId = `${backend_URL}/result/quizResult/${userid}/${quizid}`;
 
     const [participants, setParticipants] = useState(null);
     const [quizData, setQuizData] =useState(null);
     const [loading, setLoading] = useState(true);
-
-    async function fetchQuizResult() {
-        setLoading(true)
-        const a = await axios.get(urlMyResultsUserId);
-        setLoading(false);
-        setParticipants(a?.data?.quiz?.user);
-        setQuizData(a?.data?.quiz);
-        console.log(a.data.quiz);
-    }
-    //   console.log(quizes);
     useEffect(() => {
-        fetchQuizResult();
+        dispatch(fetchQuizResults(setLoading, setParticipants, setQuizData, userid, quizid));
     }, [])
 
     function trueRound(value, digits){
@@ -57,7 +45,7 @@ const TutorResult = () => {
                     <div className="quizes-container">
                         {
                             participants?.map((participant, index) => (
-                                <div className='quiz-name-container'>
+                                <div key= {index} className='quiz-name-container'>
                                     <div className='quiz-name'>
                                         <div>
                                             <p>{participant?.userName?.name}</p>

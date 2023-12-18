@@ -21,7 +21,7 @@ export const sendotp = async (req, res) => {
                 message: "User already registred",
             })
         }
-        console.log(checkUserPresent);
+        // console.log(checkUserPresent);
 
         // Generate OTP
         var otp = otpGenerator.generate(6,  {
@@ -48,7 +48,7 @@ export const sendotp = async (req, res) => {
 
         // Create an entry in OTP
         const otpBody = await OTP.create(optPayload);
-        console.log(otpBody);
+        // console.log(otpBody);
 
         // Return response successfull
 

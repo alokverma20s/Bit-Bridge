@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import './Users.css'
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa6";
-import Avatar from '../../components/Avatar/Avatar';
 
 const User = ({user}) => {
   return (

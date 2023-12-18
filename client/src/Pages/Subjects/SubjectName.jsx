@@ -1,32 +1,25 @@
 import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import QuestionList from '../../components/HomeMainbar/QuestionList';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './Subject.css';
-import { backend_URL } from '../../api/url';
 import Loader from '../../components/Loader/Loader';
+import { getQuestionsBySubject } from '../../services/operations/subjectAPI';
 
 const SubjectName = () => {
 
     const location = useLocation();
+    const dispatch = useDispatch()
     const subjectId = location.pathname.split('/')[2];
 
     const [subjectQuestions, setSubjects] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    async function fetchSubjectQuestions(quizId){
-        setLoading(true)
-        // console.log(`${backend_URL}/subject/getSubjectQuestions/`+subjectId);
-        const a = await axios.get(`${backend_URL}/subject/getSubjectQuestions/`+subjectId);
-        setSubjects(a?.data?.questions);
-        setLoading(false);
-      }
     useEffect(() => {
-        fetchSubjectQuestions();
+        dispatch(getQuestionsBySubject(setLoading, setSubjects, subjectId));
     }, [])
 
     const subjectName = subjectQuestions?.subjectName;

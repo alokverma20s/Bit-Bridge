@@ -1,40 +1,27 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { backend_URL } from '../../api/url';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import moment from 'moment';
 import Loader from '../../components/Loader/Loader';
+import { acceptInstrut, getPendingInstructor, rejectInstrut } from '../../services/operations/adminAPI';
 
 const InstructorRequests = () => {
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState(undefined);
-    async function fetchPendingRequests(quizId){
-        setLoading(true)
-        // console.log(`${backend_URL}/subject/getSubjectQuestions/`+subjectId);
-        const a = await axios.get(`${backend_URL}/admin/getPendingInstructor`);
-        setUsers(a?.data?.data);
-        setLoading(false);
-        // console.log(a.data.data);
-      }
+
     useEffect(() => {
-        fetchPendingRequests();
+        dispatch(getPendingInstructor(setLoading, setUsers));
     }, [])
 
     async function handleConfirm(_id, index){
-        const { data } = await axios.post(`${backend_URL}/admin/acceptInstrut`, {
-            _id: _id,
-        }
-        )
+        dispatch(acceptInstrut(_id));
         setUsers(users.filter((user)=>{return user._id!==_id}));
     }
 
     async function handleReject(_id, index){
-        const { data } = await axios.post(`${backend_URL}/admin/rejectInstrut`, {
-            _id: _id,
-        }
-        )
+        dispatch(rejectInstrut(_id));
         setUsers(users.filter((user)=>{return user._id!==_id}));
     }
     
@@ -46,7 +33,7 @@ const InstructorRequests = () => {
             {
                 users?.length===0?<p>No pending requests</p>:
                 users?.map((user, index)=>(
-                    <div className="instructor-card">
+                    <div key={index} className="instructor-card">
                         <div className="card-header">
                             <h4>{user?.name}</h4>
                         </div>

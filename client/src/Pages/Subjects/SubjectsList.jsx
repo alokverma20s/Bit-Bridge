@@ -1,34 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './Subject.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { backend_URL } from '../../api/url';
 import Loader from '../../components/Loader/Loader';
+import { useDispatch } from 'react-redux';
+import { getSubjects } from '../../services/operations/subjectAPI';
 
 const SubjectsList = () => {
+  const dispatch = useDispatch();
   const [subjects, setSubjects] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function fetchSubject(quizId){
-    setLoading(true)
-    const a = await axios.get(`${backend_URL}/subject/getSubjects`);
-    const b = a?.data?.data;
-    b?.sort((a, b) => {
-      const nameA = a.subjectName.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.subjectName.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    });
-    setSubjects(b);
-    setLoading(false);
-  }
   useEffect(() => {
-    fetchSubject();
+    dispatch(getSubjects(setLoading, setSubjects));
   }, [])
 
   return (
