@@ -40,7 +40,8 @@
     justify-content: flex-start;
     padding-left: 10px;
     transition: 0.2s;
-
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .side-nav-links:hover{
