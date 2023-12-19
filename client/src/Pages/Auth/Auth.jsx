@@ -164,7 +164,8 @@ const Auth = () => {
               }
 
 
-              {!isSignup && <p style={{ color: '#007ac6' }}>Forgot password?</p>}
+              {/* {!isSignup && <p style={{ color: '#007ac6' }}>Forgot password?</p>} */}
+              <p></p>
             </div>
           }
           {
