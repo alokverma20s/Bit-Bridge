@@ -43,7 +43,8 @@ const TutorResult = () => {
                         </div>
 
                         <div className="quizes-container">
-                            {
+                            {   participants?.length==0?
+                                <p>No participants</p>:
                                 participants?.map((participant, index) => (
                                     <div className='quiz-name-container'>
                                         <div className='quiz-name'>
@@ -57,41 +58,16 @@ const TutorResult = () => {
                                                         <p>Past User</p>
                                                         <p></p>
                                                     </div>
-                                                    
-                                        }
-
+                                            }
                                             <div>
                                                 <p>Score: {participant?.marks}/{quizData?.questions.length}</p>
                                             </div>
                                         </div>
                                         <p></p>
-
                                     </div>
                                 ))
-
                             }
                         </div>
-                    </div>
-    
-                    <div className="quizes-container">
-                        {
-                            participants?.map((participant, index) => (
-                                <div key= {index} className='quiz-name-container'>
-                                    <div className='quiz-name'>
-                                        <div>
-                                            <p>{participant?.userName?.name}</p>
-                                            <p>{participant?.userName?.email}</p>
-                                        </div>
-                                        <div>
-                                            <p>Score: {participant?.marks}/{quizData?.questions.length}</p>
-                                        </div>
-                                    </div>
-                                    <p></p>
-    
-                                </div>
-                            ))
-    
-                        }
                     </div>
                 </div>
             }

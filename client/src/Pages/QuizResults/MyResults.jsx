@@ -24,6 +24,7 @@ const MyResults = () => {
     }, [])
 
     // const quizes = useSelector((state) => state.quizReducer?.data?.allQuiz);
+    const filteredquizes=quizes?.filter((quiz)=>quiz?.quizId)
     return (
         <div className='home-container-1'>
             <LeftSidebar></LeftSidebar>
@@ -40,17 +41,17 @@ const MyResults = () => {
                 
                 <div className="quizes-container">
                     {
-                        quizes?.length === 0 ? "Your have not taken any quiz.":
-                        quizes?.map((quiz, index) => (
+                        filteredquizes?.length === 0 ? "Your have not taken any quiz.":
+                        filteredquizes?.map((quiz, index) => (
                             <div key={index} className='quiz-name-container'>
                                 <div className='quiz-name'>
                                     <div>
                                         <p>{quiz?.quizId?.quizName}</p>
-                                        <p>Average Score: {trueRound(quiz?.quizId.average, 2)}</p>
+                                        <p>Average Score: {trueRound(quiz?.quizId?.average, 2)}</p>
                                     </div>
                                     <div>
                                         <p>{quiz?.quizId?.type} Quiz </p>
-                                        <p>Created by {quiz?.quizId.authorName.name}</p>
+                                        <p>Created by {quiz?.quizId?.authorName?.name}</p>
                                     </div>
                                 </div>
                                 <div>
