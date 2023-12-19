@@ -12,7 +12,7 @@ import {deleteAnswer} from '../../actions/question.js'
 
 const DisplayAns = ({question}) => {
   const location = useLocation();
-  const url = 'https://bitbrige.netlify.app' + location.pathname;
+  const url = 'https://bitbridge.netlify.app' + location.pathname;
   const User = useSelector((state) => (state.currentUserReducer))
   const dispatch = useDispatch();
   const {id} = useParams();

@@ -16,6 +16,7 @@ const Auth = () => {
   const urlEmail = `${backend_URL}/user/sendotp`
 
   const [isSignup, setIsSignup] = useState(false);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   let [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,11 +93,16 @@ const Auth = () => {
       }
       else {
         setVerify(true);
-        const { data } = await axios.post(urlEmail, {
-          email: email,
-        }
+        try{
+          const { data } = await axios.post(urlEmail, {
+            email: email,
+          }
         )
-        console.log(data)
+        console.log(data);
+        }catch(e){
+          setAlreadyRegistered(true);
+        }
+        
       }
     }
   }
@@ -178,7 +184,7 @@ const Auth = () => {
             <button className='auth-btn border-gradient border-gradient-purple grad-btn' onClick={funcVerify}>Verify Email</button>
           }
           {
-            isSignup && verify &&
+            isSignup && verify && !alreadyRegistered &&
             <div>
               <label htmlFor="otp">
                 <h4>OTP</h4>
@@ -193,7 +199,12 @@ const Auth = () => {
               />
               <button type='submit' className='auth-btn border-gradient border-gradient-purple grad-btn'>Sign Up</button>
             </div>
-
+          }
+          {
+            isSignup && verify && alreadyRegistered &&
+            <div>
+              <h1>User already registered</h1>
+            </div>
           }
           {
             !isSignup &&

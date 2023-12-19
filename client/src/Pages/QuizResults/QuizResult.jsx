@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { backend_URL } from '../../api/url';
 import Loader from '../../components/Loader/Loader';
+import './Result.css'
 
 const QuizResult = () => {
     const location = useLocation();
@@ -79,7 +80,7 @@ const QuizResult = () => {
                                             
                                         </div>
                                     </div>
-                                    <button className='inner-grad-btn' onClick={()=>{
+                                    <button className='inner-grad-btn participant-btn' onClick={()=>{
                                         navigate(`/QuizResult/${User?.result?._id}/${quiz._id}`);
                                     }}>View All participants</button>
 

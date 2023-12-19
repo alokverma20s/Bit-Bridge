@@ -13,6 +13,7 @@ import { postAnswer, deleteQuestion, voteQuestion } from "../../actions/question
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa6";
 import Loader from '../../components/Loader/Loader.jsx'
+import toast from 'react-hot-toast'
 
 const QuestionDetails = () => {
 
@@ -81,7 +82,7 @@ const QuestionDetails = () => {
                                                 <div className="question-actions-user">
                                                     <div>
                                                         <CopyToClipboard text={url}>
-                                                            <button type='button' onClick={() => { alert(`Copied url: ${url}`) }}>Share</button>
+                                                            <button type='button' onClick={() => { toast.success(`Copied url: ${url}`) }}>Share</button>
                                                         </CopyToClipboard>
                                                         {
                                                             (User?.result?._id === question?.userId || User?.result?.role === 'admin') && (

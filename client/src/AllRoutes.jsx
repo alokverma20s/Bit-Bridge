@@ -65,9 +65,9 @@ const AllRoutes = () => {
         <Route path='/filter/:searchText' element={<FilteredQuestions/>}></Route>
         <Route path='/filter' element={<Home/>}></Route>
 
-        {/* <Route path="/AdminDashboard" element={<Protected />} > */}
+        <Route path="/AdminDashboard" element={<Protected />} >
           <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
-        {/* </Route> */}
+        </Route>
 
         
           
