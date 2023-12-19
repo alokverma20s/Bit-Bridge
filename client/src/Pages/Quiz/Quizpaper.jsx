@@ -1,19 +1,14 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import toast from "react-hot-toast"
-import axios from 'axios';
 import {MdDelete} from "react-icons/md"
 
 import './Quiz.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
-import { backend_URL } from '../../api/url';
+import { deleteQuiz } from '../../services/operations/QuizAPI';
 
 const Quizpaper = ({quizArray, quiz, index}) => {
-    // console.log(quiz);
+    const dispatch = useDispatch();
     const navigate=useNavigate();
-    const location = useLocation();
     const User = useSelector((state) =>( state.currentUserReducer ))
     //   console.log(User);
 
@@ -26,14 +21,6 @@ const Quizpaper = ({quizArray, quiz, index}) => {
             navigate(`/Quiz/${quiz._id}`);
         }
       }
-
-      async function deleteQuiz(quizId){
-        const a = await axios.get(`${backend_URL}/quiz/deleteQuiz/${quizId}`);
-        console.log(a);
-        quizArray.splice(index);
-        window.location.reload();
-      }
-      
 
   return (
     <div className='quiz-name-container'>
@@ -51,7 +38,7 @@ const Quizpaper = ({quizArray, quiz, index}) => {
         {
             
             (User?.result?.role==="instructor" || User?.result?.role==="admin")&&
-            <MdDelete className='delete-quiz' onClick={()=>deleteQuiz(quiz._id)}/>
+            <MdDelete className='delete-quiz' onClick={()=>dispatch(deleteQuiz(quiz._id, navigate))}/>
         }  
         
     </div>

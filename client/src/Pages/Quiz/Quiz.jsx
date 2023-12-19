@@ -7,7 +7,7 @@ import Loader from '../../components/Loader/Loader'
 
 const Quiz = () => {
   const User = useSelector((state) =>( state.currentUserReducer))
-  console.log(User);
+  // console.log(User);
   const urlMyResultsUserId= "/MyResults/"+User?.result?._id;
   const urlQuizResultUserId= "/QuizResult/"+User?.result._id;
 

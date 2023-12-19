@@ -1,35 +1,26 @@
 import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { backend_URL } from '../../api/url.js';
+import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader.jsx';
+import { getMyResult } from '../../services/operations/resultAPI.js';
 
 
 
 const MyResults = () => {
+    const dispatch = useDispatch();
     const {userid} = useParams();
     const User = useSelector((state) =>( state.currentUserReducer))
-    const urlMyResultsUserId= `${backend_URL}/result/getMyResult/${userid}`;
     
     const [quizes, setQuizes] = useState(null)
     const [loading, setLoading] = useState(true);
     function trueRound(value, digits){
         return (Math.round((value*Math.pow(10,digits)).toFixed(digits-1))/Math.pow(10,digits)).toFixed(digits);
     }
-    
-    async function fetchSubject(){
-      setLoading(true)
-      const a = await axios.get(urlMyResultsUserId);
-      setQuizes(a?.data?.data.result);
-      setLoading(false);
-    //   console.log(quizes[0].quizId.average);
-    }
     useEffect(() => {
-      fetchSubject();
+        dispatch(getMyResult(setLoading, setQuizes, userid));
     }, [])
 
     // const quizes = useSelector((state) => state.quizReducer?.data?.allQuiz);
@@ -51,7 +42,7 @@ const MyResults = () => {
                     {
                         quizes?.length === 0 ? "Your have not taken any quiz.":
                         quizes?.map((quiz, index) => (
-                            <div className='quiz-name-container'>
+                            <div key={index} className='quiz-name-container'>
                                 <div className='quiz-name'>
                                     <div>
                                         <p>{quiz?.quizId?.quizName}</p>

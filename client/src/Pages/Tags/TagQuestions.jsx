@@ -1,29 +1,23 @@
 import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import QuestionList from '../../components/HomeMainbar/QuestionList';
-import { useSelector } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
-import { backend_URL } from '../../api/url'
-import axios from 'axios';
+import { useDispatch} from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Loader from '../../components/Loader/Loader';
+import { getTagsData } from '../../services/operations/tagAPI';
 
 const TagsList = () => {
 
+    const dispatch = useDispatch();
+
     const {tagId} = useParams();
-    const url=`${backend_URL}/tag/getTagsQues/${tagId}`
     const [tagData, setTagData] = useState(null)
     const [loading, setLoading] = useState(true);
     
-    async function fetchTags(){
-      setLoading(true)
-      const a = await axios.get(url);
-      setTagData(a?.data?.data);
-      setLoading(false);
-    }
     useEffect(() => {
-      fetchTags();
+      dispatch(getTagsData(setLoading, setTagData, tagId));
     }, [])
   const questionList = tagData?.question;
 

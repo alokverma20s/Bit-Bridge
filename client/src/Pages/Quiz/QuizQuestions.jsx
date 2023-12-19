@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import './Quiz.css';
 import { useDispatch } from 'react-redux'
 import { submitQuiz } from '../../actions/quiz'
 
-import axios from 'axios'
-import { backend_URL } from '../../api/url'
+import { getQuizById } from '../../services/operations/QuizAPI'
 
 
 const QuizQuestions = () => {
@@ -18,16 +16,9 @@ const QuizQuestions = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [currentquiz, setCurrentquiz] = useState(undefined);
-  async function fetchQuiz(quizId) {
-    setLoading(true);
-    console.log("Fetching quiz Data: ");
-    const a = await axios.get(`${backend_URL}/quiz/getQuiz/${quizId}`);
-    console.log("Quiz fetched");
-    setCurrentquiz(a?.data?.quiz);
-    setLoading(false);
-  }
+
   useEffect(() => {
-    fetchQuiz(id);
+    dispatch(getQuizById(setLoading, setCurrentquiz, id));
   }, [])
 
   console.log(currentquiz);

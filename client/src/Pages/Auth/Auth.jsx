@@ -8,12 +8,10 @@ import icon from '../../assets/logo.png'
 import AboutAuth from './AboutAuth';
 import { signUp, logIn } from '../../actions/auth'
 import toast from 'react-hot-toast';
-import axios from 'axios';
-import { backend_URL } from '../../api/url';
+import { sendOtp } from '../../services/operations/authAPIs';
 
 
 const Auth = () => {
-  const urlEmail = `${backend_URL}/user/sendotp`
 
   const [isSignup, setIsSignup] = useState(false);
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
@@ -92,17 +90,7 @@ const Auth = () => {
         toast.error("Passwords do not match");
       }
       else {
-        setVerify(true);
-        try{
-          const { data } = await axios.post(urlEmail, {
-            email: email,
-          }
-        )
-        console.log(data);
-        }catch(e){
-          setAlreadyRegistered(true);
-        }
-        
+        dispatch(sendOtp(setVerify,email))
       }
     }
   }

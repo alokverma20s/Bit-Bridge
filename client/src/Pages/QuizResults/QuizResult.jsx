@@ -1,19 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useEffect } from 'react';
-import { backend_URL } from '../../api/url';
 import Loader from '../../components/Loader/Loader';
 import './Result.css'
+import { quizzes } from '../../services/operations/resultAPI';
 
 const QuizResult = () => {
+    const dispatch = useDispatch();
     const location = useLocation();
     const userid = location.pathname.split('/')[2];
     const User = useSelector((state) =>( state.currentUserReducer))
-    const urlMyResultsUserId= `${backend_URL}/result/${userid}`;
     
     const [quizes, setQuizes] = useState(null)
     const [loading, setLoading] = useState(true);
@@ -22,32 +21,11 @@ const QuizResult = () => {
         return (Math.round((value*Math.pow(10,digits)).toFixed(digits-1))/Math.pow(10,digits)).toFixed(digits);
     }
     
-    async function fetchQuizResult(){
-      setLoading(true)
-      const a = await axios.get(urlMyResultsUserId);
-      setQuizes(a?.data?.quiz);
-      console.log(a.data.quiz[0]);
-      setLoading(false);
-    //   console.log(quizes);
-    }
     useEffect(() => {
-      fetchQuizResult();
+        dispatch(quizzes(setLoading, setQuizes, userid));
     }, [])
 
-    // const quizes = useSelector((state) => state.quizReducer?.data?.allQuiz);
-    // console.log(quizes);
-
     const navigate= useNavigate();
-
-    // function redirectQuizResult(quizId){
-    //     if(User===null){
-    //         toast.error("Please login to view all results");
-    //         navigate('/Auth');
-    //     }
-    //     else{
-    //         navigate(`/QuizResult/${User?.result?._id}/${quizId}`);
-    //     }
-    // }
 
     return (
         <div className='home-container-1'>
@@ -69,7 +47,7 @@ const QuizResult = () => {
                         {
                             quizes?.length === 0 ? "Your have not Created any quiz.":
                             quizes?.map((quiz, index) => (
-                                <div className='quiz-name-container'>
+                                <div key={index} className='quiz-name-container'>
                                     <div className='quiz-name'>
                                         <div>
                                             <p>{quiz?.quizName}</p>
