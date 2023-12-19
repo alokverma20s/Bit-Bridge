@@ -8,13 +8,12 @@ import icon from '../../assets/logo.png'
 import AboutAuth from './AboutAuth';
 import { signUp, logIn } from '../../actions/auth'
 import toast from 'react-hot-toast';
-import { sendOtp } from '../../services/operations/authAPIs';
+import { sendOtp } from '../../services/operations/authAPI';
 
 
 const Auth = () => {
 
   const [isSignup, setIsSignup] = useState(false);
-  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   let [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -173,7 +172,7 @@ const Auth = () => {
             <button className='auth-btn border-gradient border-gradient-purple grad-btn' onClick={funcVerify}>Verify Email</button>
           }
           {
-            isSignup && verify && !alreadyRegistered &&
+            isSignup && verify &&
             <div>
               <label htmlFor="otp">
                 <h4>OTP</h4>
@@ -187,12 +186,6 @@ const Auth = () => {
                 renderInput={(props) => <input {...props} className='otpInput' />  }
               />
               <button type='submit' className='auth-btn border-gradient border-gradient-purple grad-btn'>Sign Up</button>
-            </div>
-          }
-          {
-            isSignup && verify && alreadyRegistered &&
-            <div>
-              <h1>User already registered</h1>
             </div>
           }
           {

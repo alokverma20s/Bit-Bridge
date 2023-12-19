@@ -20,8 +20,8 @@ import MyResults from './Pages/QuizResults/MyResults';
 import TutorResult from './Pages/QuizResults/TutorResult';
 import TagsQuestions from './Pages/Tags/TagQuestions';
 import FilteredQuestions from './Pages/Questions/FilteredQuestions';
-import InstructorProtected from './components/Protected/InstructorProtected';
-import Protected from './components/Protected/Protected';
+// import InstructorProtected from './components/Protected/InstructorProtected';
+// import Protected from './components/Protected/Protected';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
 
 const AllRoutes = () => {
@@ -44,18 +44,15 @@ const AllRoutes = () => {
 
         <Route path='/Quiz' element={<Quiz/>}/>
         <Route path='/Quiz/:id' element={<QuizQuestions/>}/>
-        <Route path="/AddQuiz" element={<InstructorProtected/>}>
-          <Route path='/AddQuiz' element ={<AddQuiz/>}/>
-        </Route>
-        <Route path="/QuizResult" element={<InstructorProtected/>}>
-          <Route path='/QuizResult' element={<QuizResult/>}></Route>
-        </Route>
-        <Route path="/QuizResult/:id" element={<InstructorProtected/>}>
-          <Route path='/QuizResult/:id' element={<QuizResult/>}></Route>
-        </Route>
-        <Route path="/QuizResult/:userid/:quizid" element={<InstructorProtected/>}>
-          <Route path='/QuizResult/:userid/:quizid' element={<TutorResult></TutorResult>}></Route>
-        </Route>
+
+        <Route path='/AddQuiz' element ={<AddQuiz/>}/>
+
+        <Route path='/QuizResult' element={<QuizResult/>}></Route>
+
+        <Route path='/QuizResult/:id' element={<QuizResult/>}></Route>
+
+        <Route path='/QuizResult/:userid/:quizid' element={<TutorResult></TutorResult>}></Route>
+        
         <Route path='/MyResults/:userid' element={<MyResults></MyResults>}></Route>
 
 
@@ -63,11 +60,10 @@ const AllRoutes = () => {
         <Route path='/Subjects/:id' element={<SubjectName/>}></Route>
 
         <Route path='/filter/:searchText' element={<FilteredQuestions/>}></Route>
+
         <Route path='/filter' element={<Home/>}></Route>
 
-        <Route path="/AdminDashboard" element={<Protected />} >
           <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
-        </Route>
 
         
           
