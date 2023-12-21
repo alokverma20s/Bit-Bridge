@@ -17,6 +17,7 @@ const Contact = () => {
                         <ul>
                             <li><a className='contact-links' href="mailto:gauravg.it.21@nitj.ac.in">gauravg.it.21@nitj.ac.in</a></li>
                             <li><a className='contact-links' href="mailto:alokv.it.21@nitj.ac.in">alokv.it.21@nitj.ac.in</a></li>
+                            <li><a className='contact-links' href="mailto:iriss.it.21@nitj.ac.in">iriss.it.21@nitj.ac.in</a></li>
                         </ul>
                     </div>
                 </div>
