@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true},
     about: {type: String},
-    tags: {type: [String]},
+    Subject: [{type: mongoose.Schema.Types.ObjectId, ref: "Subject"}],
     joinedOn: {type: Date, default: Date.now},
     role: {type: String, enum: ["student", "admin", "instructor"], default: 'student'},
     result: [
@@ -22,6 +22,10 @@ const userSchema = mongoose.Schema({
             }
         }
     ],
+    questionAsked: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Queston'
+    }],
     token: {
         type: String,
     },

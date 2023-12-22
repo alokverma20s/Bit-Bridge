@@ -71,7 +71,7 @@
   }
   
   .custom-radio input:checked + .custom-radio-button {
-    background-color: yellow;
+    background-color: #4F46E5;
   }
 
   .custom-radio input:checked + .option-outer{

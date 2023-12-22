@@ -31,7 +31,7 @@ const DisplayAns = ({question}) => {
                   <button type='button' onClick={ ()=>{toast.success(`Copied url: ${url}`)}}>Share</button>
                 </CopyToClipboard>
                 {
-                  (User?.result?._id === ans?.userId  || User?.result?.role==='admin') && (
+                  (User?.result?._id === ans?.userId._id  || User?.result?.role==='admin') && (
                     <button type='button' onClick={()=>handleDelete(ans._id, question.noOfAnswers)}>Delete</button>
                   )
                 }

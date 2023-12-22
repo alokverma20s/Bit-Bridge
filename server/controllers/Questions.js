@@ -2,6 +2,7 @@ import Questions from '../models/Questions.js'
 import mongoose from 'mongoose'
 import Subject from '../models/subjects.js';
 import Tag from '../models/Tag.js';
+import User from '../models/auth.js'
 export const AskQuestion = async (req, res) => {
     try {
         const postQuestionData = req.body;
@@ -17,6 +18,11 @@ export const AskQuestion = async (req, res) => {
             userId: postQuestionData.userId,
             selectedSubject: postQuestionData.selectedSubject
         })
+        await User.findByIdAndUpdate(postQuestionData.userId,{
+            $push:{
+                questionAsked: postQuestion._id
+            }
+        } )
         postQuestionData.questionTags.forEach(async (tag) => {
             tag = tag.toLowerCase()
             const tagDetails = await Tag.findOne({ tagName: tag });

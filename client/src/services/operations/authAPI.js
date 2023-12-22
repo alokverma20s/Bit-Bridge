@@ -4,7 +4,7 @@ import { apiConnector } from "../apiConnector";
 import { endpoints } from "../apis";
 
 const {
-  SENDOTP_API,
+  SENDOTP_API,PROFILE_QUESTIONS_API
 } = endpoints;
 
 export function sendOtp(setVerify, email) {
@@ -36,3 +36,21 @@ export function sendOtp(setVerify, email) {
 }
 
 
+
+export function profileQuestions(id, setQuestions, setLoading){
+  return async (dispatch)=>{
+    setLoading(true);
+    try {
+      const response = await apiConnector("POST", PROFILE_QUESTIONS_API, {
+        id
+      });
+      if(!response.data.success){
+        throw new Error(response.data.message);
+      }
+      setQuestions(response.data.questions);
+      setLoading(false)
+    } catch (error) {
+      toast(error.response.data.message);
+    }
+  }
+} 

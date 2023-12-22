@@ -2,6 +2,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const endpoints = {
     SENDOTP_API: BASE_URL + "/user/sendotp",
+    PROFILE_QUESTIONS_API: BASE_URL + "/user/userQuestions",
     SIGNUP_API: BASE_URL + "/user/signup",
     LOGIN_API: BASE_URL + "/user/login",
     GETALLUSER_API: BASE_URL + "/user/getAllUsers",

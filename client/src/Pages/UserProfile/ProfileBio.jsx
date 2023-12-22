@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import QuestionList from '../../components/HomeMainbar/QuestionList';
+import { useDispatch } from 'react-redux';
+import { profileQuestions } from '../../services/operations/authAPI';
+import Loader from '../../components/Loader/Loader';
+import { useLocation } from 'react-router-dom';
 
 const ProfileBio = ({currentProfile}) => {
-        console.log(currentProfile);
+    const dispatch = useDispatch();
+    const [questions, setQuestions] = useState([])
+    const [loading,setLoading] = useState(true);
+
+    const location = useLocation();
+    
+
+    useEffect(()=>{
+        dispatch(profileQuestions(location.pathname.split('/')[2], setQuestions,setLoading))
+    },[])
   return (
     <div>
         <div>
@@ -29,6 +43,12 @@ const ProfileBio = ({currentProfile}) => {
                     <p>No bio found</p>
                 )
             }
+        </div>
+        <div className="">
+            {
+                loading ?<div className='loader-position'><Loader/></div>: <QuestionList questionList={questions.questionAsked} />
+            }
+           
         </div>
         
     </div>

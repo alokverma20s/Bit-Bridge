@@ -29,11 +29,11 @@ const QuestionDetails = () => {
     const handlePostAns = (e, answerLength) => {
         e.preventDefault();
         if (User === null) {
-            alert("Login or Signup to answer a question")
+            toast("Login or Signup to answer a question")
             navigate('/Auth')
         } else {
             if (Answer.trim() === '') {
-                alert("Enter an answer before submitting")
+                toast("Enter an answer before submitting")
             } else {
                 dispatch(postAnswer({ id, noOfAnswers: answerLength + 1, answerBody: Answer, userAnswered: User.result.name, userId: User?.result?._id }, navigate))
                 e.target.reset();
@@ -85,7 +85,7 @@ const QuestionDetails = () => {
                                                             <button type='button' onClick={() => { toast.success(`Copied url: ${url}`) }}>Share</button>
                                                         </CopyToClipboard>
                                                         {
-                                                            (User?.result?._id === question?.userId || User?.result?.role === 'admin') && (
+                                                            (User?.result?._id == question?.userId._id || User?.result?.role === 'admin') && (
                                                                 <button type='button' onClick={handleDelete} >Delete</button>
                                                             )
                                                         }

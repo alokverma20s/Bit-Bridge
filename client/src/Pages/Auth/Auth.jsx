@@ -14,7 +14,7 @@ import { sendOtp } from '../../services/operations/authAPI';
 const Auth = () => {
 
   const [isSignup, setIsSignup] = useState(false);
-  let [name, setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -53,9 +53,6 @@ const Auth = () => {
 
       if (otp === "") {
         toast.error("Please enter valid OTP");
-      } else if (instructor) {
-        name = (designation + " " + name);
-        dispatch(signUp({ name, email, password, role, otp , confirmPassword}, navigate));
       }
       else{
         dispatch(signUp({ name, email, password, role, otp, confirmPassword }, navigate));
@@ -103,7 +100,7 @@ const Auth = () => {
           {
             !verify &&
             <div>
-              {
+              {/* {
                 instructor && isSignup &&
                 <label>
                   <select name="designation" id="designation" onChange={(e) =>
@@ -115,7 +112,7 @@ const Auth = () => {
                     <option value="Miss.">Miss</option>
                   </select>
                 </label>
-              }
+              } */}
               {
                 isSignup && (
                   <label htmlFor='name'>
@@ -148,7 +145,7 @@ const Auth = () => {
               {
                 isSignup &&
                 <label>
-                  <p><input id='instructor-checkbox' type='checkbox' onChange={() => {
+                  <p className='container'><input  id='instructor-checkbox' type='checkbox' onChange={() => {
                     if(document.getElementById("instructor-checkbox").checked){
                       setInstructor(true);
                       setRole("instructor");
@@ -158,7 +155,7 @@ const Auth = () => {
                       setRole("student");
                     }
                       
-                  }} />I am an instructor.</p>
+                  }} /><div class="checkmark"></div>I am an instructor.</p>
                 </label>
               }
 

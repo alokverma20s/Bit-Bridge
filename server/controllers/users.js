@@ -32,3 +32,33 @@ export const updateProfile = async (req, res) =>{
         res.status(405).json({message: error.message})
     }
 }
+
+export const getAskQuesition = async (req, res) =>{
+    const {id} = req.body;
+    try {
+        const questions = await User.findById(id, {
+            questionAsked: true
+        }).populate({
+            path: "questionAsked",
+            populate:{
+                path: "questionTags"
+            }
+        }).populate({
+            path: "questionAsked",
+            populate:{
+                path: "answer"
+            }
+        });
+        return res.status(200).json({
+            success: true,
+            questions,
+            message: "Questions fetched Successfully."
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong..............",
+            error: error.message
+        })
+    }
+}
