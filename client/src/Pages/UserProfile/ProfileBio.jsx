@@ -46,7 +46,7 @@ const ProfileBio = ({currentProfile}) => {
         </div>
         <div className="">
             {
-                loading ?<div className='loader-position'><Loader/></div>: <QuestionList questionList={questions.questionAsked} />
+                loading ?<div className='loader-position'><Loader/></div>: <QuestionList questionList={questions?.questionAsked} />
             }
            
         </div>
