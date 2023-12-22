@@ -91,6 +91,11 @@ export const deleteQuestions = async (req, res) => {
                     question: ques._id
                 }
             })
+        await User.findByIdAndUpdate(ques.userId, {
+            $pull:{
+                questionAsked: ques._id
+            }
+        })
         ques.questionTags.forEach(async(tag)=>{
             const tags = await Tag.findByIdAndUpdate(tag,{
                 $pull:{
