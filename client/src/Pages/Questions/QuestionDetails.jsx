@@ -43,7 +43,6 @@ const QuestionDetails = () => {
 
     const handleDelete = () => {
         dispatch(deleteQuestion(id, navigate))
-        window.location.reload();
     }
 
     const handleUpVote = () => {
@@ -85,14 +84,14 @@ const QuestionDetails = () => {
                                                             <button type='button' onClick={() => { toast.success(`Copied url: ${url}`) }}>Share</button>
                                                         </CopyToClipboard>
                                                         {
-                                                            (User?.result?._id === question?.userId._id || User?.result?.role === 'admin') && (
+                                                            (User?.result?._id === question?.userId?._id || User?.result?.role === 'admin') && (
                                                                 <button type='button' onClick={handleDelete} >Delete</button>
                                                             )
                                                         }
                                                     </div>
                                                     <div>
-                                                        <p>asked on {moment(question.askedOn).fromNow()}</p>
-                                                        <Link to={`/Users/${question.userId?._id}`} className='user-link'>
+                                                        <p>asked on {moment(question?.askedOn).fromNow()}</p>
+                                                        <Link to={`/Users/${question?.userId?._id}`} className='user-link'>
                                                             {
                                                                 question.userId?.role === "student" &&
                                                                 <Avatar backgroundColor="white" px="2px" py="2px">{question.userId?.name.charAt(0).toUpperCase()}</Avatar>

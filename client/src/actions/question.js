@@ -24,7 +24,7 @@ export const deleteQuestion = (id, navigate) => async (dispatch) =>{
     try {
         await api.deleteQuestion(id);
         dispatch(fetchAllQuestions());
-        navigate('/');
+        navigate(-1);
     } catch (error) {
         console.log(error);
     }
