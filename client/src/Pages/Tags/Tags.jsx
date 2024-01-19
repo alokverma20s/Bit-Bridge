@@ -1,21 +1,27 @@
 import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import './Tags.css'
-import { Link } from 'react-router-dom';
+
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Loader from '../../components/Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { getTags } from '../../services/operations/tagAPI';
+import { IoIosAddCircleOutline } from "react-icons/io";
+import TagCard from './TagCard';
 
 const Tags = () => {
+    
     const dispatch = useDispatch();
     const [tagsList, setTagsList] = useState(null)
     const [loading, setLoading] = useState(true);
+    
 
     useEffect(() => {
         dispatch(getTags(setLoading, setTagsList));
     }, [])
+
+    
 
     return (
         <div className='home-container-1'>
@@ -32,13 +38,8 @@ const Tags = () => {
                             {
                                 tagsList?.map((tag) => (
                                     // <TagsList tag={tag} key={tagsList.id}/>
-                                    <Link key={tag?._id} to={`/Tags/${tag?._id}`} className='subject-link tag'>
-                                        <div>
-                                            <h5 className='all-tags'>{tag?.tagName}</h5>
-                                            <p>{tag?.tagDescription}</p>
-                                        </div>
-                                    </Link>
-
+                                    
+                                    <TagCard key={tag?._id} tag={tag}></TagCard>
                                 ))
                             }
                         </div>}

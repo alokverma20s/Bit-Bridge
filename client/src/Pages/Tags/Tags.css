@@ -29,3 +29,18 @@
 .tag p{
     font-size: 13px;
 }
+
+.tags-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.add-desc-btn{
+    font-size: large;
+}
+
+.add-desc-btn:hover{
+    cursor: pointer;
+}
