@@ -3,6 +3,7 @@ import Tag from "../models/Tag.js";
 export const addTagDescription = async (req, res) =>{
     try {
         const {tagDescription, tagId} = req.body;
+        console.log(tagDescription, tagId);
         if(!tagDescription || !tagId){
             return res.status(403).json({
                 success: false,

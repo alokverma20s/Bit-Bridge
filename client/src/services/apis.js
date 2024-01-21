@@ -29,6 +29,7 @@ export const tagEndpoints = {
     ADD_DESC_API : BASE_URL+"/tag/addDesc",
     GET_API : BASE_URL+"/tag/getTags",
     GETQUESTIONS_API : BASE_URL+"/tag/getTagsQues/",
+    ADD_DESC_API : BASE_URL+"/tag/addDesc",
 }
 
 export const answerEndpoints = {
