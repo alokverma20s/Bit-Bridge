@@ -35,7 +35,7 @@ const UserProfile = () => {
                     </div>
                     
                 </div>
-                <div>
+            <div>
                     {
                         currentUser?.result._id === id && (
                             <button type='button' onClick={()=>setSwitch(true)} className='edit-profile-btn grad-btn'>

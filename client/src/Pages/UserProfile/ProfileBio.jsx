@@ -44,7 +44,9 @@ const ProfileBio = ({currentProfile}) => {
                 )
             }
         </div>
-        <div className="">
+        <div className="user-questions-section">
+            {
+                questions?.questionAsked?.length !==0 ?<h2>Questions asked</h2>: <p>No question asked till now</p>}
             {
                 loading ?<div className='loader-position'><Loader/></div>: <QuestionList questionList={questions?.questionAsked} />
             }

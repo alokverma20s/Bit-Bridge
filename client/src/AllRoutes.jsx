@@ -63,7 +63,7 @@ const AllRoutes = () => {
 
         <Route path='/filter' element={<Home/>}></Route>
 
-          <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
+        <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
 
         
           
