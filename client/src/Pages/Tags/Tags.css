@@ -14,9 +14,16 @@
 }
 
 .tag{
+    position: relative;
     padding: 10px;
     border: solid 1px #d2d2d2;
     border-radius: 2px;
+
+}
+
+#tag-content{
+    max-height: 75px;
+    overflow-y: scroll;
 }
 
 .tag h5{
@@ -32,6 +39,7 @@
 
 .tags-header{
     display: flex;
+    position:static;
     justify-content: space-between;
     width: 100%;
     align-items: center;
