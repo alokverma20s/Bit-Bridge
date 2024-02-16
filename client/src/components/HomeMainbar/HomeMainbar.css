@@ -1,102 +1,105 @@
-
-.main-bar-header .ask-btn{
-    padding: 10px 15px;
-    border-radius: 30px;
-    /* background: linear-gradient(to right, #3a3add, rgb(185, 24, 185)); */
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.2s;
+.main-bar-header .ask-btn {
+  padding: 10px 15px;
+  border-radius: 30px;
+  /* background: linear-gradient(to right, #3a3add, rgb(185, 24, 185)); */
+  background-color: rgb(105, 116, 198);
+  color: white;
+  border: 1px solid white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
 }
 
-.main-bar-header .ask-btn:hover{
-    /* background: linear-gradient(to right, rgb(17, 17, 195), purple); */
-    background-color: rgb(200, 200, 200);
-    color: black;
+.main-bar-header .ask-btn:hover {
+  /* background: linear-gradient(to right, rgb(17, 17, 195), purple); */
+  background-color: white;
+  color: rgb(105, 116, 198);
 }
 
-.display-question-container{
-    min-height: 80px;
-    width: calc(100%);
-    display: flex;
-    align-items: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.286);
-    border-bottom: solid 1px #edeff0;
-}   
-
-.loader-position{
-    display: flex;
-    height: 80vh;
-    justify-content: center;
-    align-items: center;
+.display-question-container {
+  min-height: 80px;
+  width: calc(100%);
+  display: flex;
+  align-items: center;
+  color: black;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding-top: 12px;
+  padding-left: 12px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
-.display-question-container .display-votes-ans{
-    padding: 20px;
+.loader-position {
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.display-question-container .display-votes-ans p{
-    margin: 0%;
-    text-align: center;
+.display-question-container .display-votes-ans {
+  padding: 20px;
 }
 
-.display-question-details{
-    flex-grow: 1;  /*this will keep the votes and ans static and will expand itself*/
-    padding: 0px 20px;
+.display-question-container .display-votes-ans p {
+  margin: 0%;
+  text-align: center;
 }
 
-.question-title-link{
-    text-decoration: none;
-    color:rgb(255, 255, 255, 0.7);
-    font-weight: 600;
-    transition: 0.3s;
-    font-size: 14px;
+.display-question-details {
+  flex-grow: 1; /*this will keep the votes and ans static and will expand itself*/
+  padding: 0px 20px;
 }
 
-.question-title-link:hover{
-    background: linear-gradient(to right, rgb(5, 240, 240), rgb(248, 11, 248));
-    -webkit-text-fill-color: transparent; 
-    background-clip: text;
+.question-title-link {
+  text-decoration: none;
+  color: rgb(105, 116, 198);
+  font-weight: 600;
+  font-size: 14px;
 }
 
-.display-question-details{
-    padding: 4px;
-    margin: 0%;
+.question-title-link:hover {
+  color: rgb(67, 74, 128);
+  background-clip: text;
 }
 
-.display-tags-time{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.display-question-details {
+  padding: 4px;
+  margin: 0%;
 }
 
-.display-tags-time .display-tags{
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 13px;
-    margin: 1px;
-    
+.display-tags-time {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.display-tags-time .display-tags div{
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 4px;
-    
-    /* border: solid black 1px; */
-    /* margin: 0px; */
+.display-tags-time .display-tags {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin: 1px;
 }
 
+.display-tags-time .display-tags div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 4px;
 
-
-.display-tags-time .display-time{
-    font-size: 13px;
+  /* border: solid black 1px; */
+  /* margin: 0px; */
 }
 
+.display-tags-time .display-time {
+  font-size: 13px;
+}
 
-
+.questionNumber {
+  color: rgb(105, 116, 198);
+}

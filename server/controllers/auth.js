@@ -125,13 +125,14 @@ export const signup = async (req, res)=>{
 export const login = async (req, res)=>{
     const {email, password} = req.body;
     try {
+        // console.log("Request Reached");
         const existingUser =  await users.findOne({ email });
         if(!existingUser){
             return res.status(404).json({message: "User don't exist."})
         }
-
         const isPasswordCrt = await bcrypt.compare(password, existingUser.password);
         if(!isPasswordCrt){
+            console.log("Password not matched");
             return res.status(400).json({success:false, message: "Invalid Credentials"});
         }
         const token = jwt.sign({email: existingUser.email, id: existingUser._id, role: existingUser.role}, process.env.JWT_SECRET ,{expiresIn: '24h'});

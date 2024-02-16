@@ -1,21 +1,17 @@
-body{
-  color: white;
+body {
+  color: black;
   font-family: sans-serif;
   font-size: 14px;
-  background-color: black;
-  
-  /* background-color: #1c2021; */
-  /* background-color: #17191a; */
-  /* background-color: #232628; */
-  /* background-image: url("./assets/home-bg.webp"); */
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
+  /* background: black; */
+  background: white;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
-p{
+p {
   color: #efefef;
 }
-.home-container-1{
+.home-container-1 {
   min-height: 100vh;
   max-width: 1250px;
   width: 100%;
@@ -24,8 +20,7 @@ p{
   margin: 0% auto;
 }
 
-.home-container-2{
-  
+.home-container-2 {
   margin-left: 164px;
   float: right;
   max-width: 1100px;
@@ -33,30 +28,29 @@ p{
   border: 1px solid #555c64;
   padding: 24px;
   box-sizing: border-box;
-  
-  background: radial-gradient(rgb(4, 4, 78), black, black);
-  /* background-position: center; */
+  background: rgb(225, 227, 244);
   background-size: cover;
   background-attachment: fixed;
 }
 
-.main-bar{
-  width: calc( 100% );
+.main-bar {
+  width: calc(100%);
   margin: 40px 0px;
   padding: 0;
 }
 
-.main-bar-header{
+.main-bar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.main-bar-header h1{
+.main-bar-header h1 {
   font-weight: 400;
+  color: rgb(105, 116, 198);
 }
 
-.grad-btn{
+.grad-btn {
   border: 10px solid;
   border-image-slice: 1;
   border-width: 2px;
@@ -68,15 +62,15 @@ p{
   transition: 0.3s;
   font-weight: 400;
   font-size: 13px;
-  padding: 5px 10px ;
+  padding: 5px 10px;
 }
 
-.grad-btn:hover{
+.grad-btn:hover {
   /* transform: scale(1.01); */
   background-image: linear-gradient(to right, rgb(121, 6, 188), rgb(6, 6, 123));
 }
 
-.inner-grad-btn{
+.inner-grad-btn {
   /* background-image: linear-gradient(to right, rgb(103, 4, 160), rgb(3, 3, 80)); */
   /* background-image: linear-gradient(to right, rgb(102, 1, 102) , rgb(17, 17, 99)); */
   background-color: white;
@@ -87,35 +81,33 @@ p{
   padding: 0px 14px;
   border: 1px solid black;
 }
-.inner-grad-btn:hover{
-  background-image: linear-gradient(to top, black , black, black);
+.inner-grad-btn:hover {
+  background-image: linear-gradient(to top, black, black, black);
   border-color: white;
-  color:white
+  color: white;
 }
 
 .all-tags {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    height: 20px;
-    color: white;
-    padding: 3px 5px;
-    border-radius: 3px;
-    margin-left: 4px;
-    background-color: hsl(227, 10%, 27%);
-    
-    /* border: solid 2px rgb(255, 255, 255, 0.5); */
-
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 20px;
+  padding: 3px 5px;
+  margin-left: 4px;
+  border: 1px solid rgb(255, 255, 255, 1);
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(107, 116, 192);
 }
 
-.all-links{
-    color: lightskyblue;
-    text-decoration: none;
+.all-links {
+  color: lightskyblue;
+  text-decoration: none;
 }
 
-#avatar{
+#avatar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,50 +119,48 @@ p{
   border: solid black 1px;
 }
 
-
 /*CSS for hamburger starts here*/
-.toggle-container{
+.toggle-container {
   position: fixed;
 }
 
 @media screen and (max-width: 720px) {
-  .left-sidebar{
+  .left-sidebar {
     position: absolute;
     transform: translateX(-200px);
     background-color: black;
     border-right: 1px solid rgb(255, 255, 255, 0.5);
   }
 
-  .home-container-2{
+  .home-container-2 {
     margin-left: 0px;
     width: 100%;
   }
 
-  .left-sidebar .left-links{
+  .left-sidebar .left-links {
     display: block;
   }
-  .navbar .nav-btn{
+  .navbar .nav-btn {
     display: none;
   }
-  #toggle-checkbox{
+  #toggle-checkbox {
     position: absolute;
     display: none;
     visibility: hidden;
   }
 
-  .toggle-container{
+  .toggle-container {
     z-index: 6;
-    
   }
-  
-  .toggle{
+
+  .toggle {
     z-index: 7;
     position: fixed;
-    left:15px;
-    top:15px;
+    left: 15px;
+    top: 15px;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     align-items: center;
     height: 30px;
     width: 30px;
@@ -180,30 +170,30 @@ p{
     /* box-shadow: 0px 0px 5px rgb(255, 255, 255, 0.9); */
     border: solid white 1px;
   }
-  
-  .toggle .common-line{
+
+  .toggle .common-line {
     height: 2px;
     width: 20px;
     border-radius: 50px;
     transition: 0.3s ease;
     background-color: white;
   }
-  
-  #toggle-checkbox:checked ~ .left-sidebar{
+
+  #toggle-checkbox:checked ~ .left-sidebar {
     transform: translateX(164px);
   }
-  
-  #toggle-checkbox:checked ~ .toggle .middle-line{
+
+  #toggle-checkbox:checked ~ .toggle .middle-line {
     background-color: red;
     visibility: hidden;
   }
-  #toggle-checkbox:checked ~ .toggle .top-line{
-    transform: translateX(3px) rotate(45deg); 
+  #toggle-checkbox:checked ~ .toggle .top-line {
+    transform: translateX(3px) rotate(45deg);
     transform-origin: 0%;
     background-color: red;
     width: 22px;
   }
-  #toggle-checkbox:checked ~ .toggle .bottom-line{
+  #toggle-checkbox:checked ~ .toggle .bottom-line {
     transform: translateX(3px) rotate(-45deg);
     transform-origin: 0%;
     background-color: red;
@@ -211,39 +201,34 @@ p{
   }
 
   /*hamburger css ends here */
-
 }
 
-
-
-
-
-@media screen and (max-width: 400px){
-  body{
+@media screen and (max-width: 400px) {
+  body {
     font-size: 10px;
   }
-  .toggle{
+  .toggle {
     height: 22px;
     width: 22px;
     border: none;
   }
-  .toggle .common-line{
+  .toggle .common-line {
     height: 1.5px;
   }
-  #toggle-checkbox:checked ~ .toggle .top-line{
-    transform: translateX(3px) rotate(45deg); 
+  #toggle-checkbox:checked ~ .toggle .top-line {
+    transform: translateX(3px) rotate(45deg);
     transform-origin: 0%;
     background-color: red;
     width: 17px;
   }
-  #toggle-checkbox:checked ~ .toggle .bottom-line{
+  #toggle-checkbox:checked ~ .toggle .bottom-line {
     transform: translateX(3px) rotate(-45deg);
     transform-origin: 0%;
     background-color: red;
     width: 17px;
   }
-  
-  #avatar{
+
+  #avatar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -252,6 +237,5 @@ p{
     border-radius: 50%;
     height: 25px;
     width: 25px;
-
   }
 }
