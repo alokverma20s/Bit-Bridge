@@ -1,19 +1,20 @@
 .main-bar-header .ask-btn {
   padding: 10px 15px;
-  border-radius: 30px;
+  border-radius: 20px;
   /* background: linear-gradient(to right, #3a3add, rgb(185, 24, 185)); */
   background-color: rgb(105, 116, 198);
   color: white;
   border: 1px solid white;
+  font-family: 'Rubik';
   font-weight: 600;
   text-decoration: none;
   transition: 0.2s;
 }
 
 .main-bar-header .ask-btn:hover {
-  /* background: linear-gradient(to right, rgb(17, 17, 195), purple); */
-  background-color: white;
-  color: rgb(105, 116, 198);
+  cursor: pointer;
+  background-color: rgb(87, 98, 170);
+  transform: scale(1.075);
 }
 
 .display-question-container {
@@ -49,6 +50,7 @@
 .display-question-container .display-votes-ans p {
   margin: 0%;
   text-align: center;
+  font-weight: 500;
 }
 
 .display-question-details {
@@ -57,10 +59,11 @@
 }
 
 .question-title-link {
+  font-family: 'Rubik';
+  font-size: 16px;
+  font-weight: 500;
   text-decoration: none;
   color: rgb(105, 116, 198);
-  font-weight: 600;
-  font-size: 14px;
 }
 
 .question-title-link:hover {
@@ -97,9 +100,21 @@
 }
 
 .display-tags-time .display-time {
+  font-family:  -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 13px;
+  font-weight: 500;
+
 }
 
 .questionNumber {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
   color: rgb(105, 116, 198);
+}
+
+.all-tags{
+  font-family:  -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
 }

@@ -26,15 +26,15 @@ const Quizpaper = ({quizArray, quiz, index}) => {
     <div className='quiz-name-container'>
         <div className='quiz-name'>
             <div>
-                <p>{index}</p> 
-                <p>{quiz?.quizName}</p>
+                <p className="quiz-name-one">{index}</p> 
+                <p className="quiz-name-one">{quiz?.quizName}</p>
             </div>
             <div>
-                <p>{quiz.type} Quiz </p>
-                <p>Created by {quiz?.authorName?.name}</p>
+                <p className="quiz-name-two">{quiz.type} Quiz </p>
+                <p className="quiz-name-two">Created by {quiz?.authorName?.name}</p>
             </div> 
         </div> 
-            <button className='inner-grad-btn' onClick={redirect}><pre>Take Quiz</pre></button> 
+            <button className='quiz-name-btn' onClick={redirect}>Take Quiz</button> 
         {
             
             (User?.result?.role==="instructor" || User?.result?.role==="admin")&&
