@@ -23,6 +23,8 @@ import FilteredQuestions from './Pages/Questions/FilteredQuestions';
 // import InstructorProtected from './components/Protected/InstructorProtected';
 // import Protected from './components/Protected/Protected';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
+import SubjectResource from './Pages/Subjects/SubjectResource';
+import SubjectQuiz from './Pages/Subjects/SubjectQuiz';
 
 const AllRoutes = () => {
   return ( 
@@ -57,7 +59,9 @@ const AllRoutes = () => {
 
 
         <Route path='/Subjects' element ={<Subjects/>}/>
-        <Route path='/Subjects/:id' element={<SubjectName/>}></Route>
+        <Route path='/Subjects/:id/questions' element={<SubjectName/>}></Route>
+        <Route path='/Subjects/:id/quizes' element={<SubjectQuiz/>}></Route>
+        <Route path='/Subjects/:id/resources' element={<SubjectResource/>}></Route>
 
         <Route path='/filter/:searchText' element={<FilteredQuestions/>}></Route>
 

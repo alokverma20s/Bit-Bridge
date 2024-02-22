@@ -25,12 +25,17 @@ const SubjectsList = () => {
             <div className="subjects-list-container">
               {loading && <div className='loader-position'><Loader/></div>}
               {subjects && subjects.map((subject) => (
-                <Link key={subject._id} to={`/Subjects/${subject._id}`} className='subject-link'>
                   <div className='subject'>
                     <h3>{subject.subjectName}</h3>
-                    <p>{subject.subjectDescription}</p>
+                    <div>
+                      <p>{subject.subjectDescription}</p>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link'>Questions</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className='subject-link'>Quizes</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/resourses`} className='subject-link'>Resourses</Link>
+                    </div>
+                    
                   </div>
-                </Link>
+                
               ))}
               {!loading && !subjects && <p>No subjects found.</p>}
             </div>
