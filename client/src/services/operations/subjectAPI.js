@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../apiConnector"
 import { subjectEndpoints } from "../apis"
 
-const {GET_API, GETQUESTIONS_API} = subjectEndpoints;
+const {GET_API, GETQUESTIONS_API, POST_API} = subjectEndpoints;
 
 export function getSubjects(setLoading, setSubjects){
     return async (dispatch) =>{
@@ -49,6 +49,21 @@ export function getQuestionsBySubject(setLoading, setSubjects, subjectId){
             // toast.success("Fetched Successfully...");
         } catch (error) {
             toast.error(error.response.data.message);
+        }
+    }
+}
+
+export function addSubject(subjectName, subjectDescription){
+    return async (dispatch) => {
+        try {
+            const response = await apiConnector("POST", POST_API, {subjectName, subjectDescription});
+            if(!response.data.success){
+                throw new Error(response?.data?.message)
+            }
+            // setTempDesc(tagDescription);
+        } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong....");
         }
     }
 }

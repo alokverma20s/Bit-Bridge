@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { askQuestion } from "../../actions/question.js";
+import { getSubjects } from '../../services/operations/subjectAPI';
 import "./AskQuestion.css";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const AskQuestion = () => {
   const [selectedSubject, setSubject] = useState(undefined);
@@ -12,61 +14,19 @@ const AskQuestion = () => {
   const [questionBody, setQuestionBody] = useState(undefined);
   const [validWords, setValidWords] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [subjects, setSubjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   let questionTags = [];
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const User = useSelector((state) => state.currentUserReducer);
 
-  const subjects = [
-    {
-      _id: "655a5b3cfad70e6d022c1a7c",
-      subjectName: "General Questions",
-    },
-    {
-      _id: "6559b7667aad4a8fff67f68e",
-      subjectName: "DCN",
-    },
-    {
-      _id: "6559b7cb7aad4a8fff67f6a6",
-      subjectName: "Data Structures",
-    },
-    {
-      _id: "6559b8267aad4a8fff67f6a8",
-      subjectName: "Operating Systems",
-    },
-    {
-      _id: "6559b85f7aad4a8fff67f6aa",
-      subjectName: "Computer Graphics",
-    },
-    {
-      _id: "6559b8877aad4a8fff67f6ac",
-      subjectName: "Automata Theory",
-    },
-    {
-      _id: "6559b8a37aad4a8fff67f6ae",
-      subjectName: "Java",
-    },
-    {
-      _id: "6559b8d17aad4a8fff67f6b0",
-      subjectName: "Object Oriented Programming",
-    },
-    {
-      _id: "6559b8f27aad4a8fff67f6b2",
-      subjectName: "Cryptography",
-    },
-    {
-      _id: "6559b9217aad4a8fff67f6b4",
-      subjectName: "Discrete Mathematics",
-    },
-    {
-      _id: "6559b94b7aad4a8fff67f6b6",
-      subjectName: "Software Engineering",
-    },
-    {
-      _id: "655a5c0dfad70e6d022c1a7e",
-      subjectName: "Web Development",
-    },
-  ];
+  useEffect(() => {
+    dispatch(getSubjects(setLoading, setSubjects));
+  }, [])
+
+  
 
   function selectSubject(e) {
     setSubject(e.target.value);
@@ -203,21 +163,13 @@ const AskQuestion = () => {
               {selectedImage && (
                 <>
                   <div className="img-container">
-                    <img
-                      className="img"
-                      alt="not found"
-                      width={"250px"}
-                      src={URL.createObjectURL(selectedImage)}
-                    />
+                    <img className="img" alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)}/>
                   </div>
-                  <span >
-                    <button
-                    className="img-btn"
-                      onClick={() => setSelectedImage(null)}
-                    >
+
+                    <span className="img-btn" onClick={() => setSelectedImage(null)}>
                       Remove
-                    </button>
-                  </span>
+                    </span>
+      
                 </>
               )}
 
@@ -233,11 +185,7 @@ const AskQuestion = () => {
                 }}
               />
             </label>
-            <input
-              type="submit"
-              value="Review your question"
-              className="review-btn"
-            />
+            <input type="submit" value="Review your question" className="review-btn"/>
           </div>
         </form>
       </div>
