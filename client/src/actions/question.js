@@ -58,3 +58,14 @@ export const deleteAnswer = (id, answerId, noOfAnswers) => async (dispatch)=>{
         console.log(error);
     }
 }
+
+
+export const voteAnswer = (id, answerId, value, userId)=> async (dispatch)=>{
+    try {
+        await api.voteAnswer(id, answerId, value, userId);
+        dispatch(fetchAllQuestions());
+
+    } catch (error) {
+        console.log(error);
+    }
+}  

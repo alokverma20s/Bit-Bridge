@@ -11,6 +11,7 @@ import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
 
 import { deleteAnswer } from '../../actions/question.js'
+import { voteAnswer } from '../../actions/question.js'
 
 const DisplayAns = ({ question }) => {
   const location = useLocation();
@@ -21,17 +22,34 @@ const DisplayAns = ({ question }) => {
   const handleDelete = (answerId, noOfAnswers) => {
     dispatch(deleteAnswer(id, answerId, noOfAnswers - 1));
   }
+
+
+  const handleUpVote = (answerId) => {
+    if(User==null){
+      toast("Login to vote");
+    }
+    else
+      dispatch(voteAnswer(id, answerId, 'upVote', User.result?._id))
+  }
+  const handleDownVote = (answerId) => {
+    if(User==null){
+      toast("Login to vote");
+    }
+    else
+      dispatch(voteAnswer(id, answerId, 'downVote', User.result?._id))
+  }
+  // console.log(question.answer);
   return (
     <div>
       {
         question.answer.map((ans) => (
           <div className="ans-outer-container">
             <div className='ans-voting'>
-              <BiSolidUpvote/>
-              <p>votes</p>
-              <BiSolidDownvote/>
+              <BiSolidUpvote onClick={()=>handleUpVote(ans._id)}/>
+              <p>{ans.upVote.length - ans.downVote.length}</p>
+              <BiSolidDownvote onClick={()=>handleDownVote(ans._id)} />
             </div>
-            <div className="display-ans" key={ans._id}>
+            <div className="display-ans" key={ans?._id}>
               <p>{ans.answerBody}</p>
               <div className='question-actions-user'>
                 <div>
@@ -39,7 +57,7 @@ const DisplayAns = ({ question }) => {
                     <button type='button' onClick={() => { toast.success(`Copied url: ${url}`) }}>Share</button>
                   </CopyToClipboard>
                   {
-                    (User?.result?._id === ans?.userId._id || User?.result?.role === 'admin') && (
+                    (User?.result?._id === ans?.userId?._id || User?.result?.role === 'admin') && (
                       <button type='button' onClick={() => handleDelete(ans._id, question.noOfAnswers)}>Delete</button>
                     )
                   }

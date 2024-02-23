@@ -34,6 +34,7 @@ export const tagEndpoints = {
 export const answerEndpoints = {
     POST_ANSWER_API: BASE_URL+"/answer/post/id",
     DELETE_ANSWER_API: BASE_URL+"/answer/delete/id",
+    VOTE_ANS_API: BASE_URL+"/answer/vote/id",
 }
 
 export const quizEndpoints = {

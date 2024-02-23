@@ -42,14 +42,23 @@ const QuestionDetails = () => {
     }
 
     const handleDelete = () => {
-        dispatch(deleteQuestion(id, navigate))
+        
+            dispatch(deleteQuestion(id, navigate))
     }
 
     const handleUpVote = () => {
-        dispatch(voteQuestion(id, 'upVote', User.result._id))
+        if(User==null){
+            toast("Login to vote a question", alert);
+        }
+        else
+            dispatch(voteQuestion(id, 'upVote', User.result?._id))
     }
     const handleDownVote = () => {
-        dispatch(voteQuestion(id, 'downVote', User.result._id))
+        if(User==null){
+            toast("Login to vote a question", alert);
+        }
+        else
+            dispatch(voteQuestion(id, 'downVote', User.result?._id))
     }
 
     return (
@@ -60,8 +69,8 @@ const QuestionDetails = () => {
                     <>
                         {
 
-                            questionList.data.filter(question => question._id === id).map(question => (
-                                <div className='main-bar' key={question._id}>
+                            questionList.data.filter(question => question?._id === id).map(question => (
+                                <div className='main-bar' key={question?._id}>
                                     <section className='question-details-container'>
                                         <h1>{question.questionTitle}</h1>
                                         <div className='question-details-container-2'>
@@ -74,7 +83,7 @@ const QuestionDetails = () => {
                                                 <p className='question-body'>{question.questionBody}</p>
                                                 <div className='question-details-tags'>
                                                     {question?.questionTags?.map((tag) => (
-                                                        <Link key={tag._id} to={`/Tags/${tag._id}`}>
+                                                        <Link key={tag?._id} to={`/Tags/${tag?._id}`}>
                                                             <p >{tag.tagName}</p></Link>
                                                     ))}
                                                 </div>
@@ -104,7 +113,7 @@ const QuestionDetails = () => {
                                                             }
                                                             
                                                             <div>
-                                                                {question.userId?.name}
+                                                                {question?.userId?.name}
                                                             </div>
                                                         </Link>
                                                     </div>
@@ -116,7 +125,7 @@ const QuestionDetails = () => {
                                         question.noOfAnswers !== 0 && (
                                             <section>
                                                 <h3>{question.noOfAnswers} Answers</h3>
-                                                <DisplayAns key={question._id} question={question}></DisplayAns>
+                                                <DisplayAns key={question?._id} question={question}></DisplayAns>
                                             </section>
                                         )
                                     }
@@ -130,7 +139,7 @@ const QuestionDetails = () => {
                                             Checkout other questions tagged
                                             {
                                                 question?.questionTags?.map((tag) => (
-                                                    <Link key={tag._id} to={`/Tags/${tag._id}`} className='ans-tag'>{tag.tagName}</Link>
+                                                    <Link key={tag?._id} to={`/Tags/${tag?._id}`} className='ans-tag'>{tag.tagName}</Link>
                                                 ))
                                             } or
                                             <Link to='/AskQuestion' className='all-links'> ask your own question</Link>
