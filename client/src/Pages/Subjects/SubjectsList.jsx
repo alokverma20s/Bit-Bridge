@@ -28,10 +28,12 @@ const SubjectsList = () => {
                   <div className='subject'>
                     <h3>{subject.subjectName}</h3>
                     <div>
-                      <p>{subject.subjectDescription}</p>
+                    <div className='subject-btns'>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link'>Questions</Link>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className='subject-link'>Quizes</Link>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/resourses`} className='subject-link'>Resourses</Link>
+                      </div>
+                      <p className='subject-desc'>{subject.subjectDescription}</p>
                     </div>
                     
                   </div>

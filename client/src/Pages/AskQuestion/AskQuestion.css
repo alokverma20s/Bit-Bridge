@@ -1,60 +1,119 @@
-.ask-question{
-    min-height: 100vh;
-    background-color: white;
-    background-image: url("../../assets/home-bg.webp");
-    background-size: cover;
-    background-attachment: fixed;
+.ask-question {
+  min-height: 100vh;
+  background-color: white;
+  background-color: rgb(225, 227, 244);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.ask-question{
-    margin: 100px 50px 0;
+.ask-question {
+  margin: 100px 50px 0;
 }
-.ask-question-container{
-    max-width:1000px;
-}
-
-.ask-question-container h1{
-    padding: 80px 20px 20px 20px;
-    
+.ask-question-container {
+  max-width: 1000px;
 }
 
-.ask-form-container{
-    padding: 20px;
-    margin: 50px;
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 0px 0px 25px #99edc3;
-    
+.ask-question-container h1 {
+  padding: 80px 20px 20px 20px;
+}
+
+.ask-ques-container {
+  padding: 10px;
+}
+
+.ask-ques-container h1 {
+  color: rgb(105, 116, 198);
+  margin-left: 20px;
+}
+
+.ask-form-container {
+  padding: 20px;
+  margin: 50px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 @media screen and (max-width: 600px) {
-    .ask-form-container{
-        margin: 0;
-    }
+  .ask-form-container {
+    margin: 0;
+  }
 }
 
-.ask-form-container label h4{
-    margin-bottom: 0%;
-    font-size: 14px;
+.ask-form-container label h4 {
+  margin-bottom: 0%;
+  font-size: 16px;
+  color: rgb(105, 116, 198);
 }
 
-.ask-form-container label p{
-    margin: 0%;
-    font-size: 13px;
-    padding: 3px 0px;
+.ask-form-container label p {
+  margin: 0%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  padding: 3px 0px;
 }
 
-.ask-form-container label input, textarea{
-    padding: 10px;
-    border: solid 1px rgb(255, 255, 255, 0.2);
-    font-family: 'Roboto', sans-serif;
-    width: calc( 100% - 20px );
-    resize: vertical;
-    font-size: 13px;
+.ask-form-container label input,
+textarea {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border: solid 1px rgb(255, 255, 255, 0.2);
+  font-family: "Roboto", sans-serif;
+  width: calc(100% - 20px);
+  resize: vertical;
+  font-size: 13px;
 }
 
-.review-btn{
-    margin: 50px 0px;
-    padding: 10px 17px;
-    font-size: 14px;
+.review-btn {
+  margin: 50px 0px;
+  padding: 10px 17px;
+  font-size: 14px;
+  background-color: rgb(105, 116, 198);
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
+.review-btn:hover {
+  cursor: pointer;
+  background-color: rgb(87, 98, 170);
+}
+
+.img-container {
+  height: 200px;
+  width: 200px;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.img-btn {
+  margin-top: 20px;
+  background-color: rgb(135, 211, 146);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px;
+  width: 100px;
+  font-family: "Rubik";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.img-btn:hover {
+  cursor: pointer;
+  background-color: rgb(106, 168, 116);
+ } 
+
+.img-input {
+  margin-top: 20px;
+}
