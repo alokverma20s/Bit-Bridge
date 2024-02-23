@@ -6,26 +6,20 @@
 .subjects-list-container{
     padding: 30px 0px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
 
-}
-
-.subject-link{
-    display: flex;
-    flex-wrap: wrap;
-    text-decoration: none;
-    color: white;
 }
 
 .subject{
     padding: 10px;
-    /* border: solid 1px #d2d2d2; */
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: rgba(9, 0, 12, 0.5);
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #80b79b;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.21);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.7px);
+    -webkit-backdrop-filter: blur(9.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .subject h5{
@@ -37,7 +31,35 @@
 }
 
 .subject p{
+    font-family: 'Roboto';
+    font-weight: 400;
     font-size: 13px;
     text-decoration: none;
-    color: rgb(200, 200, 200);
+    color: black;
+    margin-top: 1.2rem;
+}
+
+.subject-btns{
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    height: 20px;
+}
+
+.subject-link{
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 4px;
+    padding-bottom: 21px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 80px;
+    background-color: rgb(105, 116, 198);
+    border-radius: 4px;
+}
+
+.subject-link:hover{
+    background-color: rgb(87, 98, 170);
 }
