@@ -43,6 +43,7 @@
     transition: 0.2s;
     font-weight: 600;
     font-size: 15px;
+    border-bottom: 0.8px solid black;
 }
 
 .side-nav-links:hover{

@@ -6,6 +6,8 @@
   margin: 75px;
 }
 
+
+
 .quiz-name-container {
   display: flex;
   min-height: 80px;
@@ -133,8 +135,11 @@
   background-color: rgb(105, 116, 198);
   color: white;
   border: 1px solid white;
+  font-family: 'Rubik';
+  font-weight: 600;
   border-radius: 14px;
   padding: 5px 10px;
+  margin-top: 15px;
 }
 
 .quiz-submit-btn:hover {
@@ -225,6 +230,14 @@ textarea {
 
 .quiz-start-container {
   margin: 100px;
+}
+
+.quiz-start-outer{
+  /* position: fixed; */
+  background-color: rgb(225, 227, 244);
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 .view-your-results-btn{

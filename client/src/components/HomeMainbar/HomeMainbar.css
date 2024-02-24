@@ -8,13 +8,13 @@
   font-family: 'Rubik';
   font-weight: 600;
   text-decoration: none;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .main-bar-header .ask-btn:hover {
   cursor: pointer;
   background-color: rgb(87, 98, 170);
-  transform: scale(1.075);
+  transform: scale(1.05);
 }
 
 .display-question-container {
@@ -63,11 +63,11 @@
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
-  color: rgb(105, 116, 198);
+  color: rgb(95, 105, 182);
 }
 
 .question-title-link:hover {
-  color: rgb(67, 74, 128);
+  color: rgb(72, 79, 137);
   background-clip: text;
 }
 
@@ -117,4 +117,8 @@
   font-family:  -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
+}
+
+.all-tags:hover{
+  background-color: rgb(87, 98, 170);
 }

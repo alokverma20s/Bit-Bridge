@@ -57,9 +57,9 @@ const QuizQuestions = () => {
   }
 
   return (
-    <div className="quiz-start-container">
+    <div>
       {flag && (
-          <div className="main-bar">
+        <div style={{height:"100vh", backgroundColor:"rgb(225, 227, 244)", paddingTop:"180px"}}>
             <div className="quiz-details-container">
             <div className="main-bar-header">
               <h1>{currentquiz?.quizName}</h1>
@@ -88,9 +88,12 @@ const QuizQuestions = () => {
             </form>
             </div>
             </div>
-          </div>
+            </div>
+        
       )}
       {!flag && (
+        <div className="quiz-start-outer">
+        <div className="quiz-start-container">
         <div className="main-bar">
           {
             (window.onblur = async function (ev) {
@@ -138,9 +141,9 @@ const QuizQuestions = () => {
                     {currentquiz.type === "Practice" && (
                       <details>
                         <summary className="show-answer">Show Answer</summary>
-                        <div>
-                          <p>Correct option: {question?.ans?.answer?.option}</p>{" "}
-                          <p>{question?.ans?.answerDescription}</p>
+                        <div style={{marginTop:"20px"}}>
+                          <p style={{display:"inline", color:"green", fontWeight:"600"}}>Correct option:</p><p style={{display:"inline", marginLeft:"10px"}}>{question?.ans?.answer?.option}</p>{" "}
+                          {/* <p style={{color:"rgb(105, 116, 198)"}}>{question?.ans?.answerDescription}</p> */}
                         </div>
                       </details>
                     )}
@@ -152,6 +155,8 @@ const QuizQuestions = () => {
               </button>
             </form>
           </div>
+        </div>
+        </div>
         </div>
       )}
     </div>
