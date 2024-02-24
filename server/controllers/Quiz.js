@@ -3,13 +3,32 @@ import Quiz from '../models/Quiz.js'
 import QuizQuestions from '../models/QuizQuestions.js';
 import User from '../models/auth.js';
 import QuizAnswer from "../models/quizAnswer.js"
+import Subject from "../models/subjects.js";
 
 export const createQuiz = async (req, res) => {
     try {
-        const { quizName, quizAuthor, quizType, currentquiz } = req.body;
+        const { quizName, quizAuthor, quizType, currentquiz, subject } = req.body;
+
+        if(!quizName && !quizAuthor && !quizType && !currentquiz && !subject) {
+            return res.status(404).json({
+                success: false,
+                message: 'Provide all the fields'
+            })
+        }
 
         const quizCreated = await Quiz.create({ quizName: quizName, authorName: quizAuthor, type: quizType });
+        const addedToSubject = await Subject.findByIdAndUpdate(subject,{
+            $push :{
+                quiz: quizCreated._id
+            }
+        })
 
+        if(!addedToSubject){
+            return res.status(500).json({
+                success: false,
+                message:"Unable to add to the subject"
+            })
+        }
         currentquiz.forEach(async (question) => {
             const options = question.options;
             const ans = question.ans;
