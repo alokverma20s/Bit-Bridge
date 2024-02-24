@@ -1,5 +1,5 @@
 import Subject from "../models/subjects.js";
-import Department from "../models/Department.js";
+import Department from "../models/department.js";
 
 export const addSubject = async (req, res) =>{
     const {subjectName, subjectDescription, semester, department} = req.body;
