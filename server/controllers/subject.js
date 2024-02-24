@@ -78,3 +78,31 @@ export const getSubjectQuestion = async (req, res) =>{
         })
     }
 }
+
+export const getSubjectQuiz = async (req, res) => {
+    const {subjectId} = req.params;
+    try {
+        if(!subjectId) 
+        return res.status(404).json({
+            success: false,
+            message: "Subject id is required."
+        })
+        const quizzes = await Subject.findById(subjectId, {select: {quiz: true, subjectName: true, subjectDescription: true}}).populate({
+            path: 'quiz',
+            populate:{
+                path: "authorName",
+                select:{role:true, name: true}
+            }
+        }).select({subjectName: true, subjectDescription: true})
+        return res.status(200).json({
+            quizzes,
+            success: true,
+            message: "Quiz fetched Successfully."
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong."
+        })
+    }
+}
