@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../apiConnector"
 import { subjectEndpoints } from "../apis"
 
-const {GET_API, GETQUESTIONS_API, POST_API} = subjectEndpoints;
+const {GET_API, GETQUESTIONS_API, POST_API, GETQUIZ_API} = subjectEndpoints;
 
 export function getSubjects(setLoading, setSubjects){
     return async (dispatch) =>{
@@ -45,6 +45,25 @@ export function getQuestionsBySubject(setLoading, setSubjects, subjectId){
                 throw new Error(response.data.message);
             }
             setSubjects(response.data.questions);
+            setLoading(false);
+            // toast.success("Fetched Successfully...");
+        } catch (error) {
+            toast.error(error.response.data.message);
+        }
+    }
+}
+
+export function getQuizBySubject(setLoading, setQuizes, subjectId, setSubjectName){
+    return async (dispatch) => {
+        setLoading(true);
+        try {
+            const response = await apiConnector("GET", GETQUIZ_API+subjectId);
+            if(!response.data.success){
+                throw new Error(response.data.message);
+            }
+            
+            setQuizes(response.data?.quizzes.quiz);
+            setSubjectName(response.data.quizzes.subjectName);
             setLoading(false);
             // toast.success("Fetched Successfully...");
         } catch (error) {

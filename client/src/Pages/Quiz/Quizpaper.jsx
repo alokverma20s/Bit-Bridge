@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { deleteQuiz } from '../../services/operations/QuizAPI';
 
-const Quizpaper = ({quizArray, quiz, index}) => {
+const Quizpaper = ({quiz, index}) => {
     const dispatch = useDispatch();
     const navigate=useNavigate();
     const User = useSelector((state) =>( state.currentUserReducer ))

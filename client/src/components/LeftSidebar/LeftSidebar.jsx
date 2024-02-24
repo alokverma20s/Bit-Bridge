@@ -43,7 +43,7 @@ const LeftSidebar = () => {
                         User?.result.role==='admin' &&
                         <NavLink to='/AdminDashboard' className='side-nav-links' activeClass='active' style={{paddingLeft: "10px"}}>
                             <MdAdminPanelSettings style={{fontSize: "25px"}}/>
-                            <p style={{paddingLeft: "6px"}}>Admin Dashboard</p>
+                            <p style={{paddingLeft: "6px"}}>Admin Panel</p>
                         </NavLink>
                     }
                     

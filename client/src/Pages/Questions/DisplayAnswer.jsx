@@ -13,6 +13,7 @@ import { BiSolidDownvote } from "react-icons/bi";
 import {BiUpvote, BiDownvote} from "react-icons/bi";
 import { deleteAnswer } from '../../actions/question.js'
 import { voteAnswer } from '../../actions/question.js'
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 const DisplayAns = ({ question }) => {
   const location = useLocation();
@@ -34,8 +35,6 @@ const DisplayAns = ({ question }) => {
   useEffect(()=>{
     question?.answer?.map((ans, index)=>{
       currentVotes[index]=(ans.upVote.length - ans.downVote.length);
-      console.log(ans.upVote);
-      console.log(User?.result?._id);
       if(ans.upVote.includes(User?.result?._id)){
         currentUpvote[index]=1;
       }
@@ -44,8 +43,6 @@ const DisplayAns = ({ question }) => {
       }
     })
   });
-
-  console.log(currentVotes);
 
   const handleUpVote = (answerId, index) => {
     if(User==null){
@@ -91,7 +88,7 @@ const DisplayAns = ({ question }) => {
     }
       
   }
-  // console.log(question.answer);
+  
   return (
     <div style={{display:"flex", flexDirection:"column", gap:"20px"}}>
       {
@@ -111,14 +108,26 @@ const DisplayAns = ({ question }) => {
               <p>{ans.answerBody}</p>
               <div className='question-actions-user'>
                 <div>
-                  <CopyToClipboard text={url}>
-                    <button type='button' onClick={() => { toast.success(`Copied url: ${url}`) }}>Share</button>
-                  </CopyToClipboard>
-                  {
-                    (User?.result?._id === ans?.userId?._id || User?.result?.role === 'admin') && (
-                      <button type='button' onClick={() => handleDelete(ans._id, question.noOfAnswers)}>Delete</button>
-                    )
-                  }
+                  <div>
+                    <CopyToClipboard text={url}>
+                      <button type='button' onClick={() => { toast.success(`Copied url: ${url}`) }}>Share</button>
+                    </CopyToClipboard>
+                    {
+                      (User?.result?._id === ans?.userId?._id || User?.result?.role === 'admin') && (
+                        <button type='button' onClick={() => handleDelete(ans._id, question.noOfAnswers)}>Delete</button>
+                      )
+                    }
+                  </div>
+                  <div>
+                    {/* {console.log(ans.verifiedBy)} */}
+                    {
+                      ans?.verifiedBy?.length>0 && <span><RiVerifiedBadgeFill style={{color: "green"}}/> Verified by {ans?.verifiedBy?.at(0).name}</span> 
+                    }
+                    {
+                      ans?.verifiedBy?.length>1 && <span> and {ans.verifiedBy?.length -1} more instructor(s)</span>
+                    }
+                  </div>
+                  
                 </div>
                 <div>
                   <p style={{fontFamily:"sans-serif" ,fontSize:"14px", fontWeight:"400"}}>answered {moment(ans.answeredOn).fromNow()}</p>

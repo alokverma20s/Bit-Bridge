@@ -23,7 +23,7 @@ export const subjectEndpoints = {
     POST_API: BASE_URL+"/subject/addSubject",
     GET_API: BASE_URL+"/subject/getSubjects",
     GETQUESTIONS_API: BASE_URL+"/subject/getSubjectQuestions/",
-
+    GETQUIZ_API: BASE_URL+"/subject//getSubjectQuiz/",
 }
 
 export const departmentEndpoints = {
