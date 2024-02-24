@@ -23,6 +23,11 @@
     font-weight: 500;
 }
 
+.user-profile-link:hover{
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
 .user-profile-link h3{
     display: flex;
     padding: 8px 8px;
@@ -38,13 +43,13 @@
 #instructor-avatar{
     display: flex;
     padding: 10px 10px;
-    background-color: rgb(59, 59, 60);
     border-radius: 50%;
     min-width: 15px;
     align-items: center;
     justify-content: center;
     margin: 15px;
-    background-color: black;
+    background-color: white;
+    color: black;
 }
 #admin-avatar{
     display: flex;

@@ -3,7 +3,7 @@ body {
   font-family: sans-serif;
   font-size: 14px;
   /* background: black; */
-  background: white;
+  background: rgb(225, 227, 244);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -215,6 +215,11 @@ p {
   backdrop-filter: blur(9.7px);
   -webkit-backdrop-filter: blur(9.7px);
   border: 1px solid rgba(255, 255, 255, 1);
+  padding: 20px;
+}
+
+.show-answer:hover{
+  color: rgb(105, 116, 198);
 }
 
 @media screen and (max-width: 400px) {

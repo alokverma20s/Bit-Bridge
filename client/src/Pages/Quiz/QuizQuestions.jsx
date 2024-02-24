@@ -60,23 +60,25 @@ const QuizQuestions = () => {
     <div className="quiz-start-container">
       {flag && (
           <div className="main-bar">
+            <div className="quiz-details-container">
             <div className="main-bar-header">
               <h1>{currentquiz?.quizName}</h1>
               <h2>{currentquiz?.type} Quiz</h2>
             </div>
-            <p>
+            <p style={{fontSize:"15px"}}>
               <b>Warning:</b> Once the quiz is started you cannot change tabs or
               click anywhere outside the window. In case you do so the quiz will
               be automatically submitted.
             </p>
+            <div>
             <form action="">
               <label htmlFor="">
-                <p>Name: </p>
-                <input type="text" name="" id="" value={User?.result?.name} />
+                <p style={{fontWeight:"600"}}>Name: </p>
+                <input type="text" name="" id="" value={User?.result?.name} style={{backgroundColor:"white", color:"black"}}/>
               </label>
               <label htmlFor="">
-                <p>Email: </p>
-                <input type="text" name="" id="" value={User?.result?.email} />
+                <p style={{fontWeight:"600"}}>Email: </p>
+                <input type="text" name="" id="" value={User?.result?.email} style={{backgroundColor:"white", color:"black"}}/>
               </label>
               <p>
                 <button onClick={startQuiz} className="quiz-submit-btn">
@@ -84,6 +86,8 @@ const QuizQuestions = () => {
                 </button>
               </p>
             </form>
+            </div>
+            </div>
           </div>
       )}
       {!flag && (
@@ -109,7 +113,7 @@ const QuizQuestions = () => {
               <ol type="1">
                 {currentquiz?.questions?.map((question, index) => (
                   <div className="quiz-question">
-                    <li>
+                    <li style={{fontSize:"18px"}}>
                       <p>
                         <b>{question?.ques}</b>
                       </p>
@@ -143,7 +147,7 @@ const QuizQuestions = () => {
                   </div>
                 ))}
               </ol>
-              <button type="submit" className="quiz-submit-btn">
+              <button type="submit" className="quiz-submit-btn-2">
                 Submit
               </button>
             </form>

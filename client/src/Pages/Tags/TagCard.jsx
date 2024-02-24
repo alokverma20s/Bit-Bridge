@@ -40,7 +40,7 @@ const TagCard = ({ tag }) => {
     return (
         <div className='tag'>
             <div className='tags-header'>
-                <Link key={tag?._id} to={`/Tags/${tag?._id}`} className='subject-link'><h5 className='all-tags'>{tag?.tagName}</h5></Link>
+                <Link key={tag?._id} to={`/Tags/${tag?._id}`} className='tag-link'><h5 className='all-tags' style={{fontSize:'15px', textTransform:"uppercase", fontWeight:'600'}}>{tag?.tagName}</h5></Link>
                 {
                     User?.result?.role === 'admin' && <span onClick={handleClick} className='add-desc-btn'><MdModeEdit /></span>
                 }
@@ -53,7 +53,7 @@ const TagCard = ({ tag }) => {
                         <button type='submit' className='inner-grad-btn' style={{ padding: "4px 10px", margin: "2px" }}>Add description</button>
                     </form>
                     :
-                    <p>{tempDesc === ''? tag?.tagDescription: tempDesc}</p>
+                    <p style={{fontFamily:"Roboto", fontWeight:"400"}}>{tempDesc === ''? tag?.tagDescription: tempDesc}</p>
             }
             </div>
             

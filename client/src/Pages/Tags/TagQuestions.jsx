@@ -27,17 +27,17 @@ const TagsList = () => {
     <div className='home-container-2'>
         <div className='main-bar'>
             <div className='main-bar-header'>
-                <h1>{tagData?.tagName}</h1>
+                <h1 style={{textTransform:"uppercase"}}>{tagData?.tagName}</h1>
                 {/* <button onClick={checkAuth} className='ask-btn'>Ask Question</button> */}
             </div>
-            <p>{tagData?.tagDescription}</p>
+            <p style={{fontFamily:"Roboto", lineHeight:"20px", fontWeight:"500"}}>{tagData?.tagDescription}</p>
             <br />
             <div>
                 {
                     loading||questionList === null ?
                     <div className='loader-position'><Loader/></div> :
                         <div>
-                            <p>{questionList?.length} questions </p>
+                            <p style={{fontFamily:"Roboto"}}>{questionList?.length} questions </p>
                             <QuestionList questionList={questionList}></QuestionList>
                         </div>
                 }
