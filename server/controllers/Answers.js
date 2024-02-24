@@ -1,5 +1,6 @@
-import mongoose, { Query } from 'mongoose'
+import mongoose, {Types} from 'mongoose'
 import Questions from '../models/Questions.js'
+import User from '../models/auth.js'
 
 export const postAnswer = async (req, res) =>{
     const {id: _id} = req.params;
@@ -68,29 +69,52 @@ export const voteAnswer = async (req, res) => {
                 targettedAnswer = ans;
             }
         });
+        const user = await User.findById(userId);
+            
         const upIndex = targettedAnswer.upVote.findIndex((id) => id === String(userId));
         const downIndex = targettedAnswer.downVote.findIndex((id) => id === String(userId));
 
         if (value === 'upVote') {
             if (downIndex !== -1) {
                 targettedAnswer.downVote = targettedAnswer.downVote.filter((id) => id !== String(userId));
+                if(user.role === 'instructor') {
+                    const index = targettedAnswer.rejectedBy.findIndex((id) => id !== new Types.ObjectId(userId));
+                    targettedAnswer.rejectedBy.splice(index, 1);
+                }
+                    
             }
             if (upIndex === -1) {
                 targettedAnswer.upVote.push(userId);
+                if(user.role === 'instructor')
+                    targettedAnswer.verifiedBy.push(userId);
             }
             else {
                 targettedAnswer.upVote = targettedAnswer.upVote.filter((id) => id !== String(userId));
+                if(user.role === 'instructor') {
+                    const index = targettedAnswer.verifiedBy.findIndex((id) => id !== new Types.ObjectId(userId));
+                    targettedAnswer.verifiedBy.splice(index, 1);
+                }
             }
         }
         else if (value === 'downVote') {
             if (upIndex !== -1) {
                 targettedAnswer.upVote = targettedAnswer.upVote.filter((id) => id !== String(userId));
+                if(user.role === 'instructor') {
+                    const index = targettedAnswer.verifiedBy.findIndex((id) => id !== new Types.ObjectId(userId));
+                    targettedAnswer.verifiedBy.splice(index, 1);
+                }
             }
             if (downIndex === -1) {
                 targettedAnswer.downVote.push(userId);
+                if(user.role === 'instructor')
+                    targettedAnswer.rejectedBy.push(userId);
             }
             else {
                 targettedAnswer.downVote = targettedAnswer.downVote.filter((id) => id !== String(userId));
+                if(user.role === 'instructor') {
+                    const index = targettedAnswer.rejectedBy.findIndex((id) => id !== new Types.ObjectId(userId));
+                    targettedAnswer.rejectedBy.splice(index, 1);
+                }
             }
         }
         ansArray.forEach(ans => {

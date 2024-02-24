@@ -69,7 +69,13 @@ export const getAllQuestion = async (req, res) => {
         }).populate({
             path:"answer.userId",
             select:{role:true, name: true}
-        });;
+        }).populate({
+            path:"answer.verifiedBy",
+            select:{role:true, name: true}
+        }).populate({
+            path:"answer.rejectedBy",
+            select:{role:true, name: true}
+        });
         res.status(200).json(questionList);
     } catch (error) {
         res.status(404).json({ message: error.message });
