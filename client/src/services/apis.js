@@ -23,6 +23,13 @@ export const subjectEndpoints = {
     POST_API: BASE_URL+"/subject/addSubject",
     GET_API: BASE_URL+"/subject/getSubjects",
     GETQUESTIONS_API: BASE_URL+"/subject/getSubjectQuestions/",
+
+}
+
+export const departmentEndpoints = {
+    ADD_DEPARTMENT_API: BASE_URL + "/department/addDepartment/",
+    GET_ALLDEPARTMENTS_API: BASE_URL + "/department/getAllDepartment/",
+    GET_DEPARTMENT_API: BASE_URL + "/department/getDepartment/"
 }
 
 export const tagEndpoints = {
