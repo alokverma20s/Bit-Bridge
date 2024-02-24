@@ -39,7 +39,7 @@ const SubjectsList = () => {
                     <div className='subject-btns'>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link'>Questions</Link>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className='subject-link'>Quizes</Link>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/resourses`} className='subject-link'>Resourses</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/resources`} className='subject-link'>Resources</Link>
                       </div>
                       <p className='subject-desc'>{subject.subjectDescription}</p>
                     </div>
@@ -57,7 +57,7 @@ const SubjectsList = () => {
                 <form action="" onSubmit={handleSubmit}>
                   <label htmlFor="">
                     <p>Subject Name: </p>
-                    <input type="text" name="" id="" placeholder='Enter subject name' onChange={(e)=>{setNewSubject(e.target.value)}}/>;
+                    <input type="text" name="" id="" placeholder='Enter subject name' onChange={(e)=>{setNewSubject(e.target.value)}}/>
                     <p>Subject Description: </p>
                     <textarea name="" id="" cols="100" rows="10" placeholder='Enter subject description' onChange={(e)=>{setNewSubjectDesc(e.target.value)}}></textarea>
                   </label>

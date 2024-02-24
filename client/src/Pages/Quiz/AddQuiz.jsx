@@ -101,21 +101,12 @@ const AddQuiz = () => {
                 <label htmlFor="" id="quizType">
                   Quiz type :
                 </label>
-                <input
-                  type="radio"
-                  name="quizType"
-                  id="Assessment"
-                  value="Assessment"
-                  onClick={(e) => {
+                <input type="radio" name="quizType" id="Assessment" value="Assessment"onClick={(e) => {
                     setQuizType("Assessment");
                   }}
                 />
                 <label htmlFor="Assessment">Assessment</label>
-                <input
-                  type="radio"
-                  name="quizType"
-                  id="Practice"
-                  value="Practice"
+                <input type="radio" name="quizType" id="Practice" value="Practice"
                   onClick={(e) => {
                     setQuizType("Practice");
                   }}

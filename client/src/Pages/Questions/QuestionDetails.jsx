@@ -26,6 +26,7 @@ const QuestionDetails = () => {
     const url = "https://bitbridge.netlify.app" + location.pathname;
     const [Answer, setAnswer] = useState("");
     const User = useSelector((state) => (state.currentUserReducer));
+    const [selectedImage, setSelectedImage] = useState([]);
     const handlePostAns = (e, answerLength) => {
         e.preventDefault();
         if (User === null) {
@@ -42,19 +43,19 @@ const QuestionDetails = () => {
     }
 
     const handleDelete = () => {
-        
-            dispatch(deleteQuestion(id, navigate))
+
+        dispatch(deleteQuestion(id, navigate))
     }
 
     const handleUpVote = () => {
-        if(User==null){
+        if (User == null) {
             toast("Login to vote a question", alert);
         }
         else
             dispatch(voteQuestion(id, 'upVote', User.result?._id))
     }
     const handleDownVote = () => {
-        if(User==null){
+        if (User == null) {
             toast("Login to vote a question", alert);
         }
         else
@@ -65,7 +66,7 @@ const QuestionDetails = () => {
         <div className='question-details-page'>
             {
                 questionList.data === null ?
-                <div className='loader-position'><Loader/></div>:
+                    <div className='loader-position'><Loader /></div> :
                     <>
                         {
 
@@ -111,7 +112,7 @@ const QuestionDetails = () => {
                                                                 question.userId?.role === "instructor" &&
                                                                 <Avatar backgroundColor="green" px="2px" py="2px"><FaChalkboardTeacher /></Avatar>
                                                             }
-                                                            
+
                                                             <div>
                                                                 {question?.userId?.name}
                                                             </div>
@@ -134,6 +135,40 @@ const QuestionDetails = () => {
                                         <form onSubmit={(e) => { handlePostAns(e, question.answer.length) }}>
                                             <textarea name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
                                             <input type="Submit" name="" id="" className='post-ans-btn inner-grad-btn' value='Post Your Answer' />
+
+                                            <label>
+                                                <h4>Upload image of your answer (optional)</h4>
+
+                                                {selectedImage.length>0 && (
+                                                    <>
+                                                        <div className="img-container">
+                                                            {
+                                                                selectedImage?.map((obj)=>(
+                                                                    <>
+                                                                    {
+                                                                        obj&&<img className="img" alt="not found" width={"250px"} src={URL.createObjectURL(obj)} />  
+                                                                    }
+                    
+                                                                    </>
+                                                                ))
+                                                            }
+                                                        </div>
+
+                                                        <span className="img-btn" onClick={() => setSelectedImage([])}>
+                                                                        Remove
+                                                                    </span>
+
+                                                    </>
+                                                )}
+
+                                                <br />
+
+                                                <input type="file" name="myImage" className="img-input" onChange={(event) => {
+                                                        console.log(event.target.files);
+                                                        setSelectedImage([...selectedImage, event.target.files[0]]);
+                                                    }}
+                                                />
+                                            </label>
                                         </form>
                                         <p>
                                             Checkout other questions tagged

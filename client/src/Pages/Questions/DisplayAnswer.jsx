@@ -29,6 +29,8 @@ const DisplayAns = ({ question }) => {
   const [currentDownvote, setCurrentDownvote] = useState(Array(question.answer.length).fill(0));
 
   
+
+  
   useEffect(()=>{
     question.answer.map((ans, index)=>{
       currentVotes[index]=(ans.upVote.length - ans.downVote.length);
