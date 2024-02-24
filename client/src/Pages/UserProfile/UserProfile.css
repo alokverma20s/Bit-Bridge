@@ -27,31 +27,43 @@
 }
 
 .edit-profile-btn{
-    padding: 7px 8px;
+    /* padding: 7px 8px; */
+    /* padding: 9px; */
+    height: 40px;
+    width: 120px;
+    background-color: rgb(105, 116, 198);
     color: white;
+    border: none;
     border-width: 2px;
     transition: 0.3s;
     cursor: pointer;
-    font-size: 12px;
+    font-family: "Rubik";
+    font-size: 14px;
+    font-weight: 600;
     margin-right: 10px;
 }
 
 .edit-profile-btn:hover{
-    background-color: rgb(255, 255, 255, 0.5);
+    background-color: rgb(87, 98, 170);
 }
 
 .edit-profile-title{
     padding: 20px;
-    border-bottom: solid 1px #dbd9d9;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.112);
 }
 
 .edit-profile-title-2{
     color: grey;
+    margin-left: 20px;
 }
 
 .edit-profile-form{
     padding: 20px;
-    border: solid 1px #dbd9d9;
+    background: rgba(255, 255, 255, 0.21);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.7px);
+    -webkit-backdrop-filter: blur(9.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .edit-profile-form label h3{
@@ -75,8 +87,37 @@
 }
 
 .submit-btn{
-    padding: 5px 10px;
     margin-left: 5px;
+    background-color: rgb(105, 116, 198);
+    color: white;
+    height: 30px;
+    width: 120px;
+    font-family: 'Rubik';
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.submit-btn:hover{
+    cursor: pointer;
+    background-color: rgb(87, 98, 170);
+}
+
+.cancel-btn{
+    margin-left: 15px;
+    background-color: rgb(105, 116, 198);
+    color: white;
+    border: none;
+    height: 26px;
+    width: 80px;
+    font-size: 16px;
+    font-family: 'Rubik';
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.cancel-btn:hover{
+    cursor: pointer;
+    background-color: rgb(87, 98, 170);
 }
 
 .user-cancel-btn{
@@ -88,7 +129,6 @@
     font-size: 12px;
     margin-right: 10px;
 }
-
 
 @media screen and (max-width: 720px) {
     .section-container{
