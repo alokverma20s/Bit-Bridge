@@ -32,14 +32,14 @@ const DisplayAns = ({ question }) => {
 
   
   useEffect(()=>{
-    question.answer.map((ans, index)=>{
+    question?.answer?.map((ans, index)=>{
       currentVotes[index]=(ans.upVote.length - ans.downVote.length);
       console.log(ans.upVote);
-      console.log(User.result._id);
-      if(ans.upVote.includes(User.result._id)){
+      console.log(User?.result?._id);
+      if(ans.upVote.includes(User?.result?._id)){
         currentUpvote[index]=1;
       }
-      if(ans.downVote.includes(User.result._id)){
+      if(ans.downVote.includes(User?.result?._id)){
         currentDownvote[index]=1;
       }
     })
@@ -52,7 +52,7 @@ const DisplayAns = ({ question }) => {
       toast("Login to vote");
     }
     else {
-      dispatch(voteAnswer(id, answerId, 'upVote', User.result?._id));
+      dispatch(voteAnswer(id, answerId, 'upVote', User?.result?._id));
       if(currentDownvote[index]==1){
         currentDownvote[index]=0;
         currentUpvote[index]=1;
@@ -74,7 +74,7 @@ const DisplayAns = ({ question }) => {
       toast("Login to vote");
     }
     else{
-      dispatch(voteAnswer(id, answerId, 'downVote', User.result?._id))
+      dispatch(voteAnswer(id, answerId, 'downVote', User?.result?._id))
       if(currentUpvote[index]==1){
         currentUpvote[index]=0;
         currentDownvote[index]=1;
@@ -93,9 +93,9 @@ const DisplayAns = ({ question }) => {
   }
   // console.log(question.answer);
   return (
-    <div>
+    <div style={{display:"flex", flexDirection:"column", gap:"20px"}}>
       {
-        question.answer.map((ans, index) => (
+        question?.answer?.map((ans, index) => (
           <div className="ans-outer-container">
             <div className='ans-voting'>
               <span onClick={()=>handleUpVote(ans._id, index, ans.upVote)}>
@@ -121,21 +121,21 @@ const DisplayAns = ({ question }) => {
                   }
                 </div>
                 <div>
-                  <p>answered {moment(ans.answeredOn).fromNow()}</p>
+                  <p style={{fontFamily:"sans-serif" ,fontSize:"14px", fontWeight:"400"}}>answered {moment(ans.answeredOn).fromNow()}</p>
                   <Link to={`/Users/${ans.userId?._id}`} className='user-link' style={{ color: '#white' }}>
                     {
-                      ans.userId?.role === "student" &&
-                      <Avatar backgroundColor="white" px="2px" py="2px">{ans.userAnswered?.charAt(0).toUpperCase()}</Avatar>
+                      ans?.userId?.role === "student" &&
+                      <Avatar backgroundColor="rgb(105, 116, 198)" px="2px" py="2px" color="white">{ans?.userAnswered?.charAt(0)?.toUpperCase()}</Avatar>
                     }{
-                      ans.userId?.role === "instructor" &&
-                      <Avatar backgroundColor="green" px="2px" py="2px"><FaChalkboardTeacher /></Avatar>
+                      ans?.userId?.role === "instructor" &&
+                      <Avatar backgroundColor="green" px="2px" py="2px" color="white"><FaChalkboardTeacher /></Avatar>
                     }{
-                      ans.userId?.role === "admin" &&
-                      <Avatar backgroundColor="purple" px="2px" py="2px"><FaUserTie /></Avatar>
+                      ans?.userId?.role === "admin" &&
+                      <Avatar backgroundColor="white" px="2px" py="2px" color="black"><FaUserTie /></Avatar>
                     }
 
-                    <div>
-                      {ans.userId?.name}
+                    <div style={{color:"rgb(105, 116, 198)", fontFamily:"Rubik", fontWeight:"600"}}>
+                      {ans?.userId?.name}
                     </div>
                   </Link>
                 </div>

@@ -4,6 +4,7 @@ import Quizpaper from './Quizpaper'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Loader from '../../components/Loader/Loader'
+import './Quiz.css'
 
 const Quiz = () => {
   const User = useSelector((state) =>( state.currentUserReducer))
@@ -31,7 +32,7 @@ const Quiz = () => {
                         (User?.result?.role==='admin'||User?.result?.role==='instructor')&&<Link to={urlQuizResultUserId} className='add-btn'>View all Results</Link>
                       }
                       {
-                        User && <Link to={urlMyResultsUserId} className='add-btn'>View your results</Link>
+                        User && <Link to={urlMyResultsUserId} className='view-your-results-btn'>View your results</Link>
                       }
                       
                     </div>

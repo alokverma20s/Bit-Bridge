@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateProfile } from '../../actions/users'
+import './UserProfile.css'
 
 const EditProfileForm = ({currentUser, setSwitch}) => {
 
@@ -28,20 +29,20 @@ const EditProfileForm = ({currentUser, setSwitch}) => {
         </h2>
         <form action="" className="edit-profile-form" onSubmit={handleSubmit}>
             <label htmlFor="name">
-                <h3>Display name</h3>
-                <input type="text" value={name} onChange={(e)=>setName(e.target.value)} />
+                <h3 style={{color:"rgb(105, 116, 198)"}}>Display name</h3>
+                <input type="text" value={name} onChange={(e)=>setName(e.target.value)} style={{color:"black", backgroundColor:"white"}} />
             </label>
             <label htmlFor="about">
-                <h3>About me</h3>
-                <textarea rows="10" id="about" value={about} onChange={(e)=>setAbout(e.target.value)}></textarea>
+                <h3 style={{color:"rgb(105, 116, 198)"}}>About me</h3>
+                <textarea rows="10" id="about" value={about} onChange={(e)=>setAbout(e.target.value)} style={{color:"black", backgroundColor:"white"}}></textarea>
             </label>
             <label htmlFor="tags">
-                <h3>Interested tags/topics</h3>
+                <h3 style={{color:"rgb(105, 116, 198)"}}>Interested tags/topics</h3>
                 <p>Add tags separated by 1 space</p>
-                <input type="text" name="" id="tags" onChange={(e)=> setTags(e.target.value)} />
+                <input type="text" name="" id="tags" onChange={(e)=> setTags(e.target.value)} style={{color:"black", backgroundColor:"white"}} />
             </label><br /> 
-            <input type="submit" value="Save profile" className=' inner-grad-btn submit-btn' />
-            <button className='inner-grad-btn submit-btn' onClick={()=>setSwitch(false)}>Cancel</button>
+            <input type="submit" value="Save profile" className='submit-btn' />
+            <button className='cancel-btn' onClick={()=>setSwitch(false)}>Cancel</button>
         </form>
     </div>
   )

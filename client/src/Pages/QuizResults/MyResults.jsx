@@ -46,17 +46,17 @@ const MyResults = () => {
                             <div key={index} className='quiz-name-container'>
                                 <div className='quiz-name'>
                                     <div>
-                                        <p>{quiz?.quizId?.quizName}</p>
-                                        <p>Average Score: {trueRound(quiz?.quizId?.average, 2)}</p>
+                                        <p style={{fontFamily:"Rubik", fontSize:"16px", fontWeight:"600"}}>{quiz?.quizId?.quizName}</p>
+                                        <p style={{fontFamily:"Rubik", fontSize:"16px"}}>Average Score: {trueRound(quiz?.quizId?.average, 2)}</p>
                                     </div>
                                     <div>
-                                        <p>{quiz?.quizId?.type} Quiz </p>
-                                        <p>Created by {quiz?.quizId?.authorName?.name}</p>
+                                        <p style={{fontFamily:"Roboto", fontSize:"16px"}}>{quiz?.quizId?.type} Quiz </p>
+                                        <p style={{fontFamily:"Roboto", fontSize:"16px"}}>Created by {quiz?.quizId?.authorName?.name}</p>
                                     </div>
                                 </div>
                                 <div>
-                                    <p>Your Score</p>
-                                    <p> {quiz?.marks} / {quiz?.totalMarks}</p>
+                                    <p style={{fontFamily:"Roboto", fontSize:"14px"}}>Your Score</p>
+                                    <p style={{fontFamily:"Roboto", fontSize:"14px", fontWeight:"600", color:"rgb(105, 116, 198)"}}> {quiz?.marks} / {quiz?.totalMarks}</p>
                                 </div>
                                 
 

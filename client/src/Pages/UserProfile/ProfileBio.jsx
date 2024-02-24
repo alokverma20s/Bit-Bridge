@@ -22,7 +22,7 @@ const ProfileBio = ({currentProfile}) => {
         {
             currentProfile?.tags ?(
                 <>
-                    <h4>Tags watched</h4>
+                    <h4 style={{fontSize:"16px"}}>Tags watched</h4>
                     {
                         currentProfile?.tags.map((tag) => (<p key={tag}>{tag}</p>))
                     }
@@ -36,7 +36,7 @@ const ProfileBio = ({currentProfile}) => {
             {
                 currentProfile?.about?(
                     <>
-                        <h4>About</h4>
+                        <h4 style={{fontSize:"16px"}}>About</h4>
                         <p>{currentProfile?.about}</p>
                     </>
                 ):(
@@ -44,7 +44,7 @@ const ProfileBio = ({currentProfile}) => {
                 )
             }
         </div>
-        <div className="user-questions-section">
+        <div className="user-questions-section" style={{marginTop:"40px"}}>
             {
                 questions?.questionAsked?.length !==0 ?<h2>Questions asked</h2>: <p>No question asked till now</p>}
             {

@@ -1,3 +1,7 @@
+.quizes-container{
+  display: grid;
+  row-gap: 2px;
+}
 .quiz-main-container {
   margin: 75px;
 }
@@ -60,11 +64,14 @@
 }
 
 .quiz-question {
-  border: 1px solid rgb(255, 255, 255, 0.5);
   border-radius: 10px;
   margin: 10px 0px;
   padding: 15px 35px;
-  color: rgb(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .quiz-question p {
@@ -96,12 +103,12 @@
   left: 0;
   height: 18px;
   width: 18px;
-  background-color: rgb(47, 39, 39);
+  background-color: white;
   border-radius: 50%;
 }
 
 .custom-radio input:checked + .custom-radio-button {
-  background-color: #4f46e5;
+  background-color: rgb(105, 116, 198);
 }
 
 .custom-radio input:checked + .option-outer {
@@ -118,22 +125,40 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: yellow;
+  background: rgb(105, 116, 198);
 }
 
 .quiz-submit-btn {
   font-size: 15px;
-  background-color: white;
-  color: black;
+  background-color: rgb(105, 116, 198);
+  color: white;
   border: 1px solid white;
-  border-radius: 30px;
+  border-radius: 14px;
   padding: 5px 10px;
 }
 
 .quiz-submit-btn:hover {
+  cursor: pointer;
   transition: 0.2s;
+  background-color: rgb(87, 98, 170);
+}
+
+.quiz-submit-btn-2{
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 160px;
+  height: 34px;
+  border: 1px solid white;
+  border-radius: 16px;
+  background-color: rgb(105, 116, 198);
   color: white;
-  background-color: black;
+  font-family: 'Rubik';
+  font-weight: 600;
+}
+
+.quiz-submit-btn-2:hover{
+  cursor: pointer;
+  background-color: rgb(87, 98, 170);
 }
 
 .add-quiz-btn {
@@ -200,6 +225,21 @@ textarea {
 
 .quiz-start-container {
   margin: 100px;
+}
+
+.view-your-results-btn{
+  color: white;
+  text-decoration: none;
+  background-color: rgb(105, 116, 198);
+  padding: 8px;
+  border-radius: 16px;
+  font-family: 'Rubik';
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.view-your-results-btn:hover{
+  background-color: rgb(87, 98, 170);
 }
 
 @media screen and (max-width: 600px) {
