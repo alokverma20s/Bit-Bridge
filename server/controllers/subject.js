@@ -1,7 +1,8 @@
 import Subject from "../models/subjects.js";
+import Department from "../models/department.js";
 
 export const addSubject = async (req, res) =>{
-    const {subjectName, subjectDescription} = req.body;
+    const {subjectName, subjectDescription, semester, department} = req.body;
     try {
         if(!subjectName){
             return res.status(403).json({
@@ -9,7 +10,12 @@ export const addSubject = async (req, res) =>{
                 message: "Subject Name is required."
             })
         }
-        await Subject.create({subjectName, subjectDescription})
+        const createdSubject = await Subject.create({subjectName, subjectDescription, semester, department})
+        await Department.findByIdAndUpdate(department,{
+            $push: {
+                subjects: createdSubject._id
+            }
+        })
         return res.status(200).json({
             success: true,
             message: "Subject created Successfully"

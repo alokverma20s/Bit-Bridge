@@ -12,6 +12,7 @@ import subjectRoutes from './routes/subject.js'
 import resultRoutes from './routes/Result.js'
 import tagRoutes from './routes/Tag.js'
 import adminRoutes from './routes/Admin.js'
+import departmentRoutes from './routes/Department.js'
 
 const app = express();
 dotenv.config()
@@ -32,6 +33,7 @@ app.use('/subject', subjectRoutes)
 app.use('/result', resultRoutes)
 app.use('/tag', tagRoutes)
 app.use('/admin', adminRoutes)
+app.use('/department', departmentRoutes)
 const PORT = process.env.PORT || 4000;
 const DATABASE_URL = process.env.CONNECTION_URL
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
