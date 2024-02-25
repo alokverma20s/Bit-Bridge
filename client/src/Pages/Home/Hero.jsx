@@ -18,10 +18,10 @@ const Hero = () => {
         <div className="hero-one">
           <div className="hero-content">
             <div className="hero-heading">
-              <div className="container-one">BIT</div>
-              <div className="container-two">BRIDGE</div>
+              <div className="container-one"><span className="gradient-text">BIT</span></div>
+              <div className="container-two gradient-text"><span className="gradient-text2">BRIDGE</span></div>
             </div>
-            <div className="auto-type-text">Your <span className="animated-text">{typeEffect}</span><span className="cursor"><Cursor/></span></div>
+            <div className="auto-type-text">Your <span className="animated-text gradient-text3">{typeEffect}</span><span className="cursor"><Cursor/></span></div>
             <div className="hero-desc">
               <div className="hero-content-three">
                 The Ultimate Hub for sharing ideas, asking questions
