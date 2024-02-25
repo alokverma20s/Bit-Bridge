@@ -7,7 +7,7 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  background-image: linear-gradient(to bottom left, rgb(248, 198, 232), white , rgb(247, 205, 234) ,white,  white, rgb(221, 239, 252),white, white, rgb(217, 220, 245),white, rgb(247, 238, 247), rgb(248, 198, 232));;
+  background-image: linear-gradient(to bottom left, rgb(217, 220, 245), rgb(243, 244, 246) , rgb(217, 220, 245) ,rgb(243, 244, 246),  rgb(243, 244, 246), rgb(217, 220, 245),rgb(243, 244, 246), rgb(243, 244, 246), rgb(217, 220, 245),rgb(243, 244, 246), rgb(243, 244, 246), rgb(217, 220, 245));;
 }
 p {
   color: #efefef;
