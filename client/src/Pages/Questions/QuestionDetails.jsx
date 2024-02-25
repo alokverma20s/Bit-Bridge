@@ -72,107 +72,6 @@ const QuestionDetails = () => {
         } else dispatch(voteQuestion(id, "downVote", User.result?._id));
     };
 
-<<<<<<< HEAD
-  return (
-    <div className="question-details-page">
-      {questionList.data === null ? (
-        <div className="loader-position">
-          <Loader />
-        </div>
-      ) : (
-        <>
-          {questionList.data
-            .filter((question) => question?._id === id)
-            .map((question) => (
-              <div className="main-bar" key={question?._id}>
-                <section className="question-details-container">
-                  <h1>{question.questionTitle}</h1>
-                  <div className="question-details-container-2">
-                    <div className="question-votes">
-                      <div
-                        onClick={handleUpVote}
-                        className="ques-vote-btn"
-                      >
-                        <RxTriangleUp
-                          style={{ fontSize: "40px", color: "white" }}
-                        />
-                      </div>
-                      <p>{question.upVote.length - question.downVote.length}</p>
-                      <div
-                        onClick={handleUpVote}
-                        className="ques-vote-btn"
-                      >
-                        <RxTriangleDown
-                          style={{ fontSize: "40px", color: "white" }}
-                        />
-                      </div>
-                      {/* <img src={downvote} className='material-icons-unlike' alt="downvoteButton" onClick={handleDownVote} ></img> */}
-                    </div>
-                    <div style={{ width: "100%" }}>
-                      <p className="question-body">{question.questionBody}</p>
-                      <div className="question-details-tags">
-                        {question?.questionTags?.map((tag) => (
-                          <Link key={tag?._id} to={`/Tags/${tag?._id}`} style={{textDecoration:"none"}}>
-                            <p>{tag.tagName}</p>
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="question-actions-user">
-                        <div>
-                          <CopyToClipboard text={url}>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                toast.success(`Copied url: ${url}`);
-                              }}
-                            >
-                              Share
-                            </button>
-                          </CopyToClipboard>
-                          {(User?.result?._id === question?.userId?._id ||
-                            User?.result?.role === "admin") && (
-                            <button type="button" onClick={handleDelete}>
-                              Delete
-                            </button>
-                          )}
-                        </div>
-                        <div>
-                          <p>asked on {moment(question?.askedOn).fromNow()}</p>
-                          <Link
-                            to={`/Users/${question?.userId?._id}`}
-                            className="user-link"
-                          >
-                            {question.userId?.role === "student" && (
-                              <Avatar
-                                backgroundColor="rgb(105, 116, 198)"
-                                px="2px"
-                                py="2px"
-                                color="white"
-                              >
-                                {question.userId?.name.charAt(0).toUpperCase()}
-                              </Avatar>
-                            )}
-                            {question.userId?.role === "admin" && (
-                              <Avatar
-                                backgroundColor="white"
-                                px="2px"
-                                py="2px"
-                                color="black"
-                              >
-                                <FaUserTie />
-                              </Avatar>
-                            )}
-                            {question.userId?.role === "instructor" && (
-                              <Avatar
-                                backgroundColor="green"
-                                px="2px"
-                                py="2px"
-                                color="white"
-                              >
-                                <FaChalkboardTeacher />
-                              </Avatar>
-                            )}
-=======
     return (
         <div className="question-details-page">
             {questionList.data === null ? (
@@ -272,7 +171,6 @@ const QuestionDetails = () => {
                                                                 <FaChalkboardTeacher />
                                                             </Avatar>
                                                         )}
->>>>>>> 47ef159 (background gradient changed)
 
                                                         <div
                                                             style={{
