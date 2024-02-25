@@ -51,6 +51,7 @@ const Hero = () => {
           </div>
           <div className="hero-logo">
             <img src={logo} alt="logo" />
+            <div className="shadow"></div>
           </div>
         </div>
         <div className="hero-two">
@@ -110,7 +111,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="footer">
-        
+
       </div>
     </>
   );

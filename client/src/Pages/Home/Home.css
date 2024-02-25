@@ -1,3 +1,13 @@
+.shadow{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(100, 100, 100);
+    height: 10px;
+    width: 250px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 10px 12px rgb(100, 100, 100);
+}
+
 .contact-links{
     text-decoration: none;
     color: lightskyblue;
@@ -16,12 +26,22 @@
 }
 
 .hero-two-btn{
-    background-color: rgb(244, 145, 244);
+    background-color: rgb(157, 62, 247);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
     width: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
 }
+
+.hero-two-btn:hover{
+    transform: scale(1.05);
+}
+
+
 
 .hero{
     /* position: relative; */
@@ -36,7 +56,6 @@
   }
   
   .hero-content{
-    background-color: black;
     color: white;
     height: 350px;
     width: 532px;
@@ -84,10 +103,12 @@
   .hero-logo{
     height: 350px;
     width: 532px;
-    background-color: black;
+    position: relative;
+    /* background-color: black; */
     margin-left: 100px;
     margin-top: 120px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
