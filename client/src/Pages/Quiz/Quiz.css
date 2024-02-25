@@ -226,6 +226,11 @@ textarea {
   margin-left: 20px;
   font-size: 30px;
   cursor: pointer;
+  color: black;
+}
+
+.delete-quiz:hover{
+  color: grey;
 }
 
 .quiz-start-container {
@@ -253,6 +258,19 @@ textarea {
 
 .view-your-results-btn:hover{
   background-color: rgb(87, 98, 170);
+}
+
+.result-btn-container .add-btn{
+  background-color: rgb(105, 116, 198);
+  font-family: 'Rubik';
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.result-btn-container .add-btn:hover{
+  cursor: pointer;
+  background-color: rgb(87, 98, 170);
+  color: white;
 }
 
 @media screen and (max-width: 600px) {

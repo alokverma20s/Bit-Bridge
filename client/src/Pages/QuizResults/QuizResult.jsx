@@ -50,7 +50,7 @@ const QuizResult = () => {
                                 <div key={index} className='quiz-name-container'>
                                     <div className='quiz-name'>
                                         <div>
-                                            <p>{quiz?.quizName}</p>
+                                            <p className='quiz-name-title'>{quiz?.quizName}</p>
                                             <p>Average marks: {trueRound(quiz.average, 2)}</p>
                                         </div>
                                         <div>
@@ -58,7 +58,7 @@ const QuizResult = () => {
                                             
                                         </div>
                                     </div>
-                                    <button className='inner-grad-btn participant-btn' onClick={()=>{
+                                    <button className='participant-btn' onClick={()=>{
                                         navigate(`/QuizResult/${User?.result?._id}/${quiz._id}`);
                                     }}>View All participants</button>
 

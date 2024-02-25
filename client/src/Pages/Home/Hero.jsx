@@ -1,17 +1,17 @@
 import React from "react";
-// import {useTypewriter, Cursor} from 'react-simple-typewriter'
-// import { TypeAnimation } from "react-type-animation";
+import {useTypewriter, Cursor} from 'react-simple-typewriter'
 import logo from "../../assets/logo.png";
 import ganeshji from "../../assets/ganeshji.png"
 import { NavLink } from "react-router-dom";
 
 const Hero = () => {
-  // const [typeEffect] = useTypewriter({
-  //     words: ['Campus', 'Conversations'],
-  //     loop: {},
-  //     typeSpeed: 100,
-  //     deleteSpeed: 40
-  // })
+  const [typeEffect] = useTypewriter({
+      words: ['Campus', 'Conversations'],
+      Cursor,
+      loop: {},
+      typeSpeed: 100,
+      deleteSpeed: 80
+  })
   return (
     <>
       <div className="hero">
@@ -21,19 +21,7 @@ const Hero = () => {
               <div className="container-one">BIT</div>
               <div className="container-two">BRIDGE</div>
             </div>
-
-            <div className="auto-type-text">Your Campus</div>
-
-            {<div className="auto-type-text">
-            </div>}
-                {/* { <TypeAnimation
-              sequence={["Your Campus", 2000, ""]}
-              repeat={Infinity}
-              cursor={true}
-              style={{ whiteSpace: "pre-line", display: "block" }}
-              omitDeletionAnimation={true}
-              /> } */}
-
+            <div className="auto-type-text">Your <span className="animated-text">{typeEffect}</span><span className="cursor"><Cursor/></span></div>
             <div className="hero-desc">
               <div className="hero-content-three">
                 The Ultimate Hub for sharing ideas, asking questions
@@ -76,7 +64,7 @@ const Hero = () => {
       <div className="contentOne">
         <div className="contentOne-desc">
           <p>Have your doubts and queries regarding academics, career or college?</p>
-          <p>Don't worry, we have your back. Ask your query <NavLink to='/AskQuestion'>here</NavLink> and someone will surely answer it.</p>
+          <p>Don't worry, we have your back. Ask your query <NavLink className="here" to='/AskQuestion'>here</NavLink> and someone will surely answer it.</p>
           <p>Get verified answers by our instructors and get your doubts resolved.</p>
         </div>
         <div className="contentOne-img">
@@ -84,12 +72,18 @@ const Hero = () => {
         </div>
       </div>
       <div className="contentTwo">
-        <div className="contentTwo-img">
-            <img src={ganeshji} alt="" className="ganeshji-img" />
+        <div className="learning">Making learning easier</div>
+        <div className="convenient">and more convenient for you</div>
+        <div className="contentTwo-cards">
+          <div className="card card-one"><p className="doubts-heading">Doubts & Discussions</p><hr className="doubts-hr"/><p className="doubts-desc">Engaging in discussions and posting doubts enables users to engage in real-time conversations, fostering a sense of community and knowledge exchange.</p></div>
+          <div className="card card-two"><p className="subjects-heading">Departmentwise Subjects</p><hr className="subjects-hr"/><p className="subjects-desc">Department-wise subject resources brings a host of benefits to students and faculty alike. This feature streamlines access to targeted educational materials.</p></div>
+          <div className="card card-three"><p>Subjectwise Quiz</p><hr className="quiz-hr"/></div>
         </div>
-        <div className="contentTwo-desc">
-              <p>Facing difficulty to search relevant questions?</p>
-              <p>Just use tags as keywords to search relevant questions.</p>
+        <br />
+        <div className="contentTwo-cards">
+          <div className="card card-four"><p>Topicwise Tags</p><hr className="tags-hr"/></div>
+          <div className="card card-five"></div>
+          <div className="card card-six"></div>
         </div>
       </div>
       <div className="contentOne">
