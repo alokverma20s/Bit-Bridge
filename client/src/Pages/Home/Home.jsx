@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <>
       <Hero />
-      {/* <div style={{background: "red", height: "100vh", width: "100vw"}}></div> */}
     </>
   );
 };

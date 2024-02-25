@@ -3,6 +3,7 @@ import React from "react";
 // import { TypeAnimation } from "react-type-animation";
 import logo from "../../assets/logo.png";
 import ganeshji from "../../assets/ganeshji.png"
+import { NavLink } from "react-router-dom";
 
 const Hero = () => {
   // const [typeEffect] = useTypewriter({
@@ -23,15 +24,15 @@ const Hero = () => {
 
             <div className="auto-type-text">Your Campus</div>
 
-            {/* <div className="auto-type-text">
-        </div> */}
-            {/* <TypeAnimation
-          sequence={["Your Campus", 2000, ""]}
-          repeat={Infinity}
-          cursor={true}
-          style={{ whiteSpace: "pre-line", display: "block" }}
-          omitDeletionAnimation={true}
-        /> */}
+            {<div className="auto-type-text">
+            </div>}
+                {/* { <TypeAnimation
+              sequence={["Your Campus", 2000, ""]}
+              repeat={Infinity}
+              cursor={true}
+              style={{ whiteSpace: "pre-line", display: "block" }}
+              omitDeletionAnimation={true}
+              /> } */}
 
             <div className="hero-desc">
               <div className="hero-content-three">
@@ -53,29 +54,27 @@ const Hero = () => {
           </div>
         </div>
         <div className="hero-two">
-          <button className="hero-two-btn">Hello</button>
-          <div className="random"></div>
+          
+          <NavLink to='/Questions' className='hero-two-btn' activeClass='active'>
+            <p>Questions</p>
+          </NavLink>
+          <NavLink to='/Tags' className='hero-two-btn' activeClass='active'>
+            <p>Tags</p>
+          </NavLink>
+          <NavLink to='/Subjects' className='hero-two-btn' activeClass='active'>
+            <p>Subjects</p>
+          </NavLink>
+          <NavLink to='/Users' className='hero-two-btn' activeClass='active'>
+            <p>Users</p>
+          </NavLink>
+          <NavLink to='/Quiz' className='hero-two-btn' activeClass='active'>
+            <p>Quiz</p>
+          </NavLink>
         </div>
       </div>
       <div className="contentOne">
         <div className="contentOne-desc">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit
-          accusamus reiciendis recusandae reprehenderit vero veniam libero in,
-          ipsum minima animi harum maiores voluptatibus alias deleniti inventore
-          odit necessitatibus voluptates a! Sed, neque? Perferendis consequatur,
-          aliquid odio eligendi porro inventore obcaecati neque ab pariatur
-          magni blanditiis fuga, repellendus quod sed unde quia officiis? Nam
-          non numquam labore ullam sapiente, enim atque. Illum magnam corrupti
-          laboriosam ab repellendus cum maxime architecto suscipit eaque commodi
-          ea totam voluptatem alias magni illo minus pariatur quisquam facilis
-          adipisci eveniet, aliquid sit. Harum exercitationem ratione molestiae?
-          Magnam laborum impedit tempora asperiores sapiente, ratione ab
-          voluptatum soluta rerum. Dolorem placeat odio quasi officiis
-          perferendis minima consectetur, iusto architecto similique harum
-          expedita quisquam? Tempore nesciunt saepe expedita temporibus!
-          Recusandae, beatae enim, totam quisquam itaque, optio in quas earum
-          obcaecati libero natus iure quos sequi voluptatum aut odit officia
-          doloremque excepturi vitae necessitatibus eius!
+         
         </div>
         <div className="contentOne-img">
           <img src={ganeshji} className="ganeshji-img" alt="" />

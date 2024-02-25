@@ -3,7 +3,166 @@
     color: lightskyblue;
 }
 
-
 .homepage{
     display: flex;
 }
+
+.hero-two{
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.hero-two-btn{
+    background-color: rgb(244, 145, 244);
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero{
+    /* position: relative; */
+    margin-top: 60px;
+    height: 720px;
+    width: 100vw;
+    background-color: lightgray;
+  }
+  
+  .hero-one{
+    display: flex;
+  }
+  
+  .hero-content{
+    background-color: black;
+    color: white;
+    height: 350px;
+    width: 532px;
+    /* position: absolute; */
+    margin-left: 8rem;
+    margin-top: 6rem;
+  }
+  
+  .container-one{
+    font-family: "Inter";
+    font-size: 52px;
+    font-weight: 700;
+  }
+  
+  .container-two{
+    font-family: "Inter";
+    font-size: 52px;
+    font-weight: 700;
+  }
+  
+  .auto-type-text{
+    margin-top: 15px;
+    font-family: "Inter";
+    font-size: 48px;
+    font-weight: 700;
+  }
+  
+  .hero-content-three{
+    font-family: "Inter";
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .hero-content-four{
+    font-family: "Inter";
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .hero-desc{
+    margin-top: 10px;
+    line-height: 30px;
+  }
+  
+  .hero-logo{
+    height: 350px;
+    width: 532px;
+    background-color: black;
+    margin-left: 100px;
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-btns{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .hero-content-btn{
+    background-color: white;
+    color: black;
+    height: 40px;
+    width: 150px;
+    border: 1px solid white;
+    border-radius: 20px;
+    font-family: "Inter";
+    font-weight: 600;
+  }
+  
+  .random{
+    height: 50px;
+    width: 330px;
+    background-color: white;
+    margin-left: 40px;
+    border-radius: 10px;
+  }
+  /* Content-One */
+  .contentOne{
+    background-color: rgb(105, 116, 198);
+    height: 400px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .contentOne-desc{
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 500px;
+    font-family: "Rubik";
+    font-size: 24px;
+    overflow: hidden;
+    font-weight: 500;
+  }
+  
+  .contentOne-img{
+    background-color: black;
+    height: 100%;
+    width: 400px;
+  }
+  
+  .ganeshji-img{
+    height: 100%;
+    width: 1005;
+  }
+  
+  .contentTwo{
+    background-color: lightgray;
+    height: 600px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .contentThree{
+    background-color: lightblue;
+    height: 400px;
+    width: 100vw;
+  }
+  
+  .footer{
+    background-color: rgb(105, 116, 198);
+    height: 200px;
+    width: 100vw;
+  }

@@ -70,7 +70,7 @@ const AskQuestion = () => {
           userId: User?.result?._id,
           selectedSubject,
         }),
-        navigate("/")
+        navigate("/Questions")
       );
 
       // console.log(questionTitle, questionBody, questionTags);

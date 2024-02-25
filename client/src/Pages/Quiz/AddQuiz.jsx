@@ -24,7 +24,7 @@ const AddQuiz = () => {
   const [loading, setLoading] = useState(true);
 
   const [currentquiz, setCurrentQuiz] = useState([]);
-  console.log(currentquiz);
+  // console.log(currentquiz);
   var obj = {};
   var temp = [];
 
@@ -32,12 +32,14 @@ const AddQuiz = () => {
     dispatch(getSubjects(setLoading, setSubjects));
   }, [])
 
+  // console.log(subject);
+
   function addQuestion(e) {
     e.preventDefault();
     if (document.getElementById("questionName").value === "") {
       toast.error("Please add question title name");
     } else {
-      console.log(document.getElementById("quizName"));
+      // console.log(document.getElementById("quizName"));
       obj = {
         ques: document.getElementById("questionName").value,
         options: temp,
@@ -139,7 +141,7 @@ const AddQuiz = () => {
                     Select
                   </option>
                   {subjects.map((subject) => (
-                    <option value={subject.subjectName}>
+                    <option value={subject._id}>
                       {subject.subjectName}
                     </option>
                   ))}
