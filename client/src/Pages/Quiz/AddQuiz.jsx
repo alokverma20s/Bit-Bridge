@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createQuiz } from "../../actions/quiz";
 import { getSubjects } from "../../services/operations/subjectAPI";
+import Select from "react-select";
 
 // import "./AddQuiz.css";
 import './Quiz.css'
@@ -20,8 +21,10 @@ const AddQuiz = () => {
   const [quizAuthor] = useState(User?.result?._id);
   const [quizType, setQuizType] = useState("Practice");
   const [subjects, setSubjects] = useState([]);
-  const [subject, setSubject] = useState(undefined);
+  const [subject, setSubject] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedOptions, setSelectedOptions] = useState();
+  const optionList = [];
 
   const [currentquiz, setCurrentQuiz] = useState([]);
   // console.log(currentquiz);
@@ -32,7 +35,17 @@ const AddQuiz = () => {
     dispatch(getSubjects(setLoading, setSubjects));
   }, [])
 
+  for(var i=0;i<subjects.length;i++){
+    var obj = {
+      value: subjects?.at(i)?.subjectName,
+      label: subjects?.at(i)?.subjectName,
+    };
+    optionList.push(obj);
+  }
   // console.log(subject);
+  function handleSelect1(data) {
+    setSubject(data);
+  }
 
   function addQuestion(e) {
     e.preventDefault();
@@ -130,22 +143,9 @@ const AddQuiz = () => {
               <label htmlFor="ask-ques-subject">
                 <h4>Subject</h4>
                 <span>Select a subject for question </span>
-                <select
-                  name="subject"
-                  id="subject"
-                  onChange={(e) => {
-                    setSubject(document.getElementById("subject").value);
-                  }}
-                >
-                  <option value="none" selected disabled hidden>
-                    Select
-                  </option>
-                  {subjects.map((subject) => (
-                    <option value={subject._id}>
-                      {subject.subjectName}
-                    </option>
-                  ))}
-                </select>
+                <div className="dropdown-container">
+                  <Select options={optionList} placeholder="Select Subject" onChange={handleSelect1} isSearchable={true}/>
+                </div>
               </label>
               <label>
                 <p id="quiz-name-heading">Quiz Name</p>
@@ -244,6 +244,7 @@ const AddQuiz = () => {
               <button type="submit" className="inner-grad-btn add-quiz-btn" style={{ fontSize: "14px" }} id="submit-btn">
                 Submit
               </button>
+              
             </form>
           </div>
         </div>

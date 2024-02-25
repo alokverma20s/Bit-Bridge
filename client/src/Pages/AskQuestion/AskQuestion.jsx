@@ -6,6 +6,7 @@ import { getSubjects } from '../../services/operations/subjectAPI';
 import "./AskQuestion.css";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import Select from 'react-select';
 
 const AskQuestion = () => {
   const [selectedSubject, setSubject] = useState(undefined);
@@ -21,18 +22,24 @@ const AskQuestion = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const User = useSelector((state) => state.currentUserReducer);
+  const optionList = [];
 
   useEffect(() => {
     dispatch(getSubjects(setLoading, setSubjects));
   }, [])
 
-  
-
-  function selectSubject(e) {
-    setSubject(e.target.value);
-    // console.log(subject);
-    // setDropDown(!dropDown);
+  for(var i =0 ;i<subjects.length;i++){
+    let obj={
+      label: subjects.at(i).subjectName,
+      value: subjects.at(i).subjectName,
+    }
+    optionList.push(obj);
   }
+
+  function handleSelect1(data){
+    setSubject(data.value);
+  }
+
 
   function handleClick(e) {
     setDropDown(!dropDown);
@@ -61,6 +68,7 @@ const AskQuestion = () => {
       questionTitle !== undefined &&
       questionBody !== undefined
     ) {
+      console.log(selectedSubject);
       dispatch(
         askQuestion({
           questionTitle,
@@ -137,24 +145,10 @@ const AskQuestion = () => {
               />
             </label>
             <label htmlFor="ask-ques-subject">
-              <h4>Subject</h4>
-              <span>Select a subject for question </span>
-              <select
-                name="subject"
-                id="subject"
-                onChange={(e) => {
-                  setSubject(document.getElementById("subject").value);
-                }}
-              >
-                <option value="none" selected disabled hidden>
-                  Select
-                </option>
-                {subjects.map((subject) => (
-                  <option value={subject.subjectName}>
-                    {subject.subjectName}
-                  </option>
-                ))}
-              </select>
+              <h4>Select Subject</h4>
+            <div className="dropdown-container">
+              <Select options={optionList} placeholder="Select Subject" onChange={handleSelect1} isSearchable={true}/>
+              </div>
             </label>
             <br />
             <label>
