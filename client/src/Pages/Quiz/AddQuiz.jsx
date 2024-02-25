@@ -37,14 +37,15 @@ const AddQuiz = () => {
 
   for(var i=0;i<subjects.length;i++){
     var obj = {
-      value: subjects?.at(i)?.subjectName,
+      value: subjects?.at(i)?._id,
       label: subjects?.at(i)?.subjectName,
     };
     optionList.push(obj);
   }
   // console.log(subject);
   function handleSelect1(data) {
-    setSubject(data);
+    setSubject(data.value);
+    console.log(subject);
   }
 
   function addQuestion(e) {
@@ -95,6 +96,7 @@ const AddQuiz = () => {
     }
 
     if (cnt === answers.length && currentquiz.length !== 0 && subject) {
+      console.log(subject);
       dispatch(
         createQuiz({ quizName, quizAuthor, quizType, currentquiz, subject }),
         navigate("/Quiz")
