@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createQuiz } from "../../actions/quiz";
+import { getSubjects } from "../../services/operations/subjectAPI";
+
 // import "./AddQuiz.css";
 import './Quiz.css'
 import toast from 'react-hot-toast'
@@ -17,11 +19,18 @@ const AddQuiz = () => {
   const [quizName, setQuizName] = useState("General Quiz");
   const [quizAuthor] = useState(User?.result?._id);
   const [quizType, setQuizType] = useState("Practice");
+  const [subjects, setSubjects] = useState([]);
+  const [subject, setSubject] = useState(undefined);
+  const [loading, setLoading] = useState(true);
 
   const [currentquiz, setCurrentQuiz] = useState([]);
   console.log(currentquiz);
   var obj = {};
   var temp = [];
+
+  useEffect(() => {
+    dispatch(getSubjects(setLoading, setSubjects));
+  }, [])
 
   function addQuestion(e) {
     e.preventDefault();
@@ -70,13 +79,16 @@ const AddQuiz = () => {
       }
     }
 
-    if (cnt === answers.length && currentquiz.length !== 0) {
+    if (cnt === answers.length && currentquiz.length !== 0 && subject) {
       dispatch(
-        createQuiz({ quizName, quizAuthor, quizType, currentquiz }),
+        createQuiz({ quizName, quizAuthor, quizType, currentquiz, subject }),
         navigate("/Quiz")
       );
     } else if (currentquiz.length === 0) {
       toast.error("Please add at least one question.")
+    }
+    else if(!subject){
+      toast.error("Please select a subject");
     }
     else {
       toast.error("Answer all the questions");
@@ -101,9 +113,9 @@ const AddQuiz = () => {
                 <label htmlFor="" id="quizType">
                   Quiz type :
                 </label>
-                <input type="radio" name="quizType" id="Assessment" value="Assessment"onClick={(e) => {
-                    setQuizType("Assessment");
-                  }}
+                <input type="radio" name="quizType" id="Assessment" value="Assessment" onClick={(e) => {
+                  setQuizType("Assessment");
+                }}
                 />
                 <label htmlFor="Assessment">Assessment</label>
                 <input type="radio" name="quizType" id="Practice" value="Practice"
@@ -113,7 +125,26 @@ const AddQuiz = () => {
                 />
                 <label htmlFor="Practice">Practice</label>
               </p>
-
+              <label htmlFor="ask-ques-subject">
+                <h4>Subject</h4>
+                <span>Select a subject for question </span>
+                <select
+                  name="subject"
+                  id="subject"
+                  onChange={(e) => {
+                    setSubject(document.getElementById("subject").value);
+                  }}
+                >
+                  <option value="none" selected disabled hidden>
+                    Select
+                  </option>
+                  {subjects.map((subject) => (
+                    <option value={subject.subjectName}>
+                      {subject.subjectName}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <label>
                 <p id="quiz-name-heading">Quiz Name</p>
                 <input
@@ -188,8 +219,7 @@ const AddQuiz = () => {
                   </label>
                   <label>
                     <p id="ans-desc">Answer Description</p>{" "}
-                    <textarea
-                      rows="2"
+                    <textarea rows="2"
                       cols="200"
                       id="answerDescription"
                       placeholder="Enter answer description"
@@ -209,7 +239,7 @@ const AddQuiz = () => {
                 </p>
               </div>
 
-              <button type="submit" className="inner-grad-btn add-quiz-btn" style={{fontSize:"14px"}} id="submit-btn">
+              <button type="submit" className="inner-grad-btn add-quiz-btn" style={{ fontSize: "14px" }} id="submit-btn">
                 Submit
               </button>
             </form>
