@@ -88,22 +88,12 @@ const QuestionDetails = () => {
                                     <h1>{question.questionTitle}</h1>
                                     <div className="question-details-container-2">
                                         <div className="question-votes">
-                                            <div
-                                                onClick={handleUpVote}
-                                                className="ques-vote-btn"
-                                            >
-                                                <RxTriangleUp
-                                                    style={{ fontSize: "40px", color: "white" }}
-                                                />
+                                            <div onClick={handleUpVote} className="ques-vote-btn">
+                                                <RxTriangleUp style={{ fontSize: "40px", color: "white" }}/>
                                             </div>
                                             <p>{question.upVote.length - question.downVote.length}</p>
-                                            <div
-                                                onClick={handleUpVote}
-                                                className="ques-vote-btn"
-                                            >
-                                                <RxTriangleDown
-                                                    style={{ fontSize: "40px", color: "white" }}
-                                                />
+                                            <div onClick={handleUpVote} className="ques-vote-btn">
+                                                <RxTriangleDown style={{ fontSize: "40px", color: "white" }}/>
                                             </div>
                                             {/* <img src={downvote} className='material-icons-unlike' alt="downvoteButton" onClick={handleDownVote} ></img> */}
                                         </div>
@@ -119,12 +109,7 @@ const QuestionDetails = () => {
                                             <div className="question-actions-user">
                                                 <div>
                                                     <CopyToClipboard text={url}>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => {
-                                                                toast.success(`Copied url: ${url}`);
-                                                            }}
-                                                        >
+                                                        <button type="button" onClick={() => {toast.success(`Copied url: ${url}`);}}>
                                                             Share
                                                         </button>
                                                     </CopyToClipboard>
@@ -137,48 +122,24 @@ const QuestionDetails = () => {
                                                 </div>
                                                 <div>
                                                     <p>asked on {moment(question?.askedOn).fromNow()}</p>
-                                                    <Link
-                                                        to={`/Users/${question?.userId?._id}`}
-                                                        className="user-link"
-                                                    >
+                                                    <Link to={`/Users/${question?.userId?._id}`} className="user-link">
                                                         {question.userId?.role === "student" && (
-                                                            <Avatar
-                                                                backgroundColor="rgb(105, 116, 198)"
-                                                                px="2px"
-                                                                py="2px"
-                                                                color="white"
-                                                            >
+                                                            <Avatar backgroundColor="rgb(105, 116, 198)" px="2px" py="2px" color="white">
                                                                 {question.userId?.name.charAt(0).toUpperCase()}
                                                             </Avatar>
                                                         )}
                                                         {question.userId?.role === "admin" && (
-                                                            <Avatar
-                                                                backgroundColor="white"
-                                                                px="2px"
-                                                                py="2px"
-                                                                color="black"
-                                                            >
+                                                            <Avatar backgroundColor="white" px="2px" py="2px" color="black">
                                                                 <FaUserTie />
                                                             </Avatar>
                                                         )}
                                                         {question.userId?.role === "instructor" && (
-                                                            <Avatar
-                                                                backgroundColor="green"
-                                                                px="2px"
-                                                                py="2px"
-                                                                color="white"
-                                                            >
+                                                            <Avatar backgroundColor="green" px="2px" py="2px" color="white">
                                                                 <FaChalkboardTeacher />
                                                             </Avatar>
                                                         )}
 
-                                                        <div
-                                                            style={{
-                                                                color: "rgb(105, 116, 198)",
-                                                                fontFamily: "Rubik",
-                                                                fontWeight: 600,
-                                                            }}
-                                                        >
+                                                        <div style={{color: "rgb(105, 116, 198)", fontFamily: "Rubik", fontWeight: 600,}}>
                                                             {question?.userId?.name}
                                                         </div>
                                                     </Link>
@@ -198,44 +159,19 @@ const QuestionDetails = () => {
                                 )}
                                 <section className="post-ans-container">
                                     <h3>Your answer</h3>
-                                    <form
-                                        onSubmit={(e) => {
-                                            handlePostAns(e, question.answer.length);
-                                        }}
-                                    >
-                                        <textarea
-                                            name=""
-                                            id=""
-                                            cols="30"
-                                            rows="10"
-                                            onChange={(e) => setAnswer(e.target.value)}
-                                        ></textarea>
-                                        <input
-                                            type="Submit"
-                                            name=""
-                                            id=""
-                                            className="post-ans-btn"
-                                            value="Post Your Answer"
-                                        />
+                                    <form onSubmit={(e) => { handlePostAns(e, question.answer.length);}}>
+                                        <textarea name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
+                                        <input type="Submit" name="" id="" className="post-ans-btn" value="Post Your Answer"/>
                                     </form>
                                     <p>
                                         Checkout other questions tagged
                                         {question?.questionTags?.map((tag) => (
-                                            <Link
-                                                key={tag?._id}
-                                                to={`/Tags/${tag?._id}`}
-                                                className="ans-tag"
-                                                style={{ color: "rgb(105, 116, 198)" }}
-                                            >
+                                            <Link key={tag?._id} to={`/Tags/${tag?._id}`} className="ans-tag" style={{ color: "rgb(105, 116, 198)" }}>
                                                 {tag.tagName}
                                             </Link>
                                         ))}{" "}
                                         or
-                                        <Link
-                                            to="/AskQuestion"
-                                            className="all-links"
-                                            style={{ color: "rgb(105, 116, 198)" }}
-                                        >
+                                        <Link to="/AskQuestion" className="all-links" style={{ color: "rgb(105, 116, 198)" }}>
                                             {" "}
                                             ask your own question
                                         </Link>
