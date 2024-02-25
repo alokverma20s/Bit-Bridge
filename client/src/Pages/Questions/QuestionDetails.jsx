@@ -92,7 +92,7 @@ const QuestionDetails = () => {
                                                 <RxTriangleUp style={{ fontSize: "40px", color: "white" }}/>
                                             </div>
                                             <p>{question.upVote.length - question.downVote.length}</p>
-                                            <div onClick={handleUpVote} className="ques-vote-btn">
+                                            <div onClick={handleDownVote} className="ques-vote-btn">
                                                 <RxTriangleDown style={{ fontSize: "40px", color: "white" }}/>
                                             </div>
                                             {/* <img src={downvote} className='material-icons-unlike' alt="downvoteButton" onClick={handleDownVote} ></img> */}

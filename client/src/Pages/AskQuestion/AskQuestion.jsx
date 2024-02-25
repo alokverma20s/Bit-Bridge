@@ -151,7 +151,7 @@ const AskQuestion = () => {
               </div>
             </label>
             <br />
-            <label>
+            {/* <label>
               <h4>Upload image of your question (optional)</h4>
 
               {selectedImage && (
@@ -178,7 +178,7 @@ const AskQuestion = () => {
                   setSelectedImage(event.target.files[0]);
                 }}
               />
-            </label>
+            </label> */}
             <input type="submit" value="Review your question" className="review-btn"/>
           </div>
         </form>
