@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/Loader/Loader';
 import { fetchQuizResults } from '../../services/operations/resultAPI';
+import './Result.css'
 
 const TutorResult = () => {
 
@@ -37,7 +38,7 @@ const TutorResult = () => {
                         <div className='main-bar'>
                             <div className="main-bar-header">
                                 <h1>Participants</h1>
-                                <h3>Average: {trueRound(quizData?.average, 2)}</h3>
+                                <h3 className='average'>Average: {trueRound(quizData?.average, 2)}</h3>
                                 <h2>{quizData?.quizName}</h2>
                             </div>
                         </div>
@@ -50,8 +51,8 @@ const TutorResult = () => {
                                         <div className='quiz-name'>
                                             {
                                                 participant?.userName?
-                                                    <div>
-                                                        <p>{participant?.userName?.name}</p>
+                                                    <div className='participant'>
+                                                        <p className='participant-name'>{participant?.userName?.name}</p>
                                                         <p>{participant?.userName?.email}</p>
                                                     </div>
                                                     :<div>
@@ -59,7 +60,7 @@ const TutorResult = () => {
                                                         <p></p>
                                                     </div>
                                             }
-                                            <div>
+                                            <div className='score'>
                                                 <p>Score: {participant?.marks}/{quizData?.questions.length}</p>
                                             </div>
                                         </div>

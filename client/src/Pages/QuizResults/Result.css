@@ -1,3 +1,40 @@
 .participant-btn{
-    padding: 8px 5px;
+    background-color: rgb(105, 116, 198);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-family: 'Rubik';
+    font-weight: 600;
+}
+
+.participant-btn:hover{
+    cursor: pointer;
+    background-color: rgb(87, 98, 170);
+}
+
+.quiz-name p{
+    font-family: 'Rubik';
+    font-size: 16px;
+}
+
+.quiz-name-title{
+    font-weight: 600;
+}
+
+.main-bar-header .average{
+    font-family: 'Roboto';
+    font-size: 22px;
+    color: green;
+}
+
+.quiz-name p{
+    font-family: 'Rubik';
+    font-size: 16px;
+}
+.quiz-name .participant-name{
+    font-weight: 600;
+    color: rgb(105, 116, 198);
 }
