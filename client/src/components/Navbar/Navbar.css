@@ -82,11 +82,12 @@
     font-size: 13px;
     border: solid 1px #00000033;
     border-radius: 3px;
-    color:white;
+    color: black;
+    background-color: white;
   }
   input[type=text]{
-    background-color: rgb(57 50 57 / 76%);
-    color: white;
+    background-color: white;
+    color: black;
   }
   
   .navbar form .search-icon{

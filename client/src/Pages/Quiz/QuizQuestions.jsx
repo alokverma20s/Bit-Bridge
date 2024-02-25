@@ -99,9 +99,9 @@ const QuizQuestions = () => {
             (window.onblur = async function (ev) {
               if (!flag) {
                 console.log("lost focus");
-                // handleSubmit(ev);
+                handleSubmit(ev);
                 // console.log(flag);
-                // alert("Quiz auto submitted");
+                alert("Quiz auto submitted");
                 // navigate('/Quiz');
               }
             })

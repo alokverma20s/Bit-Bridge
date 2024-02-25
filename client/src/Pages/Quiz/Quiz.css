@@ -193,6 +193,8 @@ input {
   border-radius: 2px;
   font-size: 13px;
   padding: 5px;
+  color: black;
+  background-color: white;
 }
 textarea {
   color: black;
