@@ -119,27 +119,29 @@
   /* Content-One */
   .contentOne{
     background-color: rgb(105, 116, 198);
-    height: 400px;
+    height: 350px;
     width: 100vw;
     display: flex;
     justify-content: space-around;
   }
   
   .contentOne-desc{
-    background-color: black;
-    color: white;
+    color: black;
     height: 100%;
     width: 500px;
     font-family: "Rubik";
     font-size: 24px;
     overflow: hidden;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   .contentOne-img{
     background-color: black;
     height: 100%;
-    width: 400px;
+    width: 350px;
   }
   
   .ganeshji-img{
@@ -149,10 +151,29 @@
   
   .contentTwo{
     background-color: lightgray;
-    height: 600px;
+    height: 350px;
     width: 100vw;
     display: flex;
+    align-items: center;
     justify-content: space-around;
+  }
+
+  .contentTwo-desc{
+    color: black;
+    height: 100%;
+    width: 500px;
+    font-family: "Rubik";
+    font-size: 24px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .contentTwo-img{
+    background-color: black;
+    height: 100%;
+    width: 400px;
   }
   
   .contentThree{

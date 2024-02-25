@@ -74,16 +74,44 @@ const Hero = () => {
       </div>
       <div className="contentOne">
         <div className="contentOne-desc">
-         
+          <p>Have your doubts and queries regarding academics, career or college?</p>
+          <p>Don't worry, we have your back. Ask your query <NavLink to='/AskQuestion'>here</NavLink> and someone will surely answer it.</p>
+          <p>Get verified answers by our instructors and get your doubts resolved.</p>
         </div>
         <div className="contentOne-img">
           <img src={ganeshji} className="ganeshji-img" alt="" />
         </div>
       </div>
       <div className="contentTwo">
+        <div className="contentTwo-img">
+            <img src={ganeshji} alt="" className="ganeshji-img" />
+        </div>
+        <div className="contentTwo-desc">
+              <p>Facing difficulty to search relevant questions?</p>
+              <p>Just use tags as keywords to search relevant questions.</p>
+        </div>
       </div>
-      <div className="contentThree"></div>
-      <div className="footer"></div>
+      <div className="contentOne">
+        <div className="contentOne-desc">
+           <p>Find your subjects according to your field of study or disciple.</p>
+           <p>Filter questions and quizzes as per your disciple/department</p>
+        </div>
+        <div className="contentOne-img">
+          <img src={ganeshji} className="ganeshji-img" alt="" />
+        </div>
+      </div>
+      <div className="contentTwo">
+        <div className="contentTwo-img">
+              <img src={ganeshji} className="ganeshji-img" alt="" />
+        </div>
+        <div className="contentTwo-desc">
+          <p>Take various assessment and practice quizzes.</p>
+          <p>Check your results, increase knowledge and improve your performance.</p>
+        </div>
+      </div>
+      <div className="footer">
+        
+      </div>
     </>
   );
 };
