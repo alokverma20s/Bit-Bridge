@@ -3,6 +3,8 @@ import {useTypewriter, Cursor} from 'react-simple-typewriter'
 import logo from "../../assets/logo.png";
 import ganeshji from "../../assets/ganeshji.png"
 import { NavLink } from "react-router-dom";
+import macbookImg from '../../assets/pngimg.com - macbook_PNG101760_out.png'
+import quizImg from '../../assets/quiz-animation.gif'
 
 const Hero = () => {
   const [typeEffect] = useTypewriter({
@@ -30,11 +32,9 @@ const Hero = () => {
                 and fostering meaningful conversations
               </div>
             </div>
-            <div className="hero-btns">
-              <button className="hero-content-btn">Get Started</button>
-              <button className="hero-content-btn">Why BitBridge?</button>
-              <button className="hero-content-btn">View on Github</button>
-            </div>
+            {/* <div className="hero-btns">
+              <a className="hero-content-btn" href="#content-one" ><p>Why BitBridge?</p></a>
+            </div> */}
             <div className="hero-bottom"></div>
           </div>
           <div className="hero-logo">
@@ -61,14 +61,14 @@ const Hero = () => {
           </NavLink>
         </div>
       </div>
-      <div className="contentOne">
+      <div className="contentOne" id="content-one">
         <div className="contentOne-desc">
-          <p>Have your doubts and queries regarding academics, career or college?</p>
-          <p>Don't worry, we have your back. Ask your query <NavLink className="here" to='/AskQuestion'>here</NavLink> and someone will surely answer it.</p>
-          <p>Get verified answers by our instructors and get your doubts resolved.</p>
+          <div className="contentOne-desc-first">Connect.Collaborate.Catalyze</div>
+          <div className="contentOne-desc-second">Your Virtual Hub where campus academic discussions come to life! Ask your query <NavLink className="here" to='/AskQuestion'>here</NavLink> and someone will surely answer it.</div>
+          <div className="contentOne-desc-three">Join BITBRIDGE today and express yourself in a dynamic digital space tailored just for you.</div>
         </div>
         <div className="contentOne-img">
-          <img src={ganeshji} className="ganeshji-img" alt="" />
+          <img src={macbookImg} className="ganeshji-img" alt="" />
         </div>
       </div>
       <div className="contentTwo">
@@ -77,35 +77,22 @@ const Hero = () => {
         <div className="contentTwo-cards">
           <div className="card card-one"><p className="doubts-heading">Doubts & Discussions</p><hr className="doubts-hr"/><p className="doubts-desc">Engaging in discussions and posting doubts enables users to engage in real-time conversations, fostering a sense of community and knowledge exchange.</p></div>
           <div className="card card-two"><p className="subjects-heading">Departmentwise Subjects</p><hr className="subjects-hr"/><p className="subjects-desc">Department-wise subject resources brings a host of benefits to students and faculty alike. This feature streamlines access to targeted educational materials.</p></div>
-          <div className="card card-three"><p>Subjectwise Quiz</p><hr className="quiz-hr"/></div>
+          <div className="card card-three"><p className="quiz-heading">Subjectwise Quiz</p><hr className="quiz-hr"/><p className="quiz-desc">Subject-wise quizzes set by instructors offers numerous advantages for both students and faculty members. This enhances the relevance and accuracy of evaluation.</p></div>
         </div>
         <br />
         <div className="contentTwo-cards">
-          <div className="card card-four"><p>Topicwise Tags</p><hr className="tags-hr"/></div>
-          <div className="card card-five"></div>
-          <div className="card card-six"></div>
+          <div className="card card-four"><p className="tags-heading">Topicwise Tags</p><hr className="tags-hr"/><p className="tags-desc">Topic-wise tags for questions significantly enhances the user experience by facilitating efficient navigation and knowledge retrieval.</p></div>
+          <div className="card card-five"><p className="resources-heading">Resources</p><hr className="resources-hr" /><p className="resources-desc">Coming Soon...</p></div>
+          <div className="card card-six"><p className="code-editor-heading">Code Editor</p><hr className="code-editor-hr" /><p className="code-editor-desc">Coming Soon...</p></div>
         </div>
       </div>
-      <div className="contentOne">
-        <div className="contentOne-desc">
-           <p>Find your subjects according to your field of study or disciple.</p>
-           <p>Filter questions and quizzes as per your disciple/department</p>
-        </div>
-        <div className="contentOne-img">
-          <img src={ganeshji} className="ganeshji-img" alt="" />
+      <div className="contentThree">
+        <div className="contentThree-img">
+          <img src={quizImg} alt="" />
         </div>
       </div>
-      <div className="contentTwo">
-        <div className="contentTwo-img">
-              <img src={ganeshji} className="ganeshji-img" alt="" />
-        </div>
-        <div className="contentTwo-desc">
-          <p>Take various assessment and practice quizzes.</p>
-          <p>Check your results, increase knowledge and improve your performance.</p>
-        </div>
-      </div>
-      <div className="footer">
 
+      <div className="footer">
       </div>
     </>
   );

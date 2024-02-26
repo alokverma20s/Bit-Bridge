@@ -251,8 +251,13 @@ textarea {
   color: white;
   text-decoration: none;
   background-color: rgb(105, 116, 198);
-  padding: 8px;
-  border-radius: 16px;
+  /* padding: 8px;
+  border-radius: 16px; */
+  height: 18px;
+  padding: 10px;
+  margin-top: 9px;
+  border: 1px solid white;
+  border-radius: 20px;
   font-family: 'Rubik';
   font-size: 14px;
   font-weight: 600;
