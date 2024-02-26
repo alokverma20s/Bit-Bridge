@@ -80,6 +80,7 @@
 
 .hero-two-btn{
     background-color: rgb(113, 126, 218);
+    /* background-image: linear-gradient(to right, rgb(234, 122, 178), rgb(88, 87, 166)); */
     text-decoration: none;
     border-radius: 30px;
     width: 10rem;
@@ -566,8 +567,13 @@
     margin-top: 5px;
     margin-bottom: 12px;
   }
+
+  .footer-btn{
+    text-decoration: none;
+  }
   .footer-btn p{
     color: rgb(133, 131, 131);
+    text-decoration: none;
     margin-top: 4px;
     margin-bottom: 10px;
   }
@@ -597,6 +603,7 @@
   }
 
   .footer-mail {
+    text-decoration: none;
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
