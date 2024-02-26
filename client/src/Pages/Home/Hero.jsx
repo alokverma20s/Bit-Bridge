@@ -73,8 +73,11 @@ const Hero = () => {
         </div>
       </div>
       <div className="contentTwo">
-        <div className="learning">Making learning easier</div>
-        <div className="convenient">and more convenient for you</div>
+        <div className="learning-convenient">
+          <p>Making learning easier <br />
+          and more convenient for you</p>
+        </div>
+        
         <div className="contentTwo-cards">
           <div className="card card-one"><p className="doubts-heading">Doubts & Discussions</p><hr className="doubts-hr"/><p className="doubts-desc">Engaging in discussions and posting doubts enables users to engage in real-time conversations, fostering a sense of community and knowledge exchange.</p></div>
           <div className="card card-two"><p className="subjects-heading">Departmentwise Subjects</p><hr className="subjects-hr"/><p className="subjects-desc">Department-wise subject resources brings a host of benefits to students and faculty alike. This feature streamlines access to targeted educational materials.</p></div>
@@ -92,16 +95,16 @@ const Hero = () => {
           <img src={quizImg} alt="" />
         </div>
         <div className="contentThree-heading">
-          <h1>Your ultimate tool for mastering college subjects!</h1>
-          <h1>Elevate your learning experience by diving into tailored quizzes for each subject, designed to reinforce your understanding and boost your confidence.</h1>
+          <div>Your ultimate tool for mastering college subjects!</div>
+          <div>Elevate your learning experience by diving into tailored quizzes for each subject, designed to reinforce your understanding and boost your confidence.</div>
         </div>
       </div>
 
       <div className="footer">
         <div className="footer-left">
           <div className="footer-logo">
-            <h1><span>BIT</span> <span>BRIDGE</span></h1>
-            <p>The Ultimate Guide To Ace SDE Interviews.</p>
+            <h1><span id="footer-logo-bit">BIT</span> <span id="footer-logo-bridge">BRIDGE</span></h1>
+            <p>Join the Conversation, Shape the Future!</p>
           </div>
           <div className="footer-links">
 
@@ -137,6 +140,7 @@ const Hero = () => {
             <a className="footer-mail" href="mailto:bitbridge4@gmail.com"><span className="mail-icon"><IoMdMail /></span> <p>bitbridge4@gmail.com</p></a>
           </div>
         </div>
+        <p className="footer-copyright">Copyright © 2023 Bit Bridge.</p>
       </div>
     </>
   );
