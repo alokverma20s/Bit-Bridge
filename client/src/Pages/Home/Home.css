@@ -179,6 +179,7 @@
   }
 
   .hero-logo img{
+    width: 67%;
     animation: floating 4s ease-in-out infinite;
   }
 
