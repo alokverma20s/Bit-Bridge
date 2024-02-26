@@ -22,7 +22,7 @@ const AdminDashboard = () => {
             <div className="main-bar">
                 <div className="main-bar-header">
                     <h1>Admin Panel</h1>
-                    <h3>Welcome {User?.result.name}</h3>
+                    <h2>Welcome {User?.result.name}</h2>
                 </div>
                 <div className="admin-dashboard-container">
                 <h3>Pending Instructor requests</h3>
@@ -33,9 +33,9 @@ const AdminDashboard = () => {
                   <form action="" onSubmit={handleDeptSubmit}>
                     <label htmlFor="">
                       <p>Enter Department name: </p>
-                      <input type="text" name="" id="" onChange={(e)=>{setDept(e.target.value)}}/>
+                      <input className='add-dept-input' type="text" name="" id="" onChange={(e)=>{setDept(e.target.value)}}/>
                     </label>
-                    <button type='submit'>Add Department</button>
+                    <button type='submit' className='add-dept-btn'>Add Department</button>
                   </form>
                 </div>
             </div>

@@ -69,3 +69,26 @@
     display: grid;
     row-gap: 2px;
   }
+
+#semester{
+    width: 240px;
+    margin-left: 0.25rem;
+}
+
+.add-subject-btn{
+    margin-left: 1rem;
+    background-color: rgb(105, 116, 198);
+    border: none;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+.add-subject-btn:hover{
+    cursor: pointer;
+    background-color: rgb(87, 98, 170);
+}
+
+#department{
+    margin-left: 0.25rem;
+}

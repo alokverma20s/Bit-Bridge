@@ -1,9 +1,14 @@
+.admin-dashboard-container .requests{
+    display: flex;
+    gap: 40px;
+}
+
 .instructor-request-container{
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
     overflow-y: hidden;
-    gap: 10px;
+    gap: 40px;
 }
 
 .instructor-card{
@@ -20,17 +25,20 @@
 }
 
 .card-header{
-    background-color: #17191a;
+    /* background-color: #17191a; */
+    background-color: rgb(105, 116, 198);
     padding: 2px 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     min-width: 180px;
+    color: white;
 
 }
 
 .card-body{
     padding: 5px 15px;
-    background-color: #23262852; 
+    /* background-color: #23262852;  */
+    background-color: white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding-bottom: 25px;
@@ -43,7 +51,8 @@
 
 .req-btn{
     /* margin-left: 10px; */
-    background-color: black;
+    /* background-color: black; */
+    background-color: rgb(105, 116, 198);
     border-radius: 30px;
     color: white;
     border: solid 1px white;
@@ -51,6 +60,27 @@
 }
 
 .req-btn:hover{
-    background-color: rgb(200, 200, 200);
-    color: black;
+    cursor: pointer;
+    background-color: rgb(87, 98, 170);
+}
+
+.add-dept-input{
+    width: 14rem;
+}
+
+.add-dept-btn{
+    margin-left: 1rem;
+    background-color: rgb(105, 116, 198);
+    border: none;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+}
+
+.add-dept-btn:hover{
+    cursor: pointer;
+    background-color: rgb(87, 98, 170);
 }
