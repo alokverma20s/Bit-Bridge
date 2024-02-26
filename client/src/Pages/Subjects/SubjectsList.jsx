@@ -118,7 +118,7 @@ const SubjectsList = () => {
                       ))}
                     </select>
                   </label>
-                  <button>Add Subject</button>
+                  <button className='add-subject-btn'>Add Subject</button>
                 </form>
               </div>
             }

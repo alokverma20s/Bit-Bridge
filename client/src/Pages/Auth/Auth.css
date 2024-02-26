@@ -1,5 +1,5 @@
 .auth-section {
-  background-color: white;
+  background-color: rgb(225, 227, 244);
   min-height: 100vh;
   margin: 0% auto;
   display: flex;
@@ -40,7 +40,7 @@
   justify-content: space-evenly;
   /* background-color: rgb(225, 227, 244); */
   /* background: rgba(255, 255, 255, 0.21); */
-  background: rgb(225, 227, 244);
+  background: rgba(255, 255, 255, 0.21);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.7px);
   -webkit-backdrop-filter: blur(9.7px);

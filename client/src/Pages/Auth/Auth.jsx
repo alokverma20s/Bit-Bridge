@@ -203,7 +203,7 @@ const Auth = () => {
           )}
           {isSignup && !verify && (
             <button
-              className="auth-btn border-gradient border-gradient-purple grad-btn"
+              className="auth-btn"
               onClick={funcVerify}
             >
               Verify Email
