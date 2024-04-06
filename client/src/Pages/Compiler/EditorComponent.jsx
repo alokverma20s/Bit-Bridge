@@ -34,7 +34,7 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
                 setEditorTheme(editorTheme === 'vs-dark'? 'light': 'vs-dark');
                 setLightTheme(!lightTheme)
               }}>
-                {editorTheme === 'vs-dark'? <MdLightMode className="text-2xl text-gray-400" />: <MdDarkMode className="text-2xl text-gray-400" />}
+                {editorTheme === 'vs-dark'? <MdLightMode className="text-2xl text-gray-400" />: <MdDarkMode className="text-2xl text-gray-900" />}
               </div>
             </div>
             <Editor
