@@ -43,7 +43,7 @@ const OutputBox = ({ editorRef, language, stdin, lightTheme }) => {
         Run Code
       </Button>
       <div
-        className={`h-[60vh] p-2 border rounded-lg overflow-y-scroll ${lightTheme?'text-gray-900':'text-gray-400'} ${
+        className={`h-[40vh] lg:h-[60vh] p-2 border rounded-lg overflow-y-scroll ${lightTheme?'text-gray-900':'text-gray-400'} ${
           isError ? "border-red-500" : "border-[#333]"
         }`}
       >
