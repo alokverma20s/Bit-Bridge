@@ -30,6 +30,7 @@ const QuestionDetails = () => {
     const location = useLocation();
     const url = "https://bitbridge.netlify.app" + location.pathname;
     const [Answer, setAnswer] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
     const User = useSelector((state) => state.currentUserReducer);
     const handlePostAns = (e, answerLength) => {
         e.preventDefault();
@@ -161,7 +162,36 @@ const QuestionDetails = () => {
                                     <h3>Your answer</h3>
                                     <form onSubmit={(e) => { handlePostAns(e, question.answer.length);}}>
                                         <textarea name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
+                                        <label>
+                                            <h4>Upload image of your answer (optional)</h4>
+
+                                            {selectedImage && (
+                                                <>
+                                                <div className="img-container">
+                                                    <img className="img" alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)}/>
+                                                </div>
+
+                                                    <span className="img-btn" onClick={() => setSelectedImage(null)}>
+                                                    Remove
+                                                    </span>
+                                    
+                                                </>
+                                            )}
+
+                                            <br />
+
+                                            <input
+                                                type="file"
+                                                name="myImage"
+                                                className="img-input"
+                                                onChange={(event) => {
+                                                console.log(event.target.files[0]);
+                                                setSelectedImage(event.target.files[0]);
+                                                }}
+                                            />
+                                            </label>
                                         <input type="Submit" name="" id="" className="post-ans-btn" value="Post Your Answer"/>
+
                                     </form>
                                     <p>
                                         Checkout other questions tagged
