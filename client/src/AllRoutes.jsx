@@ -25,6 +25,8 @@ import FilteredQuestions from './Pages/Questions/FilteredQuestions';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
 import SubjectResource from './Pages/Subjects/SubjectResource';
 import SubjectQuiz from './Pages/Subjects/SubjectQuiz';
+import CodeEditor from './Pages/Compiler/CodeEditor';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const AllRoutes = () => {
   return ( 
@@ -33,6 +35,11 @@ const AllRoutes = () => {
         <Route path='/About' element={<About/>}></Route>
         <Route path='/Contact' element={<Contact></Contact>}></Route>
         <Route path='/Auth' element={<Auth/>}></Route>
+        <Route path='/compiler' element={
+          <ChakraProvider>
+            <CodeEditor />
+          </ChakraProvider>
+        }></Route>
 
         <Route path='/Questions' element={<Questions/>}></Route>
         <Route path='/AskQuestion' element={<AskQuestion/>}></Route>
