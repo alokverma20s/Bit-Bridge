@@ -1,7 +1,6 @@
 import React from "react";
 import {useTypewriter, Cursor} from 'react-simple-typewriter'
 import logo from "../../assets/logo.png";
-import ganeshji from "../../assets/ganeshji.png"
 import { NavLink } from "react-router-dom";
 import macbookImg from '../../assets/pngimg.com - macbook_PNG101760_out.png'
 import quizImg from '../../assets/quiz-animation.gif'
@@ -45,20 +44,20 @@ const Hero = () => {
         </div>
         <div className="hero-two">
           
-          <NavLink to='/Questions' className='hero-two-btn' activeClass='active'>
-            <p>Questions</p>
+          <NavLink to='/Questions' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
+            <p className="text-white text-[0.9rem] font-sans font-[700]">Questions</p>
           </NavLink>
-          <NavLink to='/Tags' className='hero-two-btn' activeClass='active'>
-            <p>Tags</p>
+          <NavLink to='/Tags' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
+            <p className="text-white text-[0.9rem] font-sans font-[700]">Tags</p>
           </NavLink>
-          <NavLink to='/Subjects' className='hero-two-btn' activeClass='active'>
-            <p>Subjects</p>
+          <NavLink to='/Subjects' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
+            <p className="text-white text-[0.9rem] font-sans font-[700]">Subjects</p>
           </NavLink>
-          <NavLink to='/Users' className='hero-two-btn' activeClass='active'>
-            <p>Users</p>
+          <NavLink to='/Users' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
+            <p className="text-white text-[0.9rem] font-sans font-[700]">Users</p>
           </NavLink>
-          <NavLink to='/Quiz' className='hero-two-btn' activeClass='active'>
-            <p>Quiz</p>
+          <NavLink to='/Quiz' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
+            <p className="text-white text-[0.9rem] font-sans font-[700]">Quiz</p>
           </NavLink>
         </div>
       </div>
@@ -103,7 +102,7 @@ const Hero = () => {
       <div className="footer">
         <div className="footer-left">
           <div className="footer-logo">
-            <h1><span id="footer-logo-bit">BIT</span> <span id="footer-logo-bridge">BRIDGE</span></h1>
+            <h1><span className="text-[#7B8FD9] text-[1.6rem] mt-[5px]">BIT</span> <span className="text-white text-[1.6rem]">BRIDGE</span></h1>
             <p>Join the Conversation, Shape the Future!</p>
           </div>
           <div className="footer-links">
@@ -147,3 +146,4 @@ const Hero = () => {
 };
 
 export default Hero;
+// bg-[#717EDA] w-40 no-underline rounded-xl flex justify-center items-center text-lg text-white
