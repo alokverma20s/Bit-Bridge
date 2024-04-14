@@ -40,7 +40,7 @@ const TagCard = ({ tag }) => {
     return (
         <div className='tag'>
             <div className='tags-header'>
-                <Link key={tag?._id} to={`/Tags/${tag?._id}`} className='tag-link'><h5 className='text-[0.9rem] text-white bg-[#6974C6] rounded-[0.25rem]' style={{fontSize:'15px', textTransform:"uppercase", fontWeight:'600'}}>{tag?.tagName}</h5></Link>
+                <Link key={tag?._id} to={`/Tags/${tag?._id}`} className='tag-link'><h5 style={{textTransform:"uppercase", padding: "0px", margin:"0px"}}>{tag?.tagName}</h5></Link>
                 {
                     User?.result?.role === 'admin' && <span onClick={handleClick} className='add-desc-btn'><MdModeEdit /></span>
                 }

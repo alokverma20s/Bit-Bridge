@@ -34,7 +34,8 @@
 
 .side-nav-links{
     text-decoration: none;
-    color: rgb(255, 255, 255, 0.7);
+    /* color: rgb(255, 255, 255, 0.7); */
+    padding: 15px;
     color: black;
     display: flex;
     align-items: center;
@@ -43,7 +44,7 @@
     transition: 0.2s;
     font-weight: 600;
     font-size: 15px;
-    border-bottom: 0.8px solid black;
+    /* border-bottom: 0.8px solid black; */
 }
 
 .side-nav-links:hover{
@@ -66,4 +67,9 @@
 
 p{
     color: black;
+}
+
+.public{
+    background-color: rgb(158, 122, 248);
+    padding: 15px;
 }

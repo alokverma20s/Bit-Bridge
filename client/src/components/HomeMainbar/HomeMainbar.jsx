@@ -38,7 +38,7 @@ const HomeMainbar = () => {
                 <div className='loader-position'><Loader/></div>
                 :
                 <div>
-                    <p className='questionNumber mt-4'>{questionList?.data?.length} questions </p>
+                    <p className='questionNumber m-2'>{questionList?.data?.length} questions </p>
                     <QuestionList questionList={questionList.data}></QuestionList>
                 </div>
             }

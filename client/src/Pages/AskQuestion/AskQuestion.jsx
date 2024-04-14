@@ -98,7 +98,7 @@ const AskQuestion = () => {
   return (
     <div className="ask-question">
       <div className="ask-ques-container">
-        <h1>Ask a public Question</h1>
+        <h1 className="text-2xl font-bold">Ask a public Question</h1>
         <form action="" onSubmit={handleSubmit}>
           <div className="ask-form-container">
             <label htmlFor="ask-ques-title">

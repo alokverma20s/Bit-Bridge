@@ -4,18 +4,20 @@ import {Link} from 'react-router-dom'
 
 const Questions = ({question}) => {
   return (
-    <div className='display-question-container mt-3'>
+    <div className='display-question-container'>
         <div className='display-question-details'>
             <Link to={`/Questions/${question._id}`}className='question-title-link'>{question.questionTitle}</Link>
             <div className='display-tags-time'>
                 <div className='display-tags'>
                     {
                         question?.questionTags?.map((tag) => (
-                            // <Link to={`/Tags/${tag._id}`}>
-                                <p className="all-tags mt-[0.6rem]" key={tag._id} onClick={() => {window.location.href="/Tags/"+tag._id}}>{tag.tagName}</p>
-                            // </Link>
+                            <Link key={tag?._id} to={`/Tags/${tag?._id}`}>
+                                                        <p className='all-tags'>{tag.tagName}</p>
+                                                    </Link>
                         ))
+                        
                     }
+                    
                 </div>
                 <div className='display-time'>
                 <p>

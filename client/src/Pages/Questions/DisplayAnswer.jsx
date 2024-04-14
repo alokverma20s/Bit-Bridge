@@ -121,7 +121,7 @@ const DisplayAns = ({ question }) => {
                   <div>
                     {/* {console.log(ans.verifiedBy)} */}
                     {
-                      ans?.verifiedBy?.length>0 && <span><RiVerifiedBadgeFill style={{color: "green"}}/> Verified by {ans?.verifiedBy?.at(0).name}</span> 
+                      ans?.verifiedBy?.length>0 && <span><RiVerifiedBadgeFill style={{color: "green", display: "inline"}}/> Verified by {ans?.verifiedBy?.at(0).name}</span> 
                     }
                     {
                       ans?.verifiedBy?.length>1 && <span> and {ans.verifiedBy?.length -1} more instructor(s)</span>

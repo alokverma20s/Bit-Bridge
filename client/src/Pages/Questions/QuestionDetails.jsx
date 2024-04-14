@@ -86,7 +86,7 @@ const QuestionDetails = () => {
                         .map((question) => (
                             <div className="main-bar" key={question?._id}>
                                 <section className="question-details-container">
-                                    <h1>{question.questionTitle}</h1>
+                                    <h1 className="text-2xl p-4 font-medium">{question.questionTitle}</h1>
                                     <div className="question-details-container-2">
                                         <div className="question-votes">
                                             <div onClick={handleUpVote} className="ques-vote-btn">

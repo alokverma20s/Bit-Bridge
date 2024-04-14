@@ -60,3 +60,12 @@
 .add-desc-btn:hover{
     cursor: pointer;
 }
+
+.tag-link{
+    background-color: rgb(131, 91, 199);
+    color: white;
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}

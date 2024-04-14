@@ -22,7 +22,7 @@ const LeftSidebar = () => {
                     <p>Home</p>
                 </NavLink>
                 <div className='side-nav-div'>
-                    <div><p>PUBLIC</p></div>
+                    <div className='public'><p>PUBLIC</p></div>
                     <NavLink to='/Questions' className='side-nav-links' activeClass='active'>
                         <img src={Globe} class='web-icon'alt="G"/>
                         <p style={{paddingLeft: "10px"}}>Questions</p>
@@ -39,6 +39,10 @@ const LeftSidebar = () => {
                     <NavLink to='/Quiz' className='side-nav-links' activeClass='active' style={{paddingLeft: "40px"}}>
                         <p>Quiz</p>
                     </NavLink>
+                    <NavLink to='/compiler' className='side-nav-links' activeClass='active' style={{paddingLeft: "40px"}}>
+                        <p>Code Editor</p>
+                    </NavLink>
+
                     {
                         User?.result.role==='admin' &&
                         <NavLink to='/AdminDashboard' className='side-nav-links' activeClass='active' style={{paddingLeft: "10px"}}>
