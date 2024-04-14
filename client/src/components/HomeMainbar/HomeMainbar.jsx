@@ -30,7 +30,7 @@ const HomeMainbar = () => {
             {
                 location.pathname==='/' ? <h1>Top Questions</h1> : <h1>All Questions</h1>
             }
-            <button onClick={checkAuth} className='ask-btn'>Ask Question</button>
+            <button onClick={checkAuth} className='ask-btn bg-[#6974C6] px-[10px] py-[15px] rounded-[20px] text-white text-[16px]'>Ask Question</button>
         </div>
         <div>
             {
@@ -38,7 +38,7 @@ const HomeMainbar = () => {
                 <div className='loader-position'><Loader/></div>
                 :
                 <div>
-                    <p className='questionNumber'>{questionList?.data?.length} questions </p>
+                    <p className='questionNumber mt-4'>{questionList?.data?.length} questions </p>
                     <QuestionList questionList={questionList.data}></QuestionList>
                 </div>
             }
