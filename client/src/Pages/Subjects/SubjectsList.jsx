@@ -61,12 +61,12 @@ const SubjectsList = () => {
               {loading && <div className='loader-position'><Loader /></div>}
               {subjects && subjects.map((subject) => (
                 <div className='subject'>
-                  <h3>{subject.subjectName}</h3>
+                  <h3 className='text-sm font-bold'>{subject.subjectName}</h3>
                   <div>
                     <div className='subject-btns'>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link'>Questions</Link>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className='subject-link'>Quizes</Link>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/resources`} className='subject-link'>Resources</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link mt-2 font-bold'>Questions</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className='subject-link mt-2 font-bold'>Quizes</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/resources`} className='subject-link mt-2 font-bold'>Resources</Link>
                     </div>
                     <p className='subject-desc'>{subject.subjectDescription}</p>
                   </div>

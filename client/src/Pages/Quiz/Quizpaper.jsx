@@ -34,7 +34,7 @@ const Quizpaper = ({quiz, index}) => {
                 <p className="quiz-name-two">Created by {quiz?.authorName?.name}</p>
             </div> 
         </div> 
-            <button className='quiz-name-btn' onClick={redirect}>Take Quiz</button> 
+            <button className='quiz-name-btn w-24' onClick={redirect}>Take Quiz</button> 
         {
             
             (User?.result?.role==="instructor" || User?.result?.role==="admin")&&
