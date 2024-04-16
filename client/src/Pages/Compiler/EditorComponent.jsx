@@ -6,6 +6,7 @@ import LanguageSelector from "./LanguageSelector";
 import { CODE_SNIPPETS } from "./constants";
 import OutputBox from "./OutputBox";
 import InputArea from "./InputArea";
+import ProblemDescription from "./ProblemDescription";
 
 const EditorComponent = ({setLightTheme, lightTheme}) => {
   const editorRef = useRef(null);
@@ -27,6 +28,9 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
   return (
     <div>
       <div className=" flex lg:space-x-4 flex-col lg:flex-row">
+        <div className="w-full lg:w-1/2 overflow-scroll h-[81vh] border p-3 border-gray-600 rounded-md">
+          <ProblemDescription/>
+        </div>
           <div className="text-2xl w-full lg:w-1/2">
             <div className=" flex justify-between items-center">
               <LanguageSelector language={language} onSelect={onSelect} lightTheme= {lightTheme} />
@@ -38,7 +42,7 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
               </div>
             </div>
             <Editor
-              className="border border-gray-600 h-[60vh] lg:h-[75vh]"
+              className="border border-gray-600 h-[60vh] lg:h-[70vh]"
               // height="75vh"
               theme= {editorTheme}
               language={language}
@@ -48,12 +52,12 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
               onChange={(e) => setValue(e)}
             />
           </div>
-        <div className=" w-full lg:w-1/2">
+        {/* <div className=" w-full lg:w-1/2">
         <OutputBox editorRef={editorRef} language={language} stdin={stdin} lightTheme= {lightTheme} />
           <div>
             <InputArea stdin={stdin} setStdin= {setStdin} lightTheme = {lightTheme} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
