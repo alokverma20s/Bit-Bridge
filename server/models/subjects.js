@@ -12,7 +12,13 @@ const subjectSchema = mongoose.Schema({
     quiz: [{type: mongoose.Schema.Types.ObjectId, ref: "Quiz"}],
     subjectDescription: {
         type: String,
-    }
+    },
+    resources:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Resource"
+        }
+    ]
 })
 
 export default mongoose.model("Subject", subjectSchema);
