@@ -1,22 +1,47 @@
-import Subject from "../models/subjects";
-import Resource from "../models/resourceModel";
+import Subject from "../models/subjects.js";
+import Resource from "../models/resourceModel.js";
 
-const addResource = async(req, res)=>{
+import cloudinary from 'cloudinary';
+
+
+async function uploadFileToCloudinary(file, folder, quality){
+    const options = {folder}
+    options.resource_type = "auto";
+    if(quality){
+        options.quality=quality;
+    }
+    return await cloudinary.uploader.upload(file.path, options);
+};
+
+
+export const addResource = async(req, res)=>{
     try{
-        const {name, description, authorId, subjectId, pdfFile, userId} = req.body;
+        const {resourceName, description, authorId, subjectId, userId} = req.body;
+        const file = req.file;
 
-        if(!name || !description || !authorId || !subjectId || !userId){
+        // console.log(req.file);
+        console.log(file);
+        
+
+        const response = await uploadFileToCloudinary(file, "Folder1");
+
+        if(!description){
             console.log("incomplete resources");
-            res.status(403).json({
+            return res.status(403).json({
                 success: false, message: "Incomplete fields"
             })
         }
 
-        const newResource = await Resource.create({name, description, author: authorId, subject: subjectId});
+        console.log(response);
+        const newResource = await Resource.create({resourceName, description, author: authorId, subject: subjectId});
         await Subject.findByIdAndUpdate(subjectId, { 
         $push:{
             resources: newResource._id
         }})
+
+        res.status(200).json({
+            success: true, message: "resource added successfully"
+        })
     }catch(e){
         res.status(500).json({
             success: false,

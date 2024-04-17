@@ -1,7 +1,7 @@
 import mongoose, { model } from "mongoose";
 
 const resourceSchema = mongoose.Schema({
-    name:{
+    resourceName:{
         type: String,
         required: true
     },
@@ -16,8 +16,8 @@ const resourceSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Subject"
     },
-    pdfFile:{
-        type: File,
+    pdfFileURL:{
+        type: String,
     },
     type: {
         type: String,
