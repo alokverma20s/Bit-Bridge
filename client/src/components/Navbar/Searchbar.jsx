@@ -28,9 +28,9 @@ const Searchbar = () => {
           placeholder="Search..."
           onChange={handleChange}
         />
-        <span class="material-symbols-outlined search-icon" onClick={handleSearch}>
+        <span className="material-symbols-outlined search-icon" onClick={handleSearch}>
             <Link to={`/filter/${searchText}`}>
-              <i style={{color: "white"}} class="fa fa-search" aria-hidden="true"></i>
+              <i style={{color: "white"}} className="fa fa-search" aria-hidden="true"></i>
             </Link>
         </span>
       </form>

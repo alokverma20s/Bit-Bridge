@@ -192,7 +192,7 @@ const Auth = () => {
                         }
                       }}
                     />
-                    <div class="checkmark"></div>I am an instructor.
+                    <div className="checkmark"></div>I am an instructor.
                   </p>
                 </label>
               )}

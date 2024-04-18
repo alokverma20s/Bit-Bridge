@@ -13,6 +13,9 @@ import resultRoutes from './routes/Result.js'
 import tagRoutes from './routes/Tag.js'
 import adminRoutes from './routes/Admin.js'
 import departmentRoutes from './routes/Department.js'
+import contestRoutes from './routes/Contest.js'
+import ProblemRoutes from './routes/Problem.js'
+import submissionsRoutes from './routes/Submission.js'
 
 const app = express();
 dotenv.config()
@@ -34,6 +37,13 @@ app.use('/result', resultRoutes)
 app.use('/tag', tagRoutes)
 app.use('/admin', adminRoutes)
 app.use('/department', departmentRoutes)
+app.use('/contest', contestRoutes)
+app.use('/problem', ProblemRoutes)
+app.use('/submission', submissionsRoutes)
+
+
+
+
 const PORT = process.env.PORT || 4000;
 const DATABASE_URL = process.env.CONNECTION_URL
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})

@@ -44,37 +44,37 @@ const ProblemDescription = () => {
 
       <div className="mt-7">
         {question.problemStatement.map((statement, index) => (
-          <p key={index} className=" text-base mb-1">
+          <p key={index} className="text-sm lg:text-base mb-1">
             {statement}
           </p>
         ))}
       </div>
       {question.example.map((example, index) => (
         <div key={index} className="my-4">
-          <h2 className="text-lg font-semibold">Example {index + 1}</h2>
-          <div className="border-l-[3px] border-l-gray-200 px-3">
+          <h2 className="text-sm lg:text-lg font-semibold">Example {index + 1}</h2>
+          <div className="border-l-[3px] border-l-gray-200 px-3 my-2">
             <div>
-              <span className="text-base font-semibold">Input: </span>
+              <span className="text-sm lg:text-base font-semibold">Input: </span>
               <span
-                className="text-base text-gray-600 font-mono bg-gray-100 px-2 rounded-md"
+                className="text-sm lg:text-base text-gray-600 font-mono bg-gray-100 px-2 rounded-md"
                 dangerouslySetInnerHTML={{ __html: example.input }}
               ></span>
             </div>
             <div>
-              <span className="text-base font-semibold ">Ouput: </span>
+              <span className="text-sm lg:text-base font-semibold ">Ouput: </span>
               <span
-                className="text-base text-gray-600 font-mono bg-gray-100 px-2 rounded-md"
+                className="text-sm lg:text-base text-gray-600 font-mono bg-gray-100 px-2 rounded-md"
                 dangerouslySetInnerHTML={{ __html: example.output }}
               ></span>
             </div>
           </div>
         </div>
       ))}
-      <h2 className="text-lg font-semibold mb-2">Constraints</h2>
+      <h2 className="text-sm lg:text-lg font-semibold mb-2">Constraints</h2>
       {question.constraints.map((constraint, index) => (
         <li
           key={index}
-          className=" text-base mb-1 ml-2 font-mono text-gray-600 "
+          className=" text-sm lg:text-base mb-1 ml-2 font-mono text-gray-600 "
         >
           <span
             className="bg-gray-100 px-2 rounded-md"
@@ -82,9 +82,9 @@ const ProblemDescription = () => {
           ></span>
         </li>
       ))}
-      <h2 className="text-lg font-semibold">Follow Up</h2>
+      <h2 className="text-sm lg:text-lg font-semibold">Follow Up</h2>
       <p
-        className=" text-base mb-5"
+        className=" text-sm lg:text-base mb-5"
         dangerouslySetInnerHTML={{ __html: question.followUp }}
       ></p>
       {question?.topics && question.topics.length > 0 && (
@@ -95,7 +95,7 @@ const ProblemDescription = () => {
           {question.topics.map((topic, index) => (
             <span
               key={index}
-              className="text-base mx-1 px-2 py-1 bg-gray-100 rounded-lg"
+              className="text-sm lg:text-base mx-1 px-2 py-1 bg-gray-100 rounded-lg"
             >
               {topic}
             </span>
@@ -110,7 +110,7 @@ const ProblemDescription = () => {
           {question.company.map((company, index) => (
             <span
               key={index}
-              className="text-base mx-1 px-2 py-1 bg-gray-100 rounded-lg"
+              className="text-sm lg:text-base leading-8 mx-1 px-2 py-1 bg-gray-100 rounded-lg"
             >
               {company}
             </span>
@@ -123,7 +123,7 @@ const ProblemDescription = () => {
             Hint
           </summary>
           {question.hint.map((hint, index) => (
-            <li key={index} className="text-base ml-2">
+            <li key={index} className="text-sm lg:text-base ml-2">
               {hint}
             </li>
           ))}

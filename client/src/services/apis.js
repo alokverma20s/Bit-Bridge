@@ -65,3 +65,25 @@ export const adminEndPoints = {
     ACCEPT_INSTRUCTOR_API : BASE_URL+"/admin/acceptInstrut",
     REJECT_INSTRUCTOR_API : BASE_URL+"/admin/rejectInstrut",
 }
+
+export const contestEndPoints = {
+    CREATE_CONTEST_API: BASE_URL+"/contest/createContest",
+    GET_CONTEST_API: BASE_URL+"/contest/getContest/id",
+    GET_ALL_CONTEST_API: BASE_URL+"/contest/getAllContest",
+    DELETE_CONTEST_API: BASE_URL+"/contest/deleteContest/",
+    UPDATE_CONTEST_API: BASE_URL+"/contest/updateContest/id",
+}
+
+export const problemEndPoints = {
+    CREATE_PROBLEM_API: BASE_URL+"/problem/createProblem",
+    GET_PROBLEM_API: BASE_URL+"/problem/getProblem/id",
+    GET_ALL_PROBLEM_API: BASE_URL+"/problem/getAllProblem",
+    DELETE_PROBLEM_API: BASE_URL+"/problem/deleteProblem/id",
+    UPDATE_PROBLEM_API: BASE_URL+"/problem/updateProblem/id",
+}
+
+export const submissionEndPoints = {
+    CREATE_SUBMISSION_API: BASE_URL+"/submission",
+    GET_SUBMISSION_API: BASE_URL+"/submission/getSubmission",
+    GET_SUBMISSION_BY_ID_API: BASE_URL+"/submission/getSubmission/id",
+}
