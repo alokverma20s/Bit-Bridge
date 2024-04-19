@@ -65,3 +65,7 @@ export const adminEndPoints = {
     ACCEPT_INSTRUCTOR_API : BASE_URL+"/admin/acceptInstrut",
     REJECT_INSTRUCTOR_API : BASE_URL+"/admin/rejectInstrut",
 }
+
+export const resourceEndPoints = {
+    POST_API : BASE_URL + "/reources/:subjectId",
+}
