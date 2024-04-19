@@ -13,6 +13,7 @@ const problemSchema = mongoose.Schema(
         },
         statement: String,
         constraints: [String],
+        hints: [String],
         examples: [
             {
                 input: String,

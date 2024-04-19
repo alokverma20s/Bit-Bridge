@@ -73,6 +73,8 @@ const CreateContest = () => {
           className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
         >
           <div className="mb-4 flex flex-col gap-6">
+
+            {/* Contest Name */}
             <div className="relative h-11 w-full min-w-[200px]">
               <input
                 type="text"
@@ -86,6 +88,8 @@ const CreateContest = () => {
                 Contest's Name
               </label>
             </div>
+
+            {/* Contest Description */}
             <div className="relative h-11 w-full min-w-[200px]">
               <input
                 type="text"
@@ -102,6 +106,8 @@ const CreateContest = () => {
                 Description
               </label>
             </div>
+
+            {/* Contest Duration */}
             <div className="relative h-11 w-full min-w-[200px]">
               <input
                 type="text"
@@ -118,6 +124,8 @@ const CreateContest = () => {
                 Duration in minutes
               </label>
             </div>
+
+            {/* Contest Start */}
             <div className="relative h-11 w-full min-w-[200px]">
               <input
                 type="datetime-local"
@@ -131,6 +139,8 @@ const CreateContest = () => {
                 Start Time
               </label>
             </div>
+
+            {/* Contest End */}
             <div className="relative h-11 w-full min-w-[200px]">
               <input
                 type="datetime-local"
@@ -145,6 +155,8 @@ const CreateContest = () => {
               </label>
             </div>
           </div>
+
+          {/* Contest Problems */}
           <div>
             {contestData.contestProblems.length > 0 && (
               <div className="text-xl font-semibold mb-4">Selected Problem</div>
@@ -172,6 +184,17 @@ const CreateContest = () => {
             </select>
           </div>
 
+          
+          {/* Add new Problem */}
+
+          <span
+            onClick={() => navigate("/contest/addProblem")}
+            className="text-xs font-sans text-primary-500 cursor-pointer ml-1 hover:underline"
+          >
+            Add New Problem?
+          </span>
+
+          {/* Submit Button */}
           <button
             className="mt-6 block w-full select-none rounded-lg bg-primary-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-black shadow-md shadow-primary-2 transition-all hover:shadow-lg hover:shadow-primary-500 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="submit"

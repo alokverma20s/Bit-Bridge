@@ -6,13 +6,15 @@ import { FaTag, FaRegLightbulb } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
 import { useDispatch } from "react-redux";
 import { getProblemById } from "../../services/operations/ProblemAPI";
+import { useParams } from "react-router-dom";
 
 const ProblemDescription = () => {
+  const problemId = useParams().problemId
   const dispatch = useDispatch();
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(getProblemById(setLoading, setQuestion, "6622339762e4899027a79d8e"));
+    dispatch(getProblemById(setLoading, setQuestion, problemId));
   }, []);
   console.log(question);
   return (
@@ -87,6 +89,7 @@ const ProblemDescription = () => {
           </div>
         </div>
       ))}
+
       <h2 className="text-sm lg:text-lg font-semibold mb-2">Constraints</h2>
       {question.constraints.map((constraint, index) => (
         <li
@@ -99,11 +102,17 @@ const ProblemDescription = () => {
           ></span>
         </li>
       ))}
-      <h2 className="text-sm lg:text-lg font-semibold">Follow Up</h2>
-      <p
-        className=" text-sm lg:text-base mb-5"
-        dangerouslySetInnerHTML={{ __html: question.followUp }}
-      ></p>
+
+      {question?.followUp &&( 
+        <div>
+          <h2 className="text-sm lg:text-lg font-semibold">Follow Up</h2>
+          <p
+            className=" text-sm lg:text-base mb-5"
+            dangerouslySetInnerHTML={{ __html: question.followUp }}
+          ></p>
+        </div>
+      )}
+
       {question?.topics && question.topics.length > 0 && (
         <details className="mb-5" id="topic">
           <summary className="text-lg font-semibold mb-3 cursor-pointer bg-gray-200 px-3 rounded-md">
@@ -112,28 +121,30 @@ const ProblemDescription = () => {
           {question.topics.map((topic, index) => (
             <span
               key={index}
-              className="text-sm lg:text-base mx-1 px-2 py-1 bg-gray-100 rounded-lg"
+              className="text-sm mx-1 px-2 py-1 bg-gray-100 rounded-lg"
             >
               {topic}
             </span>
           ))}
         </details>
       )}
-      {question?.company && question.company.length > 0 && (
+
+      {question?.companies && question.companies.length > 0 && (
         <details className="mb-5" id="company">
           <summary className="text-lg font-semibold mb-3 cursor-pointer bg-gray-200 px-3 rounded-md">
             Company
           </summary>
-          {question.company.map((company, index) => (
+          {question.companies.map((company, index) => (
             <span
               key={index}
-              className="text-sm lg:text-base leading-8 mx-1 px-2 py-1 bg-gray-100 rounded-lg"
+              className="text-sm leading-8 mx-1 px-2 py-1 bg-gray-100 rounded-lg"
             >
               {company}
             </span>
           ))}
         </details>
       )}
+
       {question?.hint && question.hint.length > 0 && (
         <details className="mb-5" id="hint">
           <summary className="text-lg font-semibold mb-3 cursor-pointer bg-gray-200 px-3 rounded-md">

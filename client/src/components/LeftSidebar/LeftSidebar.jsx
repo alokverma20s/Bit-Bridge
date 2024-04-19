@@ -39,8 +39,8 @@ const LeftSidebar = () => {
                     <NavLink to='/Quiz' className='side-nav-links' activeClass='active' style={{paddingLeft: "40px"}}>
                         <p>Quiz</p>
                     </NavLink>
-                    <NavLink to='/compiler' className='side-nav-links' activeClass='active' style={{paddingLeft: "40px"}}>
-                        <p>Code Editor</p>
+                    <NavLink to='/contest' className='side-nav-links' activeClass='active' style={{paddingLeft: "40px"}}>
+                        <p>Contest</p>
                     </NavLink>
 
                     {

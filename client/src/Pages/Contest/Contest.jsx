@@ -21,12 +21,15 @@ const Contest = () => {
 
   return (
     <div className="flex flex-col flex-wrap justify-around items-center mt-20 bg-transparent gap-4 ">
-        <div className="flex w-full justify-end pr-20">
+        <div className="flex w-full justify-end pr-20 gap-4">
             <button onClick={()=>navigate("/contest/createContest")} className="border-2 border-gray-600 p-2 rounded-md hover:bg-slate-300">
                 Create Contest
             </button>
+            <button onClick={()=>navigate("/contest/addProblem")} className="border-2 border-gray-600 p-2 rounded-md hover:bg-slate-300">
+                Add Problem
+            </button>
         </div>
-        <div className="flex w-[90vw] flex-wrap lg:flex-nowrap justify-center gap-4">
+        <div className="flex w-[90vw] flex-wrap justify-center gap-4">
             {
                 contests.length > 0 ?
                 contests.map(contest => <Card key={contest._id} contest={contest} />):

@@ -335,155 +335,45 @@
   .card-one{
     border-bottom: 5px solid rgb(194, 188, 227);
   }
-
-  .doubts-heading{
-    margin-left: 96px;
+  .card-two{
+    border-bottom: 5px solid rgb(234, 219, 185);
+  }
+  .card-three{
+    border-bottom: 5px solid rgb(152, 82, 44);
+  }
+  .card-four{
+    border-bottom: 5px solid rgb(214, 226, 251)
+  }
+  .card-five{
+    border-bottom: 5px solid rgb(202, 243, 222)
+  }
+  .card-six{
+    border-bottom: 5px solid pink
+  }
+  
+  .cards-heading{
+    text-align: center;
     margin-top: 40px;
     font-family: 'Inter';
     font-size: 20px;
     font-weight: 600;
   }
 
-  .doubts-hr{
-    width: 270px;
+  .cards-hr{
+    width: 100%;
   }
 
-  .doubts-desc{
+  .cards-desc{
+    text-align: justify;
     font-family: 'Inter';
     font-size: 18px;
     line-height: 28px;
     padding-left: 30px;
-    padding-right: 7px;
+    padding-right: 30px;
     padding-top: 6px;
     font-weight: 400;
   }
 
-  .card-two{
-    border-bottom: 5px solid rgb(234, 219, 185);
-  }
-
-  .subjects-heading{
-    font-family: 'Inter';
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 40px;   
-    margin-left: 70px;
-  }
-
-  .subjects-hr{
-    width: 300px;
-  }
-
-  .subjects-desc{
-    font-family: 'Inter';
-    font-size: 18px;
-    line-height: 28px;
-    padding-left: 32px;
-    padding-right: 22px;
-    padding-top: 6px;
-    font-weight: 400;
-  }
-
-  .card-three{
-    border-bottom: 5px solid rgb(152, 82, 44);
-  }
-
-  .quiz-heading{
-    font-family: 'Inter';
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 40px;   
-    margin-left: 120px;
-  }
-
-  .quiz-desc{
-    font-family: 'Inter';
-    font-size: 18px;
-    line-height: 28px;
-    padding-left: 32px;
-    padding-right: 22px;
-    padding-top: 6px;
-    font-weight: 400;
-  }
-
-  .quiz-hr{
-    width: 250px;
-  }
-
-  .card-four{
-    border-bottom: 5px solid rgb(214, 226, 251)
-  }
-
-  .tags-heading{
-    font-family: 'Inter';
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 40px;   
-    margin-left: 120px;
-  }
-
-  .tags-desc{
-    font-family: 'Inter';
-    font-size: 18px;
-    line-height: 28px;
-    padding-left: 28px;
-    padding-right: 8px;
-    padding-top: 6px;
-    font-weight: 400;
-  }
-
-  .tags-hr{
-    width: 270px;
-  }
-
-  .card-five{
-    border-bottom: 5px solid rgb(202, 243, 222)
-  }
-
-  .resources-heading{
-    font-family: 'Inter';
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 40px;   
-    margin-left: 150px;
-  }
-
-  .resources-hr{
-    width: 270px;
-  }
-
-  .resources-desc{
-    font-family: 'Inter';
-    font-size: 22px;
-    margin-left: 130px;
-    padding-top: 30px;
-    font-weight: 400;
-  }
-
-  .card-six{
-    border-bottom: 5px solid pink
-  }
-
-  .code-editor-heading{
-    font-family: 'Inter';
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 40px;   
-    margin-left: 150px;
-  }
-
-  .code-editor-hr{
-    width: 270px;
-  }
-
-  .code-editor-desc{
-    font-family: 'Inter';
-    font-size: 22px;
-    margin-left: 130px;
-    padding-top: 30px;
-    font-weight: 400;
-  }
-  
   .contentThree{
     background-color: rgb(105, 116, 198);
     height: 500px;

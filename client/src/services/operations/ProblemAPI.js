@@ -18,6 +18,8 @@ export function createProblem(setLoading, problemData, navigate){
             toast.success("Problem Created Successfully...");
         } catch (error) {
             toast.error("Unable to create Problem");
+        }finally{
+            setLoading(false);
         }
     }
 }
@@ -48,7 +50,7 @@ export function getProblemById(setLoading, setQuestion, problemId){
                 throw new Error(response.data.message);
             }
             setQuestion(response.data.problem);
-            toast.success("Fetched Successfully...");
+            //toast.success("Fetched Successfully...");
             setLoading(false);
         } catch (error) {
             toast.error("Unable to fetch Problem");

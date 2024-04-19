@@ -3,11 +3,11 @@ import Problem from "../models/Problem.js";
 
 const createProblem = async (req, res) => {
   const {
-    title, statement, author, constraints, examples, explanation, difficulty, topics, companies, testcases,
+    title, statement, author, hints, constraints, examples, explanation, difficulty, topics, companies, testcases,
   } = req.body;
   try {
     const problem = await Problem.create({
-      name:title, statement, author, constraints, examples, explanation, difficulty, topics, companies, testcases,
+      name:title, statement, author, hints, constraints, examples, explanation, difficulty, topics, companies, testcases,
     });
     return res.status(201).json({
       success: true,

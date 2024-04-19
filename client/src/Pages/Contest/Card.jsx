@@ -66,7 +66,7 @@ const Card = ({ contest }) => {
                 ? true
                 : false
             }
-            onClick={() => console.log("Start Contest")}
+            onClick={() => navigate(`/contest/${contest._id}`)}
           >
             <span> Start </span>
             <span>

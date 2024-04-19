@@ -2,17 +2,25 @@ import mongoose from "mongoose";
 import Contest from "../models/contest.js";
 
 const createContest = async (req, res) => {
-  const { name, author, description, startTime, endTime, duration, contestProblems } = req.body;
+  const {
+    name,
+    author,
+    description,
+    startTime,
+    endTime,
+    duration,
+    contestProblems,
+  } = req.body;
   try {
     console.log(name, author, startTime, endTime, duration, contestProblems);
     const contest = await Contest.create({
-      name, 
+      name,
       author,
       description,
       startTime,
       endTime,
       duration,
-      problems:contestProblems,
+      problems: contestProblems,
     });
     return res.status(201).json({
       success: true,
@@ -48,7 +56,20 @@ const getContest = async (req, res) => {
 const getContestById = async (req, res) => {
   const { id } = req.params;
   try {
-    const contest = await Contest.findById(id);
+    const contest = await Contest.findById(id, {
+      name: true,
+      author: true,
+      description: true,
+      startTime: true,
+      endTime: true,
+      duration: true,
+      problems: true,
+    }).populate("problems", {
+      name: true,
+      seq: true,
+    }).populate("author", {
+      name: true,
+    });
     return res.status(200).json({
       success: true,
       contest,

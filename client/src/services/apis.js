@@ -68,7 +68,7 @@ export const adminEndPoints = {
 
 export const contestEndPoints = {
     CREATE_CONTEST_API: BASE_URL+"/contest/createContest",
-    GET_CONTEST_API: BASE_URL+"/contest/getContest/id",
+    GET_CONTEST_API: BASE_URL+"/contest/getContest/",
     GET_ALL_CONTEST_API: BASE_URL+"/contest/getAllContest",
     DELETE_CONTEST_API: BASE_URL+"/contest/deleteContest/",
     UPDATE_CONTEST_API: BASE_URL+"/contest/updateContest/id",
