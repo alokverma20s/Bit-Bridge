@@ -76,7 +76,7 @@ export const contestEndPoints = {
 
 export const problemEndPoints = {
     CREATE_PROBLEM_API: BASE_URL+"/problem/createProblem",
-    GET_PROBLEM_API: BASE_URL+"/problem/getProblem/id",
+    GET_PROBLEM_API: BASE_URL+"/problem/getProblem/",
     GET_ALL_PROBLEM_API: BASE_URL+"/problem/getAllProblem",
     DELETE_PROBLEM_API: BASE_URL+"/problem/deleteProblem/id",
     UPDATE_PROBLEM_API: BASE_URL+"/problem/updateProblem/id",

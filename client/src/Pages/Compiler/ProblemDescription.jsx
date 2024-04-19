@@ -1,13 +1,27 @@
-import React from "react";
-import { question } from "./constants";
+import React, { useEffect, useState } from "react";
+//import { question } from "./constants";
+//import Loader from "../../components/Loader";
 import "./styles.css";
 import { FaTag, FaRegLightbulb } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
+import { useDispatch } from "react-redux";
+import { getProblemById } from "../../services/operations/ProblemAPI";
 
 const ProblemDescription = () => {
+  const dispatch = useDispatch();
+  const [question, setQuestion] = useState({});
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    dispatch(getProblemById(setLoading, setQuestion, "6622339762e4899027a79d8e"));
+  }, []);
+  console.log(question);
   return (
     <div className="w-full">
-      <h1 className="text-2xl font-semibold mb-3">{question.problemName}</h1>
+    { loading === true ? (<div>Loading...</div>) :
+
+    
+    (<div className="w-full">
+      <h1 className="text-2xl font-semibold mb-3">{question.seq}. {question.name}</h1>
 
       <span
         className={`${
@@ -43,13 +57,16 @@ const ProblemDescription = () => {
       </a>
 
       <div className="mt-7">
-        {question.problemStatement.map((statement, index) => (
-          <p key={index} className="text-sm lg:text-base mb-1">
-            {statement}
-          </p>
-        ))}
+        <p className="text-sm lg:text-base mb-1">
+          {question.statement.split("\n").map((line, index) => (
+            <span key={index}>
+              {line}
+              <br />
+            </span>
+          ))}
+        </p>
       </div>
-      {question.example.map((example, index) => (
+      {question.examples.map((example, index) => (
         <div key={index} className="my-4">
           <h2 className="text-sm lg:text-lg font-semibold">Example {index + 1}</h2>
           <div className="border-l-[3px] border-l-gray-200 px-3 my-2">
@@ -129,6 +146,8 @@ const ProblemDescription = () => {
           ))}
         </details>
       )}
+    </div>)
+  }
     </div>
   );
 };

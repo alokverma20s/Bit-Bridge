@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../apiConnector"
 import { problemEndPoints } from "../apis";
 
-const { CREATE_PROBLEM_API, GET_ALL_PROBLEM_API, GET_PROBLEM_BY_ID_API, DELETE_PROBLEM_API, UPDATE_PROBLEM_API } = problemEndPoints;
+const { CREATE_PROBLEM_API, GET_ALL_PROBLEM_API, GET_PROBLEM_API, DELETE_PROBLEM_API, UPDATE_PROBLEM_API } = problemEndPoints;
 
 export function createProblem(setLoading, problemData, navigate){
     return async (dispatch) => {
@@ -39,17 +39,17 @@ export function getProblemList(setLoading, setProblems){
     }
 }
 
-export function getProblemById(setLoading, setProblem, problemId){
+export function getProblemById(setLoading, setQuestion, problemId){
     return async (dispatch) => {
         setLoading(true);
         try {
-            const response = await apiConnector("GET", GET_PROBLEM_BY_ID_API + problemId);
+            const response = await apiConnector("GET", GET_PROBLEM_API + problemId);
             if(!response.data.success){
                 throw new Error(response.data.message);
             }
-            setProblem(response.data.problem);
-            setLoading(false);
+            setQuestion(response.data.problem);
             toast.success("Fetched Successfully...");
+            setLoading(false);
         } catch (error) {
             toast.error("Unable to fetch Problem");
         }
