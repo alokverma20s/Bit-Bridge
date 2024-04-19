@@ -27,6 +27,10 @@ import SubjectResource from './Pages/Subjects/SubjectResource';
 import SubjectQuiz from './Pages/Subjects/SubjectQuiz';
 import CodeEditor from './Pages/Compiler/CodeEditor';
 import { ChakraProvider } from '@chakra-ui/react';
+import Contest from './Pages/Contest/Contest';
+import CreateContest from './Pages/Contest/CreateContest';
+import EditContest from './Pages/Contest/EditContest';
+import AddProblem from './Pages/Contest/AddProblem';
 
 const AllRoutes = () => {
   return ( 
@@ -35,6 +39,10 @@ const AllRoutes = () => {
         <Route path='/About' element={<About/>}></Route>
         <Route path='/Contact' element={<Contact></Contact>}></Route>
         <Route path='/Auth' element={<Auth/>}></Route>
+        <Route path='/contest' element={<Contest/>}></Route>
+        <Route path='/contest/createContest' element={<CreateContest/>}></Route>
+        <Route path='/contest/editContest/:id' element={<EditContest/>}></Route>
+        <Route path='/contest/addProblem' element={<AddProblem/>}></Route>
         <Route path='/compiler' element={
           <ChakraProvider>
             <CodeEditor />

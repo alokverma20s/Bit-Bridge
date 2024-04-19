@@ -3,10 +3,10 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
-import bodyParser from 'body-parser'
-import {cloudinaryConnect} from './utils/cloudinary.js'
-import fileUpload from 'express-fileupload'
-import multer from 'multer'
+// import bodyParser from 'body-parser'
+// import {cloudinaryConnect} from './utils/cloudinary.js'
+// import fileUpload from 'express-fileupload'
+// import multer from 'multer'
 
 import userRoutes from './routes/users.js'
 import questionRoutes from './routes/Questions.js'
@@ -17,10 +17,13 @@ import resultRoutes from './routes/Result.js'
 import tagRoutes from './routes/Tag.js'
 import adminRoutes from './routes/Admin.js'
 import departmentRoutes from './routes/Department.js'
-import resourceRoute from './routes/resourceRoute.js'
+import contestRoutes from './routes/Contest.js'
+import ProblemRoutes from './routes/Problem.js'
+import submissionsRoutes from './routes/Submission.js'
+// import resourceRoute from './routes/resourceRoute.js'
 
 const app = express();
-const upload = multer();
+// const upload = multer();
 dotenv.config()
 app.use(express.json())
 app.use(express.urlencoded({limit: "30mb", extended: true}))
@@ -42,16 +45,23 @@ app.use('/result', resultRoutes)
 app.use('/tag', tagRoutes)
 app.use('/admin', adminRoutes)
 app.use('/department', departmentRoutes)
-app.use('/resources', resourceRoute)
+app.use('/contest', contestRoutes)
+app.use('/problem', ProblemRoutes)
+app.use('/submission', submissionsRoutes)
+
+// app.use('/resources', resourceRoute)
+
+
+
 const PORT = process.env.PORT || 4000;
 const DATABASE_URL = process.env.CONNECTION_URL
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=> app.listen(PORT, ()=> {console.log(`server running on port ${PORT}`);}))
     .catch((err) =>{console.log(err.message);})
 
-app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: '/tmp/'
-}));
+// app.use(fileUpload({
+//     useTempFiles: true,
+//     tempFileDir: '/tmp/'
+// }));
 
-cloudinaryConnect(); 
+// cloudinaryConnect(); 
