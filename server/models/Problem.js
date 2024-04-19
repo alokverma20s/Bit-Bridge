@@ -11,11 +11,9 @@ const problemSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
-        statement: [String],
-        input: [String],
-        output: [String],
+        statement: String,
         constraints: [String],
-        example: [
+        examples: [
             {
                 input: String,
                 output: String,
@@ -24,10 +22,10 @@ const problemSchema = mongoose.Schema(
         explanation: String,
         difficulty: String,
         topics: [String],
-        company: [String],
+        companies: [String],
         code: String,
         language: String,
-        testCases: [
+        testcases: [
             {
                 input: String,
                 output: String,

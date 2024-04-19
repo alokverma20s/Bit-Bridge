@@ -14,7 +14,7 @@ export function createProblem(setLoading, problemData, navigate){
                 throw new Error(response.data.message);
             }
             setLoading(false);
-            navigate('/problem')
+            navigate(-1)
             toast.success("Problem Created Successfully...");
         } catch (error) {
             toast.error("Unable to create Problem");
