@@ -29,8 +29,7 @@ const AddProblem = () => {
   const [loading, setLoading] = useState(false);
 
   const addExample = (e) => {
-    e.preventDefault();
-      return alert("Please fill all the fields in Example");
+    e.preventDefault()
     setProblemData({
       ...problemData,
       examples: [...problemData.examples, tempExample],
