@@ -106,7 +106,7 @@ const AddProblem = () => {
                       setProblemData({ ...problemData, title: e.target.value });
                     }}
                     className=" w-full rounded-md border-2 border-primary-300 bg-black px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder="Enter the name of the contest"
+                    placeholder="Enter the name of the Problem"
                   />
                 </div>
               </div>

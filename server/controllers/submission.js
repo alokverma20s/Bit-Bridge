@@ -33,7 +33,7 @@ const makeSubmission = async (req, res) => {
 
     let status = "Rejected";
 
-    if(result.stdout === stdOutput){
+    if(result?.stdout === stdOutput){
       status = "Accepted";
     }
 
@@ -47,7 +47,7 @@ const makeSubmission = async (req, res) => {
       status,
     });
     if(status === 'Rejected'){
-      if(result.stdout != stdOutput){
+      if(result?.stdout != stdOutput){
         return res.status(200).json({
           success: true,
           status,
