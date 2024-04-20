@@ -16,7 +16,6 @@ const ProblemDescription = () => {
   useEffect(() => {
     dispatch(getProblemById(setLoading, setQuestion, problemId));
   }, []);
-  console.log(question);
   return (
     <div className="w-full">
     { loading === true ? (<div>Loading...</div>) :

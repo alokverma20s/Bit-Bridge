@@ -14,6 +14,8 @@ const AddProblem = () => {
     author: User?.result?._id,
     statement: "",
     examples: [],
+    inputFormat:"",
+    outputFormat: "",
     constraints: "",
     difficulty: "",
     topics: "",
@@ -59,6 +61,8 @@ const AddProblem = () => {
     if (
       problemData.title === "" ||
       problemData.statement === "" ||
+      problemData.inputFormat === "" ||
+      problemData.outputFormat === "" ||
       problemData.examples.length === 0 ||
       problemData.constraints === "" ||
       problemData.difficulty === "" ||
@@ -74,6 +78,8 @@ const AddProblem = () => {
       companies: problemData.companies.split(","),
       author: User?.result?._id,
       hints: problemData.hints.split("\n"),
+      inputFormat: problemData.inputFormat.split('\n'),
+      outputFormat: problemData.outputFormat.split('\n')
     });
     //console.log(newProblemData);
     dispatch(createProblem(setLoading, newProblemData, navigate));
@@ -219,6 +225,53 @@ const AddProblem = () => {
                   <p className="text-xs w-full text-blue-500 ml-1">
                     Write different constraint in different line.
                   </p>
+                </div>
+              </div>
+
+
+              {/* Input Format */}
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
+                <label className="text-base font-sans mt-4 font-medium">
+                  Input Statement<sup className="text-sm text-red-700">*</sup> :
+                </label>
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
+                  <textarea
+                    type="text"
+                    name="constraint"
+                    onChange={(e) => {
+                      setProblemData({
+                        ...problemData,
+                        inputFormat: e.target.value,
+                      });
+                    }}
+                    value={problemData.inputFormat}
+                    autoComplete="off"
+                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
+                    placeholder="Enter the Input Statement"
+                  />
+                </div>
+              </div>
+
+              {/* Output Format */}
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
+                <label className="text-base font-sans mt-4 font-medium">
+                  Output Statement<sup className="text-sm text-red-700">*</sup> :
+                </label>
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
+                  <textarea
+                    type="text"
+                    name="constraint"
+                    onChange={(e) => {
+                      setProblemData({
+                        ...problemData,
+                        outputFormat: e.target.value,
+                      });
+                    }}
+                    value={problemData.outputFormat}
+                    autoComplete="off"
+                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
+                    placeholder="Enter the Output Statement"
+                  />
                 </div>
               </div>
 
