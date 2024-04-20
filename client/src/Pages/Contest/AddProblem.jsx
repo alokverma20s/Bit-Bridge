@@ -29,7 +29,7 @@ const AddProblem = () => {
   const [loading, setLoading] = useState(false);
 
   const addExample = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     setProblemData({
       ...problemData,
       examples: [...problemData.examples, tempExample],
