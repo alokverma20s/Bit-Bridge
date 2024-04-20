@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MdAdd, MdArrowForward, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createProblem } from "../../services/operations/ProblemAPI";
@@ -30,7 +30,6 @@ const AddProblem = () => {
 
   const addExample = (e) => {
     e.preventDefault();
-      return alert("Please fill all the fields in Example");
     setProblemData({
       ...problemData,
       examples: [...problemData.examples, tempExample],
@@ -89,29 +88,29 @@ const AddProblem = () => {
           <form className="w-full" onSubmit={() => handleSubmit()}>
             <div className="my-10 flex flex-col gap-4">
               {/* Problem Title */}
-              <div className="flex w-full justify-between items-center my-4">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start my-4">
                 <label className="text-base font-sans font-medium">
                   Problem Title<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="w-[60%]">
+                <div className="w-full lg:w-[60%]">
                   <input
                     type="text"
                     name="title"
                     onChange={(e) => {
                       setProblemData({ ...problemData, title: e.target.value });
                     }}
-                    className=" w-full rounded-md border-2 border-primary-300 bg-black px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" w-full rounded-md border-2 border-primary-300 bg-black px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Enter the name of the contest"
                   />
                 </div>
               </div>
 
               {/* Problem Statement */}
-              <div className="flex w-full justify-between items-start">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start">
                 <label className="text-base font-sans mt-4 font-medium">
                   Problem Statement<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="w-[60%]">
+                <div className="w-full lg:w-[60%]">
                   <textarea
                     type="text"
                     name="title"
@@ -121,18 +120,18 @@ const AddProblem = () => {
                         statement: e.target.value,
                       });
                     }}
-                    className=" h-[200px] w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" h-[200px] w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Enter the description of the problem"
                   />
                 </div>
               </div>
 
               {/* Problem Example */}
-              <div className="flex w-full justify-between items-start">
+              <div className="flex flex-col lg:flex-row w-full justify-between items-start">
                 <label className="text-base font-sans mt-4 font-medium">
                   Problem Example<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="flex items-start flex-col w-[60%] gap-2">
+                <div className="flex items-start flex-col w-full lg:w-[60%] gap-2">
                   {problemData.examples.length > 0 &&
                     problemData.examples.map((example, index) => (
                       <div key={index} className="flex flex-col w-full gap-2">
@@ -162,7 +161,7 @@ const AddProblem = () => {
                       setTempExample({ ...tempExample, input: e.target.value })
                     }
                     value={tempExample.input}
-                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Input"
                   />
                   <textarea
@@ -172,7 +171,7 @@ const AddProblem = () => {
                       setTempExample({ ...tempExample, output: e.target.value })
                     }
                     value={tempExample.output}
-                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Output"
                   />
                   <textarea
@@ -185,7 +184,7 @@ const AddProblem = () => {
                       })
                     }
                     value={tempExample.explanation}
-                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Explanation"
                   />
                   <span
@@ -198,11 +197,11 @@ const AddProblem = () => {
               </div>
 
               {/* Constraints */}
-              <div className="flex w-full justify-between items-start mt-6">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
                 <label className="text-base font-sans mt-4 font-medium">
                   Problem Constraints<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="w-[60%] flex flex-col items-start">
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
                   <textarea
                     type="text"
                     name="constraint"
@@ -214,21 +213,21 @@ const AddProblem = () => {
                     }}
                     value={problemData.constraints}
                     autoComplete="off"
-                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
+                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
                     placeholder="Enter the constraints of the problem"
                   />
-                  <p className="text-xs text-blue-500 ml-1">
+                  <p className="text-xs w-full text-blue-500 ml-1">
                     Write different constraint in different line.
                   </p>
                 </div>
               </div>
 
               {/* Difficulty */}
-              <div className="flex w-full justify-between items-start mt-6">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
                 <label className="text-base font-sans mt-4 font-medium">
                   Difficulty<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="w-[60%] flex flex-col items-center">
+                <div className="w-full lg:w-[60%] flex flex-col items-center">
                   <select
                     name="difficulty"
                     onChange={(e) => {
@@ -238,7 +237,7 @@ const AddProblem = () => {
                         difficulty: e.target.value,
                       });
                     }}
-                    className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Enter the constraints of the problem"
                   >
                     <option value="">Select the difficulty</option>
@@ -250,11 +249,11 @@ const AddProblem = () => {
               </div>
 
               {/* Topic */}
-              <div className="flex w-full justify-between items-start mt-2">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-2">
                 <label className="text-base font-sans mt-4 font-medium">
                   Topics<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="w-[60%] flex flex-col items-start">
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
                   <input
                     type="text"
                     name="title"
@@ -263,19 +262,19 @@ const AddProblem = () => {
                     }}
                     value={problemData.topics}
                     autoComplete="off"
-                    className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder="Enter the constraints of the problem"
+                    className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    placeholder="Enter the Topics of the problem"
                   />
                   <p className="text-xs text-blue-500 ml-1">Write topics with comma(,) seperated and without space</p>
                 </div>
               </div>
 
               {/* Company Name */}
-              <div className="flex w-full justify-between items-start mt-2">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-2">
                 <label className="text-base font-sans mt-4 font-medium">
                   Companies :
                 </label>
-                <div className="w-[60%] flex flex-col items-start">
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
                     <input
                       type="text"
                       name="title"
@@ -284,19 +283,19 @@ const AddProblem = () => {
                       }}
                       value={problemData.companies}
                       autoCorrect="off"
-                      className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                      placeholder="Enter the constraints of the problem"
+                      className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      placeholder="Enter the companies of the problem"
                     />
                   <p className="text-xs text-blue-500 ml-1">Write companies with comma(,) seperated and without space</p>
                 </div>
               </div>
 
               {/* TestCases */}
-              <div className="flex w-full justify-between items-start mt-6">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
                 <label className="text-base font-sans mt-4 font-medium">
                   Testcases<sup className="text-sm text-red-700">*</sup> :
                 </label>
-                <div className="flex items-start flex-col w-[60%] gap-2">
+                <div className="flex items-start flex-col w-full  lg:w-[60%] gap-2">
                   {problemData.testcases.length > 0 &&
                     problemData.testcases.map((testcase, index) => (
                       <div key={index} className="flex flex-col w-full gap-2">
@@ -325,7 +324,7 @@ const AddProblem = () => {
                       setTempTestcase({ ...tempTestcase, input: e.target.value })
                     }
                     value={tempTestcase.input}
-                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Input"
                   />
                   <textarea
@@ -335,7 +334,7 @@ const AddProblem = () => {
                       setTempTestcase({ ...tempTestcase, output: e.target.value })
                     }
                     value={tempTestcase.output}
-                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                    className=" w-[100%] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder="Output"
                   />
                   <span
@@ -348,11 +347,11 @@ const AddProblem = () => {
               </div>
 
               {/* Follow up */}
-              <div className="flex w-full justify-between items-start mt-2">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-2">
                 <label className="text-base font-sans mt-4 font-medium">
                   Follow up :
                 </label>
-                <div className="w-[60%] flex flex-col items-start">
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
                     <input
                       type="text"
                       name="title"
@@ -361,29 +360,29 @@ const AddProblem = () => {
                       }}
                       value={problemData.followUp}
                       autoCorrect="off"
-                      className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                      placeholder="Enter the constraints of the problem"
+                      className="w-full resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      placeholder="Enter the Follow up of the problem"
                     />
                 </div>
               </div>
 
 
               {/* Hints */}
-              <div className="flex w-full justify-between items-start mt-6">
+              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
                 <label className="text-base font-sans mt-4 font-medium">
                   Problem Hints :
                 </label>
-                <div className="w-[60%] flex flex-col items-start">
+                <div className="w-full lg:w-[60%] flex flex-col items-start">
                   <textarea
                     type="text"
                     name="hints"
                     onChange={(e) => { setProblemData({ ...problemData, hints: e.target.value, }); }}
                     value={problemData.hints}
                     autoComplete="off"
-                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
-                    placeholder="Enter the constraints of the problem"
+                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
+                    placeholder="Enter the hints of the problem"
                   />
-                  <p className="text-xs text-blue-500 ml-1">
+                  <p className="text-xs w-full text-blue-500 ml-1">
                     Write different hints in different line.
                   </p>
                 </div>
