@@ -33,6 +33,36 @@ const CreateContest = () => {
 
     setProblems(problems.filter((p) => JSON.stringify(p) !== problem));
   };
+
+  const handleStartTimeChange = (event) => {
+    const inputTime = event.target.value;
+    const userDateTime = new Date(inputTime);
+    
+    // // Add 5 hours and 30 minutes to the user input
+    // console.log(inputTime);
+    // console.log(userDateTime)
+    // console.log(userDateTime.toISOString());
+    // userDateTime.setHours(userDateTime.getHours() + 5);
+    // userDateTime.setMinutes(userDateTime.getMinutes() + 30);
+    // console.log(userDateTime);
+    // console.log(userDateTime.toISOString());
+
+    // Update stored time with the adjusted value
+    setContestData({...contestData ,startTime:userDateTime.toISOString()});
+  };
+
+  const handleEndTimeChange = (event) => {
+    const inputTime = event.target.value;
+    const userDateTime = new Date(inputTime);
+    
+    // Add 5 hours and 30 minutes to the user input
+    // userDateTime.setHours(userDateTime.getHours() + 5);
+    // userDateTime.setMinutes(userDateTime.getMinutes() + 30);
+
+    // Update stored time with the adjusted value
+    setContestData({...contestData ,endTime:userDateTime.toISOString()});
+  };
+
   // console.log(contestData);
   const [loading, setLoading] = useState(false);
   const [problems, setProblems] = useState([]);
@@ -130,7 +160,7 @@ const CreateContest = () => {
               <input
                 type="datetime-local"
                 onChange={(e) => {
-                  setContestData({ ...contestData, startTime: e.target.value });
+                  handleStartTimeChange(e);
                 }}
                 className="peer h-full w-full rounded-md border border-blue-gray-200 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 placeholder=" "
@@ -145,7 +175,7 @@ const CreateContest = () => {
               <input
                 type="datetime-local"
                 onChange={(e) => {
-                  setContestData({ ...contestData, endTime: e.target.value });
+                  handleEndTimeChange(e);
                 }}
                 className="peer h-full w-full rounded-md border border-blue-gray-200 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-primary-300 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 placeholder=" "
