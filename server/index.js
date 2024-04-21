@@ -4,7 +4,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 // import bodyParser from 'body-parser'
-// import {cloudinaryConnect} from './utils/cloudinary.js'
+import {cloudinaryConnect} from './utils/cloudinary.js'
 // import fileUpload from 'express-fileupload'
 // import multer from 'multer'
 
@@ -21,7 +21,7 @@ import contestRoutes from './routes/Contest.js'
 import ProblemRoutes from './routes/Problem.js'
 import submissionsRoutes from './routes/Submission.js'
 import contactRoutes from './routes/contact.js'
-// import resourceRoute from './routes/resourceRoute.js'
+import resourceRoute from './routes/resourceRoute.js'
 
 const app = express();
 // const upload = multer();
@@ -51,7 +51,7 @@ app.use('/problem', ProblemRoutes)
 app.use('/submission', submissionsRoutes)
 app.use('/contact', contactRoutes)
 
-// app.use('/resources', resourceRoute)
+app.use('/resources', resourceRoute)
 
 
 
@@ -66,4 +66,4 @@ mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true}
 //     tempFileDir: '/tmp/'
 // }));
 
-// cloudinaryConnect(); 
+cloudinaryConnect(); 

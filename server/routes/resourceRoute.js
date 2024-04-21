@@ -1,7 +1,6 @@
 import express from 'express';
 import {addResource} from '../controllers/resourceController.js'
-import multer from 'multer';
-const upload = multer({dest: './files'});
+import upload from '../middlewares/multer.js';
 
 const router = express.Router();
 
