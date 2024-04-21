@@ -53,11 +53,11 @@ const Hero = () => {
           <NavLink to='/Subjects' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
             <p className="text-white text-[0.9rem] font-sans font-[700]">Subjects</p>
           </NavLink>
-          <NavLink to='/Users' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
-            <p className="text-white text-[0.9rem] font-sans font-[700]">Users</p>
-          </NavLink>
           <NavLink to='/Quiz' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
             <p className="text-white text-[0.9rem] font-sans font-[700]">Quiz</p>
+          </NavLink>
+          <NavLink to='/contest' className='bg-[#717EDA] h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
+            <p className="text-white text-[0.9rem] font-sans font-[700]">Contest</p>
           </NavLink>
         </div>
       </div>
@@ -78,15 +78,15 @@ const Hero = () => {
         </div>
         
         <div className="contentTwo-cards">
-          <div className="card card-one"><p className="doubts-heading">Doubts & Discussions</p><hr className="doubts-hr"/><p className="doubts-desc">Engaging in discussions and posting doubts enables users to engage in real-time conversations, fostering a sense of community and knowledge exchange.</p></div>
-          <div className="card card-two"><p className="subjects-heading">Departmentwise Subjects</p><hr className="subjects-hr"/><p className="subjects-desc">Department-wise subject resources brings a host of benefits to students and faculty alike. This feature streamlines access to targeted educational materials.</p></div>
-          <div className="card card-three"><p className="quiz-heading">Subjectwise Quiz</p><hr className="quiz-hr"/><p className="quiz-desc">Subject-wise quizzes set by instructors offers numerous advantages for both students and faculty members. This enhances the relevance and accuracy of evaluation.</p></div>
+          <div className="card card-one"><p className="cards-heading">Doubts & Discussions</p><hr className="cards-hr"/><p className="cards-desc">Engaging in discussions and posting doubts enables users to engage in real-time conversations, fostering a sense of community and knowledge exchange.</p></div>
+          <div className="card card-two"><p className="cards-heading">Departmentwise Subjects</p><hr className="cards-hr"/><p className="cards-desc">Department-wise subject resources brings a host of benefits to students and faculty alike. This feature streamlines access to targeted educational materials.</p></div>
+          <div className="card card-three"><p className="cards-heading">Subjectwise Quiz</p><hr className="cards-hr"/><p className="cards-desc">Subject-wise quizzes set by instructors offers numerous advantages for both students and faculty members. This enhances the relevance and accuracy of evaluation.</p></div>
         </div>
         <br />
         <div className="contentTwo-cards">
-          <div className="card card-four"><p className="tags-heading">Topicwise Tags</p><hr className="tags-hr"/><p className="tags-desc">Topic-wise tags for questions significantly enhances the user experience by facilitating efficient navigation and knowledge retrieval.</p></div>
-          <div className="card card-five"><p className="resources-heading">Resources</p><hr className="resources-hr" /><p className="resources-desc">Coming Soon...</p></div>
-          <div className="card card-six"><p className="code-editor-heading">Code Editor</p><hr className="code-editor-hr" /><p className="code-editor-desc">Coming Soon...</p></div>
+          <div className="card card-four"><p className="cards-heading">Topicwise Tags</p><hr className="cards-hr"/><p className="cards-desc">Topic-wise tags for questions significantly enhances the user experience by facilitating efficient navigation and knowledge retrieval.</p></div>
+          <div className="card card-six"><p className="cards-heading">Contest</p><hr className="cards-hr" /><p className="cards-desc">The developer's contest platform is a flexible tool for arranging coding contests. It enables users to effortlessly create and oversee contests, giving participants the opportunity to demonstrate their coding abilities.</p></div>
+          <div className="card card-five"><p className="cards-heading">Resources</p><hr className="cards-hr" /><p className="cards-desc">Coming Soon...</p></div>
         </div>
       </div>
       <div className="contentThree">

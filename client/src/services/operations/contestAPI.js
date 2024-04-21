@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../apiConnector"
 import { contestEndPoints } from "../apis";
 
-const { CREATE_CONTEST_API, GET_ALL_CONTEST_API, GET_CONTEST_BY_ID_API, DELETE_CONTEST_API, UPDATE_CONTEST_API } = contestEndPoints;
+const { CREATE_CONTEST_API, GET_ALL_CONTEST_API, GET_CONTEST_API, DELETE_CONTEST_API, UPDATE_CONTEST_API } = contestEndPoints;
 
 export function createContest(setLoading, contestData, navigate){
     return async (dispatch) => {
@@ -42,13 +42,13 @@ export function getContestById(setLoading, setContest, contestId){
     return async (dispatch) => {
         setLoading(true);
         try {
-            const response = await apiConnector("GET", GET_CONTEST_BY_ID_API + contestId);
+            const response = await apiConnector("GET", GET_CONTEST_API + contestId);
             if(!response.data.success){
                 throw new Error(response.data.message);
             }
             setContest(response.data.contest);
             setLoading(false);
-            toast.success("Fetched Successfully...");
+            // toast.success("Fetched Successfully...");
         } catch (error) {
             toast.error("Unable to fetch Contest");
         }

@@ -1,5 +1,6 @@
 import mongoose, { version } from "mongoose";
 import Submission from "../models/submissions.js";
+import Problem from "../models/Problem.js";
 import axios from "axios";
 
 const API = axios.create({
@@ -8,12 +9,6 @@ const API = axios.create({
 
 const makeSubmission = async (req, res) => {
   const { user, problem, version, contest, sourceCode, language } = req.body;
-  // console.log("user : >> ", user);
-  // console.log("problem : >> ", problem);
-  // console.log("contest : >> ", contest);
-  // console.log("code : >> ", sourceCode);
-  // console.log("language : >> ", language);
-  // console.log('version :>>', version);
 
   try {
     if(!user || !problem || !sourceCode || !language){
@@ -23,22 +18,63 @@ const makeSubmission = async (req, res) => {
       });
     }
 
+    // console.log(problem);
+
+    const testcases = await Problem.findById(problem, {testcases:true});
+
+    const stdin = prepareTestcases(testcases.testcases);
+    const stdOutput = prepareOutput(testcases.testcases);
+    
+
+    // const result = await checkResult(language, version, sourceCode, stdin);
+    // console.log(result.stderr);
+    const result={};
+
+
+    let status = "Rejected";
+
+    if(result?.stdout === stdOutput){
+      status = "Accepted";
+    }
+
+
     const submission = await Submission.create({
       user,
       problem,
       contest,
       code:sourceCode,
       language,
+      status,
     });
+    if(status === 'Rejected'){
+      if(result?.stdout != stdOutput){
+        return res.status(200).json({
+          success: true,
+          status,
+          expectedOutput: stdOutput,
+          yourOutput: stdout,
+          message: "Submission created successfully"
+        })
+      }
+      else{
+        return res.status(200).json({
+          success: true,
+          status,
+          error: result,
+          message:"Complilation Error"
+        })
+        
+      }
+    }
 
-    const {run: result} = await checkResult(language, version, sourceCode);
-    // console.log(result);
+    // console.log(submission);
     return res.status(201).json({
       success: true,
-      submission,
+      status,
       message: "Submission created successfully",
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       success: false,
       error: error.message,
@@ -46,8 +82,25 @@ const makeSubmission = async (req, res) => {
     });
   }
 };
-
+const prepareTestcases = (testcases) => {
+  // console.log(testcases);
+  let allTestcase = "";
+  allTestcase += (testcases.length + "\n");
+  testcases.forEach((testcase) => {
+    allTestcase += `${testcase.input}\n`;
+  });
+  return allTestcase;
+}
+const prepareOutput = (testcases) => {
+  // console.log(testcases);
+  let allTestcase = "";
+  testcases.forEach((testcase) => {
+    allTestcase += `${testcase.output}\n`;
+  });
+  return allTestcase;
+}
 const checkResult = async (language, version, sourceCode, stdin)=>{
+  // console.log(stdin);
   const response = await API.post("/execute", {
     language,
     version,

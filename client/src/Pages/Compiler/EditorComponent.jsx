@@ -11,6 +11,7 @@ import { Button, Toast } from "@chakra-ui/react";
 import { executeCode } from "./api";
 import { useDispatch } from "react-redux";
 import { createSubmission } from "../../services/operations/submissionAPI";
+import { useParams } from "react-router-dom";
 
 const EditorComponent = ({setLightTheme, lightTheme}) => {
   const editorRef = useRef(null);
@@ -20,8 +21,9 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
   const [editorTheme, setEditorTheme] = useState("vs-dark");
   const [isLoading, setIsLoading] = useState(false);
   const user = JSON.parse(localStorage.getItem("Profile"))?.result?._id;
-  const problem = "6145d099b9b7f3b177df7b3b";
-  const contest = "6145d099b9b7f3b177df7b3b";
+  const params = useParams()
+  const contest = params.constestId;
+  const problem = params.problemId;
 
   const dispatch = useDispatch();
 

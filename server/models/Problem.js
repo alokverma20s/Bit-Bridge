@@ -11,8 +11,11 @@ const problemSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
+        inputFormat: [String],
+        outputFormat: [String],
         statement: String,
         constraints: [String],
+        hints: [String],
         examples: [
             {
                 input: String,
