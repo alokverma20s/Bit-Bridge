@@ -89,5 +89,6 @@ export const submissionEndPoints = {
 }
 
 export const resourceEndPoints = {
-    POST_API : BASE_URL + "/reources/:subjectId",
+    POST_API : BASE_URL + "/resources/",
+    GET_ALL_RESOURCES : BASE_URL + "/resources/"
 }

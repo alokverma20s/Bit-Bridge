@@ -19,6 +19,12 @@ const resourceSchema = mongoose.Schema({
     pdfFileURL:{
         type: String,
     },
+    page:{
+        type: Number,
+    },
+    originalName:{
+        type: String,
+    },
     type: {
         type: String,
     },
