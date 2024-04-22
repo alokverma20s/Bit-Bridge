@@ -20,6 +20,12 @@ export const addResource = async (req, res) => {
         const { resourceName, description, authorId, subjectId, userId } = req.body;
         const file = req.file;
 
+        if(!file || !resourceName || !authorId || !subjectId || !userId) {
+            return res.status(403).json({
+                success: false, message: "Incomplete fields"
+            })
+        }
+
         const response = await uploadFileToCloudinary(file, "Folder1");
 
         if (!description) {

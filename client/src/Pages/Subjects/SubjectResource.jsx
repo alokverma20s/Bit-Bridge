@@ -17,6 +17,7 @@ const SubjectResource = () => {
   const User = useSelector((state) =>( state.currentUserReducer))
   
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const [resources, setResources] = useState(undefined);
   const [subjectName, setSubjectName] = useState(undefined);
   const { subjectId } = useParams();
@@ -36,6 +37,23 @@ const SubjectResource = () => {
   
   function handleSubmit(event) {
     event.preventDefault()
+    setUploading(true);
+
+    if(!file){
+      toast.error("Please select a file to upload");
+      setUploading(false);
+      return;
+    }
+    if(!resourceName){
+      toast.error("Please enter a resource name");
+      setUploading(false);
+      return;
+    }
+    if(!authorId) {
+      toast.error("Please login to upload resource");
+      setUploading(false);
+      return;
+    }
     const formData = new FormData();
     formData.append('file', file);
     formData.append('resourceName', resourceName);
@@ -53,7 +71,8 @@ const SubjectResource = () => {
     // dispatch(addResource(formData, config));
     axios.post(url, formData).then((response) => {
       console.log(response.data);
-      toast.success("Successfully uploaded");
+      toast.success(response.data.message);
+      setUploading(false);
     });
 
   }
@@ -88,7 +107,7 @@ const SubjectResource = () => {
                         </div>
                         <div className="resource-card-body">
                           <Link to={resource?.pdfFileURL} target="_blank"><p id='link-to-pdf'><FaFilePdf size={100} /> {resource?.originalName}</p></Link>
-                          <p>{resource?.description}</p>
+                          {/* <p>{resource?.description}</p> */}
                           <p>Posted by {resource?.author.name} <br />{moment(resource?.uploadedOn).fromNow()}</p>
                         </div>
                       </div>
@@ -97,12 +116,17 @@ const SubjectResource = () => {
                 </div>
 
                 <div className='add-resource-container'>
+                  <h3>Add Resource</h3>
                   <form onSubmit={handleSubmit}>
-                    <h1>React File Upload</h1>
+                    
+                    <p>Enter Resource name</p>
                     <input type="text" name="resourceName" id="" onChange={(e)=>setResourceName(e.target.value)}/>
+                    <p>Enter a very short description(optional)</p>
                     <input type="text" name="description" id="" onChange={(e)=>setDescription(e.target.value)}/>
+                    <p>Upload a file in pdf format</p>
                     <input type="file" onChange={handleChange} />
                     <button type="submit">Upload</button>
+                    {uploading && <span> Uploading.... please wait</span>}
                   </form>
                 </div>
 
