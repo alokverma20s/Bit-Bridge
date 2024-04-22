@@ -28,14 +28,6 @@ export const addResource = async (req, res) => {
 
         const response = await uploadFileToCloudinary(file, "Folder1");
 
-        if (!description) {
-            console.log("incomplete resources");
-            return res.status(403).json({
-                success: false, message: "Incomplete fields"
-            })
-        }
-
-        console.log(response);
         const newResource = await Resource.create({ resourceName, description, author: authorId, subject: subjectId, pdfFileURL: response.secure_url, page: response.pages, originalName: response.original_filename });
         await Subject.findByIdAndUpdate(subjectId, {
             $push: {
@@ -44,7 +36,7 @@ export const addResource = async (req, res) => {
         })
 
         res.status(200).json({
-            success: true, message: "resource added successfully"
+            success: true, message: "Resource added successfully"
         })
     } catch (e) {
         res.status(500).json({
