@@ -121,11 +121,7 @@ const ProblemDescription = () => {
           {question.topics.map((topic, index) => (
             <span
               key={index}
-<<<<<<< HEAD
-              className="text-sm mx-1 px-2 py-1 bg-gray-100 rounded-lg"
-=======
               className="text-sm lg:text-base mx-1 px-2 py-1 bg-[#6974C6] text-white rounded-lg"
->>>>>>> 305d577 (conflict aa gya)
             >
               {topic}
             </span>
@@ -141,11 +137,7 @@ const ProblemDescription = () => {
           {question.companies.map((company, index) => (
             <span
               key={index}
-<<<<<<< HEAD
-              className="text-sm leading-8 mx-1 px-2 py-1 bg-gray-100 rounded-lg"
-=======
               className="text-sm lg:text-base leading-8 mx-1 px-2 py-1 bg-[#6974C6] text-white rounded-lg"
->>>>>>> 305d577 (conflict aa gya)
             >
               {company}
             </span>
