@@ -31,7 +31,8 @@
 }
 
 .auth-container-2 form {
-  width: 100%;
+  width: 16rem;
+  height: 14rem;
   padding: 20px;
   color: rgb(105, 116, 198);
   border-radius: 10px;
@@ -79,20 +80,22 @@
 
 .auth-btn {
   font-family: "Rubik";
-  margin-top: 10px;
+  margin-top: 1rem;
   padding: 10px 5px;
   background-color: rgb(105, 116, 198);
   border: none;
+  border-radius: 1.5rem;
   color: white;
   cursor: pointer;
   transition: 0.2s;
   font-size: 16px;
   font-weight: 500;
-  width: 80px;
+  width: 100%;
 }
 
 .auth-btn-div{
-  margin: auto;
+  /* margin: auto; */
+  width: 92%;
 }
 
 .auth-btn:hover {

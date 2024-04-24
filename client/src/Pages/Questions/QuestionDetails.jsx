@@ -123,7 +123,7 @@ const QuestionDetails = () => {
                                                 </div>
                                                 <div>
                                                     <p>asked on {moment(question?.askedOn).fromNow()}</p>
-                                                    <Link to={`/Users/${question?.userId?._id}`} className="user-link">
+                                                    <Link to={`/Users/${question?.userId?._id}`} className="user-link mt-2">
                                                         {question.userId?.role === "student" && (
                                                             <Avatar backgroundColor="rgb(105, 116, 198)" px="2px" py="2px" color="white">
                                                                 {question.userId?.name.charAt(0).toUpperCase()}
@@ -152,15 +152,16 @@ const QuestionDetails = () => {
                                 {question.noOfAnswers !== 0 && (
                                     <section>
                                         <h3>{question.noOfAnswers} Answers</h3>
+                                        <br />
                                         <DisplayAns
                                             key={question?._id}
                                             question={question}
                                         ></DisplayAns>
                                     </section>
                                 )}
-                                <section className="post-ans-container">
+                                <section className="post-ans-container mt-4">
                                     <h3>Your answer</h3>
-                                    <form onSubmit={(e) => { handlePostAns(e, question.answer.length);}}>
+                                    <form onSubmit={(e) => { handlePostAns(e, question.answer.length);}} className="mt-2">
                                         <textarea name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
                                         <label>
                                             <h4>Upload image of your answer (optional)</h4>
@@ -178,8 +179,6 @@ const QuestionDetails = () => {
                                                 </>
                                             )}
 
-                                            <br />
-
                                             <input
                                                 type="file"
                                                 name="myImage"
@@ -190,10 +189,10 @@ const QuestionDetails = () => {
                                                 }}
                                             />
                                             </label>
-                                        <input type="Submit" name="" id="" className="post-ans-btn" value="Post Your Answer"/>
+                                        <input type="Submit" name="" id="" className="post-ans-btn ml-4" value="Post Your Answer"/>
 
                                     </form>
-                                    <p>
+                                    <p className="mt-4">
                                         Checkout other questions tagged
                                         {question?.questionTags?.map((tag) => (
                                             <Link key={tag?._id} to={`/Tags/${tag?._id}`} className="ans-tag" style={{ color: "rgb(105, 116, 198)" }}>
