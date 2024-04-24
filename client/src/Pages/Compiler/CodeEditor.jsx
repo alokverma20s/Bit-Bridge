@@ -4,7 +4,7 @@ import EditorComponent from "./EditorComponent";
 const CodeEditor = () => {
   const [lightTheme, setLightTheme ] = useState(true);
   return (
-    <div className={`min-h-[100vh] ${lightTheme?'':'bg-[#0f0a19]'} px-6 py-20`}>
+    <div className={`min-h-[100vh] ${lightTheme?'bg-[#E1E3F2]':'bg-[#0f0a19]'} px-6 py-20`}>
       <EditorComponent setLightTheme = {setLightTheme} lightTheme= {lightTheme} />
     </div>
   );

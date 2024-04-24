@@ -50,13 +50,10 @@
     font-weight: 600;
     font-size: 13px;
     text-decoration: none;
-    padding: 4px;
-    padding-bottom: 21px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 80px;
     background-color: rgb(105, 116, 198);
     border-radius: 12px;
 }

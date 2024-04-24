@@ -14,7 +14,7 @@ const LanguageSelector = ({language, onSelect, lightTheme}) => {
         Language :
       </p>
       <Menu isLazy>
-        <MenuButton as={Button} >
+        <MenuButton as={Button}>
             {language}
         </MenuButton>
         <MenuList bg={`${lightTheme?'#f5f5f5':'#110c1b'}`}>
