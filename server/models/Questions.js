@@ -9,6 +9,7 @@ const QuestionSchema = mongoose.Schema({
     downVote: {type: [String], default:[]},
     userId: {type: mongoose.Schema.Types.ObjectId, ref:"User"},
     askedOn: {type: Date, default: Date.now},
+    imageURL: {type: String},
     answer:[{
         answerBody: String,
         userAnswered: String,
@@ -19,6 +20,7 @@ const QuestionSchema = mongoose.Schema({
         downVote: [String],
         userId: {type: mongoose.Schema.Types.ObjectId, ref:"User"},
         answeredOn: {type: Date, default: Date.now},
+        imageURLs: {type: [String]}
     }],
     selectedSubject:{
         type: String,

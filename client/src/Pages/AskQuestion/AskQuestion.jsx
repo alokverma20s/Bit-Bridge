@@ -13,12 +13,11 @@ const AskQuestion = () => {
   const [dropDown, setDropDown] = useState(false);
   const [questionTitle, setQuestionTitle] = useState(undefined);
   const [questionBody, setQuestionBody] = useState(undefined);
-  const [validWords, setValidWords] = useState("");
+  const [validWords, setValidWords] = useState(undefined);
   const [selectedImage, setSelectedImage] = useState(null);
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  let questionTags = [];
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const User = useSelector((state) => state.currentUserReducer);
@@ -47,41 +46,32 @@ const AskQuestion = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let temp = "";
-    for (let i = 0; i < validWords.length; i++) {
-      if (validWords[i] !== " ") {
-        temp += validWords[i];
-      } else {
-        if (temp !== "") {
-          questionTags.push(temp);
-          temp = "";
-        }
-      }
-    }
-    if (temp !== "") {
-      questionTags.push(temp);
-      temp = "";
-    }
+    
     if (
-      questionTags.length !== 0 &&
+      validWords.length !== undefined &&
       selectedSubject !== undefined &&
       questionTitle !== undefined &&
-      questionBody !== undefined
+      questionBody !== undefined &&
+      User 
     ) {
+      const formData = new FormData();
+      formData.append('questionTitle', questionTitle);
+      formData.append('questionBody', questionBody);
+      formData.append('questionTags', validWords);
+      formData.append('userPosted', User?.result?.name);
+      formData.append('userId', User?.result?._id);
+      formData.append('selectedSubject', selectedSubject);
+      formData.append('file', selectedImage);
       console.log(selectedSubject);
       dispatch(
-        askQuestion({
-          questionTitle,
-          questionBody,
-          questionTags,
-          userPosted: User.result.name,
-          userId: User?.result?._id,
-          selectedSubject,
-        }),
+        askQuestion(formData),
         navigate("/Questions")
       );
 
       // console.log(questionTitle, questionBody, questionTags);
+    }else if(User == null){
+      toast.error("Please login to post questions");
+      navigate('/Auth');
     } else if (questionTitle === undefined) {
       toast.error("Please enter question title to submit");
     } else if (questionBody === undefined) {

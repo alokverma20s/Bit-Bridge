@@ -16,7 +16,7 @@ async function uploadFileToCloudinary(file, folder, quality) {
 
 export const addResource = async (req, res) => {
     try {
-        console.log(req);
+        // console.log(req);
         const { resourceName, description, authorId, subjectId, userId } = req.body;
         const file = req.file;
 

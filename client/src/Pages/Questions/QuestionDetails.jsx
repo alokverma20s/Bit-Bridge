@@ -100,6 +100,7 @@ const QuestionDetails = () => {
                                         </div>
                                         <div style={{ width: "100%" }}>
                                             <p className="question-body">{question.questionBody}</p>
+                                            <img className="question-image" src={question?.imageURL} alt="Question Image" />
                                             <div className="question-details-tags">
                                                 {question?.questionTags?.map((tag) => (
                                                     <Link key={tag?._id} to={`/Tags/${tag?._id}`}>
