@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import Editor from "@monaco-editor/react";
 import { useNavigate } from "react-router-dom";
 import { createProblem } from "../../services/operations/ProblemAPI";
 import Loader from "../../components/Loader/Loader"
+import CodeEditor from "../Compiler/CodeEditor";
 
 const AddProblem = () => {
   const dispatch = useDispatch();
@@ -14,8 +16,7 @@ const AddProblem = () => {
     author: User?.result?._id,
     statement: "",
     examples: [],
-    inputFormat:"",
-    outputFormat: "",
+    starterCode: "",
     constraints: "",
     difficulty: "",
     topics: "",
@@ -24,7 +25,7 @@ const AddProblem = () => {
     followUp: "",
     hints: "",
   });
-  console.log(problemData);
+  // console.log(problemData);
 
   const [tempExample, setTempExample] = useState({ input: "", output: "", explanation: "", });
   const [tempTestcase, setTempTestcase] = useState({ input: "", output: "", });
@@ -55,21 +56,36 @@ const AddProblem = () => {
     });
   };
 
+
+  const handleStarterCode = (starterCode) =>{
+    if (starterCode === ""){
+      return;
+    } else {
+      const codes =  starterCode.split('int main()')
+      codes[1] = "int main()" + codes[1]
+
+      return codes;
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(problemData);
-    if (
-      problemData.title === "" ||
-      problemData.statement === "" ||
-      problemData.inputFormat === "" ||
-      problemData.outputFormat === "" ||
-      problemData.examples.length === 0 ||
-      problemData.constraints === "" ||
-      problemData.difficulty === "" ||
-      problemData.topics.length === 0 ||
-      problemData.testcases.length === 0
-    )
-      return alert("Please fill all the fields form the problem");
+    // console.log(problemData);
+    // if (
+    //   problemData.title === "" ||
+    //   problemData.statement === "" ||
+    //   problemData.examples.length === 0 ||
+    //   problemData.constraints === "" ||
+    //   problemData.difficulty === "" ||
+    //   problemData.topics.length === 0 ||
+    //   problemData.testcases.length === 0 ||
+    //   problemData.starterCode === ""
+    // )
+    //   return alert("Please fill all the fields form the problem");
+
+
+      const codes =  problemData.starterCode.split('int main()')
+      codes[1] = "int main()" + codes[1]
 
     const newProblemData = ({
       ...problemData,
@@ -78,11 +94,10 @@ const AddProblem = () => {
       companies: problemData.companies.split(","),
       author: User?.result?._id,
       hints: problemData.hints.split("\n"),
-      inputFormat: problemData.inputFormat.split('\n'),
-      outputFormat: problemData.outputFormat.split('\n')
+      starterCode :codes
     });
-    //console.log(newProblemData);
-    dispatch(createProblem(setLoading, newProblemData, navigate));
+    console.log(newProblemData);
+    // dispatch(createProblem(setLoading, newProblemData, navigate));
   };
 
   return (
@@ -227,53 +242,36 @@ const AddProblem = () => {
                   </p>
                 </div>
               </div>
+                
+              {/* Starter code */}
 
 
-              {/* Input Format */}
               <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
                 <label className="text-base font-sans mt-4 font-medium">
-                  Input Statement<sup className="text-sm text-red-700">*</sup> :
+                  Starter Code<sup className="text-sm text-red-700">*</sup> :
                 </label>
                 <div className="w-full lg:w-[60%] flex flex-col items-start">
-                  <textarea
-                    type="text"
-                    name="constraint"
-                    onChange={(e) => {
-                      setProblemData({
-                        ...problemData,
-                        inputFormat: e.target.value,
-                      });
-                    }}
-                    value={problemData.inputFormat}
-                    autoComplete="off"
-                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
-                    placeholder="Enter the Input Statement"
+                  <Editor
+                    className="border border-gray-600 h-[60vh] lg:h-[70vh]"
+                    // height="75vh"
+                    theme= {"light"}
+                    language={"cpp"}
+                    value={problemData.starterCode}
+                    onChange={
+                      (e) => setProblemData({...problemData, starterCode: e})
+                  }
+                  options={{
+                    minimap:{
+                      enabled: true
+                    },
+                    wordWrap: 'on',
+                    cursorBlinking: "smooth",
+                    // deco
+                  }}
                   />
                 </div>
               </div>
 
-              {/* Output Format */}
-              <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
-                <label className="text-base font-sans mt-4 font-medium">
-                  Output Statement<sup className="text-sm text-red-700">*</sup> :
-                </label>
-                <div className="w-full lg:w-[60%] flex flex-col items-start">
-                  <textarea
-                    type="text"
-                    name="constraint"
-                    onChange={(e) => {
-                      setProblemData({
-                        ...problemData,
-                        outputFormat: e.target.value,
-                      });
-                    }}
-                    value={problemData.outputFormat}
-                    autoComplete="off"
-                    className="w-full h-[100px] resize-none rounded-md border-2 border-primary-300 bg-white px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border  focus:border-2 focus:border-primary-400  focus:outline-0 disabled:border-0 disabled:bg-primary-500"
-                    placeholder="Enter the Output Statement"
-                  />
-                </div>
-              </div>
 
               {/* Difficulty */}
               <div className="flex w-full flex-col lg:flex-row justify-between items-start mt-6">
