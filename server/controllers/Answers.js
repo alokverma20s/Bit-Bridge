@@ -1,17 +1,21 @@
 import mongoose, {Types} from 'mongoose'
 import Questions from '../models/Questions.js'
 import User from '../models/auth.js'
+import cloudinary from 'cloudinary';
 
 export const postAnswer = async (req, res) =>{
     const {id: _id} = req.params;
     const {noOfAnswers, answerBody, userAnswered, userId} = req.body;
+    const file = req.file;
     
     if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).send('question unavailable...')
     }
     updateNoOfAnswer(_id, noOfAnswers);
     try{
-        const updatedQuestion = await Questions.findByIdAndUpdate(_id, { $addToSet: {'answer' : [{answerBody, userAnswered, userId}]}})
+        const imageURLs = [];
+        imageURLs.push();
+        const updatedQuestion = await Questions.findByIdAndUpdate(_id, { $addToSet: {'answer' : [{answerBody, userAnswered, userId, imageURLs}]}})
         res.status(200).json(updatedQuestion);
     }
     catch(error){

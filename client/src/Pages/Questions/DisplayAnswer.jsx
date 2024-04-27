@@ -119,7 +119,7 @@ const DisplayAns = ({ question }) => {
                     }
                   </div>
                   <div>
-                    {/* {console.log(ans.verifiedBy)} */}
+                    
                     {
                       ans?.verifiedBy?.length>0 && <span><RiVerifiedBadgeFill style={{color: "green", display: "inline"}}/> Verified by {ans?.verifiedBy?.at(0).name}</span> 
                     }

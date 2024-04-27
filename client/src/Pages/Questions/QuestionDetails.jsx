@@ -41,18 +41,15 @@ const QuestionDetails = () => {
             if (Answer.trim() === "") {
                 toast("Enter an answer before submitting");
             } else {
-                dispatch(
-                    postAnswer(
-                        {
-                            id,
-                            noOfAnswers: answerLength + 1,
-                            answerBody: Answer,
-                            userAnswered: User.result.name,
-                            userId: User?.result?._id,
-                        },
-                        navigate
-                    )
-                );
+                const formData = new FormData();
+                formData.append('id', id);
+                formData.append('noOfAnswers', answerLength + 1);
+                formData.append('answerBody', Answer);
+                formData.append('userAnswered', User.result.name);
+                formData.append('userId', User?.result?._id)
+                formData.append('file', selectedImage);
+
+                dispatch(postAnswer(formData, navigate));
                 e.target.reset();
             }
         }
@@ -90,17 +87,20 @@ const QuestionDetails = () => {
                                     <div className="question-details-container-2">
                                         <div className="question-votes">
                                             <div onClick={handleUpVote} className="ques-vote-btn">
-                                                <RxTriangleUp style={{ fontSize: "40px", color: "white" }}/>
+                                                <RxTriangleUp style={{ fontSize: "40px", color: "white" }} />
                                             </div>
                                             <p>{question.upVote.length - question.downVote.length}</p>
                                             <div onClick={handleDownVote} className="ques-vote-btn">
-                                                <RxTriangleDown style={{ fontSize: "40px", color: "white" }}/>
+                                                <RxTriangleDown style={{ fontSize: "40px", color: "white" }} />
                                             </div>
                                             {/* <img src={downvote} className='material-icons-unlike' alt="downvoteButton" onClick={handleDownVote} ></img> */}
                                         </div>
                                         <div style={{ width: "100%" }}>
                                             <p className="question-body">{question.questionBody}</p>
-                                            <img className="question-image" src={question?.imageURL} alt="Question Image" />
+                                            {
+                                                question?.imageURL && <img className="question-image" src={question?.imageURL} alt="Question Image" />
+                                            }
+
                                             <div className="question-details-tags">
                                                 {question?.questionTags?.map((tag) => (
                                                     <Link key={tag?._id} to={`/Tags/${tag?._id}`}>
@@ -111,7 +111,7 @@ const QuestionDetails = () => {
                                             <div className="question-actions-user">
                                                 <div>
                                                     <CopyToClipboard text={url}>
-                                                        <button type="button" onClick={() => {toast.success(`Copied url: ${url}`);}}>
+                                                        <button type="button" onClick={() => { toast.success(`Copied url: ${url}`); }}>
                                                             Share
                                                         </button>
                                                     </CopyToClipboard>
@@ -141,7 +141,7 @@ const QuestionDetails = () => {
                                                             </Avatar>
                                                         )}
 
-                                                        <div style={{color: "rgb(105, 116, 198)", fontFamily: "Rubik", fontWeight: 600,}}>
+                                                        <div style={{ color: "rgb(105, 116, 198)", fontFamily: "Rubik", fontWeight: 600, }}>
                                                             {question?.userId?.name}
                                                         </div>
                                                     </Link>
@@ -162,21 +162,21 @@ const QuestionDetails = () => {
                                 )}
                                 <section className="post-ans-container mt-4">
                                     <h3>Your answer</h3>
-                                    <form onSubmit={(e) => { handlePostAns(e, question.answer.length);}} className="mt-2">
+                                    <form onSubmit={(e) => { handlePostAns(e, question.answer.length); }} className="mt-2">
                                         <textarea name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
                                         <label>
                                             <h4>Upload image of your answer (optional)</h4>
 
                                             {selectedImage && (
                                                 <>
-                                                <div className="img-container">
-                                                    <img className="img" alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)}/>
-                                                </div>
+                                                    <div className="img-container">
+                                                        <img className="img" alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                                                    </div>
 
                                                     <span className="img-btn" onClick={() => setSelectedImage(null)}>
-                                                    Remove
+                                                        Remove
                                                     </span>
-                                    
+
                                                 </>
                                             )}
 
@@ -185,12 +185,12 @@ const QuestionDetails = () => {
                                                 name="myImage"
                                                 className="img-input"
                                                 onChange={(event) => {
-                                                console.log(event.target.files[0]);
-                                                setSelectedImage(event.target.files[0]);
+                                                    console.log(event.target.files[0]);
+                                                    setSelectedImage(event.target.files[0]);
                                                 }}
                                             />
-                                            </label>
-                                        <input type="Submit" name="" id="" className="post-ans-btn ml-4" value="Post Your Answer"/>
+                                        </label>
+                                        <input type="Submit" name="" id="" className="post-ans-btn ml-4" value="Post Your Answer" />
 
                                     </form>
                                     <p className="mt-4">
