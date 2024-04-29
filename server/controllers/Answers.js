@@ -3,6 +3,16 @@ import Questions from '../models/Questions.js'
 import User from '../models/auth.js'
 import cloudinary from 'cloudinary';
 
+
+async function uploadFileToCloudinary(file, folder, quality) {
+    const options = { folder }
+    options.resource_type = "image";
+    if (quality) {
+        options.quality = quality;
+    }
+    return await cloudinary.uploader.upload(file.path, options);
+};
+
 export const postAnswer = async (req, res) =>{
     const {id: _id} = req.params;
     const {noOfAnswers, answerBody, userAnswered, userId} = req.body;
@@ -11,10 +21,16 @@ export const postAnswer = async (req, res) =>{
     if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).send('question unavailable...')
     }
+
+    if(file){
+        const response = await uploadFileToCloudinary(file, "Answers");
+        console.log(response);
+    }
     updateNoOfAnswer(_id, noOfAnswers);
     try{
         const imageURLs = [];
-        imageURLs.push();
+        if(response)
+            imageURLs.push(response.secure_url);
         const updatedQuestion = await Questions.findByIdAndUpdate(_id, { $addToSet: {'answer' : [{answerBody, userAnswered, userId, imageURLs}]}})
         res.status(200).json(updatedQuestion);
     }

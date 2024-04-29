@@ -39,10 +39,11 @@ export const voteQuestion = (id, value, userId)=> async (dispatch)=>{
     }
 }  
 
-export const postAnswer = (answerData) => async (dispatch) =>{
+export const postAnswer = (formData, navigate) => async (dispatch) =>{
     try{
-        const {id, noOfAnswers, answerBody, userAnswered, userId} = answerData;
-        const {data} = await api.postAnswer(id, noOfAnswers, answerBody, userAnswered, userId);
+        const {id, noOfAnswers, answerBody, userAnswered, userId} = formData;
+        console.log(formData);
+        const {data} = await api.postAnswer(formData);
         dispatch({type: 'POST_ANSWER', payload: data});
         dispatch(fetchAllQuestions())
     }catch(error){
