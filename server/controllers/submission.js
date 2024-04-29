@@ -1,4 +1,3 @@
-import mongoose, { version } from "mongoose";
 import Submission from "../models/submissions.js";
 import Problem from "../models/Problem.js";
 import axios from "axios";
@@ -26,28 +25,31 @@ const makeSubmission = async (req, res) => {
     const stdOutput = prepareOutput(testcases.testcases);
     
 
-    // const result = await checkResult(language, version, sourceCode, stdin);
+    const result = await checkResult(language, version, sourceCode, stdin);
     // console.log(result.stderr);
-    const result={};
-
+    console.log(result);
 
     let status = "Rejected";
 
-    if(result?.stdout === stdOutput){
+    if(result?.stdout === stdOutput && result?.stderr === ""){
       status = "Accepted";
+      console.log("Accepted");
+    }
+    else{
+      console.log("Rejected");
     }
 
 
-    const submission = await Submission.create({
-      user,
-      problem,
-      contest,
-      code:sourceCode,
-      language,
-      status,
-    });
+    // const submission = await Submission.create({
+    //   user,
+    //   problem,
+    //   contest,
+    //   code:sourceCode,
+    //   language,
+    //   status,
+    // });
     if(status === 'Rejected'){
-      if(result?.stdout != stdOutput){
+      if(result?.stdout != stdOutput && false){
         return res.status(200).json({
           success: true,
           status,
@@ -113,16 +115,7 @@ const checkResult = async (language, version, sourceCode, stdin)=>{
   });
   const data =  response.data.run;
 
-  if(data.stderr !== ''){
-    return data.stderr;
-  
-  }
-  
-  
-  
-  
   return data;
-
 }
 
 const getSubmission = async (req, res) => {
