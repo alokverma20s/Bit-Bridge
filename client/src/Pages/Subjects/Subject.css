@@ -50,13 +50,10 @@
     font-weight: 600;
     font-size: 13px;
     text-decoration: none;
-    padding: 4px;
-    padding-bottom: 21px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 80px;
     background-color: rgb(105, 116, 198);
     border-radius: 12px;
 }
@@ -92,4 +89,33 @@
 
 #department{
     margin-left: 0.25rem;
+}
+
+.resource-container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.resource-card{
+    padding: 10px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.21);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.7px);
+    -webkit-backdrop-filter: blur(9.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+#link-to-pdf{
+    text-decoration: underline;
+}
+
+.resource-card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    font-weight: 600;  
 }

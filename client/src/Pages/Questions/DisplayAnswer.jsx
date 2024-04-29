@@ -106,6 +106,10 @@ const DisplayAns = ({ question }) => {
             </div>
             <div className="display-ans" key={ans?._id}>
               <p>{ans.answerBody}</p>
+              {
+                ans.imageURLs?.at(0) && <img className=' p-4' src={ans?.imageURLs?.at(0)} alt="" />
+              }
+              
               <div className='question-actions-user'>
                 <div>
                   <div>
@@ -119,7 +123,7 @@ const DisplayAns = ({ question }) => {
                     }
                   </div>
                   <div>
-                    {/* {console.log(ans.verifiedBy)} */}
+                    
                     {
                       ans?.verifiedBy?.length>0 && <span><RiVerifiedBadgeFill style={{color: "green", display: "inline"}}/> Verified by {ans?.verifiedBy?.at(0).name}</span> 
                     }
@@ -131,7 +135,7 @@ const DisplayAns = ({ question }) => {
                 </div>
                 <div>
                   <p style={{fontFamily:"sans-serif" ,fontSize:"14px", fontWeight:"400"}}>answered {moment(ans.answeredOn).fromNow()}</p>
-                  <Link to={`/Users/${ans.userId?._id}`} className='user-link' style={{ color: '#white' }}>
+                  <Link to={`/Users/${ans.userId?._id}`} className='user-link mt-2' style={{ color: '#white' }}>
                     {
                       ans?.userId?.role === "student" &&
                       <Avatar backgroundColor="rgb(105, 116, 198)" px="2px" py="2px" color="white">{ans?.userAnswered?.charAt(0)?.toUpperCase()}</Avatar>

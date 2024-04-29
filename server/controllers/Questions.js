@@ -3,27 +3,80 @@ import mongoose from 'mongoose'
 import Subject from '../models/subjects.js';
 import Tag from '../models/Tag.js';
 import User from '../models/auth.js'
+import cloudinary from 'cloudinary'
+
+
+async function uploadFileToCloudinary(file, folder, quality) {
+    const options = { folder }
+    options.resource_type = "image";
+    if (quality) {
+        options.quality = quality;
+    }
+    return await cloudinary.uploader.upload(file.path, options);
+};
+
+
 export const AskQuestion = async (req, res) => {
     try {
         const postQuestionData = req.body;
+        // console.log(req.body);
         // console.log(postQuestionData);
-        if(!postQuestionData.questionTitle || !postQuestionData.questionBody || !postQuestionData.userId || !postQuestionData.selectedSubject){
+        if (!postQuestionData.questionTitle || !postQuestionData.questionBody || !postQuestionData.userId || !postQuestionData.selectedSubject || !postQuestionData.questionTags) {
             return res.status(500).json({
                 success: false,
-                message:"All fields are required."
+                message: "All fields are required."
             })
         }
-        const postQuestion = await Questions.create({questionTitle:postQuestionData.questionTitle,
-            questionBody: postQuestionData.questionBody,
-            userId: postQuestionData.userId,
-            selectedSubject: postQuestionData.selectedSubject
-        })
-        await User.findByIdAndUpdate(postQuestionData.userId,{
-            $push:{
+
+        const file = req.file;
+        const validWords = postQuestionData.questionTags;
+        
+        var postQuestion; // isko mat hatana
+        if (file) {
+            const response = await uploadFileToCloudinary(file, "Questions");
+            // console.log(response);
+            postQuestion = await Questions.create({
+                questionTitle: postQuestionData.questionTitle,
+                questionBody: postQuestionData.questionBody,
+                userId: postQuestionData.userId,
+                selectedSubject: postQuestionData.selectedSubject,
+                imageURL: response.secure_url,
+            })
+        }
+        else {
+            postQuestion = await Questions.create({
+                questionTitle: postQuestionData.questionTitle,
+                questionBody: postQuestionData.questionBody,
+                userId: postQuestionData.userId,
+                selectedSubject: postQuestionData.selectedSubject,
+                questionTagsString: validWords,
+            })
+        }
+
+        await User.findByIdAndUpdate(postQuestionData.userId, {
+            $push: {
                 questionAsked: postQuestion._id
             }
-        } )
-        postQuestionData.questionTags.forEach(async (tag) => {
+        })
+
+        const questionTags = [];
+        let temp = "";
+        for (let i = 0; i < validWords.length; i++) {
+            if (validWords[i] !== " ") {
+                temp += validWords[i];
+            } else {
+                if (temp !== "") {
+                    questionTags.push(temp);
+                    temp = "";
+                }
+            }
+        }
+        if (temp !== "") {
+            questionTags.push(temp);
+            temp = "";
+        }
+
+        questionTags?.forEach(async (tag) => {
             tag = tag.toLowerCase()
             const tagDetails = await Tag.findOne({ tagName: tag });
             if (tagDetails) {
@@ -33,14 +86,14 @@ export const AskQuestion = async (req, res) => {
                     }
                 })
                 await Questions.findByIdAndUpdate(postQuestion._id, {
-                    $push:{
+                    $push: {
                         questionTags: tagDetails._id
                     }
                 })
             } else {
                 const newTag = await Tag.create({ tagName: tag, question: [postQuestion._id] })
                 await Questions.findByIdAndUpdate(postQuestion._id, {
-                    $push:{
+                    $push: {
                         questionTags: newTag._id
                     }
                 })
@@ -60,23 +113,62 @@ export const AskQuestion = async (req, res) => {
 
 export const getAllQuestion = async (req, res) => {
     try {
-        const questionList = await Questions.find({}).populate({
+        const {keyword, sortingcriteria, page} = req.query;
+        const resultPerPage = 50;
+        const skip = resultPerPage*(page-1);
+        console.log(req.query);
+
+        var query = {};
+        var sort = {upVotes: -1};
+        var count = {};
+        if(keyword!=""){
+            query = {$or:[
+                {
+                    questionTitle:{
+                    $regex: keyword, 
+                    $options: "i", //lowercase
+                }},
+                {
+                    questionBody:{
+                    $regex: keyword, //used to find all variaions of keyword 
+                    $options: "i", //lowercase
+                }},
+                {
+                    questionTagsString:{
+                    $regex: keyword, 
+                    $options: "i", //lowercase
+                }}
+                ]
+            }
+            count=query;
+        }
+        if(sortingcriteria==='nto'){
+            sort = {askedOn: -1};
+        }
+        if(sortingcriteria==='otn'){
+            sort = {askedOn: 1};
+        }
+
+
+        const questionList = await Questions.find(query).populate({
             path: "questionTags",
-            select:{tagName: true, tagDescription: true}
+            select: { tagName: true, tagDescription: true }
         }).populate({
-            path:"userId",
-            select:{role:true, name: true}
+            path: "userId",
+            select: { role: true, name: true }
         }).populate({
-            path:"answer.userId",
-            select:{role:true, name: true}
+            path: "answer.userId",
+            select: { role: true, name: true }
         }).populate({
-            path:"answer.verifiedBy",
-            select:{role:true, name: true}
+            path: "answer.verifiedBy",
+            select: { role: true, name: true }
         }).populate({
-            path:"answer.rejectedBy",
-            select:{role:true, name: true}
-        });
-        res.status(200).json(questionList);
+            path: "answer.rejectedBy",
+            select: { role: true, name: true }
+        }).sort(sort).limit(resultPerPage).skip(skip)
+        const docCount = await Questions.countDocuments(count);
+
+        res.status(200).json({questionList, docCount});
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -91,24 +183,24 @@ export const deleteQuestions = async (req, res) => {
     try {
         const ques = await Questions.findById(_id);
         await Questions.findByIdAndRemove(_id);
-        await Subject.findOneAndUpdate({subjectName: ques.selectedSubject},
+        await Subject.findOneAndUpdate({ subjectName: ques.selectedSubject },
             {
-                $pull:{
+                $pull: {
                     question: ques._id
                 }
             })
         await User.findByIdAndUpdate(ques.userId, {
-            $pull:{
+            $pull: {
                 questionAsked: ques._id
             }
         })
-        ques.questionTags.forEach(async(tag)=>{
-            const tags = await Tag.findByIdAndUpdate(tag,{
-                $pull:{
+        ques.questionTags.forEach(async (tag) => {
+            const tags = await Tag.findByIdAndUpdate(tag, {
+                $pull: {
                     question: ques._id
                 }
             })
-            if(tags.question.length === 1){
+            if (tags.question.length === 1) {
                 await Tag.findByIdAndRemove(tag);
             }
         })
@@ -152,6 +244,7 @@ export const voteQuestion = async (req, res) => {
                 question.downVote = question.downVote.filter((id) => id !== String(userId));
             }
         }
+        question.upVotes=question.upVote.length - question.downVote.length
         await Questions.findByIdAndUpdate(_id, question);
         res.status(200).json("Voted successfully...")
     } catch (error) {

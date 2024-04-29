@@ -73,11 +73,11 @@ const CreateContest = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="relative flex flex-col rounded-xl bg-gray-200 p-6 bg-clip-border text-gray-700 shadow-none">
-        <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      <div className="mt-12 relative flex flex-col rounded-xl bg-[rgb(225,227,242)] px-6 bg-clip-border text-gray-700 shadow-none">
+        <h4 className="mt-2 text-primary-600 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
           Create Contest
         </h4>
-        <p className="mt-1 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
+        <p className="mt-1 text-slate-500 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
           Enter contest details.
         </p>
         <form
@@ -208,7 +208,7 @@ const CreateContest = () => {
 
           {/* Submit Button */}
           <button
-            className="mt-6 block w-full select-none rounded-lg bg-primary-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-black shadow-md shadow-primary-2 transition-all hover:shadow-lg hover:shadow-primary-500 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="mt-6 block w-full select-none rounded-lg bg-primary-600 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-primary-2 transition-all hover:shadow-lg hover:shadow-primary-500 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none hover:bg-primary-700"
             type="submit"
             data-ripple-light="true"
           >

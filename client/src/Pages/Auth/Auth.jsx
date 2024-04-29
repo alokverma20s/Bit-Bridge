@@ -95,7 +95,7 @@ const Auth = () => {
       {isSignup && !verify && <AboutAuth />}
       <div className="auth-container-2 ">
         {!isSignup && (
-          <img src={icon} alt="Bit Bridge" className="login-logo" />
+          <img src={icon} alt="Bit Bridge" className="h-20" />
         )}
         <form action="" onSubmit={handleSubmit}>
           {!verify && (
@@ -240,7 +240,7 @@ const Auth = () => {
             </div>
           )}
         </form>
-        <p>
+        <p className="mt-4">
           {isSignup ? "Already have an account?" : "Don't have an account?"}
           <button
             type="button"

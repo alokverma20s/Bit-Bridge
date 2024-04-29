@@ -12,7 +12,8 @@ const SubjectQuiz = () => {
   const [quizes, setQuizes] = useState([]);
   const [subjectName, setSubjectName] = useState(undefined);
   const dispatch = useDispatch();
-  const { subjectId } = useParams();
+  // const { subjectId } = useParams();
+  const subjectId = "6559b7667aad4a8fff67f68e"
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {

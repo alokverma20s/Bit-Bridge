@@ -64,7 +64,7 @@ const SubjectsList = () => {
                   <h3 className='text-sm font-bold mb-3 mt-2'>{subject.subjectName}</h3>
                   <div>
                     <div className='subject-btns'>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link'><p className='text-zinc-50' >Questions</p></Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className='subject-link'><p>Questions</p></Link>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className='subject-link'><p>Quizes</p></Link>
                       <Link key={subject._id} to={`/Subjects/${subject._id}/resources`} className='subject-link'><p>Resources</p></Link>
                     </div>

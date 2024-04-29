@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 
 let filteredQuestionArray = []
 
-const Searchbar = () => {
+const Searchbar = ({setKeyword}) => {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   function handleSearch(e) {
     navigate(`/filter/${searchText}`)
   }
   function handleChange(e) {
-    setSearchText(e.target.value);
+    setKeyword(e.target.value);
   }
   
 
@@ -28,7 +28,7 @@ const Searchbar = () => {
           placeholder="Search..."
           onChange={handleChange}
         />
-        <span className="material-symbols-outlined search-icon" onClick={handleSearch}>
+        <span className="material-symbols-outlined search-icon">
             <Link to={`/filter/${searchText}`}>
               <i style={{color: "white"}} className="fa fa-search" aria-hidden="true"></i>
             </Link>

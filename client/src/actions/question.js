@@ -10,10 +10,10 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     }
 }
 
-export const fetchAllQuestions = () => async (dispatch) =>{
+export const fetchAllQuestions = (keyword="", sortingCriteria="upvotes", page="1") => async (dispatch) =>{
     // console.log("data Fetched");
     try {
-        const {data} = await api.getAllQuestions();
+        const {data} = await api.getAllQuestions(keyword, sortingCriteria, page);
         dispatch({ type: 'FETCH_ALL_QUESTIONS', payload: data})
     } catch (error) {
         console.log(error);
@@ -39,10 +39,11 @@ export const voteQuestion = (id, value, userId)=> async (dispatch)=>{
     }
 }  
 
-export const postAnswer = (answerData) => async (dispatch) =>{
+export const postAnswer = (formData, id, navigate) => async (dispatch) =>{
     try{
-        const {id, noOfAnswers, answerBody, userAnswered, userId} = answerData;
-        const {data} = await api.postAnswer(id, noOfAnswers, answerBody, userAnswered, userId);
+        // const {noOfAnswers, answerBody, userAnswered, userId} = formData;
+        console.log(formData);
+        const {data} = await api.postAnswer(formData, id);
         dispatch({type: 'POST_ANSWER', payload: data});
         dispatch(fetchAllQuestions())
     }catch(error){

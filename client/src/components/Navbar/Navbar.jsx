@@ -44,7 +44,7 @@ function Navbar(){
                     <Link to='/About' className='nav-item nav-btn'>About</Link>
                     <Link to='/Contact' className='nav-item nav-btn'>Contact</Link>
                     {/* <Link to='/' className='nav-item nav-btn'>Feedback</Link> */}
-                    <Searchbar></Searchbar>
+                    {/* <Searchbar></Searchbar> */}
                 </div>
                 
                 {
