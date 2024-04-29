@@ -269,3 +269,32 @@ p {
     width: 25px;
   }
 }
+
+.contest-card{
+  background: #092450;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.contest-problem-card{
+  min-width: 300px;
+  max-width: 300px;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
