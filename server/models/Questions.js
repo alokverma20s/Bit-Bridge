@@ -17,6 +17,7 @@ const QuestionSchema = mongoose.Schema({
         verifiedBy:[{type: mongoose.Schema.Types.ObjectId, ref: "User"}],
         imgaeUrl: [String],
         upVote: [String],
+        upVotes: {type: Number, default: 0},
         downVote: [String],
         userId: {type: mongoose.Schema.Types.ObjectId, ref:"User"},
         answeredOn: {type: Date, default: Date.now},

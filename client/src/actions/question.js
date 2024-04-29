@@ -10,10 +10,10 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     }
 }
 
-export const fetchAllQuestions = () => async (dispatch) =>{
+export const fetchAllQuestions = (keyword="", sortingCriteria="upvotes", page="1") => async (dispatch) =>{
     // console.log("data Fetched");
     try {
-        const {data} = await api.getAllQuestions();
+        const {data} = await api.getAllQuestions(keyword, sortingCriteria, page);
         dispatch({ type: 'FETCH_ALL_QUESTIONS', payload: data})
     } catch (error) {
         console.log(error);

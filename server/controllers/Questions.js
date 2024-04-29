@@ -112,7 +112,27 @@ export const AskQuestion = async (req, res) => {
 
 export const getAllQuestion = async (req, res) => {
     try {
-        const questionList = await Questions.find({}).populate({
+        const {keyword, sortingcriteria, page} = req.query;
+        const resultPerPage = 50;
+        const skip = resultPerPage*(page-1);
+        console.log(req.query);
+
+        var query = {};
+        var sort = {upVotes: -1};
+        var count = {};
+        if(keyword!=""){
+            query={};
+            count={};
+        }
+        if(sortingcriteria==='nto'){
+            sort = {askedOn: -1};
+        }
+        if(sortingcriteria==='otn'){
+            sort = {askedOn: 1};
+        }
+
+
+        const questionList = await Questions.find(query).populate({
             path: "questionTags",
             select: { tagName: true, tagDescription: true }
         }).populate({
@@ -127,8 +147,10 @@ export const getAllQuestion = async (req, res) => {
         }).populate({
             path: "answer.rejectedBy",
             select: { role: true, name: true }
-        });
-        res.status(200).json(questionList);
+        }).sort(sort).limit(resultPerPage).skip(skip)
+        const docCount = await Questions.countDocuments();
+
+        res.status(200).json({questionList, docCount});
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -204,6 +226,7 @@ export const voteQuestion = async (req, res) => {
                 question.downVote = question.downVote.filter((id) => id !== String(userId));
             }
         }
+        question.upVotes=question.upVote.length - question.downVote.length
         await Questions.findByIdAndUpdate(_id, question);
         res.status(200).json("Voted successfully...")
     } catch (error) {
