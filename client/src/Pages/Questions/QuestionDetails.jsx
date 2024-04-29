@@ -49,7 +49,7 @@ const QuestionDetails = () => {
                 formData.append('userId', User?.result?._id)
                 formData.append('file', selectedImage);
 
-                dispatch(postAnswer(formData, navigate));
+                dispatch(postAnswer(formData, id, navigate));
                 e.target.reset();
             }
         }
@@ -98,7 +98,7 @@ const QuestionDetails = () => {
                                         <div style={{ width: "100%" }}>
                                             <p className="question-body">{question.questionBody}</p>
                                             {
-                                                question?.imageURL && <img className="question-image" src={question?.imageURL} alt="Question Image" />
+                                                question?.imageURL && <img className=" p-4" src={question?.imageURL} alt="Question Image" />
                                             }
 
                                             <div className="question-details-tags">

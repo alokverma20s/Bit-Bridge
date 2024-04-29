@@ -22,20 +22,23 @@ export const postAnswer = async (req, res) =>{
         return res.status(404).send('question unavailable...')
     }
 
+    var response;
     if(file){
-        const response = await uploadFileToCloudinary(file, "Answers");
+        response = await uploadFileToCloudinary(file, "Answers");
         console.log(response);
     }
     updateNoOfAnswer(_id, noOfAnswers);
     try{
-        const imageURLs = [];
-        if(response)
+        var imageURLs = [];
+        if(response){
             imageURLs.push(response.secure_url);
+        }
+            
         const updatedQuestion = await Questions.findByIdAndUpdate(_id, { $addToSet: {'answer' : [{answerBody, userAnswered, userId, imageURLs}]}})
         res.status(200).json(updatedQuestion);
     }
     catch(error){
-        res.status(400).json(error);
+        res.status(400).json(error.message);
     }
 }
 

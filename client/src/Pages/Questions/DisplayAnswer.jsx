@@ -106,6 +106,10 @@ const DisplayAns = ({ question }) => {
             </div>
             <div className="display-ans" key={ans?._id}>
               <p>{ans.answerBody}</p>
+              {
+                ans.imageURLs?.at(0) && <img className=' p-4' src={ans?.imageURLs?.at(0)} alt="" />
+              }
+              
               <div className='question-actions-user'>
                 <div>
                   <div>

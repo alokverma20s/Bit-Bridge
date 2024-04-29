@@ -11,7 +11,7 @@ export const getAllQuestions = () => API.get('/questions/get');
 export const deleteQuestion = (id) => API.delete(`/questions/delete/${id}`)
 export const voteQuestion = (id, value, userId) => API.patch(`/questions/vote/${id}`, {value, userId})
 
-export const postAnswer = (formData) => API.patch(`/answer/post/${formData.id}`, formData);
+export const postAnswer = (formData, id) => API.patch(`/answer/post/${id}`, formData);
 export const deleteAnswer = (id, answerId, noOfAnswers) => API.patch(`/answer/delete/${id}`, {id, answerId, noOfAnswers});
 export const voteAnswer = (id, answerId, value, userId) => API.patch(`/answer/vote/${id}`, {value, userId, answerId})
 
