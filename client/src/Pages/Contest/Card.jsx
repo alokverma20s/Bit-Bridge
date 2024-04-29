@@ -35,7 +35,8 @@ const Card = ({ contest }) => {
   };
 
   return (
-    <div className=" min-w-[300px] flex flex-col rounded-3xl bg-[#092540] p-10 text-center">
+    // <div className="min-w-[300px] flex flex-col rounded-3xl bg-[#092540] p-10 text-center">
+    <div className="contest-card">
       {(User?.result?._id === contest?.author) && (
         <div className="flex items-center justify-end gap-3">
           <button onClick={()=>handleEdit()} className="border border-white p-1 rounded-md">
@@ -46,17 +47,17 @@ const Card = ({ contest }) => {
           </button>
         </div>
       )}
-      <h2 className="text-3xl font-bold leading-tight text-white">
+      <h2 className="text-3xl font-bold leading-tight text-primary-600">
         {contest?.name}
       </h2>
-      <p className="mt-5 text-md leading-8 text-white">
+      <p className="mt-5 text-md leading-8">
         Starts At: {formatDate(startTime)} <br />
         Ends At: {formatDate(endTime)}
       </p>
       {new Date(contest.endTime) >= currentTime ? (
         <div className="mt-6 flex flex-col lg:flex-row items-center justify-center gap-4">
           <button
-            className="flex items-center justify-center gap-2 rounded-full bg-violet-500 px-5 py-3 text-lg font-medium text-white"
+            className="flex items-center justify-center gap-2 rounded-full bg-primary-600 px-5 py-3 text-lg font-medium text-white hover:bg-primary-700"
             disabled={
               (
                 new Date(contest.startTime) > currentTime
@@ -84,7 +85,7 @@ const Card = ({ contest }) => {
               </svg>
             </span>
           </button>
-          <button className="flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-3 text-lg font-medium text-white">
+          <button className="flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-3 text-lg font-medium text-white bg-primary-400 hover:bg-primary-500">
             <span>Instruction</span>
             <span>
               <svg
@@ -103,7 +104,7 @@ const Card = ({ contest }) => {
           </button>
         </div>
       ) : (
-        <div className="mt-5 text-md leading-8 text-white">
+        <div className="mt-5 text-md leading-8  ">
           The Contest is Over now
         </div>
       )}
