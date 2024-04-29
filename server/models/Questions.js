@@ -4,6 +4,7 @@ const QuestionSchema = mongoose.Schema({
     questionTitle: {type: String, required: 'Question must have a title'},
     questionBody: {type: String, required: 'Question must have a title'},
     questionTags: [{type: mongoose.Schema.Types.ObjectId, ref: "Tag"}],
+    questionTagsString: {type: String},
     noOfAnswers: {type: Number, default: 0},
     upVote: {type: [String], default:[]},
     downVote: {type: [String], default:[]},

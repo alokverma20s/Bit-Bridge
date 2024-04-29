@@ -48,7 +48,8 @@ export const AskQuestion = async (req, res) => {
                 questionTitle: postQuestionData.questionTitle,
                 questionBody: postQuestionData.questionBody,
                 userId: postQuestionData.userId,
-                selectedSubject: postQuestionData.selectedSubject
+                selectedSubject: postQuestionData.selectedSubject,
+                questionTagsString: validWords,
             })
         }
 
@@ -121,8 +122,25 @@ export const getAllQuestion = async (req, res) => {
         var sort = {upVotes: -1};
         var count = {};
         if(keyword!=""){
-            query={};
-            count={};
+            query = {$or:[
+                {
+                    questionTitle:{
+                    $regex: keyword, 
+                    $options: "i", //lowercase
+                }},
+                {
+                    questionBody:{
+                    $regex: keyword, //used to find all variaions of keyword 
+                    $options: "i", //lowercase
+                }},
+                {
+                    questionTagsString:{
+                    $regex: keyword, 
+                    $options: "i", //lowercase
+                }}
+                ]
+            }
+            count=query;
         }
         if(sortingcriteria==='nto'){
             sort = {askedOn: -1};
@@ -148,7 +166,7 @@ export const getAllQuestion = async (req, res) => {
             path: "answer.rejectedBy",
             select: { role: true, name: true }
         }).sort(sort).limit(resultPerPage).skip(skip)
-        const docCount = await Questions.countDocuments();
+        const docCount = await Questions.countDocuments(count);
 
         res.status(200).json({questionList, docCount});
     } catch (error) {

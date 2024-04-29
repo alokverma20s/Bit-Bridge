@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllQuestions } from '../../actions/question';
 import { Pagination } from '@mui/material';
+import Searchbar from '../Navbar/Searchbar';
 
 
 const HomeMainbar = () => {
@@ -41,7 +42,10 @@ const HomeMainbar = () => {
     }
 
     useEffect(()=>{
-        dispatch(fetchAllQuestions(keyword, sortingCriteria, page))
+        const timer = setTimeout(() => {
+            dispatch(fetchAllQuestions(keyword, sortingCriteria, page))
+        }, 1000);
+        return () => clearTimeout(timer);
     }, [sortingCriteria, keyword, page, dispatch])
 
   return (
@@ -51,6 +55,7 @@ const HomeMainbar = () => {
                 location.pathname==='/' ? <h1>Top Questions</h1> : <h1>All Questions</h1>
             }
             {/* <div className=' flex flex-row'></div> */}
+            <Searchbar setKeyword={setKeyword}></Searchbar>
             <Select className=' w-3/12' options={optionList} placeholder="Sort by: Upvotes" onChange={handleSelect1} defaultValue={"upvotes"}/>
             {docCount>0 && <Pagination count={docCount%50==0? Math.floor(docCount/50): 1+ Math.floor(docCount/50) } variant="outlined" color="secondary" onChange={(e, pageNumber)=>setPage(`${pageNumber}`)}/>}
             
