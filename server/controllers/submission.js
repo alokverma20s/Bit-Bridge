@@ -122,11 +122,8 @@ const submitCode = async (req, res) => {
     }
 
     const testcases = await Problem.findById(problem, {testcases:true});
-
     const stdin = prepareTestcases(testcases.testcases);
     const stdOutput = prepareOutput(testcases.testcases);
-    
-
     const result = await checkResult(language, version, sourceCode, stdin);
 
     let status = "Rejected";

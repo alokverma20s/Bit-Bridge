@@ -7,7 +7,7 @@ import { GoOrganization } from "react-icons/go";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-const ProblemDescription = ({question, loading}) => {
+const ProblemDescription = ({question, loading, lightTheme}) => {
   const problemId = useParams().problemId
   const dispatch = useDispatch();
   return (
@@ -53,7 +53,7 @@ const ProblemDescription = ({question, loading}) => {
       </a>
 
       <div className="mt-7">
-        <p className="text-sm lg:text-base mb-1">
+        <p className={`text-sm lg:text-base mb-1 ${lightTheme? "text-black":"text-white"}`}>
           {question.statement.split("\n").map((line, index) => (
             <span key={index}>
               {line}

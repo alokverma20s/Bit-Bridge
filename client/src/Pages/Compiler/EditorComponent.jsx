@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { MdLightMode, MdDarkMode, MdCancel } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 
 import LanguageSelector from "./LanguageSelector";
@@ -12,10 +12,11 @@ import { Button, Toast } from "@chakra-ui/react";
 import { executeCode } from "./api";
 import { useDispatch } from "react-redux";
 import { runCodeOnServer, submitCodeOnServer } from "../../services/operations/submissionAPI";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 import { getProblemById, getProblemById2 } from "../../services/operations/ProblemAPI";
+import OutputModal from "./OutputModal";
 
 const EditorComponent = ({setLightTheme, lightTheme}) => {
   const [question, setQuestion] = useState({});//[question, setQuestion] = useState({})
@@ -24,14 +25,18 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
   const [language, setLanguage] = useState(localStorage.getItem("language") || "cpp");
   const [stdin, setStdin] = useState("");
   const [loading, setLoading] = useState(true);
-  const [editorTheme, setEditorTheme] = useState("vs-dark");
+  const [editorTheme, setEditorTheme] = useState("light");
   const [isLoading, setIsLoading] = useState(false);
+  const [output, setOutput] = useState({})
+  const [modalOpen, setModalOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem("Profile"))?.result?._id;
   const params = useParams()
   const contest = params.constestId;
   const problem = params.problemId;
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if(!user) navigate("/auth");
     localStorage.getItem("code") && dispatch(getProblemById2(setLoading, setQuestion, problem)) && setValue(localStorage.getItem("code"));
     !(localStorage.getItem("code")) && dispatch(getProblemById(setLoading, setQuestion, setValue, problem));
   }, []);
@@ -52,11 +57,10 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
-    // console.log(sourceCode);
     if (!sourceCode) return;
     try {
-      dispatch(runCodeOnServer(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}))
-      //await executeCode(user, problem, contest, language, sourceCode, stdin)
+      dispatch(runCodeOnServer(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}, setOutput))
+      setModalOpen(true);
     } catch (error) {
       console.log(error);
       Toast({
@@ -65,17 +69,14 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
         status: "error",
         duration: 6000,
       });
-    } finally {
-      //setIsLoading(false);
     }
   };
   const submitCode = async () => {
     const sourceCode = editorRef.current.getValue();
-    // console.log(sourceCode);
     if (!sourceCode) return;
     try {
-      dispatch(submitCodeOnServer(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}))
-      //await executeCode(user, problem, contest, language, sourceCode, stdin)
+      dispatch(submitCodeOnServer(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}, setOutput))
+      setModalOpen(true)
     } catch (error) {
       console.log(error);
       Toast({
@@ -84,16 +85,14 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
         status: "error",
         duration: 6000,
       });
-    } finally {
-      //setIsLoading(false);
     }
   };
 
   return (
     <div>
-      <div className=" flex lg:space-x-4 flex-col lg:flex-row">
+      <div className={`flex lg:space-x-4 flex-col lg:flex-row ${lightTheme ? "": "text-white"}`}>
         <div className="w-full lg:w-1/2 overflow-scroll h-[81vh] border p-3 border-gray-600 rounded-md">
-          <ProblemDescription question={question} loading={loading} />
+          <ProblemDescription question={question} loading={loading} lightTheme={lightTheme} />
         </div>
           <div className="text-2xl w-full lg:w-1/2">
             <div className=" flex justify-between items-end">
@@ -150,6 +149,7 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
           </div>
         </div> */}
       </div>
+      <OutputModal output= {output} modalOpen={modalOpen} setModalOpen={setModalOpen} loading={isLoading} />
     </div>
   );
 };
