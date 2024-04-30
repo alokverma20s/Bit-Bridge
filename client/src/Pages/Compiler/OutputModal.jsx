@@ -17,7 +17,7 @@ const OutputModal = ({output, modalOpen, setModalOpen, loading}) => {
 
             {modalOpen && (
                 <div className="main-modal fixed w-full bg-opacity-[0.01] backdrop-filter backdrop-blur-lg bg-red-900 rounded-lg p-8 inset-0 z-50 overflow-hidden flex justify-center items-center">
-                    <div className="modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl z-50 overflow-y-auto">
+                    <div className="modal-container bg-white w-11/12 lg:w-4/12 mx-auto rounded-xl z-50 overflow-y-auto">
                         <div className="modal-content py-4 text-left px-6">
                             <div className="flex justify-between items-center pb-3">
                                 <p className="text-2xl font-bold text-primary-600">Output</p>
