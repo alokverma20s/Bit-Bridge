@@ -37,6 +37,7 @@ const OutputModal = ({output, modalOpen, setModalOpen, loading}) => {
                                     {
                                         output.status === 'Rejected' && 
                                         <div>
+                                            <p><b>Input: </b> {output.failedInput}</p>
                                             <p><b>Expected Output:</b> {output.expectedOutput}</p>
                                             <p><b>Your Output:</b> {output.yourOutput}</p> 
                                         </div>

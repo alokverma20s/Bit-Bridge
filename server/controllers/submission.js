@@ -10,7 +10,7 @@ const runCode = async (req, res) => {
   const { user, problem, version, contest, sourceCode, language } = req.body;
 
   try {
-    if(!user || !problem || !sourceCode || !language){
+    if (!user || !problem || !sourceCode || !language) {
       return res.status(400).json({
         success: false,
         message: "Please provide all the required fields",
@@ -19,52 +19,54 @@ const runCode = async (req, res) => {
 
     // console.log(problem);
 
-    const testcases = await Problem.findById(problem, {testcases:true});
+    const testcases = await Problem.findById(problem, { testcases: true });
 
-    const stdin = prepareTestcases(testcases.testcases);
-    const stdOutput = prepareOutput(testcases.testcases);
+    // const stdin = prepareTestcases(testcases.testcases);
+    // const stdOutput = prepareOutput(testcases.testcases);
+    let status = "Accepted";
+    let failedInput = "";
+    let yourOutput = "";
+    let expectedOutput = "";
+    let testCasePassed = 0;
+    let totalTestCases = 2;
+    async function runTestCasesWithDelay(testcases) {
+      for (let i = 0; i < 2; i++) {
+          const input = testcases[i].input;
+          const output = testcases[i].output;
+          // console.log(input, output);
+          
+          await new Promise(resolve => setTimeout(resolve, 200)); // Delay for 250ms
+          
+          const result = await runATestcase(language, version, sourceCode, input, output);
+          if(result.status === "Rejected"){
+            status = "Rejected";
+            yourOutput = result.yourOutput;
+            expectedOutput = result.expectedOutput;
+            failedInput = input
+            break;
+          }else{
+            testCasePassed++;
+          }
+      }
+    }
     
+    await runTestCasesWithDelay(testcases.testcases);
 
-    const result = await checkResult(language, version, sourceCode, stdin);
-    console.log(result);
-
-    let status = "Rejected";
-
-    console.log(result?.stdout === stdOutput, result?.stdout, stdOutput);
-
-    if(result?.stdout === stdOutput && result?.stderr === ""){
-      status = "Accepted";
-      console.log("Accepted");
+    if(status === "Rejected"){
+      return res.status(200).json({
+        success: true,
+        status,
+        expectedOutput,
+        yourOutput,
+        failedInput,
+        totalTestCases,
+        testCasePassed,
+        message: "Submission created successfully",
+      });
     }
-    else{
-      console.log("Rejected");
-    }
-
-    if(status === 'Rejected'){
-      if(result?.stdout != stdOutput){
-        return res.status(200).json({
-          success: true,
-          status,
-          expectedOutput: stdOutput,
-          yourOutput: result.stdout || "compilation error",
-          message: "Submission created successfully"
-        })
-      }
-      else{
-        return res.status(200).json({
-          success: true,
-          status,
-          error: result,
-          message:"Complilation Error"
-        })
-        
-      }
-    }
-
-    // console.log(submission);
     return res.status(201).json({
       success: true,
-      status,
+      status:"Accepted",
       message: "Submission created successfully",
     });
   } catch (error) {
@@ -76,15 +78,53 @@ const runCode = async (req, res) => {
     });
   }
 };
+async function runATestcase(language, version, sourceCode, input, output) {
+  const result = await checkResult(language, version, sourceCode, input);
+
+  let status = "Rejected";
+
+  // console.log(result?.stdout === output, result?.stdout, output);
+
+  if (result?.stdout === output && result?.stderr === "") {
+    status = "Accepted";
+    // console.log("Accepted");
+  }
+
+  if (status === "Rejected") {
+    if (result?.stdout != output) {
+      return {
+        success: true,
+        status,
+        expectedOutput: output,
+        yourOutput: result.stdout || "compilation error",
+        message: "Submission created successfully",
+      };
+    } else {
+      return {
+        success: true,
+        status,
+        error: result,
+        message: "Complilation Error",
+      }
+    }
+  }
+  else{
+    return {
+      success: true,
+      status,
+      message: "Solution Accepted",
+    }
+  }
+}
 const prepareTestcases = (testcases) => {
   // console.log(testcases);
   let allTestcase = "";
-  allTestcase += (testcases.length + "\n");
+  allTestcase += testcases.length + "\n";
   testcases.forEach((testcase) => {
     allTestcase += `${testcase.input}\n`;
   });
   return allTestcase;
-}
+};
 const prepareOutput = (testcases) => {
   // console.log(testcases);
   let allTestcase = "";
@@ -92,8 +132,8 @@ const prepareOutput = (testcases) => {
     allTestcase += `${testcase.output}\n`;
   });
   return allTestcase;
-}
-const checkResult = async (language, version, sourceCode, stdin)=>{
+};
+const checkResult = async (language, version, sourceCode, stdin) => {
   // console.log(stdin);
   const response = await API.post("/execute", {
     language,
@@ -103,36 +143,58 @@ const checkResult = async (language, version, sourceCode, stdin)=>{
         content: sourceCode,
       },
     ],
-    stdin
+    stdin,
   });
-  const data =  response.data.run;
+  const data = response.data.run;
 
   return data;
-}
+};
 
 const submitCode = async (req, res) => {
   const { user, problem, version, contest, sourceCode, language } = req.body;
 
   try {
-    if(!user || !problem || !sourceCode || !language){
+    if (!user || !problem || !sourceCode || !language) {
       return res.status(400).json({
         success: false,
         message: "Please provide all the required fields",
       });
     }
 
-    const testcases = await Problem.findById(problem, {testcases:true});
-    const stdin = prepareTestcases(testcases.testcases);
-    const stdOutput = prepareOutput(testcases.testcases);
-    const result = await checkResult(language, version, sourceCode, stdin);
+    // console.log(problem);
 
-    let status = "Rejected";
+    const testcases = await Problem.findById(problem, { testcases: true });
 
-    if(result?.stdout === stdOutput && result?.stderr === ""){
-      status = "Accepted";
+    // const stdin = prepareTestcases(testcases.testcases);
+    // const stdOutput = prepareOutput(testcases.testcases);
+    let status = "Accepted";
+    let failedInput = "";
+    let yourOutput = "";
+    let expectedOutput = "";
+    let testCasePassed = 0;
+    let totalTestCases = 2;
+    async function runTestCasesWithDelay(testcases) {
+      for (let i = 0; i < testcases.length; i++) {
+          const input = testcases[i].input;
+          const output = testcases[i].output;
+          // console.log(input, output);
+          
+          await new Promise(resolve => setTimeout(resolve, 200)); // Delay for 250ms
+          
+          const result = await runATestcase(language, version, sourceCode, input, output);
+          if(result.status === "Rejected"){
+            status = "Rejected";
+            yourOutput = result.yourOutput;
+            expectedOutput = result.expectedOutput;
+            failedInput = input
+            break;
+          }else{
+            testCasePassed++;
+          }
+      }
     }
-
-
+    
+    await runTestCasesWithDelay(testcases.testcases);
 
     const submission = await Submission.create({
       user,
@@ -142,33 +204,26 @@ const submitCode = async (req, res) => {
       version,
       sourceCode,
       status,
+      failedInput,
+      yourOutput,
+      expectedOutput,
     });
 
-    if(status === 'Rejected'){
-      if(result?.stdout != stdOutput){
-        return res.status(200).json({
-          success: true,
-          status,
-          expectedOutput: stdOutput,
-          yourOutput: result.stdout || "compilation error",
-          message: "Compilation Error"
-        })
-      }
-      else{
-        return res.status(200).json({
-          success: true,
-          status,
-          error: result,
-          message:"Complilation Error"
-        })
-        
-      }
+    if(status === "Rejected"){
+      return res.status(200).json({
+        success: true,
+        status,
+        expectedOutput,
+        yourOutput,
+        failedInput,
+        totalTestCases,
+        testCasePassed,
+        message: "Submission created successfully",
+      });
     }
-
-    // console.log(submission);
     return res.status(201).json({
       success: true,
-      status,
+      status:"Accepted",
       message: "Submission created successfully",
     });
   } catch (error) {
@@ -178,7 +233,7 @@ const submitCode = async (req, res) => {
       message: "Something went wrong, while creating submission.",
     });
   }
-}
+};
 
 const getSubmission = async (req, res) => {
   try {
