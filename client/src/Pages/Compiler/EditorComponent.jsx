@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { VscDebugRestart } from "react-icons/vsc";
 
 import LanguageSelector from "./LanguageSelector";
 import { CODE_SNIPPETS, LANGUAGE_VERSIONS } from "./constants";
@@ -13,17 +14,28 @@ import { useDispatch } from "react-redux";
 import { createSubmission } from "../../services/operations/submissionAPI";
 import { useParams } from "react-router-dom";
 
+
+import { getProblemById, getProblemById2 } from "../../services/operations/ProblemAPI";
+
 const EditorComponent = ({setLightTheme, lightTheme}) => {
+  const [question, setQuestion] = useState({});//[question, setQuestion] = useState({})
   const editorRef = useRef(null);
-  const [value, setValue] = useState(localStorage.getItem("code") || CODE_SNIPPETS.cpp);
+  const [value, setValue] = useState("");
   const [language, setLanguage] = useState(localStorage.getItem("language") || "cpp");
   const [stdin, setStdin] = useState("");
+  const [loading, setLoading] = useState(true);
   const [editorTheme, setEditorTheme] = useState("vs-dark");
   const [isLoading, setIsLoading] = useState(false);
   const user = JSON.parse(localStorage.getItem("Profile"))?.result?._id;
   const params = useParams()
   const contest = params.constestId;
   const problem = params.problemId;
+
+  useEffect(() => {
+    localStorage.getItem("code") && dispatch(getProblemById2(setLoading, setQuestion, problem)) && setValue(localStorage.getItem("code"));
+    !(localStorage.getItem("code")) && dispatch(getProblemById(setLoading, setQuestion, setValue, problem));
+  }, []);
+
 
   const dispatch = useDispatch();
 
@@ -62,10 +74,10 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
     <div>
       <div className=" flex lg:space-x-4 flex-col lg:flex-row">
         <div className="w-full lg:w-1/2 overflow-scroll h-[81vh] border p-3 border-gray-600 rounded-md">
-          <ProblemDescription/>
+          <ProblemDescription question={question} loading={loading} />
         </div>
           <div className="text-2xl w-full lg:w-1/2">
-            <div className=" flex justify-between items-center">
+            <div className=" flex justify-between items-end">
               <LanguageSelector language={language} onSelect={onSelect} lightTheme= {lightTheme} />
               <Button
               variant={"outline"}
@@ -76,11 +88,26 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
               >
                 Run Code
               </Button>
-              <div className="p-3 border border-gray-500 rounded-lg" onClick={()=>{
+              <Button
+              variant={"outline"}
+                colorScheme="green"
+                mb={4}
+                onClick={runCode}
+                isLoading={isLoading}
+              >
+                Submit
+              </Button>
+              <div className="p-3 mb-3 border border-gray-500 rounded-lg cursor-pointer" onClick={()=>{
                 setEditorTheme(editorTheme === 'vs-dark'? 'light': 'vs-dark');
                 setLightTheme(!lightTheme)
               }}>
                 {editorTheme === 'vs-dark'? <MdLightMode className="text-2xl text-gray-400" />: <MdDarkMode className="text-2xl text-gray-900" />}
+              </div>
+              <div className="p-3 mb-3 border border-gray-500 rounded-lg cursor-pointer" onClick={()=>{
+                localStorage.removeItem("code");
+                setValue(question.starterCode);
+              }}>
+                <VscDebugRestart/>
               </div>
             </div>
             <Editor

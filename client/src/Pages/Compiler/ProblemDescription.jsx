@@ -5,17 +5,11 @@ import "./styles.css";
 import { FaTag, FaRegLightbulb } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
 import { useDispatch } from "react-redux";
-import { getProblemById } from "../../services/operations/ProblemAPI";
 import { useParams } from "react-router-dom";
 
-const ProblemDescription = () => {
+const ProblemDescription = ({question, loading}) => {
   const problemId = useParams().problemId
   const dispatch = useDispatch();
-  const [question, setQuestion] = useState({});
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    dispatch(getProblemById(setLoading, setQuestion, problemId));
-  }, []);
   return (
     <div className="w-full">
     { loading === true ? (<div>Loading...</div>) :

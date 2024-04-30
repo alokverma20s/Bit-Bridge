@@ -41,7 +41,25 @@ export function getProblemList(setLoading, setProblems){
     }
 }
 
-export function getProblemById(setLoading, setQuestion, problemId){
+export function getProblemById(setLoading, setQuestion, setValue= undefined, problemId){
+    return async (dispatch) => {
+        setLoading(true);
+        try {
+            const response = await apiConnector("GET", GET_PROBLEM_API + problemId);
+            if(!response.data.success){
+                throw new Error(response.data.message);
+            }
+            setQuestion(response.data.problem);
+            if(setValue !== undefined)
+                setValue(response.data.problem.starterCode);
+            //toast.success("Fetched Successfully...");
+            setLoading(false);
+        } catch (error) {
+            toast.error("Unable to fetch Problem");
+        }
+    }
+}
+export function getProblemById2(setLoading, setQuestion, problemId){
     return async (dispatch) => {
         setLoading(true);
         try {
