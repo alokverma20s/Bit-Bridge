@@ -17,6 +17,7 @@ const submissionSchema = mongoose.Schema(
         code: String,
         language: String,
         status: String,
+        sourceCode: String,
     },
     { timestamps: true }
 );

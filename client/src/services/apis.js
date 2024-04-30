@@ -83,7 +83,8 @@ export const problemEndPoints = {
 }
 
 export const submissionEndPoints = {
-    CREATE_SUBMISSION_API: BASE_URL+"/submission",
+    RUN_SUBMISSION_API: BASE_URL+"/submission",
+    SUBMIT_SUBMISSION_API: BASE_URL+"/submission/submit",
     GET_SUBMISSION_API: BASE_URL+"/submission/getSubmission",
     GET_SUBMISSION_BY_ID_API: BASE_URL+"/submission/getSubmission/id",
 }

@@ -1,9 +1,10 @@
 import express from 'express';
-import { makeSubmission, getSubmission, getSubmissionById, updateSubmission } from '../controllers/submission.js';
+import { getSubmission, getSubmissionById, runCode, submitCode } from '../controllers/submission.js';
 
 const router = express.Router();
 
-router.post('/', makeSubmission);
+router.post('/', runCode);
+router.post('/submit', submitCode);
 router.get('/getSubmission', getSubmission);
 router.get('/getSubmission/:id', getSubmissionById);
 

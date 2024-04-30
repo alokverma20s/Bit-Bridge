@@ -14,6 +14,7 @@ const problemSchema = mongoose.Schema(
         inputFormat: [String],
         outputFormat: [String],
         statement: String,
+        starterCode: String,
         constraints: [String],
         hints: [String],
         examples: [

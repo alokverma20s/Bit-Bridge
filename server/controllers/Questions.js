@@ -116,7 +116,6 @@ export const getAllQuestion = async (req, res) => {
         const {keyword, sortingcriteria, page} = req.query;
         const resultPerPage = 50;
         const skip = resultPerPage*(page-1);
-        console.log(req.query);
 
         var query = {};
         var sort = {upVotes: -1};

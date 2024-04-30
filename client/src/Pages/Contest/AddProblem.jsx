@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import Editor from "@monaco-editor/react";
@@ -11,6 +11,7 @@ const AddProblem = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const User = useSelector((state) => state.currentUserReducer);
+  const editorRef = useRef(null);
   const [problemData, setProblemData] = useState({
     title: "",
     author: User?.result?._id,
@@ -25,7 +26,7 @@ const AddProblem = () => {
     followUp: "",
     hints: "",
   });
-  // console.log(problemData);
+  // console.log(problemData)
 
   const [tempExample, setTempExample] = useState({ input: "", output: "", explanation: "", });
   const [tempTestcase, setTempTestcase] = useState({ input: "", output: "", });
@@ -44,6 +45,10 @@ const AddProblem = () => {
     });
   };
 
+  const onMount = (editor, monaco) => {
+    editorRef.current = editor;
+    editor.focus();
+  };
   const addTestcase = (e) => {
     e.preventDefault();
     setProblemData({
@@ -55,18 +60,6 @@ const AddProblem = () => {
       output: "",
     });
   };
-
-
-  const handleStarterCode = (starterCode) =>{
-    if (starterCode === ""){
-      return;
-    } else {
-      const codes =  starterCode.split('int main()')
-      codes[1] = "int main()" + codes[1]
-
-      return codes;
-    }
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,8 +77,7 @@ const AddProblem = () => {
     //   return alert("Please fill all the fields form the problem");
 
 
-      const codes =  problemData.starterCode.split('int main()')
-      codes[1] = "int main()" + codes[1]
+      const sourceCode = editorRef.current.getValue();
 
     const newProblemData = ({
       ...problemData,
@@ -94,10 +86,10 @@ const AddProblem = () => {
       companies: problemData.companies.split(","),
       author: User?.result?._id,
       hints: problemData.hints.split("\n"),
-      starterCode :codes
+      starterCode: sourceCode,
     });
     console.log(newProblemData);
-    // dispatch(createProblem(setLoading, newProblemData, navigate));
+    dispatch(createProblem(setLoading, newProblemData, navigate));
   };
 
   return (
@@ -256,6 +248,7 @@ const AddProblem = () => {
                     // height="75vh"
                     theme= {"light"}
                     language={"cpp"}
+                    onMount={onMount}
                     value={problemData.starterCode}
                     onChange={
                       (e) => setProblemData({...problemData, starterCode: e})

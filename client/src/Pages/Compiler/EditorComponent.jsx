@@ -11,7 +11,7 @@ import ProblemDescription from "./ProblemDescription";
 import { Button, Toast } from "@chakra-ui/react";
 import { executeCode } from "./api";
 import { useDispatch } from "react-redux";
-import { createSubmission } from "../../services/operations/submissionAPI";
+import { runCodeOnServer, submitCodeOnServer } from "../../services/operations/submissionAPI";
 import { useParams } from "react-router-dom";
 
 
@@ -55,13 +55,32 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
     // console.log(sourceCode);
     if (!sourceCode) return;
     try {
-      dispatch(createSubmission(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}))
+      dispatch(runCodeOnServer(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}))
       //await executeCode(user, problem, contest, language, sourceCode, stdin)
     } catch (error) {
       console.log(error);
       Toast({
         title: "An error occurred.",
         description: error.message || "Unable to run the code",
+        status: "error",
+        duration: 6000,
+      });
+    } finally {
+      //setIsLoading(false);
+    }
+  };
+  const submitCode = async () => {
+    const sourceCode = editorRef.current.getValue();
+    // console.log(sourceCode);
+    if (!sourceCode) return;
+    try {
+      dispatch(submitCodeOnServer(setIsLoading, {user, problem, contest, language,version: LANGUAGE_VERSIONS[language], sourceCode, stdin}))
+      //await executeCode(user, problem, contest, language, sourceCode, stdin)
+    } catch (error) {
+      console.log(error);
+      Toast({
+        title: "An error occurred.",
+        description: error.message || "Unable to Submit the code",
         status: "error",
         duration: 6000,
       });
@@ -92,7 +111,7 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
               variant={"outline"}
                 colorScheme="green"
                 mb={4}
-                onClick={runCode}
+                onClick={submitCode}
                 isLoading={isLoading}
               >
                 Submit
@@ -105,6 +124,7 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
               </div>
               <div className="p-3 mb-3 border border-gray-500 rounded-lg cursor-pointer" onClick={()=>{
                 localStorage.removeItem("code");
+                console.log(question);
                 setValue(question.starterCode);
               }}>
                 <VscDebugRestart/>
