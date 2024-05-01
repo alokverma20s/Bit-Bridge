@@ -31,7 +31,7 @@
 }
 
 .auth-container-2 form {
-  width: 16rem;
+  width: 100%;
   padding: 20px;
   color: rgb(105, 116, 198);
   border-radius: 10px;
@@ -49,15 +49,17 @@
 
 .otpInput {
   display: flex;
-  margin-left: 0.75rem;
+  font-size: large;
+  height: 40px;
+  width: 40px;
+  margin-left: 0.5rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  margin-right: 0.75rem;
-  padding: 0.75rem;
+  margin-right: 0.5rem;
+  padding: 0rem;
   font-weight: 600;
   text-align: center;
   border-radius: 0.5rem;
-  width: 100%;
   box-shadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)";
 }
 

@@ -219,9 +219,10 @@ const Auth = () => {
                 value={otp}
                 onChange={setOtp}
                 numInputs={6}
+                
                 // renderSeparator={<span>-</span>}
                 renderInput={(props) => (
-                  <input {...props} className="otpInput" />
+                  <input {...props} style={{width: "40px"}} className="otpInput" />
                 )}
               />
               <button
