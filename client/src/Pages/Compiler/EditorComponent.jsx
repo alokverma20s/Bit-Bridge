@@ -140,6 +140,32 @@ const EditorComponent = ({setLightTheme, lightTheme}) => {
                 setValue(e)
                 localStorage.setItem("code", value)
               }}
+              options={
+                {
+                  minimap: { enabled: false },
+                  fontSize: 16,
+                  wordWrap: "on",
+                  scrollBeyondLastLine: false,
+                  automaticLayout: true,
+                  lineNumbers: "on",
+                  fontFamily: "JetBrains Mono",
+                  contextmenu: false,
+                  "semanticHighlighting.enabled": true,
+                  acceptSuggestionOnEnter: "on",
+                  scrollbar: {
+                    vertical: "auto",
+                    horizontal: "auto",
+                    useShadows: true,
+                    verticalHasArrows: false,
+                    horizontalHasArrows: false,
+                    verticalScrollbarSize: 17,
+                    horizontalScrollbarSize: 17,
+                    verticalSliderSize: 17,
+                    horizontalSliderSize: 17,
+                    horizontalScrollbarSize: 17,
+                  }
+                }
+              }
             />
           </div>
         {/* <div className=" w-full lg:w-1/2">
