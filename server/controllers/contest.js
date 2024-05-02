@@ -121,10 +121,59 @@ const deleteContest = async (req, res) => {
   }
 };
 
+
+const getLeaderboard = async (req, res) => {
+  const { id } = req.params;
+  try {
+    // const contest = await Contest.findById(id, {
+    //   leaderboard: true,
+    // }).populate("leaderboard.user", {
+    //   name: true,
+    // });
+
+    const contest = await Contest.findById(id, {
+      leaderboard: true,
+    }).populate({
+      path: "leaderboard.user",
+      select: "name",
+    })
+
+    console.log(contest.leaderboard);
+    const sortedLeaderboard = contest.leaderboard.sort((a, b) => {
+      if (a.score > b.score) {
+        return -1;
+      } else if (a.score < b.score) {
+        return 1;
+      } else {
+        if (a.lastSubmission < b.lastSubmission) {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+    });
+
+    contest.leaderboard = sortedLeaderboard;
+
+    return res.status(200).json({
+      success: true,
+      contest,
+      message: "Leaderboard fetched Successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+      message: "Something went wrong, while fetch leaderboard.",
+    });
+  }
+}
+
 export {
   createContest,
   getContest,
   getContestById,
   updateContest,
   deleteContest,
+  getLeaderboard
 };

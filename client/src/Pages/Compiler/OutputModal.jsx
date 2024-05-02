@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdCancel } from 'react-icons/md';
-import Loader from './Loader';
+import SubmissionLoader from './SubmissionLoader';
 
 const OutputModal = ({output, modalOpen, setModalOpen, loading}) => {
     
@@ -10,8 +10,8 @@ const OutputModal = ({output, modalOpen, setModalOpen, loading}) => {
     };
 
     return (
-        <div className=''>
-            <button className="py-3 px-6 text-center bg-primary-600 hover:bg-primary-400 border-gray-500 text-blue-50 hover:text-white rounded-md block" onClick={toggleModal}>
+        <div className='mt-4'>
+            <button className="py-3 px-6 text-center bg-primary-600 hover:bg-primary-500 border-gray-500 text-black rounded-md block" onClick={toggleModal}>
                 Open Output
             </button>
 
@@ -26,23 +26,26 @@ const OutputModal = ({output, modalOpen, setModalOpen, loading}) => {
                                 </div>
                             </div>
                             {
-                                loading ? <Loader/>:
+                                loading ? <SubmissionLoader/>:
                                 <div className="my-5 mr-5 ml-5 flex justify-center flex-col items-center">
-                                <p className={`${output.status === 'Accepted'?'text-green-600':'text-red-500'} font-semibold text-xl`}>
-                                    {
-                                        output.status === 'Accepted' ? 'Accepted' : output.status === 'Rejected' ? output.yourOutput === 'compilation error' ? 'Compilation Error' : 'Wrong Answer' : 'Run Code to see'
-                                    }
-                                </p>
-                                <p>
-                                    {
-                                        output.status === 'Rejected' && 
-                                        <div>
-                                            {output.failedInput && <p><b>Input: </b> {output.failedInput}</p>}
-                                            {output.expectedOutput && <p><b>Expected Output:</b> {output.expectedOutput}</p>}
-                                            {output.yourOutput && <p><b>Your Output:</b> {output.yourOutput}</p> }
-                                        </div>
-                                    }
-                                </p>
+                                    <p className={`${output.status === 'Accepted'?'text-green-600':'text-red-500'} font-semibold text-xl`}>
+                                        {
+                                             output.status !== "Time Over" && (output.status === 'Accepted' ? 'Accepted' : output.status === 'Rejected' ? output.yourOutput === 'compilation error' ? 'Compilation Error' : 'Wrong Answer' : 'Run Code to see')
+                                        }
+                                    </p>
+                                    <p>
+                                        {
+                                            output.status === 'Rejected' && 
+                                            <div>
+                                                {output.failedInput && <p><b>Input: </b> {output.failedInput}</p>}
+                                                {output.expectedOutput && <p><b>Expected Output:</b> {output.expectedOutput}</p>}
+                                                {output.yourOutput && <p><b>Your Output:</b> {output.yourOutput}</p> }
+                                            </div>
+                                        }
+                                        {
+                                            output.status === "Time Over" && <p className='text-xl font-semibold'>Contest Ended...</p>
+                                        }
+                                    </p>
                                 </div>
                             }
                         </div>

@@ -35,7 +35,14 @@ const contestSchema = mongoose.Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: "User",
         },
+        problems: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Problem",
+          },
+        ],
         score: Number,
+        lastSubmission: Date,
       },
     ],
   },
