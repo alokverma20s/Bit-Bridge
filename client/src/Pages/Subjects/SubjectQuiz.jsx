@@ -12,10 +12,11 @@ const SubjectQuiz = () => {
   const [quizes, setQuizes] = useState([]);
   const [subjectName, setSubjectName] = useState(undefined);
   const dispatch = useDispatch();
-  // const { subjectId } = useParams();
-  const subjectId = "6559b7667aad4a8fff67f68e"
+  const { subjectId } = useParams();
+  console.log(subjectId);
+  // const subjectId = "6559b7667aad4a8fff67f68e"
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     dispatch(getQuizBySubject(setLoading, setQuizes, subjectId, setSubjectName));
   }, []);

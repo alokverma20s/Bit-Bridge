@@ -55,8 +55,9 @@ export function getQuestionsBySubject(setLoading, setSubjects, subjectId){
 
 export function getQuizBySubject(setLoading, setQuizes, subjectId, setSubjectName){
     return async (dispatch) => {
-        setLoading(true);
+        
         try {
+            setLoading(true);
             const response = await apiConnector("GET", GETQUIZ_API+subjectId);
             if(!response.data.success){
                 throw new Error(response.data.message);

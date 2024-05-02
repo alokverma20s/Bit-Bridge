@@ -77,7 +77,7 @@ const AllRoutes = () => {
 
         <Route path='/Subjects' element ={<Subjects/>}/>
         <Route path='/Subjects/:id/questions' element={<SubjectName/>}></Route>
-        <Route path='/Subjects/:subjectId2/quizes' element={<SubjectQuiz/>}></Route>
+        <Route path='/Subjects/:subjectId/quizes' element={<SubjectQuiz/>}></Route>
         <Route path='/Subjects/:subjectId/resources' element={<SubjectResource/>}></Route>
 
         <Route path='/filter/:searchText' element={<FilteredQuestions/>}></Route>
