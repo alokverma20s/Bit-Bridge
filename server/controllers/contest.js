@@ -125,21 +125,19 @@ const deleteContest = async (req, res) => {
 const getLeaderboard = async (req, res) => {
   const { id } = req.params;
   try {
-    // const contest = await Contest.findById(id, {
-    //   leaderboard: true,
-    // }).populate("leaderboard.user", {
-    //   name: true,
-    // });
-
     const contest = await Contest.findById(id, {
       leaderboard: true,
     }).populate({
       path: "leaderboard.user",
-      select: "name",
+      select:{
+        name: true,
+        email: true,
+      }
     })
 
-    console.log(contest.leaderboard);
-    const sortedLeaderboard = contest.leaderboard.sort((a, b) => {
+    console.log(contest);
+
+    let sortedLeaderboard = contest.leaderboard.sort((a, b) => {
       if (a.score > b.score) {
         return -1;
       } else if (a.score < b.score) {
@@ -153,11 +151,26 @@ const getLeaderboard = async (req, res) => {
       }
     });
 
-    contest.leaderboard = sortedLeaderboard;
+    //console.log(sortedLeaderboard);
+
+    let newLeaderboard = [];
+    for(let i=0; i<sortedLeaderboard.length; i++){
+      newLeaderboard.push({
+        ranks: i+1,
+        user: sortedLeaderboard[i].user,
+        score: sortedLeaderboard[i].score,
+        problems: sortedLeaderboard[i].problems,
+        lastSubmission: sortedLeaderboard[i].lastSubmission,
+        message: "Hello",
+      });
+    }
+    console.log(newLeaderboard);
+    contest.newLeaderboard;
 
     return res.status(200).json({
       success: true,
-      contest,
+      contest: contest._id,
+      leaderboard:newLeaderboard,
       message: "Leaderboard fetched Successfully",
     });
   } catch (error) {

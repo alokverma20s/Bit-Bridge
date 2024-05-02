@@ -30,6 +30,10 @@ const ContestPage = () => {
   return (
     <div className='mt-20 p-6 bg-[#E1E3F2]'>
         <h1 className='text-3xl font-bold text-center text-primary-600'>{contest.name}</h1>
+        <div className="text-right relative"><button className='py-3 px-6 text-center bg-primary-600 hover:bg-primary-500 border-gray-500 text-white text-lg rounded-md absolute right-0 bottom-2' onClick={
+            ()=>navigate(`/contest/${contestId}/leaderboard`)
+        }>Leaderboard</button></div>
+        
         <div className='text-xl font-semibold text-center mt-4 text-[#212328]'>{contest.description}</div>
         <div className='mt-4 flex justify-center text-gray-600 gap-20'>
             <div className='text-lg font-semibold'>Starts At: {formatDate(new Date(contest.startTime))}</div>
