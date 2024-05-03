@@ -2,6 +2,7 @@ import Submission from "../models/submissions.js";
 import Problem from "../models/Problem.js";
 import axios from "axios";
 import Contest from "../models/contest.js";
+import {ObjectId} from 'mongoose'
 
 const API = axios.create({
   baseURL: "https://emkc.org/api/v2/piston",
@@ -153,6 +154,7 @@ const checkResult = async (language, version, sourceCode, stdin) => {
 
 const submitCode = async (req, res) => {
   const { user, problem, version, contest, sourceCode, language } = req.body;
+  console.log(problem);
   try {
     if(!user || !problem || !sourceCode || !language){
       return res.status(400).json({
@@ -162,7 +164,6 @@ const submitCode = async (req, res) => {
     }
 
     const contestDetails = await Contest.findById(contest);
-    console.log(contestDetails.endTime);
 
     if((new Date(contestDetails.endTime))  <= (new Date())){
       return res.status(200).json({
@@ -178,7 +179,8 @@ const submitCode = async (req, res) => {
     // console.log(stdin);
     const stdOutput = prepareOutput(testcases.testcases);
     const result = await checkResult(language, version, sourceCode, stdin);
-    // console.log(result);
+    // console.log(result, stdOutput);
+
 
     let status = "Rejected";
 
@@ -206,11 +208,13 @@ const submitCode = async (req, res) => {
       }
     }
 
-    let isPresent = contestDetails.leaderboard.forEach((user) => {
-      if(user.user == user){
-        return true;
+    let isPresent = false;
+    for(let i=0; i< contestDetails.leaderboard.length; i++){
+      if(contestDetails.leaderboard[i].user.toString() === user){
+        isPresent = true;
+        break;
       }
-    });
+    }
     let score = 0;
     if(testcases.difficulty === "Easy"){
       score = 10;
@@ -219,15 +223,27 @@ const submitCode = async (req, res) => {
     }else if(testcases.difficulty === "Hard"){
       score = 30;
     }
-    
+    // console.log("isPresent :>>", isPresent);
     if(isPresent){
-      contestDetails.leaderboard.forEach((user) => {
-        if(user.user == user && user.problems.includes(problem) === false){
-          user.problems.push(problem);
-          user.score += score;
-          user.lastSubmission = new Date();
+      for(let i = 0; i<contestDetails.leaderboard.length; i++){
+        if(contestDetails.leaderboard[i].user.toString() == user){
+          let problemExist = false;
+          for(let j=0; j<contestDetails.leaderboard[i].problems.length; j++){
+            if(contestDetails.leaderboard[i]?.problems[j].toString() === problem){
+              console.log(contestDetails.leaderboard[i].problems[j].toString(), problem, contestDetails.leaderboard[i].user);
+              console.log("It's me");
+              problemExist = true;
+              break;
+            }
+          }
+          if( problemExist === false ){
+            console.log("run");
+            contestDetails.leaderboard[i].problems.push(problem);
+            contestDetails.leaderboard[i].score += score;
+            contestDetails.leaderboard[i].lastSubmission = new Date();
+          }
         }
-      });
+      }
     }else if(!isPresent){
       contestDetails.leaderboard.push({
         user,
@@ -236,6 +252,7 @@ const submitCode = async (req, res) => {
         lastSubmission: new Date()
       });
     }
+    // console.log(contestDetails);
     
     await contestDetails.save();
 

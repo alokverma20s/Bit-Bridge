@@ -164,7 +164,7 @@ const getLeaderboard = async (req, res) => {
         message: "Hello",
       });
     }
-    console.log(newLeaderboard);
+    // console.log(newLeaderboard);
     contest.newLeaderboard;
 
     return res.status(200).json({
