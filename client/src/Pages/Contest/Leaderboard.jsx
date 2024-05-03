@@ -16,9 +16,6 @@ const Leaderboard = () => {
     
     
     useEffect(() => {
-        if(!currentUser?.result){
-            navigate('/auth');
-        }
         dispatch(getLeaderboard(setLoading, setLeaderboard, contestId));
     }, []);
 
@@ -29,9 +26,9 @@ const Leaderboard = () => {
     <div className='mt-16'>
         <h1 className='text-3xl font-bold text-center text-primary-600'>Leaderboard</h1>
         <div className='mt-10'>
-            { leaderboard.length > 0 ?
+            { loading ? <div className='w-full h-[90vh] flex justify-center items-center'><Loader /></div>:
             <div>
-            {   loading ? <div className='w-full h-[90vh] flex justify-center items-center'><Loader /></div> :
+            { leaderboard.length > 0 ? 
                 <table className='w-full'>
                     <thead>
                         <tr>
@@ -64,11 +61,12 @@ const Leaderboard = () => {
                             ))
                         }
                     </tbody>
-                </table>
-            }</div> :
+                </table>:
                 <div className="flex justify-center items-center w-screen h-[78vh]">
                     <p className='text-primary-700 font-bold text-3xl'>No Data Available...</p>
                 </div>
+            }</div>
+                
             }
         </div>
     </div>

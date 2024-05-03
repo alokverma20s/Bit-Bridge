@@ -2,7 +2,6 @@ import Submission from "../models/submissions.js";
 import Problem from "../models/Problem.js";
 import axios from "axios";
 import Contest from "../models/contest.js";
-import {ObjectId} from 'mongoose'
 
 const API = axios.create({
   baseURL: "https://emkc.org/api/v2/piston",
