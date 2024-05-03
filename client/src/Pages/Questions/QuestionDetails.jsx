@@ -115,8 +115,7 @@ const QuestionDetails = () => {
                                                             Share
                                                         </button>
                                                     </CopyToClipboard>
-                                                    {(User?.result?._id === question?.userId?._id ||
-                                                        User?.result?.role === "admin") && (
+                                                    {(User?.result?._id === question?.userId?._id || User?.result?.role === "admin") && (
                                                             <button type="button" onClick={handleDelete}>
                                                                 Delete
                                                             </button>

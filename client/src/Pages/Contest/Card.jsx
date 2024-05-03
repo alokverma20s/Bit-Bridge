@@ -3,8 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { deleteContest } from "../../services/operations/contestAPI";
 import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import './card.css'
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const Card = ({ contest }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const User = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -86,7 +106,7 @@ const Card = ({ contest }) => {
             </span>
           </button>
           <button className="flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-3 text-lg font-medium text-white bg-primary-400 hover:bg-primary-500">
-            <span>Instruction</span>
+            <span onClick={handleOpen}>Instruction</span>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,6 +128,28 @@ const Card = ({ contest }) => {
           The Contest is Over now
         </div>
       )}
+
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Instructions
+            </Typography>
+            {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
+              <ul>
+                <li>1. Questions are categorised as easy(10 marks), medium(20 marks), hard(30 marks)</li>
+                <li>2. You can write code in any of the available languages</li>
+                <li>3. Any submission after the submission time will not be considered</li>
+                <li>4. Ranking will be done on the basis of Marks obtained and submission time.</li>
+              </ul>
+            {/* </Typography> */}
+          </Box>
+        </Modal>
     </div>
   );
 };
