@@ -1,12 +1,12 @@
 import React from 'react'
 import './styles.css'
 
-const Loader = () => {
+const SubmissionLoader = () => {
   return (
     <div className="flex justify-center items-center">
-        <div className="loader"></div>
+        <div className="SubmissionLoader"></div>
     </div>
   )
 }
 
-export default Loader
+export default SubmissionLoader

@@ -26,30 +26,30 @@ const ProblemDescription = ({question, loading, lightTheme}) => {
             : question.difficulty === "Medium"
             ? " text-yellow-500"
             : "text-red-500"
-        } px-2 py-0.5 bg-slate-300 rounded-full`}
+        } px-2 py-0.5 bg-primary-400 rounded-full`}
       >
         {question.difficulty}
       </span>
       <a
         href="#topic"
-        className={` ml-3 px-2 cursor-pointer py-0.5 bg-[#6974C6] rounded-full scroll-smooth`}
+        className={` ml-3 px-2 cursor-pointer py-0.5 bg-primary-400 rounded-full scroll-smooth`}
       >
-        <FaTag className="inline text-xs text-white" />
-        <span className="ml-1 text-white">Topic</span>
+        <FaTag className="inline text-xs text-black" />
+        <span className="ml-1 text-black">Topic</span>
       </a>
       <a
         href="#company"
-        className={` ml-3 px-2 cursor-pointer py-0.5 bg-[#6974C6] rounded-full`}
+        className={` ml-3 px-2 cursor-pointer py-0.5 bg-primary-400 rounded-full`}
       >
-        <GoOrganization className="inline text-xs text-white" />
-        <span className="ml-1 text-white">Company</span>
+        <GoOrganization className="inline text-xs text-black" />
+        <span className="ml-1 text-black">Company</span>
       </a>
       <a
         href="#hint"
-        className={` ml-3 px-2 cursor-pointer py-0.5 bg-[#6974C6] rounded-full`}
+        className={` ml-3 px-2 cursor-pointer py-0.5 bg-primary-400 rounded-full`}
       >
-        <FaRegLightbulb className="inline text-xs text-white" />
-        <span className="ml-1 text-white">Hint</span>
+        <FaRegLightbulb className="inline text-xs text-black" />
+        <span className="ml-1 text-black">Hint</span>
       </a>
 
       <div className="mt-7">
@@ -69,14 +69,14 @@ const ProblemDescription = ({question, loading, lightTheme}) => {
             <div>
               <span className="text-sm lg:text-base font-semibold">Input: </span>
               <span
-                className="text-sm lg:text-base text-white font-mono bg-[#6974C6] px-2 rounded-md"
+                className="text-sm lg:text-base py-0.5 text-black font-mono bg-primary-400 px-2 rounded-md"
                 dangerouslySetInnerHTML={{ __html: example.input }}
               ></span>
             </div>
             <div>
               <span className="text-sm lg:text-base font-semibold">Ouput: </span>
               <span
-                className="text-sm lg:text-base text-white font-mono bg-[#6974C6] px-2 rounded-md"
+                className="text-sm lg:text-base py-0.5 text-black font-mono bg-primary-400 px-2 rounded-md"
                 dangerouslySetInnerHTML={{ __html: example.output }}
               ></span>
             </div>
@@ -91,7 +91,7 @@ const ProblemDescription = ({question, loading, lightTheme}) => {
           className=" text-sm lg:text-base mb-1 ml-2 font-mono text-gray-600"
         >
           <span
-            className="bg-[#6974C6] text-white px-2 rounded-md"
+            className="py-0.5 text-black font-mono bg-primary-400 px-2 rounded-md"
             dangerouslySetInnerHTML={{ __html: constraint }}
           ></span>
         </li>
@@ -109,13 +109,13 @@ const ProblemDescription = ({question, loading, lightTheme}) => {
 
       {question?.topics && question.topics.length > 0 && (
         <details className="mb-5" id="topic">
-          <summary className="text-lg font-semibold mb-3 cursor-pointer text-white bg-[#6974C6] px-3 rounded-md">
+          <summary className="text-lg font-semibold mb-3 cursor-pointer py-0.5 text-black font-mono bg-primary-400 px-3 rounded-md">
             Topic
           </summary>
           {question.topics.map((topic, index) => (
             <span
               key={index}
-              className="text-sm lg:text-base mx-1 px-2 py-1 bg-[#6974C6] text-white rounded-lg"
+              className="text-sm lg:text-base mx-1 px-2 py-0.5 text-black font-mono bg-primary-400 rounded-lg"
             >
               {topic}
             </span>
@@ -125,13 +125,13 @@ const ProblemDescription = ({question, loading, lightTheme}) => {
 
       {question?.companies && question.companies.length > 0 && (
         <details className="mb-5" id="company">
-          <summary className="text-lg font-semibold mb-3 cursor-pointer text-white bg-[#6974C6] px-3 rounded-md">
+          <summary className="text-lg font-semibold mb-3 cursor-pointer py-0.5 text-black font-mono bg-primary-400 px-3 rounded-md">
             Company
           </summary>
           {question.companies.map((company, index) => (
             <span
               key={index}
-              className="text-sm lg:text-base leading-8 mx-1 px-2 py-1 bg-[#6974C6] text-white rounded-lg"
+              className="text-sm lg:text-base leading-8 mx-1 px-2 py-[1px] text-black font-mono bg-primary-400 rounded-lg"
             >
               {company}
             </span>
@@ -141,7 +141,7 @@ const ProblemDescription = ({question, loading, lightTheme}) => {
 
       {question?.hint && question.hint.length > 0 && (
         <details className="mb-5" id="hint">
-          <summary className="text-lg font-semibold mb-3 cursor-pointer bg-[#6974C6] text-white px-3 rounded-md">
+          <summary className="text-lg font-semibold mb-3 cursor-pointer py-0.5 text-black font-mono bg-primary-400 px-3 rounded-md">
             Hint
           </summary>
           {question.hint.map((hint, index) => (

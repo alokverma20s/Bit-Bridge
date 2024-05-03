@@ -32,6 +32,7 @@ import CreateContest from './Pages/Contest/CreateContest';
 import EditContest from './Pages/Contest/EditContest';
 import AddProblem from './Pages/Contest/AddProblem';
 import ContestPage from './Pages/Contest/ContestPage';
+import Leaderboard from './Pages/Contest/Leaderboard';
 
 const AllRoutes = () => {
   return ( 
@@ -45,6 +46,7 @@ const AllRoutes = () => {
         <Route path='/contest/editContest/:id' element={<EditContest/>}></Route>
         <Route path='/contest/addProblem' element={<AddProblem/>}></Route>
         <Route path='/contest/:id' element={<ContestPage/>}></Route>
+        <Route path='/contest/:id/leaderboard' element={<Leaderboard/>}></Route>
         <Route path='/contest/:constestId/:problemId' element={
           <ChakraProvider>
             <CodeEditor />

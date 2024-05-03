@@ -1,6 +1,7 @@
 import Submission from "../models/submissions.js";
 import Problem from "../models/Problem.js";
 import axios from "axios";
+import Contest from "../models/contest.js";
 
 const API = axios.create({
   baseURL: "https://emkc.org/api/v2/piston",
@@ -152,7 +153,6 @@ const checkResult = async (language, version, sourceCode, stdin) => {
 
 const submitCode = async (req, res) => {
   const { user, problem, version, contest, sourceCode, language } = req.body;
-
   try {
     if(!user || !problem || !sourceCode || !language){
       return res.status(400).json({
@@ -161,31 +161,30 @@ const submitCode = async (req, res) => {
       });
     }
 
-    const testcases = await Problem.findById(problem, {testcases:true});
+    const contestDetails = await Contest.findById(contest);
+    console.log(contestDetails.endTime);
+
+    if((new Date(contestDetails.endTime))  <= (new Date())){
+      return res.status(200).json({
+        success: true,
+        status: "Time Over",
+        message: "Contest Ended..."
+      })
+    }
+
+    const testcases = await Problem.findById(problem, {testcases:true, difficulty: true});
 
     const stdin = prepareTestcases(testcases.testcases);
-    console.log(stdin);
+    // console.log(stdin);
     const stdOutput = prepareOutput(testcases.testcases);
     const result = await checkResult(language, version, sourceCode, stdin);
-    console.log(result);
+    // console.log(result);
 
     let status = "Rejected";
 
     if(result?.stdout === stdOutput && result?.stderr === ""){
       status = "Accepted";
     }
-
-
-
-    const submission = await Submission.create({
-      user,
-      problem,
-      contest,
-      language,
-      version,
-      sourceCode,
-      status,
-    });
 
     if(status === 'Rejected'){
       if(result?.stdout != stdOutput){
@@ -207,6 +206,48 @@ const submitCode = async (req, res) => {
       }
     }
 
+    let isPresent = contestDetails.leaderboard.forEach((user) => {
+      if(user.user == user){
+        return true;
+      }
+    });
+    let score = 0;
+    if(testcases.difficulty === "Easy"){
+      score = 10;
+    }else if(testcases.difficulty === "Medium"){
+      score = 20;
+    }else if(testcases.difficulty === "Hard"){
+      score = 30;
+    }
+    
+    if(isPresent){
+      contestDetails.leaderboard.forEach((user) => {
+        if(user.user == user && user.problems.includes(problem) === false){
+          user.problems.push(problem);
+          user.score += score;
+          user.lastSubmission = new Date();
+        }
+      });
+    }else if(!isPresent){
+      contestDetails.leaderboard.push({
+        user,
+        problems: [problem],
+        score,
+        lastSubmission: new Date()
+      });
+    }
+    
+    await contestDetails.save();
+
+    const submission = await Submission.create({
+      user,
+      problem,
+      contest,
+      language,
+      version,
+      sourceCode,
+      status,
+    });
     // console.log(submission);
     return res.status(201).json({
       success: true,

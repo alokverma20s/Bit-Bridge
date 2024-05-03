@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../apiConnector"
 import { contestEndPoints } from "../apis";
 
-const { CREATE_CONTEST_API, GET_ALL_CONTEST_API, GET_CONTEST_API, DELETE_CONTEST_API, UPDATE_CONTEST_API } = contestEndPoints;
+const { CREATE_CONTEST_API, GET_ALL_CONTEST_API, GET_CONTEST_API, DELETE_CONTEST_API, UPDATE_CONTEST_API, GET_CONTEST_LEADERBOARD } = contestEndPoints;
 
 export function createContest(setLoading, contestData, navigate){
     return async (dispatch) => {
@@ -84,6 +84,23 @@ export function updateContest(setLoading, contestData, contestId){
             toast.success("Contest Updated Successfully...");
         } catch (error) {
             toast.error("Unable to update Contest");
+        }
+    }
+}
+
+export function getLeaderboard(setLoading, setLeaderboard, contestId){
+    return async (dispatch) => {
+        setLoading(true);
+        try {
+            const response = await apiConnector("GET", GET_CONTEST_LEADERBOARD + contestId);
+            if(!response.data.success){
+                throw new Error(response.data.message);
+            }
+            setLeaderboard(response.data.leaderboard);
+            // toast.success("Fetched Successfully...");
+            setLoading(false);
+        } catch (error) {
+            toast.error("Unable to fetch Leaderboard");
         }
     }
 }

@@ -72,6 +72,7 @@ export const contestEndPoints = {
     GET_ALL_CONTEST_API: BASE_URL+"/contest/getAllContest",
     DELETE_CONTEST_API: BASE_URL+"/contest/deleteContest/",
     UPDATE_CONTEST_API: BASE_URL+"/contest/updateContest/id",
+    GET_CONTEST_LEADERBOARD: BASE_URL+"/contest/getLeaderboard/",
 }
 
 export const problemEndPoints = {

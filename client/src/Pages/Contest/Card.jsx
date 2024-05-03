@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { deleteContest } from "../../services/operations/contestAPI";
 import { useNavigate } from "react-router-dom";
+
+import { IoIosArrowForward } from "react-icons/io";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -54,6 +56,16 @@ const Card = ({ contest }) => {
     navigate(`/contest/editContest/${contest._id}`);
   };
 
+  function isDisabled(){
+    return ((
+      new Date(contest.startTime) > currentTime
+        ? true
+        : new Date(contest.endTime) < currentTime
+    )
+      ? true
+      : false)
+  }
+
   return (
     // <div className="min-w-[300px] flex flex-col rounded-3xl bg-[#092540] p-10 text-center">
     <div className="contest-card">
@@ -77,33 +89,12 @@ const Card = ({ contest }) => {
       {new Date(contest.endTime) >= currentTime ? (
         <div className="mt-6 flex flex-col lg:flex-row items-center justify-center gap-4">
           <button
-            className="flex items-center justify-center gap-2 rounded-full bg-primary-600 px-5 py-3 text-lg font-medium text-white hover:bg-primary-700"
-            disabled={
-              (
-                new Date(contest.startTime) > currentTime
-                  ? true
-                  : new Date(contest.endTime) < currentTime
-              )
-                ? true
-                : false
-            }
+            className={`flex items-center justify-center gap-2 rounded-full bg-primary-600 px-5 py-3 text-lg font-medium text-white  ${isDisabled()? 'cursor-not-allowed' : 'cursor-pointer hover:bg-primary-700'}`}
+            disabled={ isDisabled() }
             onClick={() => navigate(`/contest/${contest._id}`)}
           >
             <span> Start </span>
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
-                <path
-                  d="M6.00156 13.4016L4.60156 12.0016L8.60156 8.00156L4.60156 4.00156L6.00156 2.60156L11.4016 8.00156L6.00156 13.4016Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
+            <IoIosArrowForward />
           </button>
           <button className="flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-3 text-lg font-medium text-white bg-primary-400 hover:bg-primary-500">
             <span onClick={handleOpen}>Instruction</span>
@@ -121,11 +112,18 @@ const Card = ({ contest }) => {
                 />
               </svg>
             </span>
+            <IoIosArrowForward />
           </button>
         </div>
       ) : (
-        <div className="mt-5 text-md leading-8  ">
-          The Contest is Over now
+        <div className="mt-6 flex flex-col lg:flex-row items-center justify-center gap-4">
+          <button 
+          className="flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-3 text-lg font-medium text-white bg-primary-600 hover:bg-primary-500" 
+          onClick={()=>navigate(`/contest/${contest._id}/leaderboard`)}
+          >
+            <span>Leaderboard</span>
+            <IoIosArrowForward />
+          </button>
         </div>
       )}
 
