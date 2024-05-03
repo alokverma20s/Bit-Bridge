@@ -64,9 +64,9 @@ const SubjectsList = () => {
                   <h3 className='text-sm font-bold mb-3 mt-2'>{subject.subjectName}</h3>
                   <div>
                     <div className='flex flex-row justify-between'>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className=' p-1 rounded-lg flex justify-center h-fit bg-primary-600 align-middle hover:bg-primary-700 text-white'>Questions</Link>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className=' p-1 rounded-lg flex justify-center h-fit bg-primary-600 align-middle hover:bg-primary-700 text-white'>Quiz</Link>
-                      <Link key={subject._id} to={`/Subjects/${subject._id}/resources`} className=' p-1 rounded-lg flex justify-center h-fit bg-primary-600 align-middle hover:bg-primary-700 text-white'>Resources</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/questions`} className=' p-1 rounded-lg font-bold flex justify-center h-fit bg-primary-600 align-middle hover:bg-primary-700 text-white'>Questions</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/quizes`} className=' p-1 rounded-lg font-bold flex justify-center h-fit bg-primary-600 align-middle hover:bg-primary-700 text-white'>Quiz</Link>
+                      <Link key={subject._id} to={`/Subjects/${subject._id}/resources`} className=' p-1 rounded-lg font-bold flex justify-center h-fit bg-primary-600 align-middle hover:bg-primary-700 text-white'>Resources</Link>
                     </div>
                     <p className='subject-desc'>{subject.subjectDescription}</p>
                   </div>

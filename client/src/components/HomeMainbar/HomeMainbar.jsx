@@ -57,7 +57,7 @@ const HomeMainbar = () => {
             {/* <div className=' flex flex-row'></div> */}
             <Searchbar setKeyword={setKeyword}></Searchbar>
             <Select className=' w-3/12' options={optionList} placeholder="Sort by: Upvotes" onChange={handleSelect1} defaultValue={"upvotes"}/>
-            {docCount>0 && <Pagination count={docCount%50==0? Math.floor(docCount/50): 1+ Math.floor(docCount/50) } variant="outlined" color="secondary" onChange={(e, pageNumber)=>setPage(`${pageNumber}`)}/>}
+            {/* {docCount>0 && <Pagination count={docCount%50==0? Math.floor(docCount/50): 1+ Math.floor(docCount/50) } variant="outlined" color="secondary" onChange={(e, pageNumber)=>setPage(`${pageNumber}`)}/>} */}
             
             
             <button onClick={checkAuth} className='ask-btn bg-[#6974C6] px-[10px] py-[15px] rounded-[20px] text-white text-[16px]'>Ask Question</button>
@@ -73,6 +73,7 @@ const HomeMainbar = () => {
                 </div>
             }
         </div>
+        {docCount>0 && <Pagination className='flex justify-center mt-6' count={docCount%50==0? Math.floor(docCount/50): 1+ Math.floor(docCount/50) } variant="outlined" color="primary" onChange={(e, pageNumber)=>setPage(`${pageNumber}`)}/>}
     </div>
   )
 }

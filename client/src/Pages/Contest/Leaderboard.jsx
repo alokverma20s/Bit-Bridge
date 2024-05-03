@@ -32,21 +32,21 @@ const Leaderboard = () => {
                 <table className='w-full'>
                     <thead>
                         <tr>
-                            <th className='text-xl font-semibold text-center'>Rank</th>
-                            <th className='text-xl font-semibold text-center'>Name</th>
-                            <th className='text-xl font-semibold text-center'>Email</th>
-                            <th className='text-xl font-semibold text-center'>Score</th>
-                            <th className='text-xl font-semibold text-center'>Finish Time</th>
+                            <th className='text-xl font-semibold text-center text-primary-500'>Rank</th>
+                            <th className='text-xl font-semibold text-center text-primary-500'>Name</th>
+                            <th className='text-xl font-semibold text-center text-primary-500'>Email</th>
+                            <th className='text-xl font-semibold text-center text-primary-500'>Score</th>
+                            <th className='text-xl font-semibold text-center text-primary-500'>Finish Time</th>
                         </tr>
                     </thead>
                     <tbody>
                         {currentUserData && 
                         <tr key={currentUserData?._id} className='border-b-primary-600 border-b mb-2'>
-                            <td className='text-lg font-semibold text-center'>{currentUserData?.ranks}</td>
-                            <td className='text-lg font-semibold text-center'>{currentUserData?.user.name}</td>
-                            <td className='text-lg font-semibold text-center'>{currentUserData?.user.email}</td>
-                            <td className='text-lg font-semibold text-center'>{currentUserData?.score}</td>
-                            <td className='text-lg font-semibold text-center'>{new Date(currentUserData?.lastSubmission).toLocaleTimeString()}</td>
+                            <td className='text-lg text-center font-semibold'>{currentUserData?.ranks}</td>
+                            <td className='text-lg text-center font-semibold'>{currentUserData?.user.name}</td>
+                            <td className='text-lg text-center font-semibold'>{currentUserData?.user.email}</td>
+                            <td className='text-lg text-center font-semibold'>{currentUserData?.score}</td>
+                            <td className='text-lg text-center font-semibold'>{new Date(currentUserData?.lastSubmission).toLocaleTimeString()}</td>
                         </tr>}
                             
                         {

@@ -61,14 +61,14 @@ const Hero = () => {
           </NavLink>
         </div>
       </div>
-      <div className="contentOne" id="content-one">
-        <div className="contentOne-desc">
-          <div className="contentOne-desc-first">Connect.Collaborate.Catalyze</div>
-          <div className="contentOne-desc-second">Your Virtual Hub where campus academic discussions come to life! Ask your query <NavLink className="here" to='/AskQuestion'>here</NavLink> and someone will surely answer it.</div>
-          <div className="contentOne-desc-three">Join BITBRIDGE today and express yourself in a dynamic digital space tailored just for you.</div>
+      <div className="bg-primary-600 flex justify-around items-center" id="content-one">
+        <div className="flex flex-col gap-12 font-[Rubik] font-medium text-white py-12 ml-12">
+          <div className="text-[40px]">Connect.Collaborate.Catalyze</div>
+          <div className="text-[28px]">Your Virtual Hub where campus academic discussions come to life! Ask your query <NavLink className="here" to='/AskQuestion'>here</NavLink> and someone will surely answer it.</div>
+          <div className="text-[28px]">Join BITBRIDGE today and express yourself in a dynamic digital space tailored just for you.</div>
         </div>
-        <div className="contentOne-img">
-          <img src={macbookImg} className="ganeshji-img" alt="" />
+        <div className="max-h-full max-w-[50%]">
+          <img src={macbookImg} className="h-full w-full" alt="" />
         </div>
       </div>
       <div className="contentTwo">

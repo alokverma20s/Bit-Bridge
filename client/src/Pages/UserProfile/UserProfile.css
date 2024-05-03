@@ -1,8 +1,9 @@
 .section-container{
+    background-color: rgb(225, 227, 242);
     margin-left: 164px;
     width: 100%;
     padding-left: 40px;
-    border-left: solid 1px rgb(255, 255, 255, 0.5);
+    border-left: solid 1px rgb(174, 164, 244);
 }
 
 .user-details-container{

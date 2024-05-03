@@ -9,7 +9,7 @@ const QuestionList = ({questionList}) => {
       return -1;
   })
   return (
-    <div>
+    <div className='mr-4 mt-2'>
       {
         questionList?.map((question) => (
           <Questions key={question._id} question={question} />
