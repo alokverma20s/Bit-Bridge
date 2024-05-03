@@ -153,7 +153,7 @@ const checkResult = async (language, version, sourceCode, stdin) => {
 
 const submitCode = async (req, res) => {
   const { user, problem, version, contest, sourceCode, language } = req.body;
-  console.log(problem);
+  // console.log(problem);
   try {
     if(!user || !problem || !sourceCode || !language){
       return res.status(400).json({
@@ -178,7 +178,8 @@ const submitCode = async (req, res) => {
     // console.log(stdin);
     const stdOutput = prepareOutput(testcases.testcases);
     const result = await checkResult(language, version, sourceCode, stdin);
-    // console.log(result, stdOutput);
+
+    console.log(result, stdin, stdOutput);
 
 
     let status = "Rejected";
@@ -229,14 +230,11 @@ const submitCode = async (req, res) => {
           let problemExist = false;
           for(let j=0; j<contestDetails.leaderboard[i].problems.length; j++){
             if(contestDetails.leaderboard[i]?.problems[j].toString() === problem){
-              console.log(contestDetails.leaderboard[i].problems[j].toString(), problem, contestDetails.leaderboard[i].user);
-              console.log("It's me");
               problemExist = true;
               break;
             }
           }
           if( problemExist === false ){
-            console.log("run");
             contestDetails.leaderboard[i].problems.push(problem);
             contestDetails.leaderboard[i].score += score;
             contestDetails.leaderboard[i].lastSubmission = new Date();
