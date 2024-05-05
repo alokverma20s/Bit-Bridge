@@ -250,3 +250,31 @@ export const voteQuestion = async (req, res) => {
         res.status(404).json({ message: 'id not found...' });
     }
 }
+
+export const getQuestionById = async (req, res) => {
+    const { id: _id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send('Question unavailable...');
+    }
+    try {
+        const question = await Questions.findById(_id).populate({
+            path: "questionTags",
+            select: { tagName: true, tagDescription: true }
+        }).populate({
+            path: "userId",
+            select: { role: true, name: true }
+        }).populate({
+            path: "answer.userId",
+            select: { role: true, name: true }
+        }).populate({
+            path: "answer.verifiedBy",
+            select: { role: true, name: true }
+        }).populate({
+            path: "answer.rejectedBy",
+            select: { role: true, name: true }
+        });
+        res.status(200).json(question);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}

@@ -17,6 +17,7 @@ export const questionEndpoints = {
     GET_API: BASE_URL + "/questions/get",
     DELETE_API: BASE_URL + "/questions/delete/id",
     VOTE_API: BASE_URL + "/questions/vote/id",
+    GETQUESTION_API: BASE_URL + "/questions/get/",
 }
 
 export const subjectEndpoints = {

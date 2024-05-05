@@ -25,9 +25,9 @@ const DisplayAns = ({ question }) => {
     dispatch(deleteAnswer(id, answerId, noOfAnswers - 1));
   }
 
-  const [currentVotes, setCurrentVotes] = useState(Array(question.answer.length).fill(0));
-  const [currentUpvote, setCurrentUpvote] = useState(Array(question.answer.length).fill(0));
-  const [currentDownvote, setCurrentDownvote] = useState(Array(question.answer.length).fill(0));
+  const [currentVotes, setCurrentVotes] = useState(Array(question?.answer?.length).fill(0));
+  const [currentUpvote, setCurrentUpvote] = useState(Array(question?.answer?.length).fill(0));
+  const [currentDownvote, setCurrentDownvote] = useState(Array(question?.answer?.length).fill(0));
 
   
 

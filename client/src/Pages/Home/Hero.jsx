@@ -153,7 +153,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
-        <p className="font-Inter w-screen text-center text-white text-lg bg-[rgb(32,35,40)] pb-5">Copyright © 2023 Bit Bridge.</p>
+        <p className="font-Inter w-screen text-center text-white text-lg bg-[rgb(32,35,40)] pb-5">Copyright © 2024 Bit Bridge.</p>
     </div>
   );
 };
