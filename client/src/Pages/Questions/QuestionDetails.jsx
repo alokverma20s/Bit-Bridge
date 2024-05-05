@@ -88,7 +88,7 @@ const QuestionDetails = () => {
 
     return (
         <div className="question-details-page">
-            {questionList.data === null ? (
+            {loading ? (
                 <div className="loader-position">
                     <Loader />
                 </div>
