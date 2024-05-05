@@ -133,8 +133,8 @@ const Hero = () => {
             <NavLink to='/Subjects' className='no-underline' activeClass='active'>
               <p className="text-sm text-[rgb(133,131,131)] mt-2 mb-[8px]">Subjects</p>
             </NavLink>
-            <NavLink to='/Quiz' className='no-underline' activeClass='active'>
-              <p className="text-sm text-[rgb(133,131,131)] mt-2 mb-[8px]">Quiz</p>
+            <NavLink to='/contest' className='no-underline' activeClass='active'>
+              <p className="text-sm text-[rgb(133,131,131)] mt-2 mb-[8px]">Contest</p>
             </NavLink>
           </div>
         </div>
