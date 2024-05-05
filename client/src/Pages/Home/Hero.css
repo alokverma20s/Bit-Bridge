@@ -1,0 +1,114 @@
+.gradient-text {
+    /* background-image: linear-gradient(45deg, #f3ec78, #af4261); */
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    background-image: linear-gradient(to right, rgb(199, 136, 208), rgb(234, 122, 178));
+}
+
+.gradient-text2 {
+    /* background-image: linear-gradient(45deg, #f3ec78, #af4261); */
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    background-image: linear-gradient(to right, rgb(153, 148, 252), rgb(127, 126, 221));
+}
+
+.gradient-text3 {
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    background-image: linear-gradient(to right, rgb(127, 126, 221), rgb(88, 87, 166));
+}
+
+.animate-bounces {
+    animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+.shadow{
+    box-shadow: 0px 0px 10px 12px rgb(100, 100, 100);
+    animation: scaling 4s ease-in-out infinite;
+}
+
+@keyframes scaling {
+  0%{
+    transform: scale(0.9);
+  }
+  50%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.9);
+  }
+}
+
+.card{
+    height: 300px;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 20px;
+  }
+
+  .cards-heading{
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .cards-hr{
+    width: 100%;
+  }
+
+  .cards-desc{
+    text-align: justify;
+    font-family: 'Inter';
+    font-size: 18px;
+    line-height: 28px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 6px;
+    font-weight: 400;
+  }
+
+  .card-one{
+    border-bottom: 5px solid rgb(194, 188, 227);
+  }
+  .card-two{
+    border-bottom: 5px solid rgb(234, 219, 185);
+  }
+  .card-three{
+    border-bottom: 5px solid rgb(152, 82, 44);
+  }
+  .card-four{
+    border-bottom: 5px solid rgb(214, 226, 251)
+  }
+  .card-five{
+    border-bottom: 5px solid rgb(202, 243, 222)
+  }
+  .card-six{
+    border-bottom: 5px solid pink
+  }
