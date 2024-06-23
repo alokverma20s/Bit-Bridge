@@ -52,10 +52,10 @@ const Leaderboard = () => {
                         {
                             leaderboard.map((user, index) => (
                                 <tr key={user._id} className='border-b-primary-600 border-b mb-2'>
-                                    <td className='text-lg font-semibold text-center'>{user.ranks}</td>
-                                    <td className='text-lg font-semibold text-center'>{user.user.name}</td>
-                                    <td className='text-lg font-semibold text-center'>{user.user.email}</td>
-                                    <td className='text-lg font-semibold text-center'>{user.score}</td>
+                                    <td className='text-lg font-semibold text-center'>{user?.ranks}</td>
+                                    <td className='text-lg font-semibold text-center'>{user?.user?.name}</td>
+                                    <td className='text-lg font-semibold text-center'>{user?.user?.email}</td>
+                                    <td className='text-lg font-semibold text-center'>{user?.score}</td>
                                     <td className='text-lg font-semibold text-center'>{new Date(user.lastSubmission).toLocaleTimeString()}</td>
                                 </tr>
                             ))
