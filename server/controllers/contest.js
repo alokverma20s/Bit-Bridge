@@ -135,8 +135,6 @@ const getLeaderboard = async (req, res) => {
       }
     })
 
-    console.log(contest);
-
     let sortedLeaderboard = contest.leaderboard.sort((a, b) => {
       if (a.score > b.score) {
         return -1;
