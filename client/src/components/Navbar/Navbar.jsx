@@ -35,17 +35,16 @@ function Navbar(){
         <nav className='main-nav'>
             
             <div className="navbar">
-                <div>
+                <span className=' block'>
                     <span className='nav-logo'>
-                        <Link to='/' >
+                        <Link className='nav-logo' to='/' >
                                 <img src={logo} alt="logo" id='bit-bridge-logo'></img>
                         </Link>
+                        <Link to='/About' className='nav-item nav-btn '>About</Link>
+                        <Link to='/Contact' className='nav-item nav-btn '>Contact</Link>
                     </span>
-                    <Link to='/About' className='nav-item nav-btn'>About</Link>
-                    <Link to='/Contact' className='nav-item nav-btn'>Contact</Link>
-                    {/* <Link to='/' className='nav-item nav-btn'>Feedback</Link> */}
-                    {/* <Searchbar></Searchbar> */}
-                </div>
+                    
+                </span>
                 
                 {
                     User===null?

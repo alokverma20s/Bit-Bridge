@@ -69,3 +69,15 @@
     font-weight: 500;
     margin-bottom: 5px;
 }
+
+@media screen and (max-width: 1000px) {
+    .tags-list-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .tags-list-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

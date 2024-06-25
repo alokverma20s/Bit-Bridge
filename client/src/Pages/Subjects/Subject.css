@@ -119,3 +119,16 @@
     padding: 5px;
     font-weight: 600;  
 }
+
+
+@media screen and (max-width: 1000px) {
+    .subjects-list-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .subjects-list-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

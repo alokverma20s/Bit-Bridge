@@ -17,6 +17,10 @@
   transform: scale(1.05);
 }
 
+.main-bar-header{
+  flex-wrap: wrap;
+}
+
 .display-question-container {
   min-height: 80px;
   width: calc(100%);
