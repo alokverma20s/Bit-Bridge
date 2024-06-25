@@ -49,11 +49,11 @@ function Navbar(){
                 {
                     User===null?
                     <Link to='/Auth' className='nav-item nav-links' id='login-btn'>Login</Link>:
-                    <>
+                    <span className='nav-logo'>
                         <Link to={`/Users/${User.result?._id}`} style={{color:"black", textDecoration:"none", borderRadius:"100%"}}><Avatar role={User?.result?.role} backgroundColor="white" px="2px" py="2px">{User?.result?.name.charAt(0).toUpperCase()}</Avatar></Link>
 
                         <button className="nav-item nav-links" onClick={handleLogOut}>Logout</button>
-                    </>
+                    </span>
                 }
                 
             </div>
