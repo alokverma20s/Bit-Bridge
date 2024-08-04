@@ -55,9 +55,6 @@ const Hero = () => {
           <NavLink to='/Quiz' className='bg-primary-500 h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
             <p className="text-white text-[0.9rem] font-sans font-[700]">Quiz</p>
           </NavLink>
-          <NavLink to='/contest' className='bg-primary-500 h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
-            <p className="text-white text-[0.9rem] font-sans font-[700]">Contest</p>
-          </NavLink>
           <NavLink to='/users' className='bg-primary-500 h-8 w-40 no-underline rounded-[1rem] flex justify-center items-center text-[1.25rem]' activeClass='active'>
             <p className="text-white text-[0.9rem] font-sans font-[700]">Users</p>
           </NavLink>
@@ -92,7 +89,6 @@ const Hero = () => {
             <div className="card w-[90vw] md:w-[400px] card-three"><p className="cards-heading">Subjectwise Quiz</p><hr className="cards-hr"/><p className="cards-desc">Subject-wise quizzes set by instructors offers numerous advantages for both students and faculty members. This enhances the relevance and accuracy of evaluation.</p></div>
           
             <div className="card w-[90vw] md:w-[400px] card-four"><p className="cards-heading">Topicwise Tags</p><hr className="cards-hr"/><p className="cards-desc">Topic-wise tags for questions significantly enhances the user experience by facilitating efficient navigation and knowledge retrieval.</p></div>
-            <div className="card w-[90vw] md:w-[400px] card-six"><p className="cards-heading">Contest</p><hr className="cards-hr" /><p className="cards-desc">The developer's contest platform is a flexible tool for arranging coding contests. It enables users to effortlessly create and oversee contests, giving participants the opportunity to demonstrate their coding abilities.</p></div>
             <div className="card w-[90vw] md:w-[400px] card-five"><p className="cards-heading">Resources</p><hr className="cards-hr" /><p className="cards-desc">Dive into subject-specific materials curated to enhance your learning experience. From textbooks to supplementary articles, find everything you need to excel in your studies</p></div>
           </div>
         </div>
@@ -133,8 +129,8 @@ const Hero = () => {
             <NavLink to='/Subjects' className='no-underline' activeClass='active'>
               <p className="text-sm text-[rgb(133,131,131)] mt-2 mb-[8px]">Subjects</p>
             </NavLink>
-            <NavLink to='/contest' className='no-underline' activeClass='active'>
-              <p className="text-sm text-[rgb(133,131,131)] mt-2 mb-[8px]">Contest</p>
+            <NavLink to='/Quiz' className='no-underline' activeClass='active'>
+              <p className="text-sm text-[rgb(133,131,131)] mt-2 mb-[8px]">Quiz</p>
             </NavLink>
           </div>
         </div>
