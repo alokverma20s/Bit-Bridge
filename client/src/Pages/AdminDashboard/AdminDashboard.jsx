@@ -29,7 +29,7 @@ const AdminDashboard = () => {
                   <InstructorRequests/>
                 </div>
                 <div>
-                  <h3>Add Department</h3>
+                  <h3 className='text-xl'>Add Department</h3>
                   <form action="" onSubmit={handleDeptSubmit}>
                     <label htmlFor="">
                       <p>Enter Department name: </p>
